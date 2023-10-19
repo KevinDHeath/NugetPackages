@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Common.Wpf.Controls">
+
+	<ControlTemplate x:Key="ModalDialogTemplate" TargetType="{x:Type local:ModalDialog}">
+		<ControlTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+		</ControlTemplate.Resources>
+		<Grid Background="{TemplateBinding Background}"
+			  Visibility="{TemplateBinding IsOpen, Converter={StaticResource BooleanToVisibilityConverter}}">
+			<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+					HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="True">
+ 				<Grid>
+					<Grid.OpacityMask>
+						<VisualBrush Visual="{Binding ElementName=border}"/>
+					</Grid.OpacityMask>
+					<Border x:Name="border" Background="White" CornerRadius="5"/>
+					<ContentControl Content="{TemplateBinding Content}"/>
+				</Grid>
+				<Border.Effect>
+					<DropShadowEffect BlurRadius="10" ShadowDepth="10" Color="Gray"/>
+				</Border.Effect>
+			</Border>
+		</Grid>
+	</ControlTemplate>
+
+	<Style x:Key="controlModalDialogStyle" TargetType="{x:Type local:ModalDialog}">
+		<Setter Property="Template" Value="{StaticResource ModalDialogTemplate}"/>
+	</Style>
+
+</ResourceDictionary>
