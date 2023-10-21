@@ -1,10 +1,8 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Controls;
+using Common.Core.Converters;
 
 namespace Common.Wpf.Rules;
-
-// https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validationrule
 
 /// <summary>Base class for validation rules.</summary>
 public abstract class RuleBase : ValidationRule

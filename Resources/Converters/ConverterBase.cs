@@ -1,10 +1,7 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Data;
 
 namespace Common.Wpf.Converters;
-
-// https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter
 
 /// <summary>Base class for IValueConverter converters.</summary>
 public abstract class ConverterBase : IValueConverter

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Common.Wpf.Commands;
-
-// https://gist.github.com/thomaslevesque/13c3e69f6c5ae219b945fc07b75843fc
 
 /// <summary>Command to relay functionality to other objects by invoking delegates.</summary>
 public class DelegateCommand : ICommand
