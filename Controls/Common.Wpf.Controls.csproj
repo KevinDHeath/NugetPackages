@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\..\packages</NugetLocal>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,7 +18,7 @@
     <Authors>KevinDHeath</Authors>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageOutputPath>..\..\..\..\packages</PackageOutputPath>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
   </PropertyGroup>
  
   <PropertyGroup>
