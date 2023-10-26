@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\packages</NugetLocal>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>Private Application Helper classes.</AssemblyTitle>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <PackageId>KevinDHeath.Application.Helper</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Kevin D Heath</Authors>
+    <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <None Include="..\..\..\docs\NuGet\Application.Helper\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
+
+</Project>

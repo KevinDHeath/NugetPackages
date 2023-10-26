@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\packages</NugetLocal>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>Private Logging Helper classes.</AssemblyTitle>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <PackageId>KevinDHeath.Logging.Helper</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Kevin D Heath</Authors>
+    <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KevinDHeath.Application.Helper" Version="1.0.2" />
+    <PackageReference Include="NLog" Version="5.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <None Include="..\..\..\docs\NuGet\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ImplLog4Net.cs" />
+  </ItemGroup>
+
+</Project>

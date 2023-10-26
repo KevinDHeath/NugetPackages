@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\packages</NugetLocal>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>Private Json Converter classes.</AssemblyTitle>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <PackageId>KevinDHeath.Json.Converters</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Kevin D Heath</Authors>
+    <PackageDescription>Provides null, string, and interface converters for JSON serialization classes that are provided in the System.Text.Json namespace.</PackageDescription>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <None Include="..\..\..\docs\NuGet\Json.Converters\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
+
+</Project>
