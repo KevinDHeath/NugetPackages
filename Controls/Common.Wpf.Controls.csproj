@@ -15,7 +15,7 @@
     <FileVersion>2.0.3.1</FileVersion>
     <PackageId>Common.Wpf.Controls</PackageId>
     <Version>1.0.2</Version>
-    <Authors>KevinDHeath</Authors>
+    <Authors>Kevin D. Heath</Authors>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
