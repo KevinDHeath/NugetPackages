@@ -14,7 +14,7 @@
     <FileVersion>1.0.2.0</FileVersion>
     <PackageId>KevinDHeath.Json.Converters</PackageId>
     <Version>1.0.2</Version>
-    <Authors>Kevin D Heath</Authors>
+    <Authors>Kevin D. Heath</Authors>
     <PackageDescription>Provides null, string, and interface converters for JSON serialization classes that are provided in the System.Text.Json namespace.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>

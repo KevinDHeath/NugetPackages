@@ -12,7 +12,7 @@
     <FileVersion>1.0.2.0</FileVersion>
     <PackageId>KevinDHeath.Logging.Helper</PackageId>
     <Version>1.0.2</Version>
-    <Authors>Kevin D Heath</Authors>
+    <Authors>Kevin D. Heath</Authors>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
