@@ -9,7 +9,7 @@ namespace Common.Wpf.Controls;
 
 #region Dialog Types
 
-/// <summary>Dialog type enumeration.</summary>
+/// <summary>Dialog type enumeration for the FilePathTextBox control.</summary>
 public enum DialogTypes
 {
 	/// <summary>Open file dialog.</summary>
