@@ -19,6 +19,11 @@
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
   </PropertyGroup>
  
   <PropertyGroup>
@@ -35,6 +40,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <None Include="..\..\..\..\docs\Common\Wpf.Controls\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\..\..\License.txt" Pack="true" PackagePath="\" Link="License.txt" />
   </ItemGroup>
 
   <ItemGroup>
