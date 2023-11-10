@@ -16,6 +16,11 @@
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +34,7 @@
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
     <None Include="..\..\..\docs\NuGet\Application.Helper\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\..\License.txt" Pack="true" PackagePath="\" Link="License.txt" />
   </ItemGroup>
 
 </Project>

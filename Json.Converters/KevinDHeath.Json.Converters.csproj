@@ -18,6 +18,11 @@
     <PackageDescription>Provides null, string, and interface converters for JSON serialization classes that are provided in the System.Text.Json namespace.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -31,6 +36,7 @@
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
     <None Include="..\..\..\docs\NuGet\Json.Converters\README.md" Pack="true" PackagePath="\" Link="README.md" />
+    <None Include="..\..\..\License.txt" Pack="true" PackagePath="\" Link="License.txt" />
   </ItemGroup>
 
 </Project>
