@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace KevinDHeath.Application.Helper
+namespace Application.Helper
 {
 	/// <summary>Helper class for Console Applications.</summary>
 	public class ConsoleApp

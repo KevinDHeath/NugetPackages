@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KevinDHeath.Application.Helper
+namespace Application.Helper
 {
 	/// <summary>Represents errors that occur during application execution.</summary>
 	public class GenericException : Exception
