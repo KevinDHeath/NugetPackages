@@ -13,7 +13,7 @@
     <AssemblyTitle>Common Wpf controls.</AssemblyTitle>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <FileVersion>2.0.3.1</FileVersion>
-    <PackageId>Common.Wpf.Controls</PackageId>
+    <PackageId>kdheath.Wpf.Controls</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Common.Wpf.Resources" Version="1.0.2" />
+    <PackageReference Include="kdheath.Wpf.Resources" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

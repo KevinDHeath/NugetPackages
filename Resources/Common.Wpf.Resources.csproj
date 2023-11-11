@@ -13,7 +13,7 @@
     <AssemblyTitle>Common Wpf resources.</AssemblyTitle>
     <AssemblyVersion>2.0.1.0</AssemblyVersion>
     <FileVersion>2.0.1.0</FileVersion>
-    <PackageId>Common.Wpf.Resources</PackageId>
+    <PackageId>kdheath.Wpf.Resources</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
