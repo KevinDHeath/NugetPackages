@@ -1,10 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace KevinDHeath.Json.Converters;
+namespace Json.Converters;
 
 /// <summary>
 /// Converts a nullable Byte (System.Byte) object or value to or from JSON.

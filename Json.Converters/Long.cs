@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 
-namespace KevinDHeath.Json.Converters;
+namespace Json.Converters;
 
 /// <summary>
 /// Converts a nullable long (System.Int64) object or value to or from JSON.

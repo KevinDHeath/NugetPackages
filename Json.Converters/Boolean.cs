@@ -1,9 +1,8 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace KevinDHeath.Json.Converters;
+namespace Json.Converters;
 
 /// <summary>
 /// Converts a nullable boolean (System.Boolean) object or value to or from JSON.
