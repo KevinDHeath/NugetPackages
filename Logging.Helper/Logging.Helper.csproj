@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyTitle>Private Logging Helper classes.</AssemblyTitle>
+    <AssemblyTitle>Logging Helper classes.</AssemblyTitle>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
-    <PackageId>KevinDHeath.Logging.Helper</PackageId>
+    <PackageId>kdheath.Logging.Helper</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KevinDHeath.Application.Helper" Version="1.0.2" />
+    <PackageReference Include="kdheath.Application.Helper" Version="1.0.2" />
     <PackageReference Include="NLog" Version="5.2.5" />
   </ItemGroup>
 

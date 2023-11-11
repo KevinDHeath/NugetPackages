@@ -9,10 +9,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyTitle>Private Configuration Helper classes.</AssemblyTitle>
+    <AssemblyTitle>Configuration Helper classes.</AssemblyTitle>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
-    <PackageId>KevinDHeath.Configuration.Helper</PackageId>
+    <PackageId>kdheath.Configuration.Helper</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>

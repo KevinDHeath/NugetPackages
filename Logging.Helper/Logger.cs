@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using KevinDHeath.Application.Helper;
+using Application.Helper;
 
 namespace Logging.Helper
 {

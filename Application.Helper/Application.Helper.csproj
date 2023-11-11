@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyTitle>Private Application Helper classes.</AssemblyTitle>
+    <AssemblyTitle>Application Helper classes.</AssemblyTitle>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
-    <PackageId>KevinDHeath.Application.Helper</PackageId>
+    <PackageId>kdheath.Application.Helper</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
