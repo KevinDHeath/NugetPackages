@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	/// <summary>Common event arguments to use when logging a message.</summary>
 	public class LoggerEventArgs : EventArgs

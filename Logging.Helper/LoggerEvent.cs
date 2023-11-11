@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	#region Log Severity types
 
-	/// <summary>EnAct logging severity types.</summary>
+	/// <summary>Logging severity types.</summary>
 	public enum LogSeverity
 	{
 		/// <summary>Log as a debugging message.</summary>

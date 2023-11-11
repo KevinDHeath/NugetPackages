@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	/// <summary>Interface for a Logging implementation.</summary>
 	internal interface ILog
@@ -11,27 +11,27 @@ namespace KevinDHeath.Logging.Helper
 		int MaxLogFiles { get; set; }
 
 		/// <summary>
-		/// Indicates if logging is enabled for the <see cref="Logging.Helper.LogSeverity.Debug"/> level.
+		/// Indicates if logging is enabled for the <see cref="LogSeverity.Debug"/> level.
 		/// </summary>
 		bool IsDebugEnabled { get; }
 
 		/// <summary>
-		/// Indicates if logging is enabled for the <see cref="Logging.Helper.LogSeverity.Error"/> level.
+		/// Indicates if logging is enabled for the <see cref="LogSeverity.Error"/> level.
 		/// </summary>
 		bool IsErrorEnabled { get; }
 
 		/// <summary>
-		/// Indicates if logging is enabled for the <see cref="Logging.Helper.LogSeverity.Fatal"/> level.
+		/// Indicates if logging is enabled for the <see cref="LogSeverity.Fatal"/> level.
 		/// </summary>
 		bool IsFatalEnabled { get; }
 
 		/// <summary>
-		/// Indicates if logging is enabled for the <see cref="Logging.Helper.LogSeverity.Information"/> level.
+		/// Indicates if logging is enabled for the <see cref="LogSeverity.Information"/> level.
 		/// </summary>
 		bool IsInfoEnabled { get; }
 
 		/// <summary>
-		/// Indicates if logging is enabled for the <see cref="Logging.Helper.LogSeverity.Warning"/> level.
+		/// Indicates if logging is enabled for the <see cref="LogSeverity.Warning"/> level.
 		/// </summary>
 		bool IsWarnEnabled { get; }
 

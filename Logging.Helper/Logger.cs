@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using KevinDHeath.Application.Helper;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	#region Instructions
 	/// <summary>Class that provides common logging properties and methods.</summary>
@@ -35,7 +35,7 @@ namespace KevinDHeath.Logging.Helper
 	/// <example>
 	/// In the program that requires logging functionality:
 	/// <code lang="C#">
-	/// using KevinDHeath.Logging.Helper;
+	/// using Logging.Helper;
 	/// public class Program
 	/// {
 	///   /// <summary>Public static Logger.</summary>
@@ -69,9 +69,9 @@ namespace KevinDHeath.Logging.Helper
 	/// }
 	/// </code>
 	/// <br/>To allow a processing class to log using the logger created in the program it must inherit
-	/// from the KevinDHeath.Logging.Helper.LoggerEvent class and have the event handler set after it has been instantiated:
+	/// from the Logging.Helper.LoggerEvent class and have the event handler set after it has been instantiated:
 	/// <code lang="C#">
-	/// using KevinDHeath.Logging.Helper;
+	/// using Logging.Helper;
 	/// public class ProcessingClass : LoggerEvent
 	/// {
 	///   internal int DoProcessing()
@@ -91,7 +91,7 @@ namespace KevinDHeath.Logging.Helper
 	///   }
 	/// }
 	/// 
-	/// using KevinDHeath.Logging.Helper;
+	/// using Logging.Helper;
 	/// public class Program
 	/// {
 	///   /// <summary>Public static Logger.</summary>

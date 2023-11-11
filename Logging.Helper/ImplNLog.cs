@@ -16,7 +16,7 @@
 
 using System;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	/// <summary>Class that implements NLog logging.</summary>
 	internal class ImplNLog : ILog

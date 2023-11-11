@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KevinDHeath.Logging.Helper
+namespace Logging.Helper
 {
 	/// <summary>Class that implements a basic Console logger.</summary>
 	internal class ImplBasicLog : ILog
