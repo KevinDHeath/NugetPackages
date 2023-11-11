@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using System.Text.Json;
 
-namespace KevinDHeath.Configuration.Helper.SettingsStore;
+namespace Configuration.Helper.SettingsStore;
 
 /// <summary>Base class for Settings Store implementations.</summary>
 public abstract class SettingsStoreBase : ISettingsStore

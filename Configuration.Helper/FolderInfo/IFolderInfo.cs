@@ -1,4 +1,4 @@
-﻿namespace KevinDHeath.Configuration.Helper.FolderInfo;
+﻿namespace Configuration.Helper.FolderInfo;
 
 /// <summary>Interface for a FolderInfo implementation class.</summary>
 public interface IFolderInfo

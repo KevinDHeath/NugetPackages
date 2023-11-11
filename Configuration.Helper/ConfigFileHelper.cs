@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Security;
-using KevinDHeath.Configuration.Helper.SettingsStore;
+using Configuration.Helper.SettingsStore;
 
-namespace KevinDHeath.Configuration.Helper;
+namespace Configuration.Helper;
 
 /// <summary>Helper class for Configuration file access.</summary>
 public abstract class ConfigFileHelper

@@ -2,15 +2,15 @@
 
 using System.Data.Common;
 
-namespace KevinDHeath.Configuration.Helper;
+namespace Configuration.Helper;
 
 /// <summary>
 /// Provides a simple way to create and manage the contents of connection
-/// strings used for a Microsoft Dataverse connection. 
-/// </summary>
+/// strings used for a Microsoft Dataverse connection.</summary>
 /// <remarks>
-/// Use connection strings in XRM tooling to connect to Microsoft Dataverse
-/// https://learn.microsoft.com/en-us/power-apps/developer/data-platform/xrm-tooling/use-connection-strings-xrm-tooling-connect
+/// See<a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/xrm-tooling/use-connection-strings-xrm-tooling-connect" target="_blank">
+/// Use connection strings in XRM tooling to connect to Microsoft Dataverse</a>
+/// for more information.
 /// </remarks>
 public class WebConnectionStringBuilder : DbConnectionStringBuilder
 {
@@ -42,9 +42,10 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	/// <summary>Dynamics 365 Web service authentication types.</summary>
 	/// <remarks>
 	/// Only OAuth, Certificate, ClientSecret and Office365 are permitted values
-	/// for Dataverse environments.
-	/// Authenticate with Microsoft Dataverse web services
-	/// https://docs.microsoft.com/en-us/powerapps/developer/data-platform/authentication
+	/// for Dataverse environments.<br/>
+	/// See<a href="https://learn.microsoft.com/en-us/powerapps/developer/data-platform/authentication" target="_blank">
+	/// Authenticate with Microsoft Dataverse web services</a>
+	/// for more information.
 	/// </remarks>
 	public enum AuthType
 	{

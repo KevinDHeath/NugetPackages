@@ -1,4 +1,4 @@
-﻿namespace KevinDHeath.Configuration.Helper.SettingsStore;
+﻿namespace Configuration.Helper.SettingsStore;
 
 /// <summary>Settings Store factory implementation using a Windows disk file.</summary>
 public sealed class FileSettingsStore : SettingsStoreBase

@@ -3,7 +3,7 @@
 using System.Collections;
 using System.Text;
 
-namespace KevinDHeath.Configuration.Helper;
+namespace Configuration.Helper;
 
 /// <summary>Exposes a method that compares two objects.</summary>
 public class AlphanumComparator : IComparer

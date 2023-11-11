@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KevinDHeath.Configuration.Helper;
+namespace Configuration.Helper;
 
 /// <summary>Helper class for System.IO operations.</summary>
 public static class IOHelper

@@ -1,4 +1,4 @@
-﻿namespace KevinDHeath.Configuration.Helper.SettingsStore;
+﻿namespace Configuration.Helper.SettingsStore;
 
 /// <summary>Interface for a Settings Store configuration section.</summary>
 public interface ISettingsSection
