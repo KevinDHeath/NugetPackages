@@ -6,24 +6,24 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\..\packages</NugetLocal>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AssemblyTitle>Common Wpf controls.</AssemblyTitle>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <FileVersion>2.0.3.1</FileVersion>
+    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\..\packages</NuGetLocal>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PackageId>kdheath.Wpf.Controls</PackageId>
-    <Version>1.0.2</Version>
-    <Authors>Kevin D. Heath</Authors>
+    <Version>1.0.3</Version>
+    <Authors>Kevin Heath</Authors>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf</RepositoryUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
   </PropertyGroup>
  
   <PropertyGroup>

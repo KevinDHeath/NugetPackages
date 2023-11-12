@@ -6,24 +6,24 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\..\packages</NugetLocal>
-  </PropertyGroup>
- 
-  <PropertyGroup>
     <AssemblyTitle>Common Wpf resources.</AssemblyTitle>
     <AssemblyVersion>2.0.1.0</AssemblyVersion>
     <FileVersion>2.0.1.0</FileVersion>
+    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\..\packages</NuGetLocal>
+  </PropertyGroup>
+ 
+  <PropertyGroup>
     <PackageId>kdheath.Wpf.Resources</PackageId>
-    <Version>1.0.2</Version>
-    <Authors>Kevin D. Heath</Authors>
+    <Version>1.0.3</Version>
+    <Authors>Kevin Heath</Authors>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf</RepositoryUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
   </PropertyGroup>
  
   <PropertyGroup>
