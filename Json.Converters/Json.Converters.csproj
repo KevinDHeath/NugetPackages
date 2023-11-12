@@ -5,13 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NugetLocal Condition=" '$(NugetLocal)' == '' ">..\..\packages</NugetLocal>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AssemblyTitle>Json Converter classes.</AssemblyTitle>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
+    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\packages</NuGetLocal>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PackageId>kdheath.Json.Converters</PackageId>
     <Version>1.0.2</Version>
     <Authors>Kevin D. Heath</Authors>
@@ -21,7 +21,7 @@
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet</RepositoryUrl>
     <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
   </PropertyGroup>
 
