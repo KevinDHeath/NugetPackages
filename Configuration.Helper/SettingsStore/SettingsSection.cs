@@ -1,4 +1,4 @@
-﻿namespace Configuration.Helper.SettingsStore;
+﻿namespace Configuration.Helper;
 
 /// <summary>Class to contain the settings from a configuration file section.</summary>
 public class SettingsSection : ISettingsSection

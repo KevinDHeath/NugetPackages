@@ -1,4 +1,4 @@
-﻿namespace Configuration.Helper.SettingsStore;
+﻿namespace Configuration.Helper;
 
 /// <summary>Settings Store factory implementation using a Windows disk file.</summary>
 public sealed class FileSettingsStore : SettingsStoreBase

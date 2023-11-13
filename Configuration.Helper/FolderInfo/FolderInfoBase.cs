@@ -1,4 +1,4 @@
-﻿namespace Configuration.Helper.FolderInfo;
+﻿namespace Configuration.Helper;
 
 /// <summary>Base class for Folder Information implementations.</summary>
 public abstract class FolderInfoBase : IFolderInfo

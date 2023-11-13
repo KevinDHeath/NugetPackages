@@ -1,4 +1,4 @@
-﻿namespace Configuration.Helper.FolderInfo;
+﻿namespace Configuration.Helper;
 
 /// <summary>Folder Information factory implementation using a Windows file system.</summary>
 public sealed class FileFolderInfo : FolderInfoBase

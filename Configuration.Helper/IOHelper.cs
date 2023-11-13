@@ -257,9 +257,9 @@ public static class IOHelper
 		Cloud
 	}
 
-	/// <summary>Checks if a path if for a local.</summary>
-	/// <param name="path">Path to convert.</param>
-	/// <returns>A Uri object.</returns>
+	/// <summary>Checks for a local path.</summary>
+	/// <param name="path">Path to check.</param>
+	/// <returns>The path type.</returns>
 	public static PathType CheckIfLocal( string path )
 	{
 		path = string.IsNullOrWhiteSpace( path ) ? string.Empty : path.Trim();

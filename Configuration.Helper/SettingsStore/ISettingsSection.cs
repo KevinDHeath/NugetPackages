@@ -1,4 +1,4 @@
-﻿namespace Configuration.Helper.SettingsStore;
+﻿namespace Configuration.Helper;
 
 /// <summary>Interface for a Settings Store configuration section.</summary>
 public interface ISettingsSection

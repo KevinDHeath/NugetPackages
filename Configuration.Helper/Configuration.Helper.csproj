@@ -22,7 +22,7 @@
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/KevinDHeath/MyProjects</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup>
