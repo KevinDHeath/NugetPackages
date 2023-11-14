@@ -22,7 +22,7 @@
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf/Controls</RepositoryUrl>
     <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
   </PropertyGroup>
  
@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="kdheath.Wpf.Resources" Version="1.0.2" />
+    <PackageReference Include="kdheath.Wpf.Resources" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
