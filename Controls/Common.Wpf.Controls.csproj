@@ -4,7 +4,6 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyTitle>Common Wpf controls.</AssemblyTitle>
     <AssemblyVersion>1.0.2.0</AssemblyVersion>

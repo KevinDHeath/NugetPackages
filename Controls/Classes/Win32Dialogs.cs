@@ -1,20 +1,18 @@
 ﻿// Ignore Spelling: exe
 
+using Microsoft.Win32;
 using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace Common.Wpf.Controls.Classes;
 
 /// <summary>Common Windows Dialogs</summary>
 // Dialog boxes overview (WPF .NET)
 // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/windows/dialog-boxes-overview
-// Common Dialogs
-// https://learn.microsoft.com/en-us/windows/win32/uxguide/win-common-dlg
 [EditorBrowsable( EditorBrowsableState.Never )]
 public static class Win32Dialogs
 {
 	#region Windows Folder Browser Dialog
-	// https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.folderbrowserdialog
+	// https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.openfolderdialog
 
 	/// <summary>Displays a standard dialog box that prompts the user to select a folder.</summary>
 	/// <param name="folder">Initial directory..</param>
@@ -24,16 +22,15 @@ public static class Win32Dialogs
 		if( folder is null ) { return string.Empty; }
 
 		// Show folder browser dialog
-		var dlg = new FolderBrowserDialog
+		var dlg = new OpenFolderDialog
 		{
 			InitialDirectory = folder
 		};
-		var result = dlg.ShowDialog();
 
 		// Return folder browser dialog box results
-		if( DialogResult.OK == result )
+		if( dlg.ShowDialog() == true )
 		{
-			return dlg.SelectedPath;
+			return dlg.FolderName;
 		}
 
 		return string.Empty;
@@ -42,7 +39,7 @@ public static class Win32Dialogs
 	#endregion
 
 	#region Windows File Open Dialog
-	// https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog
+	// https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.openfiledialog
 
 	private const string cFilter = @"All files (*.*)|*.*|Json files (*.json)|*.json|Xml files (*.xml)|*.xml";
 	private const string cExeFilter = @"Executables (*.exe)|*.exe|All files (*.*)|*.*";
@@ -70,11 +67,10 @@ public static class Win32Dialogs
 			CheckPathExists = true,
 			CheckFileExists = exists
 		};
-		var result = dlg.ShowDialog();
 
 		// Return open file dialog box results
 		var rtn = string.Empty;
-        if( DialogResult.OK == result )
+        if( dlg.ShowDialog() == true )
         {
 			rtn = full ? dlg.FileName : dlg.SafeFileName;
 		}
@@ -85,7 +81,7 @@ public static class Win32Dialogs
 	#endregion
 
 	#region Windows File Save Dialog
-	// https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.savefiledialog
+	// https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.savefiledialog
 
 	/// <summary>Displays a standard dialog box that prompts the user to save a file.</summary>
 	/// <param name="folder">Initial directory.</param>
@@ -109,11 +105,10 @@ public static class Win32Dialogs
 			CheckPathExists = true,
 			CheckFileExists = exists
 		};
-		var result = dlg.ShowDialog();
 
 		// Return save file dialog box results
 		var rtn = string.Empty;
-		if( DialogResult.OK == result )
+		if( dlg.ShowDialog() == true )
 		{
 			rtn = full ? dlg.FileName : System.IO.Path.GetFileName( dlg.FileName );
 		}
