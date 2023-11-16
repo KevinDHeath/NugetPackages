@@ -59,7 +59,7 @@ public static class Win32Dialogs
 		// Show open file dialog
 		var dlg = new OpenFileDialog
 		{
-			Title = $"Select file",
+			Title = $"Select File",
 			InitialDirectory = folder,
 			FileName = file,
 			DefaultExt = System.IO.Path.GetExtension( file ),
@@ -97,7 +97,7 @@ public static class Win32Dialogs
 		// Show save file dialog
 		var dlg = new SaveFileDialog
 		{
-			Title = $"Select file",
+			Title = $"Select File",
 			InitialDirectory = folder,
 			FileName = file,
 			DefaultExt = System.IO.Path.GetExtension( file ),
