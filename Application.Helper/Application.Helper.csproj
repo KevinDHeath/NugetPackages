@@ -7,34 +7,49 @@
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>1.0.2.0</FileVersion>
     <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\packages</NuGetLocal>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <!-- Package Version -->
+  <PropertyGroup>
+    <Version>1.0.3-alpha1</Version>
+    <PackageReleaseNotes>* Updated project website and source repository links.</PackageReleaseNotes>
+    <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <!-- Package Information -->
   <PropertyGroup>
     <PackageId>kdheath.Application.Helper</PackageId>
-    <Version>1.0.3</Version>
     <Authors>Kevin Heath</Authors>
-    <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
-    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet/Application.Helper</RepositoryUrl>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet/Application.Helper</RepositoryUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
+    <Deterministic>true</Deterministic>     <!-- Health: Deterministic (CI builds only) -->
+    <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- IMPORTANT: add common resources as links -->
+    <None Include="..\..\..\License.txt" Pack="true" PackagePath="\" Link="Properties\License.txt" />
+    <None Include="..\..\..\docs\NuGet\Application.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <None Include="..\..\..\docs\NuGet\icon.png" Pack="true" PackagePath="\" Link="Properties\icon.png" />
+    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds only -->
+  </ItemGroup>
 
   <PropertyGroup>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
-    <None Include="..\..\..\docs\NuGet\Application.Helper\README.md" Pack="true" PackagePath="\" Link="README.md" />
-    <None Include="..\..\..\License.txt" Pack="true" PackagePath="\" Link="License.txt" />
   </ItemGroup>
 
 </Project>
