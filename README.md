@@ -1,13 +1,10 @@
-# Common Wpf Packages
+# Wpf NuGet Packages
 The Common Components documentation for .NET Windows Presentation Foundation applications can be found at [My GitHub pages](https://kevindheath.github.io/shfb/html/Components.htm)
-
-11/14/2023 - upgraded to .NET 8.0
 
 ## Controls
 [![NuGet](https://img.shields.io/nuget/v/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)
-
-Target: .NET 8 Windows
+[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)\
+Framework: .NET 8.0
 
 Dependencies:
 - [kdheath.Wpf.Resources](https://www.nuget.org/packages/kdheath.Wpf.Resources)
@@ -17,9 +14,8 @@ References:
 
 ## Resources
 [![NuGet](https://img.shields.io/nuget/v/kdheath.Wpf.Resources.svg)](https://www.nuget.org/packages/kdheath.Wpf.Resources)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Resources.svg)](https://www.nuget.org/packages/kdheath.Wpf.Resources)
-
-Target: .NET 8 Windows
+[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Resources.svg)](https://www.nuget.org/packages/kdheath.Wpf.Resources)\
+Framework: .NET 8.0
 
 Dependencies:
 - None
