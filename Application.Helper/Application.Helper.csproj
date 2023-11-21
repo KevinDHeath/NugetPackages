@@ -12,7 +12,7 @@
 
   <!-- Package Version -->
   <PropertyGroup>
-    <Version>1.0.3-alpha1</Version>
+    <Version>1.0.3</Version>
     <PackageReleaseNotes>* Updated project website and source repository links.</PackageReleaseNotes>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
@@ -29,16 +29,19 @@
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
-    <Deterministic>true</Deterministic>     <!-- Health: Deterministic (CI builds only) -->
     <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
+    <!-- Health: Deterministic (CI builds) -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DeterministicSourcePaths>true</DeterministicSourcePaths>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="..\..\..\License.txt" Pack="true" PackagePath="\" Link="Properties\License.txt" />
+    <None Include="..\..\..\License.txt" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\docs\NuGet\icon.png" Visible="false" Pack="true" PackagePath="\" />
     <None Include="..\..\..\docs\NuGet\Application.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
-    <None Include="..\..\..\docs\NuGet\icon.png" Pack="true" PackagePath="\" Link="Properties\icon.png" />
-    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds only -->
+    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
   </ItemGroup>
 
   <PropertyGroup>
@@ -49,7 +52,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <Compile Include="..\..\Common\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
