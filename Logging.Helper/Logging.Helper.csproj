@@ -12,8 +12,8 @@
 
   <!-- Package Version -->
   <PropertyGroup>
-    <Version>1.0.3</Version>
-    <PackageReleaseNotes>* Updated project website and source repository links.</PackageReleaseNotes>
+    <Version>1.0.4-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>

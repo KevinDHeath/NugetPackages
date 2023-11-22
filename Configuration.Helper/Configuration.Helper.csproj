@@ -14,10 +14,8 @@
 
   <!-- Package Version -->
   <PropertyGroup>
-    <Version>1.0.3</Version>
-    <PackageReleaseNotes>* Added support for .NET 8.0
-* Updated project website and source repository links.
-    </PackageReleaseNotes>
+    <Version>1.0.4-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
