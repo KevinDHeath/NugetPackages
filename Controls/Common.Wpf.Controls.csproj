@@ -14,10 +14,8 @@
 
   <!-- Package Version -->
   <PropertyGroup>
-    <Version>1.0.4</Version>
-    <PackageReleaseNotes>* Target Framework updated to .NET 8.0
-* Replaced use of FolderBrowserDialog with new OpenFolderDialog so requirement of Windows Forms removed.
-    </PackageReleaseNotes>
+    <Version>1.0.5-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
