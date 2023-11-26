@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyTitle>Common Wpf controls.</AssemblyTitle>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.3.1</FileVersion>
+    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\..\packages</NuGetLocal>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <!-- Package Version -->
+  <PropertyGroup>
+    <Version>1.0.5-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
+    <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup>
+    <PackageId>kdheath.Wpf.Controls</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <Authors>Kevin Heath</Authors>
+    <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf/Controls</RepositoryUrl>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
+    <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
+    <!-- Health: Deterministic (CI builds) -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DeterministicSourcePaths>true</DeterministicSourcePaths>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- IMPORTANT: add common resources as links -->
+    <None Include="..\..\..\..\License.txt" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\..\docs\NuGet\icon.png" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\..\docs\Common\Wpf.Controls\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
+  </ItemGroup>
+ 
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <Resource Include="Assets\fontawesome-webfont.ttf" CopyToOutputDirectory="Never" />
+    <ProjectReference Include="..\Resources\Common.Wpf.Resources.csproj" />
+  </ItemGroup>
+
+</Project>

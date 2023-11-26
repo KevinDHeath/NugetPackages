@@ -1,0 +1,101 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="clr-namespace:Common.Wpf.Controls">
+
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="pack://application:,,,/Common.Wpf.Resources;component/Themes/Common.xaml"/>
+		<ResourceDictionary Source="pack://application:,,,/Common.Wpf.Resources;component/Themes/Button.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+
+	<ControlTemplate x:Key="NumericSpinnerTemplate" TargetType="{x:Type local:NumericSpinner}">
+		<ControlTemplate.Resources>
+			<BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+		</ControlTemplate.Resources>
+		<StackPanel Orientation="Vertical">
+			<Grid Width="{TemplateBinding Width}">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Border x:Name="Bd" Grid.Row="0" Style="{StaticResource commonEditBorderStyle}"
+						Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}">
+					<Grid>
+						<Grid.Resources>
+							<Style TargetType="{x:Type Button}">
+								<Setter Property="Template" Value="{StaticResource commonButtonTemplate}"/>
+							</Style>
+						</Grid.Resources>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="22"/>
+						</Grid.ColumnDefinitions>
+						<ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" Grid.RowSpan="2" Focusable="False"
+									  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+						<Button x:Name="btnUp" Grid.Column="1" Grid.Row="0" IsTabStop="False" BorderThickness="0">
+							<Button.Content>
+								<Path HorizontalAlignment="Center" VerticalAlignment="Center" Fill="Black" Data="M4,0 L0,4 L8,4 z"/>
+							</Button.Content>
+						</Button>
+						<Button x:Name="btnDown" Grid.Column="1" Grid.Row="1" IsTabStop="False" BorderThickness="0">
+							<Button.Content>
+								<Path HorizontalAlignment="Center" VerticalAlignment="Center" Fill="Black" Data="M0,0 L8,0 L4,4 z"/>
+							</Button.Content>
+						</Button>
+					</Grid>
+				</Border>
+			</Grid>
+			<ItemsControl Margin="0" ItemsSource="{TemplateBinding Validation.Errors}"
+						  Visibility="{TemplateBinding IsErrorShown, Converter={StaticResource BooleanToVisibility}}">
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Style="{StaticResource commonErrorTextBlockStyle}" Text="{Binding ErrorContent}"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsMouseOver" Value="True">
+				<Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource MouseOver.Border}"/>
+			</Trigger>
+			<Trigger Property="IsFocused" Value="True">
+				<Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Focus.Border}"/>
+			</Trigger>
+			<Trigger Property="Validation.HasError" Value="True">
+				<Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Validation.HasError}"/>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+
+	<Style x:Key="controlNumericSpinnerStyle" TargetType="{x:Type local:NumericSpinner}"
+		   BasedOn="{StaticResource {x:Type TextBox}}">
+		<Setter Property="MinWidth" Value="70"/>
+		<Setter Property="HorizontalAlignment" Value="Left"/>
+		<Setter Property="IsReadOnly" Value="False"/>
+		<Setter Property="Template" Value="{StaticResource NumericSpinnerTemplate}"/>
+		<Style.Triggers>
+			<Trigger Property="IsReadOnly" Value="False">
+				<Setter Property="Foreground" Value="Black"/>
+				<Setter Property="Focusable" Value="True"/>
+			</Trigger>
+			<Trigger Property="IsReadOnly" Value="True">
+				<Setter Property="Foreground" Value="Gray"/>
+				<Setter Property="Focusable" Value="False"/>
+			</Trigger>
+			<Trigger Property="IsErrorShown" Value="True">
+				<Setter Property="Validation.ErrorTemplate" Value="{StaticResource commonErrorItemTemplate}"/>
+			</Trigger>
+			<Trigger Property="IsErrorShown" Value="False">
+				<Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
+</ResourceDictionary>
