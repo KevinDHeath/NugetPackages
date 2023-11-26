@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AssemblyTitle>Logging Helper classes.</AssemblyTitle>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\packages</NuGetLocal>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <!-- Package Version -->
+  <PropertyGroup>
+    <Version>1.0.4-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
+    <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup>
+    <PackageId>kdheath.Logging.Helper</PackageId>
+    <Authors>Kevin Heath</Authors>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet/Logging.Helper</RepositoryUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
+    <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
+    <!-- Health: Deterministic (CI builds) -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DeterministicSourcePaths>true</DeterministicSourcePaths>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- IMPORTANT: add common resources as links -->
+    <None Include="..\..\..\License.txt" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\docs\NuGet\icon.png" Visible="false" Pack="true" PackagePath="\" />
+    <None Include="..\..\..\docs\NuGet\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
+  </ItemGroup>
+
+  <PropertyGroup>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Common\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <Compile Remove="ImplLog4Net.cs" />
+    <ProjectReference Include="..\Application.Helper\Application.Helper.csproj" />
+    <PackageReference Include="NLog" Version="5.2.5" />
+  </ItemGroup>
+
+</Project>
