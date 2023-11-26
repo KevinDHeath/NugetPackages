@@ -1,0 +1,19 @@
+<Project>
+  <!-- These items can be overridden in the project -->
+  <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory -->
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NuGetLocal Condition=" '$(Local)' == '' ">$(SolutionDir)packages</NuGetLocal>
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup>
+    <Authors>Kevin Heath</Authors>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
+    <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
+    <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
+  </PropertyGroup>
+
+</Project>

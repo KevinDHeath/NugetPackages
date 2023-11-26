@@ -1,0 +1,28 @@
+<Project>
+  <!-- These items cannot be overridden in the project -->
+
+  <!-- C# Compiler Options -->
+  <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation -->
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- CI builds -->
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup Condition="'$(PackageId)' != ''">
+    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(PackageId)' != ''">
+    <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="" />
+    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
+  </ItemGroup>
+
+</Project>
