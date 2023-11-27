@@ -2,7 +2,7 @@
 
 using System.Globalization;
 using System.Windows.Controls;
-using Common.Core.Converters;
+using Common.Wpf.Converters;
 
 namespace Common.Wpf.Rules;
 

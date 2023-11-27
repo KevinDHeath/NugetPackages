@@ -1,6 +1,5 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
-using Common.Core.Converters;
 using Common.Wpf.Rules;
 
 namespace Common.Wpf.Converters;

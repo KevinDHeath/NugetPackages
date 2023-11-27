@@ -1,6 +1,4 @@
 # Configuration Helper
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Configuration.Helper.svg)](https://www.nuget.org/packages/kdheath.Configuration.Helper)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Configuration.Helper.svg)](https://www.nuget.org/packages/kdheath.Configuration.Helper)\
 The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.
 
 ## Change Log

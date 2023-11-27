@@ -1,6 +1,4 @@
 # Application.Helper
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Application.Helper.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Application.Helper.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)\
 The application helper is a light-weight platform for .NET console applications.
 
 ## Change Log

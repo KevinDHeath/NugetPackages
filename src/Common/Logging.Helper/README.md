@@ -1,6 +1,4 @@
 # Logging.Helper
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Logging.Helper.svg)](https://www.nuget.org/packages/kdheath.Logging.Helper)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Logging.Helper.svg)](https://www.nuget.org/packages/kdheath.Logging.Helper)\
 The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.
 
 ## Change Log

@@ -4,12 +4,13 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <NuGetLocal Condition=" '$(Local)' == '' ">$(SolutionDir)packages</NuGetLocal>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
     <Authors>Kevin Heath</Authors>
+    <Product>Common Components</Product>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->

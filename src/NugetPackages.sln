@@ -6,12 +6,17 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{19159410-0A82-4946-9FB8-174E3D6DEFAB}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		..\icon.png = ..\icon.png
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B55E700F-9B77-4C21-88E0-1B10D5A7F344}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{B55E700F-9B77-4C21-88E0-1B10D5A7F344}"
+	ProjectSection(SolutionItems) = preProject
+		Common\README.md = Common\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Helper", "Common\Application.Helper\Application.Helper.csproj", "{E1370363-1AEE-4CA0-A2CA-F5FE9A1D643E}"
 EndProject
@@ -22,6 +27,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Helper", "Common\Logging.Helper\Logging.Helper.csproj", "{40BAEB28-7F05-4DBF-8C99-CDC983820027}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}"
+	ProjectSection(SolutionItems) = preProject
+		Wpf\README.md = Wpf\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Controls", "Wpf\Controls\Common.Wpf.Controls.csproj", "{97A9AB84-8415-43A4-BB8B-9E9508C0A478}"
 EndProject

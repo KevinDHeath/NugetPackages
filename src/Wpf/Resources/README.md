@@ -1,6 +1,4 @@
 # Wpf.Resources
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Wpf.Resources.svg)](https://www.nuget.org/packages/kdheath.Wpf.Resources)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Resources.svg)](https://www.nuget.org/packages/kdheath.Wpf.Resources)\
 Provides UI resources for .NET Windows Presentation Foundation applications.
 
 ## Change Log

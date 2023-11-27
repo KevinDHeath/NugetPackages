@@ -14,14 +14,13 @@
 
   <!-- Package Information -->
   <PropertyGroup Condition="'$(PackageId)' != ''">
-    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PackageId)' != ''">
-    <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="" />
-    <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)..\icon.png" Pack="true" PackagePath="" Visible="false" />
+    <None Include="$(SolutionDir)..\LICENSE" Pack="true" PackagePath="" Visible="false" />
     <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
   </ItemGroup>
 

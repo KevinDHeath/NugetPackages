@@ -4,57 +4,24 @@
     <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyTitle>Configuration Helper classes.</AssemblyTitle>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.2.0</FileVersion>
-    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\packages</NuGetLocal>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <!-- Package Version -->
-  <PropertyGroup>
-    <Version>1.0.4-alpha</Version>
-    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
-    <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
-    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
-    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
+    <Version>1.0.4-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
     <PackageId>kdheath.Configuration.Helper</PackageId>
-    <Authors>Kevin D. Heath</Authors>
+    <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/NuGet/Configuration.Helper</RepositoryUrl>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Configuration.Helper</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
-    <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
-    <!-- Health: Deterministic (CI builds) -->
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <DeterministicSourcePaths>true</DeterministicSourcePaths>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="..\..\..\License.txt" Visible="false" Pack="true" PackagePath="\" />
-    <None Include="..\..\..\docs\NuGet\icon.png" Visible="false" Pack="true" PackagePath="\" />
-    <None Include="..\..\..\docs\NuGet\Configuration.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
-    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
-  </ItemGroup>
-
-  <PropertyGroup>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\..\Common\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
+    <None Include="..\..\..\docs\Configuration.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
   </ItemGroup>
 
 </Project>

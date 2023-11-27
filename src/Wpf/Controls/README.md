@@ -1,6 +1,4 @@
 # Wpf.Controls
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)\
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log

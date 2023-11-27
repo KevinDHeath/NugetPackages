@@ -1,7 +1,6 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Data;
-using Common.Core.Converters;
 
 namespace Common.Wpf.Converters;
 

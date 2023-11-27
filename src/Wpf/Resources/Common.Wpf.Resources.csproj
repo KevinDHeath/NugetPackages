@@ -5,58 +5,24 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyTitle>Common Wpf resources.</AssemblyTitle>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
-    <NuGetLocal Condition=" '$(NuGetLocal)' == '' ">..\..\..\packages</NuGetLocal>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
- 
-  <!-- Package Version -->
-  <PropertyGroup>
-    <Version>1.0.5-alpha</Version>
-    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
-    <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
-    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
-    <PackageOutputPath>$(NuGetLocal)</PackageOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
+    <Version>1.0.5-alpha</Version>
+    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
-    <PackageIcon>icon.png</PackageIcon>
-    <Authors>Kevin Heath</Authors>
+    <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/MyProjects/tree/main/src/Common/Wpf/Resources</RepositoryUrl>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Wpf/Resources</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <DebugType>Embedded</DebugType>         <!-- Health: Compiler Flags -->
-    <EmbedAllSources>True</EmbedAllSources> <!-- Health: Source Links -->
-    <!-- Health: Deterministic (CI builds) -->
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <DeterministicSourcePaths>true</DeterministicSourcePaths>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="..\..\..\..\License.txt" Visible="false" Pack="true" PackagePath="\" />
-    <None Include="..\..\..\..\docs\NuGet\icon.png" Visible="false" Pack="true" PackagePath="\" />
-    <None Include="..\..\..\..\docs\Common\Wpf.Controls\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
-    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
-  </ItemGroup>
- 
-  <PropertyGroup>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\..\SharedAssemblyInfo.cs" Link="Properties\SharedAssemblyInfo.cs" />
-    <Compile Include="..\..\Core\Converters\StringConverter.cs" Link="StringConverter.cs" />
+    <None Include="..\..\..\docs\Wpf.Resources\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
   </ItemGroup>
 
 </Project>
