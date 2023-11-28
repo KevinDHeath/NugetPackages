@@ -1,0 +1,17 @@
+# This workflow is triggered when a pull request is merged and closed
+name: Pull Request Merged
+
+on:
+  pull_request:
+    types: [ "closed" ]
+    branches: [ "main" ]
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+
+    # Use the build action passing in the necessary parameters
+    uses: KevinDHeath/TestActions/.github/workflows/build.yml@main
+    with:
+      runs-on: ubuntu-latest
+      project-folder: .

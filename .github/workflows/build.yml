@@ -1,30 +1,79 @@
+# This is a reusable workflow to build a .NET project or solution
 name: .NET Build
 
 on:
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-    branches: [ "main" ]
+  # Called from another workflow passing input values
+  workflow_call:
+    inputs:
+      run-name:
+        description: A name for the run
+        type: string
+        default: ""
+      runs-on:
+        description: The runner type to use
+        type: string
+        default: windows-latest
+      project-folder:
+        description: The folder containing the project to build
+        type: string
+        default: .
 
+  # Triggering manually but only for the "main" branch
+  workflow_dispatch:
+     inputs:
+      run-name:
+        description: A name for the run
+        type: string
+        required: true
+      runs-on:
+        description: The runner type to use
+        type: choice
+        options: 
+        - ubuntu-latest
+        - windows-latest
+        default: windows-latest
+      project-folder:
+        description: The folder containing the project to build
+        type: string
+        default: ./src
+
+run-name: ${{ inputs.run-name }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# This workflow contains a single job named "build"
 jobs:
   build:
+    # Set the type of runner that the job will run on
+    runs-on: ${{ inputs.runs-on }}
 
-    runs-on: windows-latest
-
+    # Set the default working directory
     defaults:
       run:
-        working-directory: ./src
+        working-directory: ${{ inputs.project-folder }}
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
+      - name: List variable values
+        env:
+          GITHUB_ACTIONS: ${{ toJson(github) }}
+        run: |
+          echo "Running on ${{ inputs.runs-on }}"
+          echo "Working directory is ${{ inputs.project-folder }}"
+          echo "GITHUB_ACTIONS is $GITHUB_ACTIONS"
 
-    - name: Restore dependencies
-      run: dotnet restore
+      # Check-out the repository under $GITHUB_WORKSPACE, so the job can access it
+      # - name: Checkout repository
+      #   uses: actions/checkout@v3
 
-    - name: Build
-      run: dotnet build NuGetPackages.sln --no-restore
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v3
+      #   with:
+      #     dotnet-version: 8.0.x
+
+      # - name: Restore dependencies
+      #   run: dotnet restore
+
+      # - name: Build
+      #   run: dotnet build --no-restore
+
