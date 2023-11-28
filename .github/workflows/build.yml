@@ -18,7 +18,7 @@ on:
         type: string
         default: .\src
 
-  # Triggering manually but only for the "main" branch
+  # Triggering manually
   workflow_dispatch:
      inputs:
       run-name:
@@ -28,7 +28,7 @@ on:
       runs-on:
         description: The runner type to use
         type: choice
-        options: 
+        options:
         - ubuntu-latest
         - windows-latest
         default: windows-latest
@@ -59,12 +59,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: List variable values
-        env:
-          GITHUB_ACTIONS: ${{ toJson(github) }}
+        #env:
+        #  GITHUB_ACTIONS: ${{ toJson(github) }}
         run: |
           echo "Running on ${{ inputs.runs-on }}"
           echo "Working directory is ${{ inputs.project-folder }}"
-          echo "GITHUB_ACTIONS is $GITHUB_ACTIONS"
+          echo "GITHUB_ACTIONS is $env:GITHUB_ACTIONS"
 
       # - name: Setup .NET
       #   uses: actions/setup-dotnet@v3
