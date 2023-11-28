@@ -9,9 +9,4 @@ on:
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
-
-    # Use the build action passing in the necessary parameters
     uses: KevinDHeath/TestActions/.github/workflows/build.yml@main
-    with:
-      runs-on: ubuntu-latest
-      project-folder: .
