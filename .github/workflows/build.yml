@@ -12,11 +12,11 @@ on:
       runs-on:
         description: The runner type to use
         type: string
-        default: windows-latest
+        default: ubuntu-latest
       project-folder:
-        description: The folder containing the project to build
+        description: The folder containing the solution
         type: string
-        default: .\src
+        default: .
 
   # Triggering manually
   workflow_dispatch:
@@ -31,19 +31,39 @@ on:
         options:
         - ubuntu-latest
         - windows-latest
-        default: windows-latest
+        default: ubuntu-latest
       project-folder:
-        description: The folder containing the project to build
+        description: The folder containing the solution
         type: string
-        default: .\src
+        default: .
 
 run-name: ${{ inputs.run-name }}
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-# This workflow contains a single job named "build"
 jobs:
-  build:
-    # Set the type of runner that the job will run on
+
+  variables:
+    name: Variables
+    runs-on: ${{ inputs.runs-on }}
+
+    steps:
+      - name: Inputs
+        run: |
+          echo "Running on ${{ inputs.runs-on }}"
+          echo "Working directory is ${{ inputs.project-folder }}"
+
+      - name: Linux
+        if: runner.os == 'Linux'
+        env:
+          GITHUB_ACTIONS: ${{ toJson(github) }}
+        run: echo "GITHUB_ACTIONS is $GITHUB_ACTIONS"
+
+      - name: Windows
+        if: runner.os == 'Windows'
+        run: echo "GITHUB_ACTIONS is $env:GITHUB_ACTIONS"
+
+  dotnetbuild:
+    needs: variables
+    name: Build .NET
     runs-on: ${{ inputs.runs-on }}
 
     # Set the default working directory
@@ -51,22 +71,13 @@ jobs:
       run:
         working-directory: ${{ inputs.project-folder }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
       # Check-out the repository under $GITHUB_WORKSPACE, so the job can access it
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: List variable values
-        #env:
-        #  GITHUB_ACTIONS: ${{ toJson(github) }}
-        run: |
-          echo "Running on ${{ inputs.runs-on }}"
-          echo "Working directory is ${{ inputs.project-folder }}"
-          echo "GITHUB_ACTIONS is $env:GITHUB_ACTIONS"
-
-      - name: Setup .NET
+      - name: Setup .NET 8.0
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
