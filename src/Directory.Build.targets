@@ -19,8 +19,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PackageId)' != ''">
-    <None Include="$(SolutionDir)..\icon.png" Pack="true" PackagePath="" Visible="false" />
-    <None Include="$(SolutionDir)..\LICENSE" Pack="true" PackagePath="" Visible="false" />
+    <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="" Visible="false" />
+    <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="" Visible="false" />
     <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
   </ItemGroup>
 
