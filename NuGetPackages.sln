@@ -15,16 +15,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{B55E700F-9B77-4C21-88E0-1B10D5A7F344}"
 	ProjectSection(SolutionItems) = preProject
-		src\Common\README.md = src\Common\README.md
+		src\Helper\README.md = src\Helper\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Helper", "src\Common\Application.Helper\Application.Helper.csproj", "{E1370363-1AEE-4CA0-A2CA-F5FE9A1D643E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Helper", "src\Helper\Application.Helper\Application.Helper.csproj", "{E1370363-1AEE-4CA0-A2CA-F5FE9A1D643E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration.Helper", "src\Common\Configuration.Helper\Configuration.Helper.csproj", "{92AEC90F-44A4-4A70-96B7-629B8F16615B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration.Helper", "src\Helper\Configuration.Helper\Configuration.Helper.csproj", "{92AEC90F-44A4-4A70-96B7-629B8F16615B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Json.Converters", "src\Common\Json.Converters\Json.Converters.csproj", "{1E10FBB5-11A6-4122-A33C-5578615623A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Json.Converters", "src\Helper\Json.Converters\Json.Converters.csproj", "{1E10FBB5-11A6-4122-A33C-5578615623A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Helper", "src\Common\Logging.Helper\Logging.Helper.csproj", "{40BAEB28-7F05-4DBF-8C99-CDC983820027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging.Helper", "src\Helper\Logging.Helper\Logging.Helper.csproj", "{40BAEB28-7F05-4DBF-8C99-CDC983820027}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}"
 	ProjectSection(SolutionItems) = preProject
