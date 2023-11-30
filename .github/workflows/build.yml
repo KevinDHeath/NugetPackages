@@ -14,7 +14,7 @@ on:
         type: string
         default: ubuntu-latest
       project-folder:
-        description: The folder containing the solution
+        description: Folder containing the solution
         type: string
         default: .
 
@@ -33,7 +33,7 @@ on:
         - windows-latest
         default: ubuntu-latest
       project-folder:
-        description: The folder containing the solution
+        description: Folder containing the solution
         type: string
         default: .
 
@@ -73,7 +73,6 @@ jobs:
 
     steps:
 
-      # Check-out the repository under $GITHUB_WORKSPACE, so the job can access it
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -87,4 +86,11 @@ jobs:
 
       - name: Build
         run: dotnet build --no-restore
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: NuGet-Packages
+          path: packages
+          retention-days: 5
 

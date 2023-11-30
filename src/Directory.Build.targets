@@ -1,21 +1,22 @@
 <Project>
-  <!-- These items cannot be overridden in the project -->
 
   <!-- C# Compiler Options -->
-  <!-- https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-options/code-generation -->
   <PropertyGroup>
     <Deterministic>true</Deterministic>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <!-- CI builds -->
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup Condition="'$(PackageId)' != ''">
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageOutputPath>$(PackLocal)</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PackageId)' != ''">

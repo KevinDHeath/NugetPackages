@@ -1,21 +1,18 @@
 <Project>
-  <!-- These items can be overridden in the project -->
-  <!-- https://learn.microsoft.com/en-us/visualstudio/msbuild/customize-by-directory -->
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Kevin Heath</Authors>
     <Product>Common Components</Product>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
-    <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
+    <PackLocal>$(SolutionDir)packages</PackLocal>
   </PropertyGroup>
 
 </Project>
