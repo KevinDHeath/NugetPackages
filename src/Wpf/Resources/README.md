@@ -2,6 +2,8 @@
 Provides UI resources for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.0 - **Breaking change**
+  - GitHub repository name changed from `MyProjects` to `NuGetPackages`.  
 - 1.0.4
   - Added support for .NET 8.0
 - 1.0.3

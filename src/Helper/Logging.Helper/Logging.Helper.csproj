@@ -8,23 +8,23 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>1.0.4-alpha</Version>
-    <PackageReleaseNotes>* Nothing yet.</PackageReleaseNotes>
+    <Version>2.0.0</Version>
+    <PackageReleaseNotes>* GitHub repository name changed from MyProjects to NuGetPackages.</PackageReleaseNotes>
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Logging.Helper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Logging.Helper</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="..\..\..\docs\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <None Include="$(SolutionDir)docs\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
     <Compile Remove="ImplLog4Net.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="kdheath.Application.Helper" Version="1.0.3" />
+    <PackageReference Include="kdheath.Application.Helper" Version="2.0.0" />
     <PackageReference Include="NLog" Version="5.2.5" />
   </ItemGroup>
 
