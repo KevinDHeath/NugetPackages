@@ -11,18 +11,18 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>1.0.3-alpha</Version>
+    <Version>1.0.0-alpha</Version>
     <PackageReleaseNotes>* Added support for .NET 8.0</PackageReleaseNotes>
     <PackageId>kdheath.Json.Converters</PackageId>
     <PackageDescription>Provides null, string, and interface converters for JSON serialization classes that are provided in the System.Text.Json namespace.</PackageDescription>
     <PackageProjectUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/docs/Json.Converters</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Json.Converters</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Json.Converters</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="..\..\..\docs\Json.Converters\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <None Include="$(SolutionDir)docs\Json.Converters\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
    </ItemGroup>
 
 </Project>

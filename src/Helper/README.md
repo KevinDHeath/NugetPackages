@@ -1,7 +1,7 @@
 # Helper Packages
 The Helper Packages documentation for .NET applications can be found at [Helper Packages](https://kevindheath.github.io/nuget/html/R_Project_NuGetPackages.htm)
 
-> .NET Standard 2.0 is the highest version of .NET Standard that is supported by the .NET Framework.\
+> Note: .NET Standard 2.0 is the highest version of .NET Standard that is supported by the .NET Framework.\
 > See [The future of .NET Standard](https://devblogs.microsoft.com/dotnet/the-future-of-net-standard/) for more information.
 
 ## Application.Helper
@@ -25,7 +25,7 @@ Dependencies:
 ## Json.Converters
 Framework: .NET 6.0 _and_ .NET 8.0
 
-Note: This is not yet available on NuGet.
+> Note: This is not yet available on NuGet.
 
 Dependencies:
 - None

@@ -27,4 +27,4 @@ xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
 
 ## Feedback
 This is provided as open source under the MIT license.\
-Bug reports and contributions are welcome [at the GitHub repository](https://github.com/KevinDHeath/MyProjects).
+Bug reports and contributions are welcome [at the GitHub repository](https://github.com/KevinDHeath/NuGetPackages).
