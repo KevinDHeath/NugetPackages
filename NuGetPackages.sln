@@ -1,7 +1,6 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.8.34316.72
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Repository Items", "{19159410-0A82-4946-9FB8-174E3D6DEFAB}"
 	ProjectSection(SolutionItems) = preProject
@@ -36,11 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Controls", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Resources", "src\Wpf\Resources\Common.Wpf.Resources.csproj", "{A2DDF9FC-FB19-4480-8AC2-ECA692332380}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{6527F592-F2FD-42B7-8131-321C7C451E8F}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\merged.yml = .github\workflows\merged.yml
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHarness", "src\TestHarness\TestHarness.csproj", "{DBCCAA73-067C-49E3-B902-BD3BE8032420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +67,10 @@ Global
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
