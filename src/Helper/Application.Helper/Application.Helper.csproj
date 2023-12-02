@@ -8,12 +8,12 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>* GitHub repository name changed from MyProjects to NuGetPackages.</PackageReleaseNotes>
+    <Version>2.0.1-alpha</Version>
+    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Application.Helper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

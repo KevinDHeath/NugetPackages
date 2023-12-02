@@ -11,12 +11,12 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>* GitHub repository name changed from MyProjects to NuGetPackages.</PackageReleaseNotes>
+    <Version>2.0.1-alpha</Version>
+    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Wpf/Resources</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

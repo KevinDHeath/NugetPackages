@@ -1,18 +1,18 @@
 <Project>
 
   <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackLocal>$(SolutionDir)packages</PackLocal>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Kevin Heath</Authors>
     <Product>Common Components</Product>
     <Copyright>Copyright © 2023 KevinDHeath</Copyright>
     <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
-    <PackLocal>$(SolutionDir)packages</PackLocal>
   </PropertyGroup>
 
 </Project>
