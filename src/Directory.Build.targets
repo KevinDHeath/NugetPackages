@@ -2,7 +2,6 @@
 
   <!-- C# Compiler Options -->
   <PropertyGroup>
-    <Deterministic>true</Deterministic>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
@@ -13,16 +12,15 @@
   </PropertyGroup>
 
   <!-- Package Information -->
-  <PropertyGroup Condition="'$(PackageId)' != ''">
+  <PropertyGroup Condition="'$(PackageReadmeFile)' != ''">
+    <PackageOutputPath>$(PackLocal)</PackageOutputPath>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageOutputPath>$(PackLocal)</PackageOutputPath>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(PackageId)' != ''">
+  <ItemGroup Condition="'$(PackageReadmeFile)' != ''">
     <None Include="$(SolutionDir)icon.png" Pack="true" PackagePath="" Visible="false" />
     <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="" Visible="false" />
-    <SourceRoot Include="$(SolutionDir)" /> <!-- CI builds -->
   </ItemGroup>
 
 </Project>

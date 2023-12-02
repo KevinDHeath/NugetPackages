@@ -10,12 +10,12 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>* GitHub repository name changed from MyProjects to NuGetPackages.</PackageReleaseNotes>
+    <Version>2.0.1-alpha</Version>
+    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
     <PackageId>kdheath.Configuration.Helper</PackageId>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Configuration.Helper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

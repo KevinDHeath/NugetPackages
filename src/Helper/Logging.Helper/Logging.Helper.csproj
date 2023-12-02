@@ -8,12 +8,12 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>* GitHub repository name changed from MyProjects to NuGetPackages.</PackageReleaseNotes>
+    <Version>2.0.1-alpha</Version>
+    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Logging.Helper</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
