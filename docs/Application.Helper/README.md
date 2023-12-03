@@ -1,6 +1,8 @@
 ## About
 The Application.Helper package is a light-weight platform for .NET console applications.
 
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Application.Helper/README.md) for release notes.
+
 ## Key Features
 - Supports .NET Framework, .NET Core, and .NET 5.0+
 

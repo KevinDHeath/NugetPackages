@@ -1,6 +1,8 @@
 ## About
 The Configuration.Helper package is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1, the newer style of JSON files.
 
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Configuration.Helper/README.md) for release notes.
+
 ## How to Use
 - The naming of the standard sections **`AppSettings`** and **`ConnectionStrings`** along with any custom sections are case _insensitive_.
 - All the values must be defined as strings.

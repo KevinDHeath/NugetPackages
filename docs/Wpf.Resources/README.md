@@ -1,6 +1,8 @@
 ## About
 The Wpf.Resources package contains Windows Desktop resources which can be includes in .NET WPF projects.
 
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Wpf/Resources/README.md) for release notes.
+
 ## Key Features
 Custom styles for `Buttons`, `CheckBoxes`, `ListViews`, `TabControls`, and `TextBoxes`.
 

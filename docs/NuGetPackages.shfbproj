@@ -15,7 +15,7 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
-    <OutputPath>bin\nuget</OutputPath>
+    <OutputPath>C:\Temp\Documentation\nuget\</OutputPath>
     <HtmlHelpName>NuGetPackages</HtmlHelpName>
     <Language>en-US</Language>
     <DocumentationSources>
@@ -57,7 +57,7 @@
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
-    <BuildLogFile>.\bin\NuGetPackages.log</BuildLogFile>
+    <BuildLogFile>C:\Temp\Documentation\NuGetPackages.log</BuildLogFile>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform

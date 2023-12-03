@@ -1,6 +1,8 @@
 ## About
 The Wpf.Controls package contains classes to create elements, known as controls, that enables a user to interact with an application.
 
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Wpf/Controls/README.md) for release notes.
+
 ## Key Features
 Custom controls for user interface elements such as `ComboBoxes`, `DatePickers` and `TextBoxes`.
 
