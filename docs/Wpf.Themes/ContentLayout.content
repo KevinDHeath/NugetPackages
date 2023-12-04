@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="9488fab8-02de-4046-a582-c44f4c2a945f" visible="True" isDefault="true" isExpanded="true" isSelected="true" title="Components">
-    <Topic id="e6e60a0c-f708-479e-bc65-bcdc99253c7b" visible="True" isExpanded="true" title="Common.Wpf.Themes">
-      <Topic id="49df9d44-1829-451a-8e1a-97b409117a8d" visible="True" title="Buttons" />
-      <Topic id="7ef743eb-f64b-4ea3-9cb6-35a909f29e97" visible="True" title="Check Boxes" />
-      <Topic id="976d257f-b08a-4132-88ba-59d46c2a43fe" visible="True" title="Combo Boxes" />
-      <Topic id="263751ce-169e-469d-ac4a-3c1e9c574e42" visible="True" title="Date Pickers" />
-      <Topic id="02a890fd-1708-4c58-88c6-4f16fe81e8e8" visible="True" title="List Views" />
-      <Topic id="38a4fd8e-7e09-4ff2-a783-1288f3bbde56" visible="True" title="Tab Controls" />
-      <Topic id="c6f0f629-27ee-4d30-8369-d60796edca67" visible="True" title="Text Boxes" />
+  <Topic id="9488fab8-02de-4046-a582-c44f4c2a945f" visible="True" isDefault="true" isExpanded="true" title="Components">
+    <Topic id="e6e60a0c-f708-479e-bc65-bcdc99253c7b" visible="True" isExpanded="true" isSelected="true" apiParentMode="InsertBefore" title="Common.Wpf.Themes">
+      <Topic id="49df9d44-1829-451a-8e1a-97b409117a8d" visible="True" title="Button Styles" />
+      <Topic id="7ef743eb-f64b-4ea3-9cb6-35a909f29e97" visible="True" title="CheckBox Styles" />
+      <Topic id="976d257f-b08a-4132-88ba-59d46c2a43fe" visible="True" title="ComboBox Styles" />
+      <Topic id="263751ce-169e-469d-ac4a-3c1e9c574e42" visible="True" title="DatePicker Styles" />
+      <Topic id="02a890fd-1708-4c58-88c6-4f16fe81e8e8" visible="True" title="ListView Styles" />
+      <Topic id="38a4fd8e-7e09-4ff2-a783-1288f3bbde56" visible="True" title="TabControl Styles" />
+      <Topic id="c6f0f629-27ee-4d30-8369-d60796edca67" visible="True" title="TextBox Styles" />
     </Topic>
   </Topic>
 </Topics>

@@ -58,8 +58,13 @@
 
     <relatedTopics>
       <externalLink>
-        <linkText>Common.Wpf.Controls.ComboBox</linkText><linkUri>T_Common_Wpf_Controls_ComboBox.htm</linkUri>
+        <linkText>ComboBox Class</linkText>
+        <linkUri>T_Common_Wpf_Controls_ComboBox.htm</linkUri>
         <linkTarget>_self</linkTarget>
+      </externalLink>
+      <externalLink>
+        <linkText>Windows Desktop ComboBox Class</linkText>
+        <linkUri>https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.combobox</linkUri>
       </externalLink>
     </relatedTopics>
 

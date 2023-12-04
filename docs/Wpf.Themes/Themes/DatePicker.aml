@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <topic id="263751ce-169e-469d-ac4a-3c1e9c574e42" revisionNumber="1">
   <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 
@@ -56,8 +56,13 @@
 
     <relatedTopics>
       <externalLink>
-        <linkText>Common.Wpf.Controls.DatePicker</linkText><linkUri>T_Common_Wpf_Controls_DatePicker.htm</linkUri>
+        <linkText>DatePicker Class</linkText>
+        <linkUri>T_Common_Wpf_Controls_DatePicker.htm</linkUri>
         <linkTarget>_self</linkTarget>
+      </externalLink>
+      <externalLink>
+        <linkText>Windows Desktop DatePicker Class</linkText>
+        <linkUri>https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.datepicker</linkUri>
       </externalLink>
     </relatedTopics>
 

@@ -16,7 +16,7 @@
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>C:\Temp\Documentation\shfb\</OutputPath>
-    <HtmlHelpName>Wpf</HtmlHelpName>
+    <HtmlHelpName>WPFPackages</HtmlHelpName>
     <Language>en-US</Language>
     <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
@@ -33,7 +33,7 @@
       <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Resources.dll" />
       <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Resources.xml" />
     </DocumentationSources>
-    <HelpTitle>Common Components</HelpTitle>
+    <HelpTitle>WPF Packages</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>BelowNamespaces</ContentPlacement>

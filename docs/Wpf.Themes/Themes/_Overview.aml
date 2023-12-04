@@ -4,9 +4,6 @@
 
     <introduction>
       <para>Contains Windows Desktop resources which can be includes in WPF .NET projects.</para>
-      <para>Windows Presentation Foundation (WPF) is a free and open-source graphical subsystem originally
-      developed by Microsoft for rendering user interfaces in Windows-based applications.
-      WPF, previously known as "Avalon", was initially released as part of .NET Framework 3.0 in 2006.</para>
     </introduction>
 
     <section>
@@ -71,7 +68,7 @@
             </row>
           </tableHeader>
           <row>
-            <entry><para><phrase>[Common.Wpf.<ui>Resources</ui>]</phrase></para></entry>
+            <entry><para><phrase>[Common.Wpf.Resources]</phrase></para></entry>
             <entry><para></para></entry>
           </row>
            <row>
@@ -99,7 +96,7 @@
             <entry><para>Themes/Common.xaml</para></entry>
           </row>
           <row>
-            <entry><para><phrase>[Common.Wpf.<ui>Controls</ui>]</phrase></para></entry>
+            <entry><para><phrase>[Common.Wpf.Controls]</phrase></para></entry>
             <entry><para></para></entry>
           </row>
          <row>
