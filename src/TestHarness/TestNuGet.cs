@@ -6,7 +6,7 @@ namespace TestHarness;
 
 internal class TestNuGet
 {
-	internal static readonly int sTest = 2; // 0=Application, 1=Configuration, 2=Logging, 3=Json Converters
+	internal static readonly int sTest = 2; // 0=Application, 1=Configuration, 2=Logging
 
 	internal static bool RunTest()
 	{
@@ -15,7 +15,6 @@ internal class TestNuGet
 			0 => TestApplication(),
 			1 => TestConfiguration(),
 			2 => TestLogging(),
-			//3 => TestConverters(),
 			_ => false,
 		};
 	}

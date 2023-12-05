@@ -20,7 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Helper\Application.Helper\Application.Helper.csproj" />
     <ProjectReference Include="..\Helper\Configuration.Helper\Configuration.Helper.csproj" />
-    <ProjectReference Include="..\Helper\Json.Converters\Json.Converters.csproj" />
     <ProjectReference Include="..\Helper\Logging.Helper\Logging.Helper.csproj" />
   </ItemGroup>
 
