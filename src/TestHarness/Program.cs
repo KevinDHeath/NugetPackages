@@ -41,7 +41,7 @@ class Program
 
 	#endregion
 
-	internal static bool RunTest()
+	private static bool RunTest()
 	{
 		if( TestNuGet.RunTest() ) { return true; }
 

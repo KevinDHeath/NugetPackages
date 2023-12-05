@@ -1,8 +1,5 @@
 # Wpf Packages
-The Wpf Packages documentation for .NET Windows Presentation Foundation can be found at [Wpf Components](https://kevindheath.github.io/shfb/html/Components.htm)
-
-The Wpf Packages documentation for .NET Windows Presentation Foundation can be found at Wpf Components
-
+The Wpf packages documentation for .NET Windows Presentation Foundation applications can be found at [WPF Packages](https://kevindheath.github.io/shfb).
 
 ## Controls
 [![NuGet](https://img.shields.io/nuget/v/kdheath.Wpf.Controls.svg)](https://www.nuget.org/packages/kdheath.Wpf.Controls)
