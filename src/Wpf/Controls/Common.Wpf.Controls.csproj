@@ -10,11 +10,11 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.1-alpha</Version>
-    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
+    <Version>2.0.1</Version>
+    <PackageReleaseNotes>* Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
-    <PackageProjectUrl>https://kevindheath.github.io/shfb/html/Components.htm</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

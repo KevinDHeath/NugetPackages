@@ -8,8 +8,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.1-alpha</Version>
-    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
+    <Version>2.0.1</Version>
+    <PackageReleaseNotes>* Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.</PackageReleaseNotes>
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
