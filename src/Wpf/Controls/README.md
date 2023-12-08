@@ -2,6 +2,8 @@
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.1
+  - Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.
 - v2.0.0 - **Breaking change**
   - GitHub repository name changed from `MyProjects` to `NuGetPackages`.  
 - v1.0.4

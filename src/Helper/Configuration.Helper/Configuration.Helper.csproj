@@ -10,8 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.1-alpha</Version>
-    <PackageReleaseNotes>* Fixed Source Link issue.</PackageReleaseNotes>
+    <Version>2.0.1</Version>
+    <PackageReleaseNotes>* Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.</PackageReleaseNotes>
     <PackageId>kdheath.Configuration.Helper</PackageId>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

@@ -6,10 +6,10 @@
 This repository contains the source code from the following [kdheath](https://www.nuget.org/packages?q=owner:KevinDHeath) packages:
 
 __.NET Helpers__
-- [Application.Helper](./src/Helper/Application.Helper/README.md)
-- [Configuration.Helper](./src/Helper/Configuration.Helper/README.md)
-- [Logging.Helper](./src/Helper/Logging.Helper/README.md)
+- [Application.Helper](./src/Helper/Application.Helper)
+- [Configuration.Helper](./src/Helper/Configuration.Helper)
+- [Logging.Helper](./src/Helper/Logging.Helper)
 
 __Windows Presentation Foundation__
-- [Wpf.Controls](./src/Wpf/Controls/README.md)
-- [Wpf.Resources](./src/Wpf/Resources/README.md)
+- [Wpf.Controls](./src/Wpf/Controls)
+- [Wpf.Resources](./src/Wpf/Resources)

@@ -39,8 +39,8 @@
             <entry><para>Contains Windows Desktop resources which can be includes in WPF .NET projects.</para></entry>
           </row>
         </table>
-        <para><ui>Note:</ui> The Helper packages documentation for .NET applications can be found at
-        <externalLink><linkText>Helper Packages</linkText><linkUri>https://kevindheath.github.io/nuget</linkUri><linkTarget>_self</linkTarget></externalLink>.</para>
+        <para><ui>Note:</ui> The documentation for the other packages can be found at
+        <externalLink><linkText>.NET Helper Packages</linkText><linkUri>https://kevindheath.github.io/nuget</linkUri><linkTarget>_self</linkTarget></externalLink>.</para>
       </content>
     </section>
 
