@@ -14,13 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Reposit
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{6527F592-F2FD-42B7-8131-321C7C451E8F}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build.yml = .github\workflows\build.yml
-		.github\workflows\merged.yml = .github\workflows\merged.yml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helper", "Helper", "{B55E700F-9B77-4C21-88E0-1B10D5A7F344}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{B55E700F-9B77-4C21-88E0-1B10D5A7F344}"
 	ProjectSection(SolutionItems) = preProject
 		src\Helper\README.md = src\Helper\README.md
 	EndProjectSection
@@ -40,7 +34,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Controls", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Resources", "src\Wpf\Resources\Common.Wpf.Resources.csproj", "{A2DDF9FC-FB19-4480-8AC2-ECA692332380}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHarness", "src\TestHarness\TestHarness.csproj", "{DBCCAA73-067C-49E3-B902-BD3BE8032420}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{D6A0B8BF-E3DB-436C-81D3-061C8C40F830}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore", "src\Testing\AspNetCore\AspNetCore.csproj", "{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHelpers", "src\Testing\TestHelpers\TestHelpers.csproj", "{DBCCAA73-067C-49E3-B902-BD3BE8032420}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWPFPackages", "src\Testing\TestWPFPackages\TestWPFPackages.csproj", "{EFFC5380-A522-4C62-991A-3004CA24D717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +68,12 @@ Global
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFFC5380-A522-4C62-991A-3004CA24D717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFFC5380-A522-4C62-991A-3004CA24D717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +84,9 @@ Global
 		{40BAEB28-7F05-4DBF-8C99-CDC983820027} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
 		{97A9AB84-8415-43A4-BB8B-9E9508C0A478} = {6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380} = {6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}
+		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{EFFC5380-A522-4C62-991A-3004CA24D717} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39730524-1930-4E69-985A-41B9AFE5050B}
