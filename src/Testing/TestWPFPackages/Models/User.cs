@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Common.Core.Classes;
 
-namespace TestWPF.Core.Models;
+namespace TestWPFPackages.Core.Models;
 
 public class User : ModelDataError, ICloneable
 {

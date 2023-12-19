@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
-using TestWPF.Core.ViewModels;
+using TestWPFPackages.Core.ViewModels;
 
-namespace TestWPF.Rules;
+namespace TestWPFPackages.Rules;
 
 internal class UserRule : ValidationRule
 {

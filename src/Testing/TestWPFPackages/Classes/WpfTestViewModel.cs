@@ -2,9 +2,9 @@
 using System.Windows.Input;
 using Common.Core.Classes;
 using Common.Wpf.Commands;
-using TestWPF.Core.Models;
+using TestWPFPackages.Core.Models;
 
-namespace TestWPF.Core.ViewModels;
+namespace TestWPFPackages.Core.ViewModels;
 
 public sealed class WpfTestViewModel : ModelBase
 {

@@ -1,6 +1,6 @@
 ﻿using Common.Core.Classes;
 
-namespace TestWPF.Core.Models;
+namespace TestWPFPackages.Core.Models;
 
 public class TestItem : ModelBase
 {

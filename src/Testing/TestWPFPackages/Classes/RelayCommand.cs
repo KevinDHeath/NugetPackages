@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using Common.Core.Classes;
 
-namespace TestWPF.Core.Commands;
+namespace TestWPFPackages.Core.Commands;
 
 /// <summary>Initializes a new instance of the DelegateCommand class.</summary>
 /// <param name="commandTask">Method that has a single parameter and does not return a value.</param>

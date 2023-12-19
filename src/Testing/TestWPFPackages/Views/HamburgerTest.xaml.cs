@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using TestWPF.Core.ViewModels;
+using TestWPFPackages.Core.ViewModels;
 
-namespace TestWPF.Views;
+namespace TestWPFPackages.Views;
 
 public partial class HamburgerTest : Window
 {

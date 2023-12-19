@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace TestWPF;
+namespace TestWPFPackages;
 
 /// <summary>Interaction logic for App.xaml</summary>
 public partial class App : Application

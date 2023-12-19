@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
-using TestWPF.Rules;
+using TestWPFPackages.Rules;
 
-namespace TestWPF.Converters;
+namespace TestWPFPackages.Converters;
 
 [ValueConversion( typeof( ValidationRule ), typeof( bool ) )]
 public class UserRuleConverter : IValueConverter

@@ -1,4 +1,4 @@
-﻿namespace TestWPF.Core.Models;
+﻿namespace TestWPFPackages.Core.Models;
 
 /// <summary>Enumeration Helpers.</summary>
 public static class Enumerations

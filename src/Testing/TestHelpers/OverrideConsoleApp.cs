@@ -1,7 +1,6 @@
-﻿using System;
-using Application.Helper;
+﻿using Application.Helper;
 
-namespace TestHarness;
+namespace TestHelpers;
 
 /// <inheritdoc/>
 public class OverrideConsoleApp : ConsoleApp

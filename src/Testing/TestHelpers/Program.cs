@@ -1,7 +1,6 @@
-﻿using System;
-using Logging.Helper;
+﻿using Logging.Helper;
 
-namespace TestHarness;
+namespace TestHelpers;
 
 class Program
 {

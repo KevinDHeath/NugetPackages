@@ -1,8 +1,8 @@
 ﻿using Common.Core.Classes;
-using TestWPF.Core.Commands;
-using TestWPF.Core.Models;
+using TestWPFPackages.Core.Commands;
+using TestWPFPackages.Core.Models;
 
-namespace TestWPF.Core.ViewModels;
+namespace TestWPFPackages.Core.ViewModels;
 
 public class TestViewModel : ModelBase
 {

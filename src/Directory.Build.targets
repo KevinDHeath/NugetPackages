@@ -16,6 +16,7 @@
     <PackageOutputPath>$(PackLocal)</PackageOutputPath>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PackageReadmeFile)' != ''">

@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Helper\Application.Helper.csproj" />
-    <PackageReference Include="NLog" Version="5.2.5" />
+    <PackageReference Include="NLog" />
   </ItemGroup>
 
 </Project>

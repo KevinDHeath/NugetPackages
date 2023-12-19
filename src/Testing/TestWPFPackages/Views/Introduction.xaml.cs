@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using TestWPF.Core.ViewModels;
+using TestWPFPackages.Core.ViewModels;
 
-namespace TestWPF.Views;
+namespace TestWPFPackages.Views;
 
 /// <summary>Interaction logic for Introduction.xaml</summary>
 public partial class Introduction : UserControl

@@ -1,8 +1,7 @@
-﻿using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace TestWPF.Views;
+namespace TestWPFPackages.Views;
 
 /// <summary>Interaction logic for TestWpfView.xaml</summary>
 public partial class TestWpfView : UserControl
@@ -14,7 +13,7 @@ public partial class TestWpfView : UserControl
 	public TestWpfView()
 	{
 		InitializeComponent();
-		DataContext = new TestWPF.Core.ViewModels.WpfTestViewModel();
+		DataContext = new TestWPFPackages.Core.ViewModels.WpfTestViewModel();
 	}
 
 	#endregion

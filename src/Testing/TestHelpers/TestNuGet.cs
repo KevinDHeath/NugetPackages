@@ -1,12 +1,10 @@
-﻿using System;
-using System.IO;
-using Configuration.Helper;
+﻿using Configuration.Helper;
 
-namespace TestHarness;
+namespace TestHelpers;
 
 internal class TestNuGet
 {
-	internal static readonly int sTest = 2; // 0=Application, 1=Configuration, 2=Logging
+	internal static readonly int sTest = 1; // 0=Application, 1=Configuration, 2=Logging
 
 	internal static bool RunTest()
 	{

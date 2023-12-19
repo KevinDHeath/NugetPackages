@@ -3,11 +3,13 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild> <!-- Override Directory.Build.props -->
+    <DebugType>pdbonly</DebugType> <!-- Override Directory.Build.props -->
+    <AssemblyTitle>Testing for WPF packages.</AssemblyTitle>
+   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Wpf\Controls\Common.Wpf.Controls.csproj" />
