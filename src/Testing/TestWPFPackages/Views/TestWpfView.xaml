@@ -50,34 +50,33 @@
 
 					<TextBlock Grid.Row="0" Text="Name:" Style="{StaticResource appTextBlockStyle}"/>
 					<TextBox Grid.Column="1" Style="{StaticResource appTextBoxStyle}"
-						 Text="{Binding CurrentUser.Name, UpdateSourceTrigger=PropertyChanged}" TextChanged="DataChanged">
-					</TextBox>
+						Text="{Binding CurrentUser.Name, UpdateSourceTrigger=PropertyChanged}" TextChanged="DataChanged"/>
 
 					<TextBlock Grid.Row="1" Text="Email:" Style="{StaticResource appTextBlockStyle}"/>
 					<TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource appTextBoxStyle}"
-						 Text="{Binding CurrentUser.Email, UpdateSourceTrigger=PropertyChanged}"/>
+						Text="{Binding CurrentUser.Email, UpdateSourceTrigger=PropertyChanged}" TextChanged="DataChanged"/>
 
 					<TextBlock Grid.Row="2" Text="DoB:" Margin="0,6,0,0" Style="{StaticResource appTextBlockStyle}"
-						   ToolTip="Date of Birth"/>
+						ToolTip="Date of Birth"/>
 					<cc:DatePicker Grid.Row="2" Grid.Column="1" x:Name="dpDate" Style="{StaticResource appLayoutStyle}"
-							   SelectedDateChanged="SelectedDateChanged" IsErrorShown="True">
+							SelectedDateChanged="SelectedDateChanged" IsErrorShown="True">
 						<DatePicker.SelectedDate>
 							<Binding Path="CurrentUser.BirthDate" Converter="{StaticResource DateOnlyToDateTime}"
-								 UpdateSourceTrigger="PropertyChanged"/>
+								UpdateSourceTrigger="PropertyChanged"/>
 						</DatePicker.SelectedDate>
 					</cc:DatePicker>
 
 					<TextBlock Grid.Row="3" Text="Age:" Style="{StaticResource appTextBlockStyle}"/>
 					<cc:NumericSpinner Grid.Row="3" Grid.Column="1" Style="{StaticResource appLayoutStyle}"
-								   MinValue="0" MaxValue="140" IsErrorShown="True" HorizontalAlignment="Stretch">
+							MinValue="0" MaxValue="140" IsErrorShown="True" HorizontalAlignment="Stretch" TextChanged="DataChanged">
 						<Binding Path="CurrentUser.Age" Converter="{StaticResource IntegerToString}"
-							 UpdateSourceTrigger="PropertyChanged">
+							UpdateSourceTrigger="PropertyChanged">
 						</Binding>
 					</cc:NumericSpinner>
 
 					<TextBlock Grid.Row="4" Text="Gender:" Style="{StaticResource appTextBlockStyle}" Margin="0,6,3,0"/>
-					<cc:ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource appLayoutStyle}"
-							 ItemsSource="{Binding GenderValues}" IsErrorShown="True" IsEditable="True">
+					<cc:ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource appLayoutStyle}" ItemsSource="{Binding GenderValues}" 
+							IsErrorShown="True" IsEditable="True" SelectionChanged="SelectedGenderChanged">
 						<ComboBox.SelectedItem>
 							<Binding Path="CurrentUser.Gender" UpdateSourceTrigger="PropertyChanged">
 								<Binding.ValidationRules>
@@ -88,25 +87,24 @@
 					</cc:ComboBox>
 
 					<StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
-						<Button x:Name="btNew" Style="{StaticResource commonButtonStyle}"
-								Content="New" Command="{Binding NewUserCommand}"/>
-						<Button x:Name="btApply" IsDefault="True" Style="{StaticResource commonButtonStyle}"
-								Content="Apply" Command="{Binding SaveUserCommand}"/>
-						<Button x:Name="btCancel" IsCancel="True" Style="{StaticResource commonButtonStyle}"
-								Content="Rollback" Command="{Binding CancelEditCommand}"/>
+						<Button x:Name="btNew" Style="{StaticResource commonButtonStyle}" Content="New"
+							Command="{Binding NewUserCommand}"/>
+						<Button x:Name="btApply" IsDefault="True" Style="{StaticResource commonButtonStyle}" Content="Apply"
+							Command="{Binding SaveUserCommand}"/>
+						<Button x:Name="btCancel" IsCancel="True" Style="{StaticResource commonButtonStyle}" Content="Rollback"
+							Command="{Binding CancelEditCommand}"/>
 					</StackPanel>
 
 					<StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
 						<TextBox x:Name="tbErrorCount" Visibility="Collapsed" IsReadOnly="True">
-							<Binding Path="ErrorCount" Converter="{StaticResource IntegerToString}"
-									 UpdateSourceTrigger="PropertyChanged"/>
+							<Binding Path="ErrorCount" Converter="{StaticResource IntegerToString}" UpdateSourceTrigger="PropertyChanged"/>
 						</TextBox>
 						<Separator/>
 						<TextBlock x:Name="tbError" Style="{StaticResource dftTextBlockWithErrorsStyle}"/>
 						<!--<TextBlock Style="{StaticResource commonErrorTextBlockStyle}"
-								   Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=MainGrid}"/>-->
+									Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=MainGrid}"/>-->
 						<!--<ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=(Validation.Errors)}"
-									  Height="40" Style="{StaticResource commonErrorItemsStyle}"/>-->
+									Height="40" Style="{StaticResource commonErrorItemsStyle}"/>-->
 					</StackPanel>
 				</Grid>
 			</TabItem>
@@ -125,16 +123,15 @@
 					</Grid.RowDefinitions>
 
 					<cc:SearchTextBox Grid.Row="0" Style="{StaticResource appSearchTextBoxStyle}" TextChanged="OnFilterChanged"
-								  Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
+							Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
 					<cc:SortableListView Grid.Row="1" x:Name="UsersList" Style="{StaticResource commonListViewStyle}"
-									 GridViewColumnHeader.Click="UsersList_ColumnHeaderClicked" BorderThickness="0"
-									 MinHeight="300" MinWidth="400" TabIndex="1"
-									 DefaultColumn="1" FilterPredicate="{Binding ListFilter}"
-									 ItemsSource="{Binding UsersList}" SelectedItem="{Binding CurrentUser}">
+							MinHeight="300" MinWidth="400" TabIndex="1" DefaultColumn="1" FilterPredicate="{Binding ListFilter}"
+							GridViewColumnHeader.Click="UsersList_ColumnHeaderClicked" BorderThickness="0"
+							ItemsSource="{Binding UsersList}" SelectedItem="{Binding CurrentUser}">
 						<ListView.View>
 							<GridView>
 								<GridViewColumn Header="Email" Width="175"
-											HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}">
+									HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}">
 									<GridViewColumn.CellTemplate>
 										<DataTemplate>
 											<TextBlock Text="{Binding Email}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
@@ -142,13 +139,13 @@
 									</GridViewColumn.CellTemplate>
 								</GridViewColumn>
 								<GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"
-											HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+									HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
 								<GridViewColumn Header="Birthday" Width="90" DisplayMemberBinding="{Binding BirthDate, StringFormat=yyyy/MM/dd}"
-											HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+									HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
 								<GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}"
-											HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+									HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
 								<GridViewColumn Header="Gender" Width="90" DisplayMemberBinding="{Binding Gender}"
-											HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+									HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
 							</GridView>
 						</ListView.View>
 					</cc:SortableListView>
@@ -156,4 +153,5 @@
 			</TabItem>
 		</TabControl>
 	</Grid>
+
 </UserControl>

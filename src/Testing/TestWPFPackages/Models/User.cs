@@ -59,7 +59,11 @@ public class User : ModelDataError, ICloneable
 		{
 			if( value is not null && value.Equals( _dob ) ) return;
 			_dob = value == DateOnly.MinValue ? null : value;
-			ValidateProperty( value );
+			if( ValidateProperty( value ) )
+			{
+				int? age = CalculateAge( value );
+				if( age is not null ) { Age = age; }
+			}
 			OnPropertyChanged();
 		}
 	}
