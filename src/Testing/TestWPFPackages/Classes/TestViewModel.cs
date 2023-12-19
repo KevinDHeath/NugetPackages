@@ -1,5 +1,5 @@
 ﻿using Common.Core.Classes;
-using TestWPFPackages.Core.Commands;
+using Common.Wpf.Commands;
 using TestWPFPackages.Core.Models;
 
 namespace TestWPFPackages.Core.ViewModels;
@@ -52,11 +52,11 @@ public class TestViewModel : ModelBase
 
 	#region Commands
 
-	public RelayCommand AddCommand { get; }
+	public DelegateCommand AddCommand { get; }
 
-	public RelayCommand RemoveCommand { get; }
+	public DelegateCommand RemoveCommand { get; }
 
-	public RelayCommand TestCommand { get; }
+	public DelegateCommand TestCommand { get; }
 
 	#endregion
 
@@ -73,9 +73,9 @@ public class TestViewModel : ModelBase
 		_testItem = new TestItem { Name = "Hello world!" };
 
 		// For CanExecute Test
-		AddCommand = new RelayCommand( _ => Item = new TestItem() );
-		RemoveCommand = new RelayCommand( _ => Item = null );
-		TestCommand = new RelayCommand( delegate { } );
+		AddCommand = new DelegateCommand( _ => Item = new TestItem() );
+		RemoveCommand = new DelegateCommand( _ => Item = null );
+		TestCommand = new DelegateCommand( delegate { } );
 	}
 
 	#endregion

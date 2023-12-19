@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net7.0-windows;net8.0-windows</TargetFrameworks>
+    <LangVersion>11.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
@@ -11,8 +12,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.1</Version>
-    <PackageReleaseNotes>* Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.</PackageReleaseNotes>
+    <Version>2.0.2</Version>
+    <PackageReleaseNotes>* Added SubscriberCount property to the DelegateCommand class.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
