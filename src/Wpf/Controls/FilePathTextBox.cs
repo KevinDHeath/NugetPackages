@@ -108,12 +108,11 @@ public class FilePathTextBox : TextBox
 
 	private void BtnOpen_OnClick( object sender, RoutedEventArgs e )
 	{
-		if( string.IsNullOrWhiteSpace( Text ) ) { return; }
-
 		string? result;
 		string folder;
 		bool relative = RelativePath.Length > 0;
 		string fullName = relative ? Path.Combine( RelativePath, Text ) : Text;
+		fullName = fullName.Trim();
 
 		switch( DialogType )
 		{
@@ -131,6 +130,7 @@ public class FilePathTextBox : TextBox
 
 			case DialogTypes.File:
 				bool isExe = Path.GetExtension( Text )?.ToLower() == @".exe";
+				if( string.IsNullOrWhiteSpace( Text ) & relative ) { fullName += "\\"; }
 
 				if( TryGetFile( fullName, out folder, out string file ) )
 				{
