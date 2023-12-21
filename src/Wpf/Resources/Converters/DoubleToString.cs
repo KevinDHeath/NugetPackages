@@ -1,18 +1,12 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Windows.Data;
 
 namespace Common.Wpf.Converters;
 
-/// <summary>Converts a decimal to a string.</summary>
-[ValueConversion( typeof( decimal ), typeof( string ) )]
-public partial class DecimalToString : ConverterBase
+/// <summary>Converts a double to a string.</summary>
+[ValueConversion( typeof( double ), typeof( string ) )]
+public partial class DoubleToString : ConverterBase
 {
-	internal static readonly Regex s_doubleRegex = DecRegEx();
-
-	[GeneratedRegex( "[^0-9.-]+", RegexOptions.Compiled )]
-	private static partial Regex DecRegEx();
-
 	/// <inheritdoc/>
 	/// <param name="value">The value produced by the binding source.</param>
 	/// <param name="targetType">The type of the binding target property.</param>
@@ -22,8 +16,8 @@ public partial class DecimalToString : ConverterBase
 	/// <param name="culture">The culture to use in the converter.</param>
 	public override object Convert( object value, Type targetType, object parameter, CultureInfo culture )
 	{
-		// Convert the decimal to a string
-		if( value is not null && value is decimal val )
+		// Convert the double to a string
+		if( value is not null && value is double val )
 		{
 			return val.ToString( Format( parameter, culture ), culture );
 		}
@@ -37,8 +31,8 @@ public partial class DecimalToString : ConverterBase
 		// Convert the string back to a decimal
 		if( value is not null and string input )
 		{
-			input = s_doubleRegex.Replace( input, string.Empty );
-			if( StringConverter.TryParse( ref input, out decimal rtn, culture ) ) { return rtn; }
+			input = DecimalToString.s_doubleRegex.Replace( input, string.Empty );
+			if( StringConverter.TryParse( ref input, out double rtn, culture ) ) { return rtn; }
 		}
 
 		return Activator.CreateInstance( targetType );
