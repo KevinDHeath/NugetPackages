@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="TestWPF.UI.Views.Validation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
+             xmlns:cr="clr-namespace:Common.Wpf.Rules;assembly=Common.Wpf.Resources"
+             xmlns:cv="clr-namespace:Common.Wpf.Converters;assembly=Common.Wpf.Resources"
+             xmlns:vm="clr-namespace:TestWPF.Core.ViewModels;assembly=TestWPF.Core"
+             xmlns:lvr="clr-namespace:TestWPF.UI.Rules"
+             mc:Ignorable="d" d:DesignHeight="340" d:DesignWidth="580" d:Background="Beige"
+             d:DataContext="{d:DesignInstance Type=vm:ValidationViewModel}">
+
+  <Grid HorizontalAlignment="Left" Margin="10,5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="Validations Test" Style="{StaticResource appViewTitleStyle}"/>
+    <TabControl Grid.Row="1" Margin="0,10,0,0">
+      <TabItem x:Name="TabDataEntry" Style="{StaticResource commonTabItemStyle}">
+        <TabItem.Header>
+          <TextBlock>Data Entry</TextBlock>
+        </TabItem.Header>
+        <Grid x:Name="MainGrid" Margin="10" Loaded="MainGrid_Loaded" Validation.Error="ItemError"
+              Validation.ErrorTemplate="{x:Null}">
+          <Grid.Resources>
+            <cv:IntegerToString x:Key="IntegerToString"/>
+            <cv:DateOnlyToDateTime x:Key="DateOnlyToDateTime"/>
+          </Grid.Resources>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <Grid.BindingGroup>
+            <BindingGroup NotifyOnValidationError="True">
+              <BindingGroup.ValidationRules>
+                <lvr:UserRule ValidationStep="ConvertedProposedValue"/>
+              </BindingGroup.ValidationRules>
+            </BindingGroup>
+          </Grid.BindingGroup>
+
+          <TextBlock Grid.Row="0" Text="Name:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Column="1" x:Name="tbName" Style="{StaticResource appTextBoxStyle}"
+                   TextChanged="DataChanged">
+            <Binding Path="CurrentUser.Name" UpdateSourceTrigger="PropertyChanged"/>
+          </TextBox>
+
+          <TextBlock Grid.Row="1" Text="Email:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="1" Grid.Column="1" x:Name="tbMail" Style="{StaticResource appTextBoxStyle}"
+                   TextChanged="DataChanged">
+            <Binding Path="CurrentUser.Email" UpdateSourceTrigger="PropertyChanged"/>
+          </TextBox>
+
+          <TextBlock Grid.Row="2" Text="DoB:" Style="{StaticResource appTextBlockStyle}"
+                     ToolTip="Date of Birth"/>
+          <cc:DatePicker Grid.Row="2" Grid.Column="1" x:Name="dpDate" Style="{StaticResource appLayoutStyle}"
+                         IsErrorShown="True" HorizontalAlignment="Stretch"
+                         SelectedDateChanged="SelectedDateChanged">
+            <DatePicker.SelectedDate>
+              <Binding Path="CurrentUser.BirthDate" Converter="{StaticResource DateOnlyToDateTime}"
+								 UpdateSourceTrigger="PropertyChanged"/>
+            </DatePicker.SelectedDate>
+          </cc:DatePicker>
+
+          <TextBlock Grid.Row="3" Text="Age:" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:NumericSpinner Grid.Row="3" Grid.Column="1" Style="{StaticResource appLayoutStyle}" MinWidth="150"
+                             MinValue="0" MaxValue="140" IsErrorShown="True" HorizontalAlignment="Left"
+                             TextChanged="DataChanged">
+            <Binding Path="CurrentUser.Age" Converter="{StaticResource IntegerToString}"
+                     UpdateSourceTrigger="PropertyChanged">
+            </Binding>
+          </cc:NumericSpinner>
+
+          <TextBlock Grid.Row="4" Text="Gender:" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:ComboBox Grid.Row="4" Grid.Column="1" Style="{StaticResource appLayoutStyle}" MinWidth="150"
+                       ItemsSource="{Binding GenderValues}" IsErrorShown="True" IsEditable="True"
+                       SelectionChanged="SelectedGenderChanged">
+            <ComboBox.SelectedItem>
+              <Binding Path="CurrentUser.Gender" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                  <cr:ComboEditRule Property="Gender" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+              </Binding>
+            </ComboBox.SelectedItem>
+          </cc:ComboBox>
+
+          <StackPanel Grid.Row="5" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button x:Name="btNew" Style="{StaticResource commonButtonStyle}"
+                    Content="New" Command="{Binding AddUserCommand}"/>
+            <Button x:Name="btApply" IsDefault="True" Style="{StaticResource commonButtonStyle}"
+                    Content="Apply" Command="{Binding CommitEditCommand}"/>
+            <Button x:Name="btCancel" IsCancel="True" Style="{StaticResource commonButtonStyle}"
+                    Content="Rollback" Command="{Binding CancelEditCommand}"/>
+          </StackPanel>
+
+          <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBox x:Name="tbErrorCount" Visibility="Collapsed" IsReadOnly="True">
+              <Binding Path="ErrorCount" Converter="{StaticResource IntegerToString}"
+                       UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+            <Separator/>
+            <TextBlock x:Name="tbError" Style="{StaticResource appTextBlockWithErrorsStyle}"/>
+            <!--<TextBlock x:Name="tbError" Style="{StaticResource commonErrorTextBlockStyle}"
+                   Text="{Binding Path=(Validation.Errors)[0].ErrorContent, ElementName=MainGrid}"/>-->
+            <!--<ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=(Validation.Errors)}"
+                   Height="40" Style="{StaticResource commonErrorItemsStyle}"/>-->
+          </StackPanel>
+        </Grid>
+      </TabItem>
+
+      <TabItem x:Name="TabListView" Style="{StaticResource commonTabItemStyle}">
+        <TabItem.Header>
+          <TextBlock>List View</TextBlock>
+        </TabItem.Header>
+        <Grid Validation.ErrorTemplate="{x:Null}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+          </Grid.RowDefinitions>
+
+          <cc:SearchTextBox Grid.Row="0" Style="{StaticResource appSearchTextBoxStyle}" TextChanged="OnFilterChanged"
+                            Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
+          <cc:SortableListView Grid.Row="1" x:Name="UsersList" Style="{StaticResource commonListViewStyle}"
+                               GridViewColumnHeader.Click="UsersList_ColumnHeaderClicked" BorderThickness="0"
+                               MinHeight="300" MinWidth="400" TabIndex="1" Validation.ErrorTemplate="{x:Null}"
+                               DefaultColumn="1" FilterPredicate="{Binding ListFilter}"
+                               ItemsSource="{Binding UsersList}" SelectedItem="{Binding CurrentUser}">
+            <ListView.View>
+              <GridView>
+                <GridViewColumn Header="Email" Width="175"
+                                HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}">
+                  <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                      <TextBlock Text="{Binding Email}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                    </DataTemplate>
+                  </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"
+                                HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+                <GridViewColumn Header="Birthday" Width="90" DisplayMemberBinding="{Binding BirthDate, StringFormat=yyyy/MM/dd}"
+                                HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+                <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding Age}"
+                                HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+                <GridViewColumn Header="Gender" Width="90" DisplayMemberBinding="{Binding Gender}"
+                                HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+              </GridView>
+            </ListView.View>
+          </cc:SortableListView>
+        </Grid>
+      </TabItem>
+    </TabControl>
+  </Grid>
+
+</UserControl>

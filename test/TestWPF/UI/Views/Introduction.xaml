@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="TestWPF.UI.Views.Introduction"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:TestWPF.Core.ViewModels;assembly=TestWPF.Core"
+             mc:Ignorable="d" d:DesignHeight="340" d:DesignWidth="580" d:Background="WhiteSmoke"
+             d:DataContext="{d:DesignInstance Type=vm:SharedViewModel}">
+
+  <Grid HorizontalAlignment="Stretch" Margin="10,5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="Introduction" Style="{StaticResource appViewTitleStyle}"/>
+    <StackPanel Grid.Row="1" Margin="0,10">
+      <CheckBox Content="Allow Custom Control testing" Style="{StaticResource commonCheckBoxStyle}"
+                IsChecked="{Binding AllowCustomTest, Mode=TwoWay}"/>
+      <FlowDocumentReader Height="350" Margin="0,5,0,0" Width="Auto" ViewingMode="Scroll">
+        <FlowDocument FontFamily="{DynamicResource Common.FontFamily}" FontSize="{DynamicResource Common.FontSize}"
+                      TextAlignment="Left">
+          <Paragraph>
+            This is an application that can be used to test the contents of the
+            <Italic>kdheath</Italic> .Wpf NuGet packages.
+          </Paragraph>
+          <Paragraph><Bold>Navigation:</Bold></Paragraph>
+          <List Margin="0">
+            <ListItem>
+              <Paragraph>Click on the Hamburger icon in the top left to close it.</Paragraph>
+            </ListItem>
+            <ListItem>
+              <Paragraph>Click on it to display the navigation options.</Paragraph>
+            </ListItem>
+          </List>
+        </FlowDocument>
+      </FlowDocumentReader>
+    </StackPanel>
+  </Grid>
+
+</UserControl>

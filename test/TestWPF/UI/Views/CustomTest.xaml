@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="TestWPF.UI.Views.CustomTest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cc="clr-namespace:Controls;assembly=Controls"
+             xmlns:vm="clr-namespace:TestWPF.Core.ViewModels;assembly=TestWPF.Core"
+             mc:Ignorable="d" d:DesignHeight="340" d:DesignWidth="580" d:Background="Beige"
+             d:DataContext="{d:DesignInstance Type=vm:SharedViewModel}">
+
+  <Grid HorizontalAlignment="Stretch" Margin="10,5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Text="Custom Control Test" Style="{StaticResource appViewTitleStyle}"/>
+    <StackPanel Grid.Row="1" Margin="0,10" HorizontalAlignment="Stretch">
+      <cc:CustomControl1 Padding="3" Width="300" HorizontalAlignment="Left"
+                         IsReadOnly="True" TextChanged="TextChanged"
+                         Text="{Binding Path=Name, UpdateSourceTrigger=Explicit}"/>
+    </StackPanel>
+  </Grid>
+
+</UserControl>

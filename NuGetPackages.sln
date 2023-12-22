@@ -36,12 +36,25 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Wpf.Resources", "src\Wpf\Resources\Common.Wpf.Resources.csproj", "{A2DDF9FC-FB19-4480-8AC2-ECA692332380}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{D6A0B8BF-E3DB-436C-81D3-061C8C40F830}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+		test\Directory.Packages.props = test\Directory.Packages.props
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore", "src\Testing\AspNetCore\AspNetCore.csproj", "{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore", "test\AspNetCore\AspNetCore.csproj", "{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHelpers", "src\Testing\TestHelpers\TestHelpers.csproj", "{DBCCAA73-067C-49E3-B902-BD3BE8032420}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHelpers", "test\TestHelpers\TestHelpers.csproj", "{DBCCAA73-067C-49E3-B902-BD3BE8032420}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWPFPackages", "src\Testing\TestWPFPackages\TestWPFPackages.csproj", "{EFFC5380-A522-4C62-991A-3004CA24D717}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestWPF", "TestWPF", "{7A29AAD8-2BAE-4484-AABC-1C027A98E407}"
+	ProjectSection(SolutionItems) = preProject
+		test\TestWPF\README.md = test\TestWPF\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWPF.Core", "test\TestWPF\Core\TestWPF.Core.csproj", "{55E2068C-854B-4265-B34D-E8A3BC0B8F81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWPF.UI", "test\TestWPF\UI\TestWPF.UI.csproj", "{AF4CE77D-E6ED-47DE-8C26-B62A49E5D0D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Controls", "test\TestWPF\Controls\Controls.csproj", "{9D030EB5-AD2B-4941-B667-8F0942E334F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,9 +85,17 @@ Global
 		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCCAA73-067C-49E3-B902-BD3BE8032420}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFFC5380-A522-4C62-991A-3004CA24D717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFFC5380-A522-4C62-991A-3004CA24D717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E2068C-854B-4265-B34D-E8A3BC0B8F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E2068C-854B-4265-B34D-E8A3BC0B8F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E2068C-854B-4265-B34D-E8A3BC0B8F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4CE77D-E6ED-47DE-8C26-B62A49E5D0D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4CE77D-E6ED-47DE-8C26-B62A49E5D0D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4CE77D-E6ED-47DE-8C26-B62A49E5D0D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D030EB5-AD2B-4941-B667-8F0942E334F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D030EB5-AD2B-4941-B667-8F0942E334F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D030EB5-AD2B-4941-B667-8F0942E334F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,7 +108,10 @@ Global
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380} = {6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}
 		{D5BCD26D-F7B3-4F05-8081-AFC689B4DB11} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
 		{DBCCAA73-067C-49E3-B902-BD3BE8032420} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
-		{EFFC5380-A522-4C62-991A-3004CA24D717} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{7A29AAD8-2BAE-4484-AABC-1C027A98E407} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{55E2068C-854B-4265-B34D-E8A3BC0B8F81} = {7A29AAD8-2BAE-4484-AABC-1C027A98E407}
+		{AF4CE77D-E6ED-47DE-8C26-B62A49E5D0D5} = {7A29AAD8-2BAE-4484-AABC-1C027A98E407}
+		{9D030EB5-AD2B-4941-B667-8F0942E334F8} = {7A29AAD8-2BAE-4484-AABC-1C027A98E407}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39730524-1930-4E69-985A-41B9AFE5050B}

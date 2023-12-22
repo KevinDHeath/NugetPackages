@@ -4,6 +4,7 @@ Provides UI resources for .NET Windows Presentation Foundation applications.
 ## Change Log
 - v2.0.2
   - Added `SubscriberCount` property to the `DelegateCommand` class.
+  - Added `DateOnlyToString` converter. 
   - Added `DoubleToString` converter.
 - v2.0.1
   - Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.
