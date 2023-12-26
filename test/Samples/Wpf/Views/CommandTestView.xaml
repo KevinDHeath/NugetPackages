@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Sample.Wpf.Views.CommandTestView" x:Name="root"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:vm="clr-namespace:Sample.Mvvm.ViewModels;assembly=Sample.Mvvm"
+             xmlns:model="clr-namespace:Sample.Mvvm.Models;assembly=Sample.Mvvm"
+             d:DataContext="{d:DesignInstance Type=vm:CommandTestViewModel}"
+             d:DesignHeight="250" d:DesignWidth="450" d:Background="Beige">
+  <Grid HorizontalAlignment="Left" Margin="10,5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Text="Commands Test" Style="{StaticResource appViewTitleStyle}"/>
+    <StackPanel Grid.Row="1" Margin="20,10">
+      <Button Content="Add" Command="{Binding AddCommand}" Style="{StaticResource commonButtonStyle}"/>
+      <Button Content="Remove" Command="{Binding RemoveCommand}" Style="{StaticResource commonButtonStyle}"/>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Subscribers:" Margin="0 10"/>
+        <TextBlock Text="{Binding TestCommand.SubscriberCount}" Margin="3 10"/>
+      </StackPanel>
+      <ContentControl Content="{Binding Item}">
+        <ContentControl.Resources>
+          <DataTemplate DataType="{x:Type model:Account}">
+            <Button Content="Test" Style="{StaticResource commonButtonStyle}"
+                    Command="{Binding DataContext.TestCommand, ElementName=root}"/>
+          </DataTemplate>
+        </ContentControl.Resources>
+      </ContentControl>
+    </StackPanel>
+  </Grid>
+</UserControl>

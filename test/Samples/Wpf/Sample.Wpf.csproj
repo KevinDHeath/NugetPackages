@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>true</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0.1</Version>
+    <AssemblyTitle>Test WPF components.</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Wpf\Controls\Common.Wpf.Controls.csproj" />
+    <ProjectReference Include="..\..\..\src\Wpf\Resources\Common.Wpf.Resources.csproj" />
+    <ProjectReference Include="..\Controls\Sample.Controls.csproj" />
+    <ProjectReference Include="..\Mvvm\Sample.Mvvm.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\icon-orange.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
