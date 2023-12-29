@@ -46,11 +46,15 @@
             <cc:HamburgerMenuItem Command="{Binding NavigateHomeCommand}">
               <TextBlock Text="Home"/>
             </cc:HamburgerMenuItem>
+            <cc:HamburgerMenuItem Command="{Binding NavigateUnitTestCommand}">
+              <TextBlock Text="Unit Tests"/>
+            </cc:HamburgerMenuItem>
             <cc:HamburgerMenuItem Command="{Binding NavigateUserListCommand}">
               <TextBlock Text="User List"/>
             </cc:HamburgerMenuItem>
-            <cc:HamburgerMenuItem Command="{Binding NavigateUnitTestCommand}">
-              <TextBlock Text="Unit Tests"/>
+            <cc:HamburgerMenuItem Command="{Binding NavigateCommandTestCommand}"
+                                  Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+              <TextBlock Text="Command Test"/>
             </cc:HamburgerMenuItem>
             <cc:HamburgerMenuItem Command="{Binding NavigateCustomTestCommand}"
                                   Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -59,10 +63,6 @@
             <cc:HamburgerMenuItem Command="{Binding NavigateLoginCommand}"
                                   Visibility="{Binding IsLoggedOut, Converter={StaticResource BooleanToVisibilityConverter}}">
               <TextBlock Text="Login"/>
-            </cc:HamburgerMenuItem>
-            <cc:HamburgerMenuItem Command="{Binding NavigateAccountCommand}"
-                                  Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
-              <TextBlock Text="Command Test"/>
             </cc:HamburgerMenuItem>
             <cc:HamburgerMenuItem Command="{Binding LogoutCommand}"
                                   Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">

@@ -4,140 +4,223 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
              xmlns:cr="clr-namespace:Common.Wpf.Rules;assembly=Common.Wpf.Resources"
+             xmlns:cv="clr-namespace:Common.Wpf.Converters;assembly=Common.Wpf.Resources"
              xmlns:vm="clr-namespace:Sample.Mvvm.ViewModels;assembly=Sample.Mvvm"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              d:DataContext="{d:DesignInstance Type=vm:UnitTestViewModel}"
              mc:Ignorable="d" d:DesignHeight="340" d:DesignWidth="680" d:Background="Beige">
-
   <Grid Margin="10,5" HorizontalAlignment="Stretch">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
-      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
       <RowDefinition Height="Auto"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="Auto"/>
-      <ColumnDefinition Width="Auto"/>
-      <ColumnDefinition Width="Auto"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
 
-    <TextBlock Grid.Row="0" Grid.ColumnSpan="4" Text="Unit Tests"
-               Style="{StaticResource appViewTitleStyle}" Margin="0,0,0,10"/>
+    <TextBlock Grid.Row="0" Text="Unit Tests" Style="{StaticResource appViewTitleStyle}" Margin="0,0,0,10"/>
 
-    <!-- Uses the DoubleToString converter -->
-    <TextBlock Grid.Row="1" Grid.Column="0" Text="Font Size:" Style="{StaticResource appTextBlockStyle}"/>
-    <cc:NumericSpinner Grid.Row="1" Grid.Column="1" MinWidth="60" MaxWidth="300"
-                       Step="1" Decimals="0" MinValue="9" MaxValue="19" IsErrorShown="True"
-                       Style="{StaticResource appLayoutStyle}" TextChanged="FontSize_Changed">
-      <Binding Path="FontSize" UpdateSourceTrigger="PropertyChanged"
-               Converter="{StaticResource DoubleToString}" ConverterParameter="0"/>
-    </cc:NumericSpinner>
+    <TabControl Grid.Row="1">
 
-    <!-- Uses the StringToDateTime converter -->
-    <TextBlock Grid.Row="1" Grid.Column="2" Padding="10,0,0,0" Text="DatePicker:"
-               Style="{StaticResource appTextBlockStyle}"/>
-    <cc:DatePicker Grid.Row="1" Grid.Column="4" MinWidth="155" MaxWidth="320"
-                   IsErrorShown="True" SelectedDateChanged="SelectedDateChanged"
-                   Style="{StaticResource appLayoutStyle}" HorizontalAlignment="Left">
-      <DatePicker.SelectedDate>
-        <Binding Path="DateTimeVal" Converter="{StaticResource StringToDateTime}" ConverterParameter="yyyy-MM-dd"
-                 UpdateSourceTrigger="PropertyChanged"/>
-      </DatePicker.SelectedDate>
-    </cc:DatePicker>
+      <TabItem x:Name="TabControls" Style="{StaticResource commonTabItemStyle}">
+        <TabItem.Header>
+          <TextBlock>Controls</TextBlock>
+        </TabItem.Header>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
 
-    <!-- Uses the Folder dialog type -->
-    <TextBlock Grid.Row="2" Grid.Column="0" Text="Folder Path:" Style="{StaticResource appTextBlockStyle}"/>
-    <cc:FilePathTextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" x:Name="tbFolder"
-                        DialogType="Folder" IsErrorShown="True" IsReadOnly="False"
-                        Style="{StaticResource appLayoutStyle}" HorizontalAlignment="Stretch">
-      <Binding Path="DataFolder" UpdateSourceTrigger="PropertyChanged"/>
-    </cc:FilePathTextBox>
+          <!-- ComboBox -->
+          <TextBlock Grid.Row="0" Text="ComboBox:" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
+                       ItemsSource="{Binding TestTypes}">
+            <ComboBox.SelectedItem>
+              <Binding Path="ComboBoxVal" UpdateSourceTrigger="PropertyChanged"/>
+            </ComboBox.SelectedItem>
+          </cc:ComboBox>
 
-    <!-- Uses the File dialog type -->
-    <TextBlock Grid.Row="3" Grid.Column="0" Text="File Path:" Style="{StaticResource appTextBlockStyle}"/>
-    <cc:FilePathTextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Style="{StaticResource appLayoutStyle}"
-                        DialogType="File" IsErrorShown="True" IsReadOnly="False" HorizontalAlignment="Stretch">
-      <Binding Path="DataFile" UpdateSourceTrigger="PropertyChanged"/>
-      <cc:FilePathTextBox.RelativePath>
-        <Binding ElementName="tbFolder" Path="Text"/>
-      </cc:FilePathTextBox.RelativePath>
-    </cc:FilePathTextBox>
+          <!-- DatePicker -->
+          <TextBlock Grid.Row="1" Text="DatePicker:" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:DatePicker Grid.Row="1" Grid.Column="1" MinWidth="250" MaxWidth="380"
+                         IsErrorShown="True" SelectedDateChanged="SelectedDateChanged"
+                         Style="{StaticResource appLayoutStyle}">
+            <DatePicker.SelectedDate>
+              <Binding Path="DateTimeVal" Converter="{StaticResource StringToDateTime}"
+                       ConverterParameter="yyyy-MM-dd" UpdateSourceTrigger="PropertyChanged"/>
+            </DatePicker.SelectedDate>
+          </cc:DatePicker>
 
-    <!-- Uses the ComboEditRule -->
-    <TextBlock Grid.Row="4" Grid.Column="0" Padding="0,2,0,0" Text="ComboBox Edit:"
-               Style="{StaticResource appTextBlockStyle}"/>
-    <cc:ComboBox Grid.Row="4" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
-                 ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="True">
-      <ComboBox.SelectedItem>
-        <Binding Path="TestType" UpdateSourceTrigger="PropertyChanged">
-          <Binding.ValidationRules>
-            <cr:ComboEditRule Property="TestType" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
-          </Binding.ValidationRules>
-        </Binding>
-      </ComboBox.SelectedItem>
-    </cc:ComboBox>
+          <!-- FilePathTextBox - Folder dialog type -->
+          <TextBlock Grid.Row="2" Text="FilePath (Folder)" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:FilePathTextBox Grid.Row="2" Grid.Column="1" x:Name="tbFolder" HorizontalAlignment="Stretch"
+                              DialogType="Folder" IsErrorShown="True" IsReadOnly="False"
+                              Style="{StaticResource appLayoutStyle}">
+            <Binding Path="DataFolder" UpdateSourceTrigger="PropertyChanged"/>
+          </cc:FilePathTextBox>
 
-    <!-- Uses the RequiredRule -->
-    <TextBlock Grid.Row="4" Grid.Column="2" Padding="10,2,0,0" Text="Required Rule:"
-               Style="{StaticResource appTextBlockStyle}"/>
-    <TextBox Grid.Row="4" Grid.Column="3" Style="{StaticResource appTextBoxStyle}" Width="160">
-      <Binding Path="StringVal" UpdateSourceTrigger="PropertyChanged">
-        <Binding.ValidationRules>
-          <cr:RequiredRule Property="StringVal" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
-        </Binding.ValidationRules>
-      </Binding>
-    </TextBox>
+          <!-- FilePathTextBox - File dialog type -->
+          <TextBlock Grid.Row="3" Text="FilePathTextBox:" Style="{StaticResource appTextBlockStyle}"/>
+          <cc:FilePathTextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
+                              DialogType="File" IsErrorShown="True" IsReadOnly="False"
+                              Style="{StaticResource appLayoutStyle}">
+            <Binding Path="DataFile" UpdateSourceTrigger="PropertyChanged"/>
+            <cc:FilePathTextBox.RelativePath>
+              <Binding ElementName="tbFolder" Path="Text"/>
+            </cc:FilePathTextBox.RelativePath>
+          </cc:FilePathTextBox>
 
-    <!-- Uses the IntegerToString converter -->
-    <TextBlock Grid.Row="5" Grid.Column="0" Text="Integer to String:" Style="{StaticResource appTextBlockStyle}"/>
-    <cc:NumericSpinner Grid.Row="5" Grid.Column="1" Width="120" Style="{StaticResource appLayoutStyle}"
-                       MinValue="0" MaxValue="140" IsErrorShown="True">
-      <Binding Path="IntegerVal" Converter="{StaticResource IntegerToString}"
-                     UpdateSourceTrigger="PropertyChanged">
-      </Binding>
-    </cc:NumericSpinner>
+          <!-- NumericSpinner -->
+          <TextBlock Grid.Row="4" Text="NumericSpinner:" Style="{StaticResource appTextBlockStyle}"/>
+          <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+            <cc:NumericSpinner MinWidth="70" MaxWidth="380"
+                               Step="1" Decimals="0" MinValue="9" MaxValue="19" IsErrorShown="True"
+                               Style="{StaticResource appLayoutStyle}" TextChanged="FontSize_Changed">
+              <Binding Path="FontSize" UpdateSourceTrigger="PropertyChanged"
+                       Converter="{StaticResource DoubleToString}" ConverterParameter="0"/>
+            </cc:NumericSpinner>
+            <TextBlock Text=" (Font size)" VerticalAlignment="Center" FontStyle="Italic"/>
+          </StackPanel>
+        </Grid>
+      </TabItem>
 
-    <!-- Uses the DecimalToString converter -->
-    <TextBlock Grid.Row="5" Grid.Column="2" Padding="10,0,0,0" Text="Decimal to String:"
-               Style="{StaticResource appTextBlockStyle}"/>
-    <cc:NumericSpinner Grid.Row="5" Grid.Column="3" Width="120" Style="{StaticResource appLayoutStyle}"
-                       Step="1" Decimals="4" IsErrorShown="True">
-      <Binding Path="DecimalVal" UpdateSourceTrigger="PropertyChanged"
+      <TabItem x:Name="TabConverters" Style="{StaticResource commonTabItemStyle}">
+        <TabItem.Header>
+          <TextBlock>Converters</TextBlock>
+        </TabItem.Header>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <!-- DecimalToString converter -->
+          <TextBlock Grid.Row="0" Text="DecimalToString:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="0" Grid.Column="3" MinWidth="120" MaxWidth="300" TextAlignment="Right"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="DecimalVal" UpdateSourceTrigger="PropertyChanged"
                Converter="{StaticResource DecimalToString}" ConverterParameter="4"/>
-    </cc:NumericSpinner>
+          </TextBox>
 
-    <!-- Uses the DateOnlyRule, DateOnlyToString converter -->
-    <TextBlock Grid.Row="6" Grid.Column="0" Padding="10,2,0,0" Text="DateOnly Rule:"
+          <!-- DoubleToString converter -->
+          <TextBlock Grid.Row="1" Text="DoubleToString:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="1" Grid.Column="3" MinWidth="120" MaxWidth="300" TextAlignment="Right"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="DoubleVal" UpdateSourceTrigger="PropertyChanged"
+               Converter="{StaticResource DoubleToString}" ConverterParameter="10"/>
+          </TextBox>
+
+          <!-- IntegerToString converter -->
+          <TextBlock Grid.Row="2" Text="IntegerToString:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300" TextAlignment="Right"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="IntegerVal" Converter="{StaticResource IntegerToString}"
+                     UpdateSourceTrigger="PropertyChanged">
+            </Binding>
+          </TextBox>
+
+          <!-- StringToDateTime converter -->
+          <TextBlock Grid.Row="3" Text="StringToDateTime:" Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="3" Grid.Column="1" MinWidth="120" MaxWidth="300" TextAlignment="Right"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="StringVal" Converter="{StaticResource StringToDateTime}"
+                     UpdateSourceTrigger="PropertyChanged">
+            </Binding>
+          </TextBox>
+
+        </Grid>
+      </TabItem>
+
+      <TabItem x:Name="TabRules" Style="{StaticResource commonTabItemStyle}">
+        <TabItem.Header>
+          <TextBlock>Rules</TextBlock>
+        </TabItem.Header>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+          </Grid.ColumnDefinitions>
+
+          <!-- ComboEditRule -->
+          <TextBlock Grid.Row="0" Text="ComboEdit:"
+                     Style="{StaticResource appTextBlockStyle}"/>
+          <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
+                 ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="True">
+            <ComboBox.SelectedItem>
+              <Binding Path="ComboEditRule" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                  <cr:ComboEditRule Property="ComboEditRule" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+              </Binding>
+            </ComboBox.SelectedItem>
+          </cc:ComboBox>
+
+          <!-- DateOnlyRule -->
+          <TextBlock Grid.Row="1" Text="DateOnly:"
                Style="{StaticResource appTextBlockStyle}"/>
-    <TextBox Grid.Row="6" Grid.Column="1" Width="150" Style="{StaticResource appTextBoxStyle}">
-      <Binding Path="DateOnlyVal" UpdateSourceTrigger="Default" Converter="{StaticResource DateOnlyToString}">
-        <Binding.ValidationRules>
-          <cr:DateOnlyRule Property="DateOnlyVal" Rqd="False"
-                           ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
-        </Binding.ValidationRules>
-      </Binding>
-    </TextBox>
+          <TextBox Grid.Row="1" Grid.Column="1" Width="150" Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="DateOnlyVal" UpdateSourceTrigger="LostFocus"
+                     Converter="{StaticResource DateOnlyToString}">
+              <Binding.ValidationRules>
+                <cr:DateOnlyRule Property="DateOnlyVal" Rqd="False"
+                                 ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+              </Binding.ValidationRules>
+            </Binding>
+          </TextBox>
 
-    <!-- Uses the IntegerRule, IntegerToString converter -->
-    <TextBlock Grid.Row="6" Grid.Column="2" Padding="10,2,0,0" Text="Integer Rule:"
+          <!-- IntegerRule -->
+          <TextBlock Grid.Row="2" Text="Integer:"
                Style="{StaticResource appTextBlockStyle}"/>
-    <TextBox Grid.Row="6" Grid.Column="3" Width="80" Style="{StaticResource appTextBoxStyle}">
-      <Binding Path="IntegerRule" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource IntegerToString}">
-        <Binding.ValidationRules>
-          <cr:IntegerRule Property="IntegerRule" Rqd="False"
-                          ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
-        </Binding.ValidationRules>
-      </Binding>
-    </TextBox>
+          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="IntegerRule" UpdateSourceTrigger="PropertyChanged"
+                     Converter="{StaticResource IntegerToString}">
+              <Binding.ValidationRules>
+                <cr:IntegerRule Property="IntegerRule" Rqd="False"
+                                ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+              </Binding.ValidationRules>
+            </Binding>
+          </TextBox>
 
-    <!-- Uses the RelayCommand -->
-    <StackPanel Grid.Row="7" Grid.ColumnSpan="8" Margin="20" Orientation="Horizontal" HorizontalAlignment="Center">
+          <!-- RequiredRule -->
+          <TextBlock Grid.Row="3" Text="Required:"
+                     Style="{StaticResource appTextBlockStyle}"/>
+          <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="StringRule" UpdateSourceTrigger="PropertyChanged">
+              <Binding.ValidationRules>
+                <cr:RequiredRule Property="StringVal" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+              </Binding.ValidationRules>
+            </Binding>
+          </TextBox>
+
+        </Grid>
+      </TabItem>
+
+    </TabControl>
+
+    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="20" Orientation="Horizontal" HorizontalAlignment="Center">
       <Button x:Name="btApply" Content="Save" IsDefault="True" Style="{StaticResource commonButtonStyle}"
               Command="{Binding CommitEditCommand}"/>
       <Button x:Name="btCancel" Content="Undo" IsCancel="True" Style="{StaticResource commonButtonStyle}"
@@ -145,5 +228,4 @@
     </StackPanel>
 
   </Grid>
-
 </UserControl>

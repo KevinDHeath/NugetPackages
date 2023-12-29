@@ -14,6 +14,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
+
     <DockPanel Grid.Row="0">
       <TextBlock DockPanel.Dock="Left" Text="User List" Style="{StaticResource appViewTitleStyle}"/>
       <Button DockPanel.Dock="Right" Content="New" Style="{StaticResource commonButtonStyle}"
@@ -52,6 +53,6 @@
         </GridView>
       </ListView.View>
     </cc:SortableListView>
-  </Grid>
 
+  </Grid>
 </UserControl>

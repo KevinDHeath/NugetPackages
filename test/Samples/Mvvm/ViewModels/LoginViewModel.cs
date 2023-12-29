@@ -18,7 +18,8 @@ public class LoginViewModel : ViewModelBase
 		get => _name;
 		set
 		{
-			if( ValidateProperty( value ) ) { _name = value; }
+			ValidateProperty( value );
+			_name = value;
 			OnPropertyChanged();
 		}
 	}
@@ -29,7 +30,8 @@ public class LoginViewModel : ViewModelBase
 		get => _password;
 		set
 		{
-			if( ValidateProperty( value ) ) { _password = value; }
+			ValidateProperty( value );
+			_password = value;
 			OnPropertyChanged();
 		}
 	}

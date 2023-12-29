@@ -6,9 +6,9 @@ internal class TestNuGet
 {
 	internal static readonly int sTest = 1; // 0=Application, 1=Configuration, 2=Logging
 
-	internal static bool RunTest()
+	internal static bool RunTest( int runType )
 	{
-		return sTest switch
+		return runType switch
 		{
 			0 => TestApplication(),
 			1 => TestConfiguration(),

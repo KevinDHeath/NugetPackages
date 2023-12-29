@@ -10,7 +10,7 @@ public class NavigationBarViewModel : ViewModelBase
 
 	public ICommand NavigateHomeCommand { get; }
 
-	public ICommand NavigateAccountCommand { get; }
+	public ICommand NavigateCommandTestCommand { get; }
 
 	public ICommand NavigateLoginCommand { get; }
 
@@ -47,7 +47,7 @@ public class NavigationBarViewModel : ViewModelBase
 	{
 		_accountStore = accountStore;
 		NavigateHomeCommand = new NavigateCommand( homeNavigationService );
-		NavigateAccountCommand = new NavigateCommand( accountNavigationService );
+		NavigateCommandTestCommand = new NavigateCommand( accountNavigationService );
 		NavigateLoginCommand = new NavigateCommand( loginNavigationService );
 		NavigateUserListCommand = new NavigateCommand( userListNavigationService );
 		NavigateUnitTestCommand = new NavigateCommand( userUnitTestNavigationService );

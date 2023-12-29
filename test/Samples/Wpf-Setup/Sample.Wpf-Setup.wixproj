@@ -1,0 +1,30 @@
+<Project Sdk="WixToolset.Sdk/4.0.3">
+  <PropertyGroup>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestDir>../Wpf/bin/Debug/net8.0-windows</HarvestDir>
+    <SuppressIces>ICE69</SuppressIces>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(HarvestDir)">
+      <ComponentGroupName>HarvestComponents</ComponentGroupName>
+      <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+      <SuppressRegistry>true</SuppressRegistry>
+      <Transforms>filter.xsl</Transforms>
+    </HarvestDirectory>
+    <BindPath Include="$(HarvestDir)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="filter.xsl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" />
+    <PackageReference Include="WixToolset.UI.wixext" />
+  </ItemGroup>
+</Project>

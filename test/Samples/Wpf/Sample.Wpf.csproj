@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\icon-orange.ico" />
+    <Resource Include="..\icon-orange.ico" Link="Assets\icon-orange.ico" />
   </ItemGroup>
 
   <ItemGroup>

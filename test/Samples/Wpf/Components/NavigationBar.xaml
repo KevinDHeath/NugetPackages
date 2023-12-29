@@ -48,13 +48,13 @@
     </Grid.ColumnDefinitions>
     <TextBlock Grid.Column="0" FontSize="14" Foreground="White" Text="Navigation Bar"/>
     <Button Grid.Column="1" Margin="10 0 0 0" Content="Home" Command="{Binding NavigateHomeCommand}"/>
-    <Button Grid.Column="2" Margin="10 0 0 0" Content="User List" Command="{Binding NavigateUserListCommand}"/>
-    <Button Grid.Column="3" Margin="10 0 0 0" Content="Unit Tests" Command="{Binding NavigateUnitTestCommand}"/>
+    <Button Grid.Column="2" Margin="10 0 0 0" Content="Unit Tests" Command="{Binding NavigateUnitTestCommand}"/>
+    <Button Grid.Column="3" Margin="10 0 0 0" Content="User List" Command="{Binding NavigateUserListCommand}"/>
     <Button Grid.Column="4" Margin="10 0 0 0" Content="Login" Command="{Binding NavigateLoginCommand}"
             Visibility="{Binding IsLoggedOut, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-    <Button Grid.Column="5" Margin="10 0 0 0" Content="Custom Test" Command="{Binding NavigateCustomTestCommand}"
+    <Button Grid.Column="5" Margin="10 0 0 0" Content="Command Test" Command="{Binding NavigateCommandTestCommand}"
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-    <Button Grid.Column="6" Margin="10 0 0 0" Content="Command Test" Command="{Binding NavigateAccountCommand}"
+    <Button Grid.Column="6" Margin="10 0 0 0" Content="Custom Test" Command="{Binding NavigateCustomTestCommand}"
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>
     <Button Grid.Column="7" Margin="10 0 0 0" Content="Logout" Command="{Binding LogoutCommand}"
             Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}"/>

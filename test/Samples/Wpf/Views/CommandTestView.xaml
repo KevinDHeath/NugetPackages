@@ -15,21 +15,28 @@
     </Grid.RowDefinitions>
 
     <TextBlock Grid.Row="0" Text="Commands Test" Style="{StaticResource appViewTitleStyle}"/>
-    <StackPanel Grid.Row="1" Margin="20,10">
+
+    <StackPanel Grid.Row="1" Margin="20,10" Width="200">
       <Button Content="Add" Command="{Binding AddCommand}" Style="{StaticResource commonButtonStyle}"/>
       <Button Content="Remove" Command="{Binding RemoveCommand}" Style="{StaticResource commonButtonStyle}"/>
       <StackPanel Orientation="Horizontal">
         <TextBlock Text="Subscribers:" Margin="0 10"/>
         <TextBlock Text="{Binding TestCommand.SubscriberCount}" Margin="3 10"/>
       </StackPanel>
+
       <ContentControl Content="{Binding Item}">
         <ContentControl.Resources>
           <DataTemplate DataType="{x:Type model:Account}">
-            <Button Content="Test" Style="{StaticResource commonButtonStyle}"
-                    Command="{Binding DataContext.TestCommand, ElementName=root}"/>
+            <StackPanel Orientation="Vertical">
+              <Button Content="Test" Style="{StaticResource commonButtonStyle}"
+                      Command="{Binding DataContext.TestCommand, ElementName=root}"/>
+              <TextBlock TextWrapping="Wrap" Text="Press 'Test' to view the logged-in user's email."/>
+              <TextBlock Text="{Binding Email}"/>
+            </StackPanel>
           </DataTemplate>
         </ContentControl.Resources>
       </ContentControl>
     </StackPanel>
+
   </Grid>
 </UserControl>

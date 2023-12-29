@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyTitle>Testing for Helper packages.</AssemblyTitle>
+    <ApplicationIcon>..\icon-orange.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-     <None Update="appSettings.json">
-       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-     </None>
+    <None Update="appSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

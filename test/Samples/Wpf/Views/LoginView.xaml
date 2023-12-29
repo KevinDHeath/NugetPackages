@@ -18,10 +18,11 @@
     </Grid.ColumnDefinitions>
 
     <TextBlock Grid.Row="0" Text="Login" HorizontalAlignment="Center" Style="{StaticResource appViewTitleStyle}"/>
+
     <StackPanel Grid.Row="1" Margin="0 20 0 0">
       <StackPanel>
         <TextBlock Text="User name:" Style="{StaticResource appLabelStyle}"/>
-        <TextBox HorizontalAlignment="Stretch" Style="{StaticResource appTextBoxStyle}">
+        <TextBox HorizontalAlignment="Stretch" Style="{StaticResource appTextBoxStyle}" Loaded="FirstFocus">
           <Binding Path="Name" UpdateSourceTrigger="PropertyChanged"/>
         </TextBox>
       </StackPanel>
@@ -40,6 +41,6 @@
             Style="{StaticResource commonButtonStyle}" Command="{Binding CancelCommand}"/>
 
     </StackPanel>
-  </Grid>
 
+  </Grid>
 </UserControl>

@@ -28,6 +28,7 @@ public partial class App : Application
 		var fontSize = _sp.GetRequiredService<SettingsStore>().Settings.FontSize;
 		ChangeFontSize( fontSize );
 
+		// Set the initial View
 		LayoutNavigationService<HomeViewModel> service =
 			_sp.GetRequiredService<LayoutNavigationService<HomeViewModel>>();
 		service.Navigate();

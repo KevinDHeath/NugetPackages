@@ -17,14 +17,21 @@ class Program
 		// To automatically close the console when debugging stops, in Visual Studio
 		// enable Tools->Options->Debugging->Automatically close the console when debugging stops.
 
-		if( 0 == TestNuGet.sTest && args.Length == 0 ) { args = ["/?"]; }
+		int runType = TestNuGet.sTest;
+		if( args.Length > 0 && int.TryParse( args[0], out int outInt ) ) { runType = outInt; }
+
+		if( 0 == runType && args.Length == 0 ) { args = ["/?"]; }
 		var result = false;
 		try
 		{
 			sApp.StartApp( args );
-			if( 0 == TestNuGet.sTest ) System.Console.WriteLine();
-			sLogger.Info( sApp.FormatTitleLine( " Starting " + sApp.Title + " " ) );
-			result = RunTest();
+			if( 0 == runType ) System.Console.WriteLine();
+			if( sApp.HelpRequest ) { result = true; }
+			else
+			{
+				sLogger.Info( sApp.FormatTitleLine( " Starting " + sApp.Title + " " ) );
+				result = RunTest( runType );
+			}
 		}
 		catch( Exception ex )
 		{
@@ -40,9 +47,9 @@ class Program
 
 	#endregion
 
-	private static bool RunTest()
+	private static bool RunTest( int runType )
 	{
-		if( TestNuGet.RunTest() ) { return true; }
+		if( TestNuGet.RunTest( runType ) ) { return true; }
 
 		return false;
 	}

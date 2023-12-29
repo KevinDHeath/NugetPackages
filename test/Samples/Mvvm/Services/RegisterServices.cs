@@ -20,8 +20,6 @@ public class RegisterServices
 		_ = rtn.AddSingleton( s => new UserStore( s.GetRequiredService<SettingsStore>() ) );
 		_ = rtn.AddSingleton<NavigationStore>();
 		_ = rtn.AddSingleton<ModalNavigationStore>();
-		_ = rtn.AddSingleton<CloseModalNavigationService>();
-		_ = rtn.AddSingleton( CreateHomeNavigationService );
 
 		// Register ViewModels
 		_ = rtn.AddSingleton<MainViewModel>();
@@ -35,6 +33,10 @@ public class RegisterServices
 		_ = rtn.AddTransient( s => new UserViewModel( s.GetRequiredService<UserStore>(),
 				s.GetRequiredService<CloseModalNavigationService>() ) );
 		_ = rtn.AddTransient( CreateNavigationBarViewModel );
+
+		// Register Services
+		_ = rtn.AddSingleton<CloseModalNavigationService>();
+		_ = rtn.AddSingleton( CreateHomeNavigationService );
 
 		return rtn;
 	}
@@ -75,8 +77,7 @@ public class RegisterServices
 			() => sp.GetRequiredService<NavigationBarViewModel>() );
 	}
 
-	private static LayoutNavigationService<CommandTestViewModel> CreateCommandTestNavigationService(
-		IServiceProvider sp )
+	private static LayoutNavigationService<CommandTestViewModel> CreateCommandTestNavigationService( IServiceProvider sp )
 	{
 		return new LayoutNavigationService<CommandTestViewModel>( sp.GetRequiredService<NavigationStore>(),
 			() => sp.GetRequiredService<CommandTestViewModel>(),
@@ -97,8 +98,7 @@ public class RegisterServices
 			() => sp.GetRequiredService<NavigationBarViewModel>() );
 	}
 
-	private static LayoutNavigationService<UnitTestViewModel> CreateUnitTestNavigationService(
-		IServiceProvider sp )
+	private static LayoutNavigationService<UnitTestViewModel> CreateUnitTestNavigationService( IServiceProvider sp )
 	{
 		return new LayoutNavigationService<UnitTestViewModel>( sp.GetRequiredService<NavigationStore>(),
 			() => sp.GetRequiredService<UnitTestViewModel>(),

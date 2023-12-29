@@ -1,0 +1,22 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="MainComponents" Directory="INSTALLFOLDER">
+
+      <Component>
+        <File Id="SampleWpf" Source="Sample.Wpf.exe"/>
+        <Shortcut Name="!(bind.Property.ProductName)" Directory="ProgramMenuFolder" Advertise="yes"
+                  WorkingDirectory="INSTALLFOLDER" Icon="icon.ico"/>
+      </Component>
+
+      <Component Directory="DesktopFolder" Id="DesktopShortcut">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\WPF Testing" Name="DesktopShortcutEnabled" Value="1"/>
+        <Shortcut Name="!(bind.Property.ProductName)" Directory="DesktopFolder" Target="[#SampleWpf]"
+                  WorkingDirectory="INSTALLFOLDER" Icon="icon.ico"/>
+      </Component>
+
+      <ComponentGroupRef Id="HarvestComponents"/>
+
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>

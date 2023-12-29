@@ -7,19 +7,9 @@ public class CommandTestViewModel : ViewModelBase
 {
 	#region Properties
 
-	public string Name
-	{
-		get => ( _testItem.User is not null ) ? _testItem.User : string.Empty;
-		set
-		{
-			if( value.Equals( _testItem.User ) ) return;
-			_testItem.User = value;
-		}
-	}
-
 	public Account? Item
 	{
-		get { return _item; }
+		get => _item;
 		set
 		{
 			_item = value;
@@ -39,22 +29,18 @@ public class CommandTestViewModel : ViewModelBase
 
 	#endregion
 
-	public CommandTestViewModel( AccountStore accountStore )
-	{
-		_testItem = accountStore.CurrentAccount is not null ?
-			accountStore.CurrentAccount : new Account { User = "Not logged in!" };
-
-		AddCommand = new DelegateCommand( _ => Item = new Account() );
-		RemoveCommand = new DelegateCommand( _ => Item = null );
-		//TestCommand = new DelegateCommand( delegate { } );
-		TestCommand = new DelegateCommand( _ => Item = _testItem );
-	}
-
-	#region Constructor and Variables
-
 	private readonly Account _testItem;
 	private Account? _item;
 
+	public CommandTestViewModel( AccountStore accountStore )
+	{
+		_testItem = accountStore.CurrentAccount is not null ?
+			accountStore.CurrentAccount : new Account { User = "Not logged in!", Email = "Unknown" };
 
-	#endregion
+		AddCommand = new DelegateCommand( _ => Item = new Account() );
+		RemoveCommand = new DelegateCommand( _ => Item = null );
+
+		//TestCommand = new DelegateCommand( delegate { } );
+		TestCommand = new DelegateCommand( _ => Item = _testItem );
+	}
 }

@@ -43,6 +43,6 @@
       <ContentControl Content="{Binding CurrentModalViewModel}" Validation.ErrorTemplate="{x:Null}"/>
     </cc:ModalDialog>
     <ContentControl Content="{Binding CurrentViewModel}"/>
-  </Grid>
 
+  </Grid>
 </Window>

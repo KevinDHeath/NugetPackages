@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Sample.Controls;
 
@@ -22,14 +10,14 @@ namespace Sample.Controls;
 /// Add this XmlNamespace attribute to the root element of the markup file where it is 
 /// to be used:
 ///
-///     xmlns:MyNamespace="clr-namespace:Controls"
+///     xmlns:cc="clr-namespace:Controls"
 ///
 ///
 /// Step 1b) Using this custom control in a XAML file that exists in a different project.
 /// Add this XmlNamespace attribute to the root element of the markup file where it is 
 /// to be used:
 ///
-///     xmlns:MyNamespace="clr-namespace:Controls;assembly=Controls"
+///     xmlns:cc="clr-namespace:Controls;assembly=Controls"
 ///
 /// You will also need to add a project reference from the project where the XAML file lives
 /// to this project and Rebuild to avoid compilation errors:
@@ -41,14 +29,15 @@ namespace Sample.Controls;
 /// Step 2)
 /// Go ahead and use your control in the XAML file.
 ///
-///     <MyNamespace:CustomControl1/>
+///     <cc:CustomControl1/>
 ///
 /// </summary>
 public class CustomControl1 : TextBox
 {
 	static CustomControl1()
 	{
-		DefaultStyleKeyProperty.OverrideMetadata( typeof( CustomControl1 ), new FrameworkPropertyMetadata( typeof( CustomControl1 ) ) );
+		DefaultStyleKeyProperty.OverrideMetadata( typeof( CustomControl1 ), 
+			new FrameworkPropertyMetadata( typeof( CustomControl1 ) ) );
 	}
 
 	private Button? _btnOpen = null;
@@ -58,7 +47,6 @@ public class CustomControl1 : TextBox
 		base.OnApplyTemplate();
 
 		_btnOpen = GetTemplateChild( "btnOpen" ) as Button;
-
 		if( _btnOpen is not null )
 		{
 			_btnOpen.Click += BtnOpen_OnClick;
