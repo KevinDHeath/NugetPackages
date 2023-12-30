@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyTitle>Common classes and interfaces.</AssemblyTitle>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
+    <Version>2.0.3</Version>
+    <PackageReleaseNotes>* Fixed issue in ModelDataError.
+* Breaking Change! AddressFactoryBase namespace changed from Common.Data.Classes to Common.Core.Classes</PackageReleaseNotes>
+    <PackageId>kdheath.Common.Core</PackageId>
+    <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- IMPORTANT: add common resources as links -->
+    <None Include="$(SolutionDir)docs\Common.Core\README.md" Pack="true" PackagePath="" Link="Properties\README.md" />
+  </ItemGroup>
+
+</Project>
