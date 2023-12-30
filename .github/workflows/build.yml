@@ -87,7 +87,7 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Create packages folder
-        run: mkdir packages
+        run: mkdir local
 
       - name: Restore dependencies
         run: dotnet restore
@@ -98,7 +98,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: NuGet-Packages
-          path: packages
+          name: Local-Packages
+          path: local
           retention-days: 5
 
