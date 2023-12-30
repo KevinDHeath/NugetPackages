@@ -2,6 +2,7 @@
 
 - v2.0.3
   - Fixed issue in `ModelDataError` when an unsupported annotation is applied to a property. For example `StringLength` for a `DataTime` property will result in an `InvalidCastException` exception.
+  - **Breaking Change:** `AddressFactoryBase` namespace changed from `Common.Data.Classes` to `Common.Core.Classes`
 - v2.0.2
   - Added the `AddressFactoryBase` class to support multi-country address data.
 - v2.0.1

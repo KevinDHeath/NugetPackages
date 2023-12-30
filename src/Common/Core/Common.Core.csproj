@@ -11,7 +11,8 @@
   <!-- Package Information -->
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
     <Version>2.0.3</Version>
-    <PackageReleaseNotes>* Fixed issue in ModelDataError.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Fixed issue in ModelDataError.
+* Breaking Change! AddressFactoryBase namespace changed from Common.Data.Classes to Common.Core.Classes</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

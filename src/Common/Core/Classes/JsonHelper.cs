@@ -46,7 +46,7 @@ public static class JsonHelper
 	/// <param name="json">Json string.</param>
 	/// <param name="options">Optional Json serializer options</param>
 	/// <returns>An empty list is returned if the string could not be converted.</returns>
-	public static List<T> DeserializeList<T>( ref string json, JsonSerializerOptions options ) where T : class
+	public static List<T> DeserializeList<T>( ref string? json, JsonSerializerOptions? options = null )
 	{
 		if( json is not null )
 		{
@@ -95,9 +95,9 @@ public static class JsonHelper
 	/// <returns>An empty collection is returned if the settings section could not be found.</returns>
 	/// <remarks>If no section is provided it is assumed that the settings are in the root.
 	/// <br/>Otherwise it is assumed that the section name is case-sensitive and only 2 levels deep.</remarks>
-	public static Dictionary<string, string> ReadAppSettings( ref string fileName, ref string section )
+	public static Dictionary<string, string?> ReadAppSettings( ref string fileName, ref string? section )
 	{
-		Dictionary<string, string> rtn = [];
+		Dictionary<string, string?> rtn = [];
 		if( string.IsNullOrEmpty( Path.GetDirectoryName( fileName ) ) )
 		{
 			fileName = ReflectionHelper.AddCurrentPath( fileName );
