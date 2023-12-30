@@ -1,0 +1,16 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="WPF Sample" Manufacturer="kdheath" Version="1.0.0.0" UpgradeCode="8b506dbc-633a-4594-9ba1-0c7f9e19ff3c">
+
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)"/>
+    <MediaTemplate EmbedCab="true"/>
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="MainComponents"/>
+    </Feature>
+
+    <!-- Set properties for add/remove programs -->
+    <Icon Id="icon.ico" SourceFile="..\icon-orange.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico"/>
+
+  </Package>
+</Wix>

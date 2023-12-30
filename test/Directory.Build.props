@@ -1,0 +1,15 @@
+<Project>
+
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Kevin Heath</Authors>
+    <Product>NuGet Package Testing</Product>
+    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Sample.Wpf.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:self="clr-namespace:Sample.Wpf"
+             xmlns:vm="clr-namespace:Sample.Mvvm.ViewModels;assembly=Sample.Mvvm"
+             d:DataContext="{d:DesignInstance Type=vm:HomeViewModel}"
+             d:DesignHeight="450" d:DesignWidth="600" d:Background="Beige">
+  <UserControl.Resources>
+    <x:Array x:Key="UserArray" Type="{x:Type self:ComponentsList}">
+      <self:ComponentsList Component="ComboBox"      View="Unit Tests" Type="Control"/>
+      <self:ComponentsList Component="ComboEditRule" View="Unit Tests" Type="Rule"/>
+      <self:ComponentsList Component="DateOnlyRule"  View="Unit Tests" Type="Rule"/>
+      <self:ComponentsList Component="DateOnlyToDateTime" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="DateOnlyToString" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="DataPicker" View="Unit Tests" Type="Control"/>
+      <self:ComponentsList Component="DecimalToString" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="DelegateCommand" View="Command Test" Type="Command"/>
+      <self:ComponentsList Component="DoubleToString" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="FilePathTextBox" View="Unit Tests" Type="Control"/>
+      <self:ComponentsList Component="HamburgerMenu" View="This App" Type="Control"/>
+      <self:ComponentsList Component="IntegerRule" View="Unit Tests" Type="Rule"/>
+      <self:ComponentsList Component="IntegerToString" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="ModalDialog" View="Login" Type="Control"/>
+      <self:ComponentsList Component="NumericSpinner" View="Unit Tests" Type="Control"/>
+      <self:ComponentsList Component="RelayCommand" View="Unit Tests" Type="Command"/>
+      <self:ComponentsList Component="RequiredRule" View="Unit Tests" Type="Rule"/>
+      <self:ComponentsList Component="SearchTextBox" View="User List" Type="Control"/>
+      <self:ComponentsList Component="SortableListView" View="User List" Type="Control"/>
+      <self:ComponentsList Component="StringToDateTime" View="Unit Tests" Type="Converter"/>
+    </x:Array>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+     </Grid.RowDefinitions>
+
+    <TextBlock Grid.Row="0" Text="Home" Style="{StaticResource appViewTitleStyle}"/>
+
+    <FlowDocumentScrollViewer Grid.Row="1" IsToolBarVisible="False" Width="Auto" VerticalAlignment="Top">
+      <FlowDocument FontFamily="{DynamicResource Common.FontFamily}" FontSize="{DynamicResource Common.FontSize}"
+                    TextAlignment="Left" MaxPageHeight="400">
+        <Paragraph>This application can be used to test the individual components in the kdheath WPF NuGet
+          packages.</Paragraph>
+        <Paragraph>
+          <Floater HorizontalAlignment="Left" Width="400" Margin="0">
+            <BlockUIContainer>
+              <ListView BorderThickness="1" Height="310" Width="380" HorizontalAlignment="Left"
+                        ItemsSource="{StaticResource UserArray}">
+                <ListView.View>
+                  <GridView>
+                    <GridViewColumn Header="Component" DisplayMemberBinding="{Binding Component}" Width="150"
+                                    HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}"/>
+                    <GridViewColumn Header="Menu Item" DisplayMemberBinding="{Binding View}" Width="110"
+                                    HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}" />
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="80"
+                                    HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}" />
+                  </GridView>
+                </ListView.View>
+              </ListView>
+            </BlockUIContainer>
+          </Floater>
+          <LineBreak/>To access the Command Test and Custom Test options you must login.
+          <LineBreak/>
+          <LineBreak/>In the Login dialog enter the first few characters of a user name and any value as
+          the password. The additional options will be shown in the navigation menu.
+          <LineBreak/>
+          <LineBreak/>If you then Logout the options will be removed.
+        </Paragraph>
+       </FlowDocument>
+    </FlowDocumentScrollViewer>
+
+  </Grid>
+</UserControl>

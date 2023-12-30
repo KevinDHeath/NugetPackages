@@ -1,0 +1,22 @@
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <!-- Sample.AspNet -->
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+
+    <!-- Sample.Mvvm -->
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="kdheath.Common.Core" Version="2.0.2" />
+    <PackageVersion Include="WixToolset.Heat" Version="4.0.3" />
+    <PackageVersion Include="WixToolset.UI.wixext" Version="4.0.3" />
+
+  </ItemGroup>
+
+</Project>

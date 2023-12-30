@@ -1,10 +1,18 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace Common.Wpf.Commands;
 
 /// <summary>Command to relay functionality to other objects by invoking delegates.</summary>
-public class DelegateCommand : ICommand
+public class DelegateCommand : INotifyPropertyChanged, ICommand
 {
+	/// <summary>Gets the count of subscribers.</summary>
+	public int SubscriberCount { get { return _canExecuteChanged?.GetInvocationList().Length ?? 0; } }
+
+#pragma warning disable IDE1006 // Naming Styles
+	private event EventHandler? _canExecuteChanged;
+#pragma warning restore IDE1006
 	private readonly Action<object?> _execute;
 	private readonly Predicate<object?>? _canExecute;
 
@@ -19,9 +27,21 @@ public class DelegateCommand : ICommand
 	{
 		_execute = execute;
 		_canExecute = canExecute;
+	}
 
-		// https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.commandmanager.requerysuggested
-		CommandManager.RequerySuggested += CommandManager_RequerySuggested;
+	#endregion
+
+	#region INotifyPropertyChanged Implementation
+
+	/// <summary>Method that will handle the PropertyChanged event raised when a property is
+	/// changed on a component.</summary>
+	public event PropertyChangedEventHandler? PropertyChanged;
+
+	/// <summary>Invoked whenever the effective value has been updated.</summary>
+	/// <param name="property">Name of the property that has changed.</param>
+	public void OnPropertyChanged( [CallerMemberName] string property = "" )
+	{
+		PropertyChanged?.Invoke( this, new PropertyChangedEventArgs( property ) );
 	}
 
 	#endregion
@@ -32,15 +52,24 @@ public class DelegateCommand : ICommand
 	public bool CanExecute( object? parameter ) => _canExecute == null || _canExecute( parameter );
 
 	/// <inheritdoc/>
-	public event EventHandler? CanExecuteChanged;
+	public event EventHandler? CanExecuteChanged
+	{
+		add
+		{
+			CommandManager.RequerySuggested += value;
+			_canExecuteChanged += value;
+			OnPropertyChanged( nameof( SubscriberCount ) );
+		}
+		remove
+		{
+			CommandManager.RequerySuggested -= value;
+			_canExecuteChanged -= value;
+			OnPropertyChanged( nameof( SubscriberCount ) );
+		}
+	}
 
 	/// <inheritdoc/>
-	public void Execute( object? parameter ) => _execute( parameter );
+	public void Execute( object? parameter ) => _execute.Invoke( parameter );
 
 	#endregion
-
-	/// <summary>Occurs when conditions that might change the ability of a command to execute.</summary>
-	public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke( this, EventArgs.Empty );
-
-	private void CommandManager_RequerySuggested( object? sender, EventArgs e ) => RaiseCanExecuteChanged();
 }

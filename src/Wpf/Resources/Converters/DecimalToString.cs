@@ -8,7 +8,7 @@ namespace Common.Wpf.Converters;
 [ValueConversion( typeof( decimal ), typeof( string ) )]
 public partial class DecimalToString : ConverterBase
 {
-	private static readonly Regex s_doubleRegex = DecRegEx();
+	internal static readonly Regex s_doubleRegex = DecRegEx();
 
 	[GeneratedRegex( "[^0-9.-]+", RegexOptions.Compiled )]
 	private static partial Regex DecRegEx();
