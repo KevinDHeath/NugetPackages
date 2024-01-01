@@ -56,6 +56,9 @@ EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "Sample.Wpf-Setup", "test\Samples\Wpf-Setup\Sample.Wpf-Setup.wixproj", "{60C84D55-C913-4954-BD0E-661A73D56041}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E81DA897-FAEF-4403-8B32-B8D77C417D54}"
+	ProjectSection(SolutionItems) = preProject
+		src\Common\README.md = src\Common\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core", "src\Common\Core\Common.Core.csproj", "{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}"
 EndProject
