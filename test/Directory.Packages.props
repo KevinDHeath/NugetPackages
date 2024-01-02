@@ -14,8 +14,6 @@
     <!-- Sample.Mvvm -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageVersion Include="kdheath.Common.Core" Version="2.0.2" />
-    <PackageVersion Include="WixToolset.Heat" Version="4.0.3" />
-    <PackageVersion Include="WixToolset.UI.wixext" Version="4.0.3" />
 
   </ItemGroup>
 

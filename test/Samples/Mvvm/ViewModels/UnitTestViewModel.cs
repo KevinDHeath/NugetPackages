@@ -25,6 +25,17 @@ public class UnitTestViewModel : ViewModelBase
 		}
 	}
 
+	public bool? BooleanVal
+	{
+		get => _settings.BooleanVal;
+		set
+		{
+			if( value.Equals( _settings.BooleanVal ) ) { return; }
+			_settings.BooleanVal = value;
+			OnPropertyChanged();
+		}
+	}
+
 	public TestTypes ComboBoxVal
 	{
 		get => _settings.ComboBoxVal;
@@ -199,6 +210,7 @@ public class UnitTestViewModel : ViewModelBase
 	public void DoCancelEdit()
 	{
 		FontSize = _orgValue.FontSize;
+		BooleanVal = _orgValue.BooleanVal;
 		ComboBoxVal = _orgValue.ComboBoxVal;
 		ComboEditRule = _orgValue.ComboEditRule;
 		DataFile = _orgValue.DataFile;
