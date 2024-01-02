@@ -15,11 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="kdheath.Common.Core" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Common\Core\Common.Core.csproj" />
     <ProjectReference Include="..\..\..\src\Wpf\Resources\Common.Wpf.Resources.csproj" />
   </ItemGroup>
 

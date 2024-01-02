@@ -10,6 +10,7 @@ public class Settings : ModelBase, ICloneable
 	#region Properties
 
 	private double? _fontSize;
+	private bool? _booleanVal;
 	private string? _dataFile;
 	private string? _dataFolder;
 	private decimal? _decimalVal;
@@ -29,6 +30,13 @@ public class Settings : ModelBase, ICloneable
 			if( value is not null && value.Equals( _fontSize ) ) { return; }
 			_fontSize = value;
 		}
+	}
+
+	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
+	public bool? BooleanVal
+	{
+		get => _booleanVal;
+		set => _booleanVal = value;
 	}
 
 	public TestTypes ComboBoxVal { get; set; }
@@ -133,6 +141,7 @@ public class Settings : ModelBase, ICloneable
 	public bool HasChanges( Settings source )
 	{
 		if( FontSize != source.FontSize ) { return true; }
+		if( BooleanVal != source.BooleanVal ) { return true; }
 		if( ComboBoxVal != source.ComboBoxVal ) { return true; }
 		if( ComboEditRule != source.ComboEditRule ) { return true; }
 		if( DataFile != source.DataFile ) { return true; }

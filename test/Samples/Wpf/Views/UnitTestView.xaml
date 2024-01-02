@@ -34,6 +34,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -90,6 +91,12 @@
             </cc:NumericSpinner>
             <TextBlock Text=" (Font size)" VerticalAlignment="Center" FontStyle="Italic"/>
           </StackPanel>
+
+          <!-- CheckBox Style -->
+          <TextBlock Grid.Row="5" Text="CheckBox Style:" Style="{StaticResource appTextBlockStyle}"/>
+          <CheckBox Grid.Row="5" Grid.Column="1" Style="{StaticResource commonCheckBoxStyle}"
+                    IsThreeState="True" Margin="3,8,3,3"
+                    IsChecked="{Binding BooleanVal, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
       </TabItem>
 

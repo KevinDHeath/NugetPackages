@@ -67,8 +67,8 @@
           <ControlTemplate.Triggers>
             <MultiDataTrigger>
               <MultiDataTrigger.Conditions>
-                <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
-                           Value="true"/>
+                <!--<Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}"
+                           Value="true"/>-->
                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}"
 										       Value="false"/>
                 <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Mode=Self}}"
