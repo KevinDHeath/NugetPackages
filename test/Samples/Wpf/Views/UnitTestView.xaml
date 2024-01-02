@@ -44,7 +44,7 @@
           <!-- ComboBox -->
           <TextBlock Grid.Row="0" Text="ComboBox:" Style="{StaticResource appTextBlockStyle}"/>
           <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
-                       ItemsSource="{Binding TestTypes}">
+                       ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="False" IsEnabled="True">
             <ComboBox.SelectedItem>
               <Binding Path="ComboBoxVal" UpdateSourceTrigger="PropertyChanged"/>
             </ComboBox.SelectedItem>
