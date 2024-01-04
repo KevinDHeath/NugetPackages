@@ -7,6 +7,9 @@
 
   <ItemGroup>
 
+    <!-- Transitive, referenced by NETStandard.Library -->
+    <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+
     <!-- Logging.Helper -->
     <PackageVersion Include="NLog" Version="5.2.5" />
 
