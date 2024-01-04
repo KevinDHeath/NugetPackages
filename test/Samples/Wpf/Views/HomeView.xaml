@@ -5,11 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:self="clr-namespace:Sample.Wpf"
+             xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
              xmlns:vm="clr-namespace:Sample.Mvvm.ViewModels;assembly=Sample.Mvvm"
              d:DataContext="{d:DesignInstance Type=vm:HomeViewModel}"
              d:DesignHeight="450" d:DesignWidth="600" d:Background="Beige">
   <UserControl.Resources>
-    <x:Array x:Key="UserArray" Type="{x:Type self:ComponentsList}">
+    <x:Array x:Key="ComponentArray" Type="{x:Type self:ComponentsList}">
       <self:ComponentsList Component="ComboBox"      View="Unit Tests" Type="Control"/>
       <self:ComponentsList Component="ComboEditRule" View="Unit Tests" Type="Rule"/>
       <self:ComponentsList Component="DateOnlyRule"  View="Unit Tests" Type="Rule"/>
@@ -47,9 +48,10 @@
           packages.</Paragraph>
         <Paragraph>
           <Floater HorizontalAlignment="Left" Width="400" Margin="0">
-            <BlockUIContainer>
-              <ListView BorderThickness="1" Height="310" Width="380" HorizontalAlignment="Left"
-                        ItemsSource="{StaticResource UserArray}">
+            <BlockUIContainer Loaded="Container_Loaded">
+              <cc:SortableListView x:Name="ComponentList" BorderThickness="1" Height="310" Width="380"
+                                   HorizontalAlignment="Left" ItemsSource="{StaticResource ComponentArray}"
+                                   DefaultColumn="1" GridViewColumnHeader.Click="ComponentList_ColumnHeaderClicked">
                 <ListView.View>
                   <GridView>
                     <GridViewColumn Header="Component" DisplayMemberBinding="{Binding Component}" Width="150"
@@ -60,7 +62,7 @@
                                     HeaderContainerStyle="{StaticResource commonGridColumnHeaderStyle}" />
                   </GridView>
                 </ListView.View>
-              </ListView>
+              </cc:SortableListView>
             </BlockUIContainer>
           </Floater>
           <LineBreak/>To access the Command Test and Custom Test options you must login.
