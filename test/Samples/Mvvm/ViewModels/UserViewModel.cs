@@ -17,8 +17,8 @@ public class UserViewModel : ViewModelBase
 		set
 		{
 			value = value.Trim(); // Whitespace not allowed
-			if( value.Equals( _mod.Name ) ) { return; }
-			if( ValidateProperty( value ) ) { _mod.Name = value; }
+			ValidateProperty( value );
+			_mod.Name = value;
 			OnPropertyChanged();
 		}
 	}
@@ -32,8 +32,8 @@ public class UserViewModel : ViewModelBase
 		set
 		{
 			value = value.Trim(); // Whitespace not allowed
-			if( value.Equals( _mod.Email ) ) { return; };
-			if( ValidateProperty( value ) ) { _mod.Email = value; }
+			ValidateProperty( value );
+			_mod.Email = value;
 			OnPropertyChanged();
 		}
 	}
@@ -44,9 +44,10 @@ public class UserViewModel : ViewModelBase
 		get => _mod.BirthDate;
 		set
 		{
-			if( value is not null && value.Equals( _mod.BirthDate ) ) return;
-			if( ValidateProperty( value ) ) { _mod.BirthDate = value; ; }
+			ValidateProperty( value );
+			_mod.BirthDate = value;
 			OnPropertyChanged();
+			CalculateAge( value );
 			OnPropertyChanged( nameof( Age ) );
 		}
 	}
@@ -57,7 +58,6 @@ public class UserViewModel : ViewModelBase
 		get { return _mod.Tester; }
 		set
 		{
-			if( value.Equals( _mod.Tester ) ) { return; }
 			_mod.Tester = value;
 			OnPropertyChanged();
 		}
@@ -83,8 +83,10 @@ public class UserViewModel : ViewModelBase
 
 	private void DoRollback( object? _ )
 	{
-		_mod.ApplyChanges( _org );
-		OnPropertyChanged( string.Empty );
+		Name = _org.Name;
+		Email = _org.Email;
+		BirthDate = _org.BirthDate;
+		Tester = _org.Tester;
 	}
 
 	private bool CanCommit( object? _ ) => !HasErrors & IsDirty();
