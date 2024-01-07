@@ -1,7 +1,7 @@
 # Common.Core Change Log
 
 - v2.1.0
-  - See [v2.1.0 Notes](.\v2.1.0-Notes.md) for information on migrating any databases containing data for any of the models mentioned below.
+  - See [v2.1.0 Notes](v2.1.0-Notes.md) for information on migrating any databases containing data for any of the models mentioned below.
   - **Breaking Change:** `Common.Models.Address`, `Common.Interfaces.IPerson` and `Common.Models.Person` have changed to support multi-country address data. 
   - `Common.Classes.AddressFactory` is removed, use `Common.Classes.AddressFactoryBase` _(which was added in v2.0.2)_ instead.
   - `Common.Models.USState` is removed, use `Common.Models.Province` instead.
