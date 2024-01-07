@@ -28,9 +28,9 @@ public interface IPerson
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
 	string? GovernmentNumber { get; set; }
 
-	/// <summary>Gets or sets the Identification State.</summary>
+	/// <summary>Gets or sets the Identification Province.</summary>
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
-	string? IdState { get; set; }
+	string? IdProvince { get; set; }
 
 	/// <summary>Gets or sets the Identification Number.</summary>
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]

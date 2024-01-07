@@ -13,8 +13,8 @@ public class Address : ModelBase, IEquatable<object>
 
 	private string? _street;
 	private string? _city;
-	private string? _state;
-	private string? _zipCode;
+	private string? _province;
+	private string? _postcode;
 	private string? _country;
 
 	#endregion
@@ -55,18 +55,18 @@ public class Address : ModelBase, IEquatable<object>
 		}
 	}
 
-	/// <summary>Gets or sets the State.</summary>
+	/// <summary>Gets or sets the Province.</summary>
 	[MaxLength( 50 )]
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
-	public string? State
+	public string? Province
 	{
-		get => _state;
+		get => _province;
 		set
 		{
-			if( value != _state )
+			if( value != _province )
 			{
-				_state = SetNullString( value );
-				OnPropertyChanged( nameof( State ) );
+				_province = SetNullString( value );
+				OnPropertyChanged( nameof( Province ) );
 				OnPropertyChanged( nameof( FullAddress ) );
 			}
 		}
@@ -75,15 +75,15 @@ public class Address : ModelBase, IEquatable<object>
 	/// <summary>Gets or sets the Postal Code.</summary>
 	[MaxLength( 20 )]
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
-	public string? ZipCode
+	public string? Postcode
 	{
-		get => _zipCode;
+		get => _postcode;
 		set
 		{
-			if( value != _zipCode )
+			if( value != _postcode )
 			{
-				_zipCode = SetNullString( value );
-				OnPropertyChanged( nameof( ZipCode ) );
+				_postcode = SetNullString( value );
+				OnPropertyChanged( nameof( Postcode ) );
 			}
 		}
 	}
@@ -111,7 +111,7 @@ public class Address : ModelBase, IEquatable<object>
 	{
 		get
 		{
-			var values = new[] { Street?.Trim(), City?.Trim(), State?.Trim() };
+			var values = new[] { Street?.Trim(), City?.Trim(), Province?.Trim() };
 			return string.Join( ", ", values.Where( s => !string.IsNullOrEmpty( s ) ) );
 		}
 	}
@@ -135,8 +135,8 @@ public class Address : ModelBase, IEquatable<object>
 
 		if( other.Street != Street ) { return false; }
 		if( other.City != City ) { return false; }
-		if( other.State != State ) { return false; }
-		if( other.ZipCode != ZipCode ) { return false; }
+		if( other.Province != Province ) { return false; }
+		if( other.Postcode != Postcode ) { return false; }
 		if( other.Country != Country ) { return false; }
 
 		return true;
@@ -148,8 +148,8 @@ public class Address : ModelBase, IEquatable<object>
 		{
 			Street = row.Field<string?>( prefix + nameof( Street ) ),
 			City = row.Field<string?>( prefix + nameof( City ) ),
-			State = row.Field<string?>( prefix + nameof( State ) ),
-			ZipCode = row.Field<string?>( prefix + nameof( ZipCode ) ),
+			Province = row.Field<string?>( prefix + nameof( Province ) ),
+			Postcode = row.Field<string?>( prefix + nameof( Postcode ) ),
 			Country = row.Field<string?>( prefix + nameof( Country ) )
 		};
 	}
@@ -163,11 +163,11 @@ public class Address : ModelBase, IEquatable<object>
 		if( ModelData.Changed( prefix + nameof( City ), sql, obj.City, mod.City, cur.City ) )
 		{ mod.City = cur.City; }
 
-		if( ModelData.Changed( prefix + nameof( State ), sql, obj.State, mod.State, cur.State ) )
-		{ mod.State = cur.State; }
+		if( ModelData.Changed( prefix + nameof( Province ), sql, obj.Province, mod.Province, cur.Province ) )
+		{ mod.Province = cur.Province; }
 
-		if( ModelData.Changed( prefix + nameof( ZipCode ), sql, obj.ZipCode, mod.ZipCode, cur.ZipCode ) )
-		{ mod.ZipCode = cur.ZipCode; }
+		if( ModelData.Changed( prefix + nameof( Postcode ), sql, obj.Postcode, mod.Postcode, cur.Postcode ) )
+		{ mod.Postcode = cur.Postcode; }
 
 		if( ModelData.Changed( prefix + nameof( Country ), sql, obj.Country, mod.Country, cur.Country ) )
 		{ mod.Country = cur.Country; }
