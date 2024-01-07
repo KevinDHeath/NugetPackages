@@ -10,16 +10,30 @@ public abstract class AddressFactoryBase
 
 	private static IList<Province>? _provinces;
 	private static IList<CountryCode>? _countries;
+	private static CountryCode? _default;
 
 	#region Public Properties
 
 	/// <summary>Indicates whether to use Alpha-2 ISO-3166 Country codes.<br/>
 	/// The default is to use Alpha-3 codes.</summary>
-	/// <remarks>If required, true must be passed in the constructor of an AddressData object.</remarks>
+	/// <remarks>If required, true must be passed in the constructor of a derived class.</remarks>
 	public static bool UseAlpha2 { get; protected set; }
 
-	/// <summary>Gets the default ISO-3166 Country code.</summary>
-	public static string DefaultCountry => UseAlpha2 ? "US" : "USA";
+	/// <summary>The default ISO-3166 Country code.<br/>
+	/// The default is USA.</summary>
+	/// <remarks>If required, a different Country code must be passed in the constructor of a derived class.<br/>
+	/// If using Alpha2 then the alpha-2 code must be used, otherwise use the alpha-3 code.</remarks>
+	public static string DefaultCountry
+	{
+		get { return _default is null ? UseAlpha2 ? "US" : "USA" : _default.Code; }
+		protected set
+		{
+			if( _countries is not null && !string.IsNullOrWhiteSpace( value ) )
+			{
+				_default = _countries.FirstOrDefault( x => x.Code.Equals( value, sCompare ) );
+			}
+		}
+	}
 
 	/// <summary>Gets a sorted list of ISO-3166 Country data.</summary>
 	public static IList<CountryCode> Countries

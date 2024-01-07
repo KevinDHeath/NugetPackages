@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Text.Json;
@@ -23,7 +23,7 @@ public class Person : ModelEdit, IPerson
 	private string? _lastName;
 	private Address _address;
 	private string? _governmentNumber;
-	private string? _idState;
+	private string? _idProvince;
 	private string? _idNumber;
 	private string? _homePhone;
 	private DateOnly? _birthDate;
@@ -130,15 +130,15 @@ public class Person : ModelEdit, IPerson
 	/// <inheritdoc/>
 	[MaxLength( 50 )]
 	[JsonIgnore( Condition = JsonIgnoreCondition.WhenWritingNull )]
-	public string? IdState
+	public string? IdProvince
 	{
-		get => _idState;
+		get => _idProvince;
 		set
 		{
-			if( value != _idState )
+			if( value != _idProvince )
 			{
-				_idState = SetNullString( value );
-				OnPropertyChanged( nameof( IdState ) );
+				_idProvince = SetNullString( value );
+				OnPropertyChanged( nameof( IdProvince ) );
 			}
 		}
 	}
@@ -235,7 +235,7 @@ public class Person : ModelEdit, IPerson
 		if( other.MiddleName != MiddleName ) { return false; }
 		if( other.LastName != LastName ) { return false; }
 		if( other.GovernmentNumber != GovernmentNumber ) { return false; }
-		if( other.IdState != IdState ) { return false; }
+		if( other.IdProvince != IdProvince ) { return false; }
 		if( other.IdNumber != IdNumber ) { return false; }
 		if( other.HomePhone != HomePhone ) { return false; }
 		if( other.BirthDate != BirthDate ) { return false; }
@@ -279,7 +279,7 @@ public class Person : ModelEdit, IPerson
 			LastName = row.Field<string>( nameof( LastName ) )!,
 			Address = Address.BuildAddress( row, addPrefix ),
 			GovernmentNumber = row.Field<string?>( nameof( GovernmentNumber ) ),
-			IdState = row.Field<string?>( nameof( IdState ) ),
+			IdProvince = row.Field<string?>( nameof( IdProvince ) ),
 			IdNumber = row.Field<string?>( nameof( IdNumber ) ),
 			HomePhone = row.Field<string?>( nameof( HomePhone ) ),
 			BirthDate = Generic.DateTimeToDateOnly( row[nameof( BirthDate )] ),
@@ -313,8 +313,8 @@ public class Person : ModelEdit, IPerson
 		if( Changed( nameof( GovernmentNumber ), sql, obj.GovernmentNumber, mod.GovernmentNumber, cur.GovernmentNumber ) )
 		{ mod.GovernmentNumber = cur.GovernmentNumber; }
 
-		if( Changed( nameof( IdState ), sql, obj.IdState, mod.IdState, cur.IdState ) )
-		{ mod.IdState = cur.IdState; }
+		if( Changed( nameof( IdProvince ), sql, obj.IdProvince, mod.IdProvince, cur.IdProvince ) )
+		{ mod.IdProvince = cur.IdProvince; }
 
 		if( Changed( nameof( IdNumber ), sql, obj.IdNumber, mod.IdNumber, cur.IdNumber ) )
 		{ mod.IdNumber = cur.IdNumber; }

@@ -1,5 +1,12 @@
 # Common.Core Change Log
 
+- v2.1.0
+  - See [v2.1.0 Notes](v2.1.0-Notes.md) for information on migrating any databases containing data for any of the models mentioned below.
+  - **Breaking Change:** `Common.Models.Address`, `Common.Interfaces.IPerson` and `Common.Models.Person` have changed to support multi-country address data. 
+  - `Common.Classes.AddressFactory` is removed, use `Common.Classes.AddressFactoryBase` _(which was added in v2.0.2)_ instead.
+  - `Common.Models.USState` is removed, use `Common.Models.Province` instead.
+  - `Common.Models.USZipCode` is removed, use `Common.Models.Postcode` instead.
+  - `AddressDataBase` changed to support setting of the `DefaultCountry` property in derived class constructor.
 - v2.0.3
   - Fixed issue in `ModelDataError` when an unsupported annotation is applied to a property. For example `StringLength` for a `DataTime` property will result in an `InvalidCastException` exception.
   - **Breaking Change:** `AddressFactoryBase` namespace changed from `Common.Data.Classes` to `Common.Core.Classes`
