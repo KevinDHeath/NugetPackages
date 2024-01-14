@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using Sample.Mvvm.Commands;
+using Sample.Mvvm.Models;
 
 namespace Sample.Mvvm.ViewModels;
 
@@ -23,6 +24,8 @@ public class NavigationBarViewModel : ViewModelBase
 	public ICommand LogoutCommand { get; }
 
 	public bool IsLoggedIn => _accountStore.IsLoggedIn;
+
+	public Account? CurrentAccount => _accountStore.CurrentAccount;
 
 	public bool IsLoggedOut => !_accountStore.IsLoggedIn;
 

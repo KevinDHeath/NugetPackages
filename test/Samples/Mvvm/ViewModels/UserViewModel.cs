@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using Common.Wpf.Commands;
 using Sample.Mvvm.Models;
+using Sample.Mvvm.Validations;
 
 namespace Sample.Mvvm.ViewModels;
 
@@ -11,6 +12,7 @@ public class UserViewModel : ViewModelBase
 
 	[Required( ErrorMessage = "{0} cannot be empty." )]
 	[StringLength( 50, ErrorMessage = "{0} cannot be longer than {1}." )]
+	[UserRule()]
 	public string Name
 	{
 		get => _mod.Name;
@@ -24,8 +26,9 @@ public class UserViewModel : ViewModelBase
 	}
 
 	[Required( ErrorMessage = "{0} cannot be empty." )]
-	//[EmailAddress]
+	[RegularExpression( cEmailRegex, ErrorMessage = "Format not valid." )]
 	[StringLength( 50, ErrorMessage = "{0} cannot be longer than {1}." )]
+	[UserEmail]
 	public string Email
 	{
 		get => _mod.Email;
@@ -47,8 +50,10 @@ public class UserViewModel : ViewModelBase
 			ValidateProperty( value );
 			_mod.BirthDate = value;
 			OnPropertyChanged();
-			CalculateAge( value );
+
+			// Force UserRule validation
 			OnPropertyChanged( nameof( Age ) );
+			Name = _mod.Name;
 		}
 	}
 	public int? Age => CalculateAge( BirthDate );
@@ -101,11 +106,11 @@ public class UserViewModel : ViewModelBase
 	#endregion
 
 	private static IEnumerable<TestTypes> _testTypes = Enumerations.GetTestTypes();
-	private readonly UserStore _userStore;
+	internal readonly UserStore _userStore;
 	private readonly INavigationService _closeNavigationService;
 	private readonly User _org;
 	private readonly User _mod;
-	private readonly bool _isNew;
+	internal readonly bool _isNew;
 
 	public UserViewModel( UserStore userStore, INavigationService closeNavigationService )
 	{

@@ -18,4 +18,7 @@ public class UserStore( SettingsStore settingsStore )
 		_users.Add( user );
 		UserAdded?.Invoke( user );
 	}
+
+	internal bool DoesEmailExist( string email ) => Users.Any( x => x.Email is not null &&
+		x.Email.Equals( email, StringComparison.OrdinalIgnoreCase ) );
 }

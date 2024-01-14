@@ -12,7 +12,7 @@ public class LoginViewModel : ViewModelBase
 	private string _name = string.Empty;
 	private string _password = string.Empty;
 
-	[Required()]
+	[Required]
 	public string Name
 	{
 		get => _name;
@@ -55,8 +55,9 @@ public class LoginViewModel : ViewModelBase
 			Name = user.Name;
 			email = user.Email;
 		}
+		else { user = new User(); }
 
-		Account account = new() { User = Name, Email = email };
+		Account account = new() { User = Name, Email = email, Login = user };
 		_accountStore.CurrentAccount = account;
 		_navigation.Navigate();
 	}

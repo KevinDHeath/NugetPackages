@@ -15,4 +15,13 @@ public partial class LoginView : UserControl
 	{
 		if( sender is TextBox tb ) { _ = Keyboard.Focus( tb ); }
 	}
+
+	private void PasswordChanged( object sender, RoutedEventArgs e )
+	{
+		if( sender is PasswordBox pb && DataContext is LoginViewModel vm )
+		{
+			//vm.Password = pb.SecurePassword;
+			vm.Password = new System.Net.NetworkCredential( string.Empty, pb.SecurePassword ).Password;
+		}
+	}
 }

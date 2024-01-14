@@ -26,12 +26,19 @@
       <Grid Grid.Row="0">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="Auto"/>
-          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <CheckBox Grid.Column="0" x:Name="cbToggleMenu" Style="{StaticResource controlToggleMenuStyle}"
                   IsChecked="{Binding IsMenuOpen}"/>
-        <TextBlock Grid.Column="1" Text="Navigation Menu" FontStyle="Italic" FontSize="16"
-                   Margin="16 0 0 0" Foreground="{DynamicResource navForeground}"/>
+        <DockPanel Grid.Column="1" Margin="20 0 0 0">
+          <TextBlock DockPanel.Dock="Left" Text="Navigation Menu" FontStyle="Italic" FontSize="16"
+                     Foreground="White"/>
+          <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right"
+                      Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock Text="{Binding CurrentAccount.Login.Tester}" Foreground="White" Margin="5 0"/>
+            <TextBlock Text="Testing" Foreground="White"/>
+          </StackPanel>
+        </DockPanel>
       </Grid>
     </Border>
     <Grid Grid.Row="1">

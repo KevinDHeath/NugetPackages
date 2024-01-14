@@ -8,7 +8,6 @@
              xmlns:cr="clr-namespace:Common.Wpf.Rules;assembly=Common.Wpf.Resources"
              xmlns:cv="clr-namespace:Common.Wpf.Converters;assembly=Common.Wpf.Resources"
              xmlns:vm="clr-namespace:Sample.Mvvm.ViewModels;assembly=Sample.Mvvm"
-             xmlns:rules="clr-namespace:Sample.Wpf.Rules"
              d:DataContext="{d:DesignInstance Type=vm:UserViewModel}"
              d:DesignHeight="400" d:DesignWidth="450" d:Background="Beige">
   <Grid Width="400" Margin="15" MinHeight="350">
@@ -29,20 +28,6 @@
         <Grid x:Name="MainGrid" Margin="10" Validation.ErrorTemplate="{x:Null}">
           <Grid.Resources>
              <cv:DateOnlyToDateTime x:Key="DateOnlyToDateTime"/>
-            <!--<rules:UserRuleConverter x:Key="UserRuleConverter"/>
-            <Style x:Key="appTextBlockWithErrorsStyle" TargetType="{x:Type TextBlock}"
-              BasedOn="{StaticResource commonErrorTextBlockStyle}">
-              <Style.Triggers>
-                <DataTrigger Binding="{Binding ElementName=MainGrid, Path=(Validation.Errors)[0].RuleInError,
-                  Converter={StaticResource UserRuleConverter}}" Value="True">
-                  <Setter Property="Visibility" Value="Visible"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding ElementName=MainGrid, Path=(Validation.Errors)[0].RuleInError,
-                  Converter={StaticResource UserRuleConverter}}" Value="False">
-                  <Setter Property="Visibility" Value="Hidden"/>
-                </DataTrigger>
-              </Style.Triggers>
-            </Style>-->
           </Grid.Resources>
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -56,13 +41,6 @@
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
           </Grid.ColumnDefinitions>
-          <Grid.BindingGroup>
-            <BindingGroup NotifyOnValidationError="True">
-              <!--<BindingGroup.ValidationRules>
-                <rules:UserRule ValidationStep="ConvertedProposedValue"/>
-              </BindingGroup.ValidationRules>-->
-            </BindingGroup>
-          </Grid.BindingGroup>
 
           <TextBlock Grid.Row="0" Text="Name:" Style="{StaticResource appTextBlockStyle}"/>
           <TextBox Grid.Column="1" HorizontalAlignment="Stretch" Loaded="FirstFocus"
