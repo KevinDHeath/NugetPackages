@@ -12,10 +12,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.2</Version>
-    <PackageReleaseNotes>* Added SubscriberCount property to the DelegateCommand class.
-* Added DateOnlyToString converter.
-* Added DoubleToString converter.</PackageReleaseNotes>
+    <Version>2.0.3</Version>
+    <PackageReleaseNotes>* Added common styles for the PasswordBox control.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>

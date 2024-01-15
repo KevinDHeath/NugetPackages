@@ -108,6 +108,7 @@
     <ContentLayout Include="Wpf.Themes\ContentLayout.content" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Wpf.Themes\Themes\PasswordBox.aml" />
     <None Include="Wpf.Themes\Introduction.aml" />
     <None Include="Wpf.Themes\Themes\Button.aml" />
     <None Include="Wpf.Themes\Themes\CheckBox.aml" />

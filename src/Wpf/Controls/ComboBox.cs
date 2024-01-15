@@ -14,7 +14,7 @@ public class ComboBox : System.Windows.Controls.ComboBox
 	#region Properties
 
 	/// <summary>Identifies the IsErrorShown dependency property.</summary>
-	public readonly static DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
 		name: nameof( IsErrorShown ), propertyType: typeof( bool ), ownerType: typeof( ComboBox ),
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 

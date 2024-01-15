@@ -88,6 +88,10 @@
             <entry><para></para></entry>
           </row>
           <row>
+            <entry><para>Themes/PasswordBox.xaml</para></entry>
+            <entry><para>Themes/Common.xaml</para></entry>
+          </row>
+          <row>
             <entry><para>Themes/TabControl.xaml</para></entry>
             <entry><para>Themes/Button.xaml</para></entry>
           </row>

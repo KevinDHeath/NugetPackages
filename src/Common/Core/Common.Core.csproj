@@ -10,12 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
-    <Version>2.1.0</Version>
-    <PackageReleaseNotes>* Breaking Changes: Common.Models.Address, Common.Interfaces.IPerson and Common.Models.Person changed to support multi-country address data.
-* Common.Classes.AddressFactory is removed, use Common.Classes.AddressFactoryBase (which was added in v2.0.2) instead.
-* Common.Models.USState is removed, use Common.Models.Province instead.
-* Common.Models.USZipCode is removed, use Common.Models.Postcode instead.
-* AddressDataBase changed to support setting of the DefaultCountry property in derived class constructor.</PackageReleaseNotes>
+    <Version>2.1.1</Version>
+    <PackageReleaseNotes>* Added a Find method to the IDataFactory interface.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

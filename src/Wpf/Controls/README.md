@@ -2,6 +2,8 @@
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.3
+  - Added the ability to bind the `PasswordBox.Password` property using a `PasswordBoxExtend` extension class.
 - v2.0.2
   - Fixed FilePathTextBox not using correct relative path when filename is empty.
   - ComboBox to have white background whether or not it is editable.

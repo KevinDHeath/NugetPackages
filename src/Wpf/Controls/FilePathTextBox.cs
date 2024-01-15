@@ -58,7 +58,7 @@ public class FilePathTextBox : TextBox
 	}
 
 	/// <summary>Identifies the IsErrorShown dependency property.</summary>
-	public readonly static DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
 		name: nameof( IsErrorShown ), propertyType: typeof( bool ), ownerType: typeof( FilePathTextBox ),
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 

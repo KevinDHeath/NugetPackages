@@ -89,7 +89,7 @@ public static class JsonHelper
 		return json;
 	}
 
-	/// <summary>Returns a collection of settings from a Json applicate settings file.</summary>
+	/// <summary>Returns a collection of settings from a Json application settings file.</summary>
 	/// <param name="fileName">Json application settings file name.</param>
 	/// <param name="section">Application settings section to return <i>(case-sensitive)</i>.</param>
 	/// <returns>An empty collection is returned if the settings section could not be found.</returns>

@@ -16,12 +16,17 @@ public interface IDataFactory<T> where T : class
 
 	#region Methods
 
+	/// <summary>Finds an object in the collection.</summary>
+	/// <param name="Id">Object Id.</param>
+	/// <returns>Null is returned if the object is not found.</returns>
+	T? Find( int Id );
+
 	/// <summary>Gets a collection of objects.</summary>
 	/// <param name="max">Maximum number of objects to return. Zero indicates all available.</param>
 	/// <returns>A collection of objects.</returns>
 	IList<T> Get( int max = 0 );
 
-	/// <summary>Gets a collection of objects from an external file.</summary>
+	/// <summary>Gets a collection of objects from a disk file.</summary>
 	/// <param name="path">Location of the data file.</param>
 	/// <param name="file">Name of the file. If not supplied the default name is used.</param>
 	/// <param name="max">Maximum number of objects to return. Zero indicates all available.</param>

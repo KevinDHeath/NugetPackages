@@ -24,6 +24,7 @@ xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
 - `HamburgerMenu` - Control to implement the Hamburger style menu _(or Navigation Drawer)_ control.
 - `ModalDialog` - Control to implement a modal dialog for displaying User Controls.
 - `NumericSpinner` - Control to implement the ability to increase and decrease numeric values using a 'NumericUpDown' style control.
+- `PasswordBoxExtend` - Extends the `PasswordBox` control to allow binding of the `Password` property.
 - `SearchTextBox` - Control to implement the entry of search criteria in a TextBox.
 - `SortableListView` - Control to implement the sorting and filtering of a ListView.
 

@@ -30,7 +30,7 @@ public class NumericSpinner : TextBox
 	#region Properties
 
 	/// <summary>Identifies the Step dependency property.</summary>
-	public readonly static DependencyProperty StepProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
 		name: nameof( Step ), propertyType: typeof( decimal ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: new decimal( 1 ) ) );
 
@@ -46,7 +46,7 @@ public class NumericSpinner : TextBox
 	}
 
 	/// <summary>Identifies the Decimals dependency property.</summary>
-	public readonly static DependencyProperty DecimalsProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty DecimalsProperty = DependencyProperty.Register(
 		name: nameof( Decimals ), propertyType: typeof( int ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: 0 ) );
 
@@ -61,7 +61,7 @@ public class NumericSpinner : TextBox
 	}
 
 	/// <summary>Identifies the MinValue dependency property.</summary>
-	public readonly static DependencyProperty MinValueProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty MinValueProperty = DependencyProperty.Register(
 		name: nameof( MinValue ), propertyType: typeof( decimal ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: decimal.MinValue ) );
 
@@ -77,7 +77,7 @@ public class NumericSpinner : TextBox
 	}
 
 	/// <summary>Identifies the MaxValue dependency property.</summary>
-	public readonly static DependencyProperty MaxValueProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty MaxValueProperty = DependencyProperty.Register(
 		name: nameof( MaxValue ), propertyType: typeof( decimal ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: decimal.MaxValue ) );
 
@@ -93,7 +93,7 @@ public class NumericSpinner : TextBox
 	}
 
 	/// <summary>Identifies the IsErrorShown dependency property.</summary>
-	public readonly static DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
 		name: nameof( IsErrorShown ), propertyType: typeof( bool ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 

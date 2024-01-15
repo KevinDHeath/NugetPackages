@@ -2,6 +2,8 @@
 Provides UI resources for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.3
+  - Added styles `commonPasswordBoxStyle` and `commonPasswordBoxWithErrorsStyle` for the PasswordBox control.
 - v2.0.2
   - Added `SubscriberCount` property to the `DelegateCommand` class.
   - Added `DateOnlyToString` converter. 

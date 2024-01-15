@@ -28,7 +28,7 @@ public abstract class DataFactoryBase
 	/// <param name="path">Location of the data file.</param>
 	/// <param name="file">Name of the file.</param>
 	/// <param name="options">Json serializer options.</param>
-	/// <returns>Null is returned if the object could not be populated.</returns>
+	/// <returns>Null is returned if the factory could not be populated.</returns>
 	protected static T? DeserializeJson<T>( string path, string file, JsonSerializerOptions options ) where T : DataFactoryBase
 	{
 		var json = GetFileResource( path, file );

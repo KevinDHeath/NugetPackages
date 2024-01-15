@@ -14,7 +14,7 @@ public class DatePicker : System.Windows.Controls.DatePicker
 	#region Properties
 
 	/// <summary>Identifies the IsErrorShown dependency property.</summary>
-	public readonly static DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
+	public static readonly DependencyProperty IsErrorShownProperty = DependencyProperty.Register(
 		name: nameof( IsErrorShown ), propertyType: typeof( bool ), ownerType: typeof( DatePicker ),
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 

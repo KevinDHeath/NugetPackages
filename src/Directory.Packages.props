@@ -10,8 +10,14 @@
     <!-- Transitive, referenced by NETStandard.Library -->
     <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
 
+    <!-- Transitive, referenced by EWSoftware.Sandcastle.Core -->
+    <PackageVersion Include="System.ComponentModel.Composition" Version="8.0.0" />
+
     <!-- Logging.Helper -->
     <PackageVersion Include="NLog" Version="5.2.5" />
+
+    <!-- ResolveThirdPartyReferenceLinks -->
+    <PackageVersion Include="EWSoftware.Sandcastle.Core" Version="2022.12.30" />
 
   </ItemGroup>
 

@@ -18,11 +18,11 @@
 
   <ControlTemplate x:Key="commonButtonTemplate" TargetType="{x:Type ButtonBase}">
     <Border x:Name="bd" CornerRadius="1" BorderThickness="{TemplateBinding BorderThickness}"
-				    Background="{DynamicResource buttonBackgroundBrush}"
-				    BorderBrush="{DynamicResource buttonBorderBrush}">
+            Background="{DynamicResource buttonBackgroundBrush}"
+            BorderBrush="{DynamicResource buttonBorderBrush}">
       <ContentPresenter x:Name="cp" TextElement.Foreground="{TemplateBinding Foreground}"
-							          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-							          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
     </Border>
     <ControlTemplate.Triggers>
       <Trigger Property="IsMouseOver" Value="True">

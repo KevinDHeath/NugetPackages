@@ -3,25 +3,19 @@ using System.Text.Json.Serialization;
 
 namespace Common.Core.Classes;
 
-/// <summary>Supports converting Interface types for Json serialization by using a factory pattern.</summary>
-public class InterfaceFactory : JsonConverterFactory
+/// <summary>Initializes a new instance of the InterfaceFactory class.</summary>
+/// <param name="concrete">The concrete class type.</param>
+/// <param name="interfaceType">The interface type.</param>
+/// <remarks>Supports converting Interface types for Json serialization by using a factory pattern.</remarks>
+public class InterfaceFactory( Type concrete, Type interfaceType ) : JsonConverterFactory
 {
-	#region Properties and Constructor
+	#region Properties
 
 	/// <summary>Gets the concrete class type.</summary>
-	public Type ConcreteType { get; }
+	public Type ConcreteType { get; } = concrete;
 
 	/// <summary>Gets the interface type.</summary>
-	public Type InterfaceType { get; }
-
-	/// <summary>Initializes a new instance of the JsonConverterFactory class.</summary>
-	/// <param name="concrete">The concrete class type.</param>
-	/// <param name="interfaceType">The interface type.</param>
-	public InterfaceFactory( Type concrete, Type interfaceType )
-	{
-		ConcreteType = concrete;
-		InterfaceType = interfaceType;
-	}
+	public Type InterfaceType { get; } = interfaceType;
 
 	#endregion
 

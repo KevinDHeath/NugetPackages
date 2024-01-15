@@ -60,6 +60,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E81DA8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core", "src\Common\Core\Common.Core.csproj", "{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveThirdPartyReferenceLinks", "src\Helper\ResolveThirdPartyReferenceLinks\ResolveThirdPartyReferenceLinks.csproj", "{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,9 @@ Global
 		{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +138,7 @@ Global
 		{407C99BB-A2DD-4E4B-90F3-789D86D22E8C} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
 		{DB41A9C6-4FA4-4631-B589-DB42C06ABF14} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
 		{FDFBAFDA-5814-491E-B24C-36F9BB76DF33} = {E81DA897-FAEF-4403-8B32-B8D77C417D54}
+		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39730524-1930-4E69-985A-41B9AFE5050B}
