@@ -9,7 +9,7 @@ public static class IOHelper
 
 	/// <summary>Gets the directory information for a directory name.</summary>
 	/// <param name="directoryName">Name of the directory.</param>
-	/// <returns>Null is returned if the directory name is not valid.</returns>
+	/// <returns><see langword="null"/> is returned if the directory name is not valid.</returns>
 	public static DirectoryInfo? GetDirectoryInfo( string directoryName )
 	{
 		if( !string.IsNullOrWhiteSpace( directoryName ) && directoryName.Length > 0 )
@@ -29,7 +29,7 @@ public static class IOHelper
 	/// <summary>Checks whether a directory exists.</summary>
 	/// <param name="directoryName">Name of the file to check.</param>
 	/// <param name="throwNotFound">Throw an exception if the directory does not exist.</param>
-	/// <returns>True if the file exists, otherwise False is returned.</returns>
+	/// <returns><see langword="true"/> if the file exists, otherwise <see langword="false"/> is returned.</returns>
 	/// <exception cref="DirectoryNotFoundException">Thrown if the directory is not found and throwNotFound is True.</exception>
 	public static bool DoesDirectoryExist( string directoryName, bool throwNotFound = false )
 	{
@@ -50,7 +50,7 @@ public static class IOHelper
 
 	/// <summary>Returns the directory name for the specified path string.</summary>
 	/// <param name="path">The path of a file or directory.</param>
-	/// <returns>Directory information for path, or null if path denotes a root directory.
+	/// <returns>Directory information for path, or <see langword="null"/> if path denotes a root directory.<br/>
 	/// Returns an empty string if path does not contain directory information.</returns>
 	public static string GetDirectoryName( string path )
 	{
@@ -65,7 +65,7 @@ public static class IOHelper
 
 	/// <summary>Gets the file information for a filename.</summary>
 	/// <param name="fileName">Name of the file.</param>
-	/// <returns>Null is returned if the file name is not valid.</returns>
+	/// <returns><see langword="null"/> is returned if the file name is not valid.</returns>
 	public static FileInfo? GetFileInfo( string fileName )
 	{
 		if( string.IsNullOrWhiteSpace( fileName ) || fileName.Length <= 0 ) return null;
@@ -84,7 +84,7 @@ public static class IOHelper
 	/// <summary>Checks whether a file exists.</summary>
 	/// <param name="fileName">Name of the file to check.</param>
 	/// <param name="throwNotFound">Throw an exception if the file does not exist.</param>
-	/// <returns>True if the file exists, otherwise False is returned.</returns>
+	/// <returns><see langword="true"/> if the file exists, otherwise <see langword="false"/> is returned.</returns>
 	/// <exception cref="FileNotFoundException">Thrown if the file is not found and throwNotFound is True.</exception>
 	public static bool DoesFileExist( string fileName, bool throwNotFound = false )
 	{
@@ -106,7 +106,7 @@ public static class IOHelper
 	/// <summary>Returns the file name and extension of the specified path string.</summary>
 	/// <param name="path">The path string from which to obtain the file name and extension.</param>
 	/// <returns>The characters after the last directory character in path. If the last character of path
-	/// is a directory or volume separator character, this method returns and empty string.</returns>
+	/// is a directory or volume separator character, this method returns an empty string.</returns>
 	public static string GetFileName( string path )
 	{
 		return string.IsNullOrWhiteSpace( path ) ? string.Empty : Path.GetFileName( path );
@@ -266,7 +266,7 @@ public static class IOHelper
 		if( path.Length == 0 ) return PathType.Unknown;
 
 		// Check for relative local path
-		if( path.StartsWith( "." ) ) return PathType.Local;
+		if( path.StartsWith( '.' ) ) return PathType.Local;
 
 		// Check for absolute local path
 		if( path.Length > 1 & path.Substring( 1, 1 ) == ":" ) return PathType.Local;

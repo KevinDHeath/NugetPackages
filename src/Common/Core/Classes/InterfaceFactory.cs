@@ -24,7 +24,8 @@ public class InterfaceFactory( Type concrete, Type interfaceType ) : JsonConvert
 	/// <summary>Determines whether the converter instance can convert the specified object type.</summary>
 	/// <param name="typeToConvert">The type of the object to check whether it can be
 	/// converted by this converter instance.</param>
-	/// <returns>True if the instance can convert the specified object type otherwise False.</returns>
+	/// <returns><see langword="true"/> if the instance can convert the specified object type otherwise
+	/// <see langword="false"/>.</returns>
 	public override bool CanConvert( Type typeToConvert )
 	{
 		return typeToConvert == InterfaceType;

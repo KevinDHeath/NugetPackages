@@ -10,7 +10,7 @@ public static class StringConverter
 	/// <summary>Tries to convert the specified string to its System.Boolean equivalent.</summary>
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out bool result )
 	{
 		value = value.Trim().ToLower();
@@ -34,7 +34,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out byte result, CultureInfo? culture = null )
 	{
 		return byte.TryParse( value, NumberStyles.AllowTrailingWhite | NumberStyles.AllowLeadingWhite,
@@ -45,7 +45,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out DateOnly result, CultureInfo? culture = null )
 	{
 		return DateOnly.TryParse( value, culture, DateTimeStyles.None, out result );
@@ -55,7 +55,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out DateTime result, CultureInfo? culture = null )
 	{
 		return DateTime.TryParse( value, culture, DateTimeStyles.None, out result );
@@ -65,7 +65,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out DateTimeOffset result, CultureInfo? culture = null )
 	{
 		return DateTimeOffset.TryParse( value, culture, DateTimeStyles.None, out result );
@@ -75,7 +75,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out decimal result, CultureInfo? culture = null )
 	{
 		return decimal.TryParse( value, NumberStyles.Currency, culture, out result );
@@ -85,7 +85,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out double result, CultureInfo? culture = null )
 	{
 		result = 0;
@@ -98,7 +98,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out float result, CultureInfo? culture = null )
 	{
 		result = 0;
@@ -110,7 +110,7 @@ public static class StringConverter
 	/// <summary>Tries to convert the specified string to its System.Guid equivalent.</summary>
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out Guid result )
 	{
 		result = Guid.Empty;
@@ -123,7 +123,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out int result, CultureInfo? culture = null )
 	{
 		return int.TryParse( value, NumberStyles.Integer | NumberStyles.AllowThousands |
@@ -134,7 +134,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out long result, CultureInfo? culture = null )
 	{
 		return long.TryParse( value, NumberStyles.Integer | NumberStyles.AllowThousands |
@@ -145,7 +145,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out sbyte result, CultureInfo? culture = null )
 	{
 		return sbyte.TryParse( value, NumberStyles.None, culture, out result );
@@ -155,7 +155,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out short result, CultureInfo? culture = null )
 	{
 		return short.TryParse( value, NumberStyles.Integer | NumberStyles.AllowThousands |
@@ -166,7 +166,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out TimeOnly result, CultureInfo? culture = null )
 	{
 		return TimeOnly.TryParse( value, culture, DateTimeStyles.None, out result );
@@ -176,11 +176,11 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out TimeSpan result, CultureInfo? culture = null )
 	{
 		value = value.Trim();
-		if( value.EndsWith( "-" ) ) // Handle trailing negative sign
+		if( value.EndsWith( '-' ) ) // Handle trailing negative sign
 		{ value = string.Concat( "-", value.AsSpan( 0, value.Length - 1 ) ); }
 
 		return TimeSpan.TryParse( value, culture, out result );
@@ -190,7 +190,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out uint result, CultureInfo? culture = null )
 	{
 		return uint.TryParse( value, NumberStyles.AllowTrailingWhite | NumberStyles.AllowLeadingWhite |
@@ -201,7 +201,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out ulong result, CultureInfo? culture = null )
 	{
 		return ulong.TryParse( value, NumberStyles.AllowTrailingWhite | NumberStyles.AllowLeadingWhite |
@@ -212,7 +212,7 @@ public static class StringConverter
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <param name="culture">An object that provides culture-specific formatting information.</param>
-	/// <returns>True if value was converted successfully.</returns>
+	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out ushort result, CultureInfo? culture = null )
 	{
 		return ushort.TryParse( value, NumberStyles.AllowTrailingWhite | NumberStyles.AllowLeadingWhite |

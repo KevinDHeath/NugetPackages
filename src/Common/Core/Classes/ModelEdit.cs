@@ -11,8 +11,9 @@ public abstract class ModelEdit : ModelData, ICloneable, IEditable, IEquatable<o
 
 	/// <summary>Indicates whether the current object is equal to another object of the same type.</summary>
 	/// <param name="obj">An object to compare with this object.</param>
-	/// <returns>True if the current object is equal to the other parameter; otherwise, False.</returns>
-	public abstract new bool Equals( object? obj );
+	/// <returns><see langword="true"/> if the current object is equal to the other parameter;
+	/// otherwise, <see langword="false"/>.</returns>
+	public new abstract bool Equals( object? obj );
 
 	/// <summary>Updates the current object properties from an object of the same type.</summary>
 	/// <param name="obj">An object with the changed values.</param>

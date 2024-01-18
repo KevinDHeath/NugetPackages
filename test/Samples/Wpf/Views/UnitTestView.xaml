@@ -172,9 +172,9 @@
           <TextBlock Grid.Row="0" Text="ComboEdit:"
                      Style="{StaticResource appTextBlockStyle}"/>
           <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
-                 ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="True">
+                       ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="True">
             <ComboBox.SelectedItem>
-              <Binding Path="ComboEditRule" UpdateSourceTrigger="PropertyChanged">
+              <Binding Path="ComboEditRule" UpdateSourceTrigger="LostFocus">
                 <Binding.ValidationRules>
                   <cr:ComboEditRule Property="ComboEditRule" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
                 </Binding.ValidationRules>
@@ -185,7 +185,7 @@
           <!-- DateOnlyRule -->
           <TextBlock Grid.Row="1" Text="DateOnly:"
                Style="{StaticResource appTextBlockStyle}"/>
-          <TextBox Grid.Row="1" Grid.Column="1" Width="150" Style="{StaticResource appTextBoxStyle}">
+          <TextBox Grid.Row="1" Grid.Column="1" MinWidth="150" MaxWidth="300" Style="{StaticResource appTextBoxStyle}">
             <Binding Path="DateOnlyVal" UpdateSourceTrigger="LostFocus"
                      Converter="{StaticResource DateOnlyToString}">
               <Binding.ValidationRules>
@@ -198,9 +198,8 @@
           <!-- IntegerRule -->
           <TextBlock Grid.Row="2" Text="Integer:"
                Style="{StaticResource appTextBlockStyle}"/>
-          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300"
-                   Style="{StaticResource appTextBoxStyle}">
-            <Binding Path="IntegerRule" UpdateSourceTrigger="PropertyChanged"
+          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300" Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="IntegerRule" UpdateSourceTrigger="LostFocus"
                      Converter="{StaticResource IntegerToString}">
               <Binding.ValidationRules>
                 <cr:IntegerRule Property="IntegerRule" Rqd="False"
@@ -214,7 +213,7 @@
                      Style="{StaticResource appTextBlockStyle}"/>
           <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
                    Style="{StaticResource appTextBoxStyle}">
-            <Binding Path="StringRule" UpdateSourceTrigger="PropertyChanged">
+            <Binding Path="StringRule" UpdateSourceTrigger="LostFocus">
               <Binding.ValidationRules>
                 <cr:RequiredRule Property="StringVal" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
               </Binding.ValidationRules>

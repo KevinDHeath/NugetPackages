@@ -17,7 +17,7 @@ public abstract class DataFactoryBase
 	/// <param name="path">Location for the Json data file.</param>
 	/// <param name="file">Name of the file. If not supplied the default name is used.</param>
 	/// <param name="options">Serialization options.</param>
-	/// <returns>True if the data was serialized, otherwise false is returned.</returns>
+	/// <returns><see langword="true"/> if the data was serialized, otherwise <see langword="false"/> is returned.</returns>
 	protected static bool SerializeJson( object obj, string path, string file, JsonSerializerOptions options )
 	{
 		return JsonHelper.Serialize( obj, Path.Combine( path, file ), options );
@@ -28,7 +28,7 @@ public abstract class DataFactoryBase
 	/// <param name="path">Location of the data file.</param>
 	/// <param name="file">Name of the file.</param>
 	/// <param name="options">Json serializer options.</param>
-	/// <returns>Null is returned if the factory could not be populated.</returns>
+	/// <returns><see langword="null"/> is returned if the factory could not be populated.</returns>
 	protected static T? DeserializeJson<T>( string path, string file, JsonSerializerOptions options ) where T : DataFactoryBase
 	{
 		var json = GetFileResource( path, file );
@@ -39,7 +39,7 @@ public abstract class DataFactoryBase
 	/// <summary>Returns the Json from a disk file.</summary>
 	/// <param name="path">Location of the file.</param>
 	/// <param name="file">Name of the file.</param>
-	/// <returns>Null is returned if the resource could not be loaded.</returns>
+	/// <returns><see langword="null"/> is returned if the resource could not be loaded.</returns>
 	protected static string? GetFileResource( string path, string file )
 	{
 		try

@@ -155,7 +155,7 @@ namespace Application.Helper
 		#region Public Methods
 
 		/// <summary>Start the console application.</summary>
-		/// <returns>True if the application has already been started.</returns>
+		/// <returns><see langword="true"/> if the application has already been started.</returns>
 		public bool StartApp()
 		{
 			// Check whether the application has already been started
@@ -203,7 +203,7 @@ namespace Application.Helper
 		}
 
 		/// <summary>Stops the application and sets the exit code.</summary>
-		/// <param name="result">Execution result, false sets the exit code to 1.</param>
+		/// <param name="result">Execution result, <see langword="false"/> sets the exit code to 1.</param>
 		public void StopApp( bool result = true )
 		{
 			// Check whether the application has already been stopped

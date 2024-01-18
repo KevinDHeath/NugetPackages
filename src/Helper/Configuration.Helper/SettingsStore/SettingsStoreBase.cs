@@ -35,14 +35,14 @@ public abstract class SettingsStoreBase : ISettingsStore
 	/// <inheritdoc />
 	public bool AddSetting( string settingKey, string settingValue )
 	{
-		var section = Sections.ContainsKey( cAppSettings ) ? Sections[cAppSettings] : null;
+		SettingsSection? section = Sections.TryGetValue( cAppSettings, out SettingsSection? value ) ? value : null;
 
 		// Add the setting value to the AppSettings section
 		return section != null && section.AddSetting( settingKey, settingValue );
 	}
 
 	/// <inheritdoc />
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	/// <exception cref="ArgumentException">Thrown if the parameter is empty.</exception>
 	public ISettingsSection GetSection( string sectionName )
 	{
@@ -59,9 +59,9 @@ public abstract class SettingsStoreBase : ISettingsStore
 		}
 
 		// Return the section if it exists
-		if( Sections.ContainsKey( sectionName ) )
+		if( Sections.TryGetValue( sectionName, out SettingsSection? value ) )
 		{
-			return Sections[sectionName];
+			return value;
 		}
 
 		// Return a new section if not found
@@ -158,7 +158,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 	private void AddSetting( ref string sectionName, string settingKey, string settingVal )
 	{
 		// Try getting existing section
-		var section = Sections.ContainsKey( sectionName ) ? Sections[sectionName] : null;
+		var section = Sections.TryGetValue( sectionName, out SettingsSection? value ) ? value : null;
 
 		if( null == section )
 		{
@@ -177,7 +177,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 
 	/// <summary>Initializes the Setting Store object.</summary>
 	/// <param name="config">String containing the configuration file contents.</param>
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	/// <exception cref="ArgumentException">Thrown if the parameter is empty.</exception>
 	/// <exception cref="JsonException">The JSON text to parse does not represent a valid single JSON value.</exception>
 	protected void LoadFromStream( ref string config )
@@ -196,7 +196,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 			throw new ArgumentException( cMethod, nameof( config ) );
 		}
 
-		if( ConfigFileHelper.cJsonExtension == fileExtension.ToLower() )
+		if( ConfigFileHelper.cJsonExtension.Equals( fileExtension, StringComparison.CurrentCultureIgnoreCase ) )
 		{
 			// Convert the string to JSON
 			using var doc = JsonDocument.Parse( config, new JsonDocumentOptions

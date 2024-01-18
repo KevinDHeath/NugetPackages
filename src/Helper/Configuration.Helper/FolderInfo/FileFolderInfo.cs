@@ -11,10 +11,10 @@ public sealed class FileFolderInfo : FolderInfoBase
 
 	/// <summary>Factory method to create an IFolderInfo object from a DirectoryInfo object.</summary>
 	/// <param name="dirInfo">Root folder as a DirectoryInfo object.</param>
-	/// <param name="includeFolders">Include sub-folder contents. The default is false.</param>
+	/// <param name="includeFolders">Include sub-folder contents. The default is <see langword="false"/>.</param>
 	/// <param name="filter">A string array that contains zero or more file name patterns.</param>
 	/// <returns>A FileFolderInfo object.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if the required parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the required parameter is <see langword="null"/>.</exception>
 	public static IFolderInfo Create( DirectoryInfo dirInfo,
 		bool includeFolders = false, params string[] filter )
 	{
@@ -40,7 +40,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 	/// <param name="includeFolders">Include sub-folder contents.</param>
 	/// <param name="filter">A string array that contains zero or more file name patterns.</param>
 	/// <returns>A FileFolderInfo object.</returns>
-	private static IFolderInfo Initialize( DirectoryInfo dirInfo, string root, bool includeFolders, params string[] filter )
+	private static FileFolderInfo Initialize( DirectoryInfo dirInfo, string root, bool includeFolders, params string[] filter )
 	{
 		var retValue = new FileFolderInfo { Location = FormatLocation( dirInfo, ref root ) };
 
@@ -55,7 +55,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 		{
 			foreach( var fi in dirInfo.GetFiles( ext, SearchOption.TopDirectoryOnly ) )
 			{
-				if( !fi.Name.ToLower().Contains( @".vshost." ) ) // Ignore Visual Studio debugging files
+				if( !fi.Name.Contains( @".vshost.", StringComparison.CurrentCultureIgnoreCase ) ) // Ignore Visual Studio debugging files
 				{
 					retValue.FileList.Add( fi.Name, fi.FullName );
 				}

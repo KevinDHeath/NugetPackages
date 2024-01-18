@@ -21,7 +21,7 @@ public static class Generic
 
 	/// <summary>Converts a char object to a 3-state boolean type.</summary>
 	/// <param name="value">Value to try and convert.</param>
-	/// <returns>Null is returned if the value could not be converted,
+	/// <returns><see langword="null"/> is returned if the value could not be converted,
 	/// true if the value is Y, y, or 1, otherwise false.</returns>
 	public static bool? CharToBool( object value )
 	{
@@ -34,7 +34,7 @@ public static class Generic
 
 	/// <summary>Converts a DateTime object to a DateOnly type.</summary>
 	/// <param name="value">Value to try and convert.</param>
-	/// <returns>Null is returned if the value could not be converted.</returns>
+	/// <returns><see langword="null"/> is returned if the value could not be converted.</returns>
 	public static DateOnly? DateTimeToDateOnly( object value )
 	{
 		DateTime? data = Convert<DateTime?>( value, null );

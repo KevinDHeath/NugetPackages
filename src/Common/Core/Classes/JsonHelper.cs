@@ -12,7 +12,7 @@ public static class JsonHelper
 	/// <typeparam name="T">Generic class or interface.</typeparam>
 	/// <param name="fileName">Json file name.</param>
 	/// <param name="options">Optional Json serializer options.</param>
-	/// <returns>Null is returned if the object could not be populated.</returns>
+	/// <returns><see langword="null"/> is returned if the object could not be populated.</returns>
 	public static T? DeserializeFile<T>( string fileName, JsonSerializerOptions? options = null ) where T : class
 	{
 		T? rtn = null;
@@ -25,7 +25,7 @@ public static class JsonHelper
 	/// <typeparam name="T">Generic class or interface.</typeparam>
 	/// <param name="json">Json string.</param>
 	/// <param name="options">Optional Json serializer options.</param>
-	/// <returns>Null is returned if the object could not be populated.</returns>
+	/// <returns><see langword="null"/> is returned if the object could not be populated.</returns>
 	public static T? DeserializeJson<T>( ref string json, JsonSerializerOptions? options = null ) where T : class
 	{
 		T? rtn = null;
@@ -66,7 +66,7 @@ public static class JsonHelper
 
 	/// <summary>Reads the Json from a file.</summary>
 	/// <param name="fileName">Json file name.</param>
-	/// <returns>Null is returned if the file could not be accessed.</returns>
+	/// <returns><see langword="null"/> is returned if the file could not be accessed.</returns>
 	public static string? ReadJsonFromFile( string fileName )
 	{
 		if( string.IsNullOrWhiteSpace( fileName ) ) { return null; }
@@ -136,7 +136,7 @@ public static class JsonHelper
 	/// <param name="obj">Object to save.</param>
 	/// <param name="fileName">Json file name.</param>
 	/// <param name="options">Optional Json serializer options.</param>
-	/// <returns>True if the object was saved.</returns>
+	/// <returns><see langword="true"/> if the object was saved.</returns>
 	public static bool Serialize<T>( T? obj, string fileName, JsonSerializerOptions? options = null ) where T : class
 	{
 		if( obj is null || string.IsNullOrWhiteSpace( fileName ) ) { return false; }
@@ -164,7 +164,7 @@ public static class JsonHelper
 	/// <typeparam name="T">Generic class or interface.</typeparam>
 	/// <param name="obj">Object to serialize.</param>
 	/// <param name="options">Optional Json serializer options.</param>
-	/// <returns>Null is returned if the serialization fails.</returns>
+	/// <returns><see langword="null"/> is returned if the serialization fails.</returns>
 	public static string? Serialize<T>( T? obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		if( obj is null ) { return null; }

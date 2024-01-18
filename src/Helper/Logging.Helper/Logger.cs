@@ -280,7 +280,7 @@ namespace Logging.Helper
 		/// <summary>Log a message.</summary>
 		/// <param name="msg">Message text.</param>
 		/// <param name="severity">Identifies the type of trace event.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		/// <exception cref="NotImplementedException"></exception>
 		public bool Log( string msg, LogSeverity severity = LogSeverity.Information )
 		{
@@ -317,7 +317,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs an informational message.</summary>
 		/// <param name="message">Message text to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Info( string message )
 		{
 			if( !CanLog( LogSeverity.Information ) ) return false;
@@ -332,7 +332,7 @@ namespace Logging.Helper
 		/// <summary>Logs an informational message with arguments.</summary>
 		/// <param name="message">Composite format message string to log.</param>
 		/// <param name="args">An object array that contains zero or more objects to format.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Info( string message, params object[] args )
 		{
 			if( !CanLog( LogSeverity.Information ) ) return false;
@@ -351,7 +351,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs a warning message.</summary>
 		/// <param name="message">Message text to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Warn( string message )
 		{
 			WarnCount++;
@@ -367,7 +367,7 @@ namespace Logging.Helper
 		/// <summary>Logs a warning message with arguments.</summary>
 		/// <param name="message">Composite format message string to log.</param>
 		/// <param name="args">An object array that contains zero or more objects to format.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Warn( string message, params object[] args )
 		{
 			WarnCount++;
@@ -386,7 +386,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs an error message.</summary>
 		/// <param name="message">Message text to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( string message )
 		{
 			ErrorCount++;
@@ -402,7 +402,7 @@ namespace Logging.Helper
 		/// <summary>Logs an error message with arguments.</summary>
 		/// <param name="message">Composite format message string to log.</param>
 		/// <param name="args">An object array that contains zero or more objects to format.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( string message, params object[] args )
 		{
 			ErrorCount++;
@@ -418,7 +418,7 @@ namespace Logging.Helper
 		/// <summary>Logs an error message with an exception.</summary>
 		/// <param name="message">Message text to log.</param>
 		/// <param name="exception">Exception to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( string message, Exception exception )
 		{
 			return Log( GenericException.FormatException( message, exception ), LogSeverity.Error );
@@ -426,7 +426,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs an exception.</summary>
 		/// <param name="exception">Exception to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( Exception exception )
 		{
 			return Log( GenericException.FormatException( exception ), LogSeverity.Error );
@@ -438,7 +438,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs a fatal error message.</summary>
 		/// <param name="message">Message text to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Fatal( string message )
 		{
 			FatalCount++;
@@ -454,7 +454,7 @@ namespace Logging.Helper
 		/// <summary>Logs a fatal error message with arguments.</summary>
 		/// <param name="message">Composite format message string to log.</param>
 		/// <param name="args">An object array that contains zero or more objects to format.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Fatal( string message, params object[] args )
 		{
 			FatalCount++;
@@ -469,7 +469,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs a fatal exception.</summary>
 		/// <param name="exception">Exception to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Fatal( Exception exception )
 		{
 			return Log( GenericException.FormatException( exception ), LogSeverity.Fatal );
@@ -481,7 +481,7 @@ namespace Logging.Helper
 
 		/// <summary>Logs a debugging message.</summary>
 		/// <param name="message">Message text to log.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Debug( string message )
 		{
 			if( !CanLog( LogSeverity.Debug ) ) return false;
@@ -496,7 +496,7 @@ namespace Logging.Helper
 		/// <summary>Logs a debugging message with arguments.</summary>
 		/// <param name="message">Composite format message string to log.</param>
 		/// <param name="args">An object array that contains zero or more objects to format.</param>
-		/// <returns>True if the message was logged, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Debug( string message, params object[] args )
 		{
 			if( !CanLog( LogSeverity.Debug ) ) return false;
@@ -558,7 +558,7 @@ namespace Logging.Helper
 		/// <param name="directory">Directory containing the log files.</param>
 		/// <param name="logNameMask">Search pattern in the form [LogFile]*.[ext] of the log file names.</param>
 		/// <param name="maxFiles">Maximum number of log files to keep.</param>
-		/// <returns>True if any log files have been removed, otherwise False is returned.</returns>
+		/// <returns><see langword="true"/> if any log files have been removed, otherwise <see langword="false"/> is returned.</returns>
 		/// <example>
 		/// In a method that needs to remove old log files:
 		/// <code lang="C#">

@@ -73,7 +73,7 @@ public abstract class AddressFactoryBase
 
 	/// <summary>Checks whether a Country code is valid.</summary>
 	/// <param name="code">ISO-3166 Country code.</param>
-	/// <returns>True if the Country code was found.</returns>
+	/// <returns><see langword="true"/> if the Country code was found.</returns>
 	public static bool CheckCountryCode( string? code )
 	{
 		if( code is null || code.Length != ( UseAlpha2 ? 2 : 3 ) ) { return false; }
@@ -83,7 +83,7 @@ public abstract class AddressFactoryBase
 
 	/// <summary>Checks whether a Province code is valid.</summary>
 	/// <param name="code">Province code.</param>
-	/// <returns>True if the Province code was found.</returns>
+	/// <returns><see langword="true"/> if the Province code was found.</returns>
 	public static bool CheckProvinceCode( string? code )
 	{
 		if( code is null || code.Length > 10 ) { return false; }
@@ -111,7 +111,7 @@ public abstract class AddressFactoryBase
 
 	/// <summary>Gets the information for a Postcode.</summary>
 	/// <param name="code">Postal Service code.</param>
-	/// <returns>Null is returned if the Postcode was not found.</returns>
+	/// <returns><see langword="null"/> is returned if the Postcode is not found.</returns>
 	/// <remarks>If the postcodes are cached and the code has not been referenced this will return null.</remarks>
 	public static Postcode? GetPostcode( string? code )
 	{

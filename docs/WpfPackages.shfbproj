@@ -30,8 +30,8 @@
     <DocumentationSources>
       <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Controls.dll" />
       <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Controls.xml" />
-      <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Resources.dll" />
-      <DocumentationSource sourceFile="..\src\Wpf\Controls\bin\Debug\net8.0-windows\Common.Wpf.Resources.xml" />
+      <DocumentationSource sourceFile="..\src\Wpf\Resources\bin\Debug\net8.0-windows\Common.Wpf.Resources.dll" />
+      <DocumentationSource sourceFile="..\src\Wpf\Resources\bin\Debug\net8.0-windows\Common.Wpf.Resources.xml" />
     </DocumentationSources>
     <HelpTitle>WPF Packages</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
