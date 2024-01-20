@@ -20,7 +20,7 @@ public abstract class AddressFactoryBase
 	public static bool UseAlpha2 { get; protected set; }
 
 	/// <summary>The ISO-3166 Country code of the Address data.<br/>
-	/// The default is USA.</summary>
+	/// The default is <c>USA</c>.</summary>
 	/// <remarks>If required, a different Country code must be passed in the constructor of a derived class.<br/>
 	/// If using Alpha2 then pass the alpha-2 code, otherwise pass the alpha-3 code.</remarks>
 	public static string DefaultCountry
