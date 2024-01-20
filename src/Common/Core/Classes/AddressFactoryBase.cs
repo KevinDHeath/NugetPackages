@@ -2,10 +2,10 @@
 
 namespace Common.Core.Classes;
 
-/// <summary>Contains data used for Addresses.</summary>
+/// <summary>Contains static data used for Addresses.</summary>
 public abstract class AddressFactoryBase
 {
-	/// <summary>Standard string comparison.</summary>
+	/// <summary>Standard string comparison for ordinal ignore case.</summary>
 	protected static readonly StringComparison sCompare = StringComparison.OrdinalIgnoreCase;
 
 	private static IList<Province>? _provinces;
@@ -19,10 +19,10 @@ public abstract class AddressFactoryBase
 	/// <remarks>If required, true must be passed in the constructor of a derived class.</remarks>
 	public static bool UseAlpha2 { get; protected set; }
 
-	/// <summary>The default ISO-3166 Country code.<br/>
-	/// The default is USA.</summary>
+	/// <summary>The ISO-3166 Country code of the Address data.<br/>
+	/// The default is <c>USA</c>.</summary>
 	/// <remarks>If required, a different Country code must be passed in the constructor of a derived class.<br/>
-	/// If using Alpha2 then the alpha-2 code must be used, otherwise use the alpha-3 code.</remarks>
+	/// If using Alpha2 then pass the alpha-2 code, otherwise pass the alpha-3 code.</remarks>
 	public static string DefaultCountry
 	{
 		get { return _default is null ? UseAlpha2 ? "US" : "USA" : _default.Code; }
@@ -35,7 +35,7 @@ public abstract class AddressFactoryBase
 		}
 	}
 
-	/// <summary>Gets a sorted list of ISO-3166 Country data.</summary>
+	/// <summary>Gets a sorted list of ISO-3166 Countries.</summary>
 	public static IList<CountryCode> Countries
 	{
 		get => _countries is null ? new List<CountryCode>() : _countries;
@@ -49,7 +49,7 @@ public abstract class AddressFactoryBase
 		protected set => _provinces ??= value;
 	}
 
-	/// <summary>Gets a list of US Postcodes.</summary>
+	/// <summary>Gets a list of Postcodes.</summary>
 	public static IList<Postcode> Postcodes { get; set; } = new List<Postcode>();
 
 	/// <summary>Gets the total number of Postcodes available.</summary>
@@ -60,7 +60,7 @@ public abstract class AddressFactoryBase
 	#region Protected Methods
 
 	/// <summary>Sets the list of Countries.</summary>
-	/// <param name="list">Collection of all ISO-3166 Country details.</param>
+	/// <param name="list">Collection of ISO-3166 Countries.</param>
 	protected static void SetCountries( IList<ISOCountry> list )
 	{
 		Countries = list.OrderBy( c => c.Name )
@@ -73,7 +73,7 @@ public abstract class AddressFactoryBase
 
 	/// <summary>Checks whether a Country code is valid.</summary>
 	/// <param name="code">ISO-3166 Country code.</param>
-	/// <returns>True if the Country code was found.</returns>
+	/// <returns><see langword="true"/> if the Country code was found.</returns>
 	public static bool CheckCountryCode( string? code )
 	{
 		if( code is null || code.Length != ( UseAlpha2 ? 2 : 3 ) ) { return false; }
@@ -83,7 +83,7 @@ public abstract class AddressFactoryBase
 
 	/// <summary>Checks whether a Province code is valid.</summary>
 	/// <param name="code">Province code.</param>
-	/// <returns>True if the Province code was found.</returns>
+	/// <returns><see langword="true"/> if the Province code was found.</returns>
 	public static bool CheckProvinceCode( string? code )
 	{
 		if( code is null || code.Length > 10 ) { return false; }
@@ -109,9 +109,10 @@ public abstract class AddressFactoryBase
 		return state is not null ? state.Name : string.Empty;
 	}
 
-	/// <summary>Gets the information for a requested Postcode.</summary>
+	/// <summary>Gets the information for a Postcode.</summary>
 	/// <param name="code">Postal Service code.</param>
-	/// <returns>Null is returned if the Postcode was not found.</returns>
+	/// <returns><see langword="null"/> is returned if the Postcode is not found.</returns>
+	/// <remarks>If the postcodes are cached and the code has not been referenced this will return null.</remarks>
 	public static Postcode? GetPostcode( string? code )
 	{
 		if( code is null || ( DefaultCountry.StartsWith( "US" ) & code.Length < 5 ) ) { return null; }

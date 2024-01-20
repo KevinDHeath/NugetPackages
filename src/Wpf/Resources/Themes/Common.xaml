@@ -2,6 +2,7 @@
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:cor="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+  xmlns:pfw="clr-namespace:System.Windows;assembly=PresentationFramework"
   xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
   <!-- Common colors -->
@@ -12,6 +13,8 @@
   <!-- Common values -->
   <sys:Double x:Key="Common.FontSize">12</sys:Double>
   <cor:FontFamily x:Key="Common.FontFamily">Segoe UI</cor:FontFamily>
+  <pfw:Thickness x:Key="commonBorderThickness">2</pfw:Thickness>
+  <pfw:CornerRadius x:Key="commonCornerRadius">3</pfw:CornerRadius>
 
   <Style x:Key="commonSmallTextBlockStyle" TargetType="{x:Type TextBlock}">
     <Setter Property="RenderTransform">
@@ -22,7 +25,7 @@
   </Style>
 
   <Style x:Key="commonErrorTextBlockStyle" TargetType="{x:Type TextBlock}"
-		     BasedOn="{StaticResource commonSmallTextBlockStyle}">
+         BasedOn="{StaticResource commonSmallTextBlockStyle}">
     <Setter Property="Foreground" Value="{StaticResource Validation.HasError}"/>
     <!--<Setter Property="FontStyle" Value="Italic"/>-->
     <!--<Setter Property="FontWeight" Value="Bold"/>-->
@@ -49,8 +52,8 @@
   </Style>
 
   <Style x:Key="commonEditBorderStyle" TargetType="{x:Type Border}">
-    <Setter Property="BorderThickness" Value="2"/>
-    <Setter Property="CornerRadius" Value="3"/>
+    <Setter Property="BorderThickness" Value="{StaticResource commonBorderThickness}"/>
+    <Setter Property="CornerRadius" Value="{StaticResource commonCornerRadius}"/>
   </Style>
 
   <ControlTemplate x:Key="commonErrorItemTemplate">

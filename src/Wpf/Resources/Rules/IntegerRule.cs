@@ -40,12 +40,13 @@ public class IntegerRule : RuleBase
 		}
 		else if( value is string str ) // Handle RawProposedValue
 		{
-			if( string.IsNullOrEmpty( str ) )
+			if( string.IsNullOrWhiteSpace( str ) )
 			{
 				if( Rqd ) { return new ValidationResult( false, cEnterValue ); }
 				else { return ValidationResult.ValidResult; }
 			}
 
+			str = str.Trim();
 			bool ok = StringConverter.TryParse( ref str, out res, cultureInfo );
 			if( !ok ) { return PleaseEnter( Property, cNumeric ); }
 		}

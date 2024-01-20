@@ -34,7 +34,7 @@ public interface ISettingsStore
 	/// <summary>Adds or updates a setting in the AppSettings key/value collection.</summary>
 	/// <param name="settingKey">Key of the setting.</param>
 	/// <param name="settingValue">Value of the setting.</param>
-	/// <returns>True if the setting has been added or updated.</returns>
+	/// <returns><see langword="true"/>if the setting has been added or updated.</returns>
 	bool AddSetting( string settingKey, string settingValue );
 
 	/// <summary>Returns the specified SettingsSection object.</summary>

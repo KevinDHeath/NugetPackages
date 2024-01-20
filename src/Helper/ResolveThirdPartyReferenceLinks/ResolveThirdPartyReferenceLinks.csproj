@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <!-- <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+    <AppendTargetFrameworkToOutputPath Condition="'$(Configuration)'=='Debug'">false</AppendTargetFrameworkToOutputPath> -->
+  </PropertyGroup>
+
+  <!-- Package Information -->
+  <PropertyGroup>
+    <Version>2.0.1</Version>
+    <PackageReleaseNotes>https://github.com/mcneel/ResolveThirdPartyReferenceLinks/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <AssemblyName>ResolveThirdPartyReferenceLinks</AssemblyName>
+    <Description>SandCastle BuildAssembly component to resolve third-party reference links.</Description>
+    <PackageProjectUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks.git</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!--<Product>ResolveThirdPartyReferenceLinks</Product>
+    <RootNamespace>ResolveThirdPartyReferenceLinks</RootNamespace>
+    <Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>-->
+    <Authors>Robert McNeel and Associates, Grid Protection Alliance, Inc.</Authors>
+    <Company>McNeel</Company>
+    <Copyright>Copyright (c) 1997-2021 Robert McNeel and Associates\r\nCopyright (c) 2023 Grid Protection Alliance, Inc.</Copyright>
+    <PackageTags>ResolveThirdPartyReferenceLinks SHFB sandcastle build component</PackageTags>
+    <IsTool>true</IsTool>
+    <ContentTargetFolders>tools\</ContentTargetFolders>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EWSoftware.Sandcastle.Core" />
+  </ItemGroup>
+
+</Project>

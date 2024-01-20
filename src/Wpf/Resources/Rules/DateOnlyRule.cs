@@ -27,11 +27,12 @@ public class DateOnlyRule : RuleBase
 
 		if( value is string str ) // Handle RawProposedValue
 		{
-			if( Rqd && !string.IsNullOrWhiteSpace( str ) )
+			if( Rqd && string.IsNullOrWhiteSpace( str ) )
 			{ return new ValidationResult( false, cEnterValue ); }
 
+			str = str.Trim();
 			bool ok = StringConverter.TryParse( ref str, out DateOnly _, cultureInfo );
-			if( !ok && Rqd ) { return new ValidationResult( false, cEnterDate ); }
+			if( !ok ) { return new ValidationResult( false, cEnterDate ); }
 		}
 
 		return ValidationResult.ValidResult;

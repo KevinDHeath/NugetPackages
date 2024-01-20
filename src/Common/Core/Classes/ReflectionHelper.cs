@@ -58,7 +58,7 @@ public static class ReflectionHelper
 	/// <typeparam name="T">Class type being used.</typeparam>
 	/// <param name="source">Source object.</param>
 	/// <param name="target">Target object.</param>
-	/// <returns>True if the source object properties are equal to the target object.</returns>
+	/// <returns><see langword="true"/> if the source object properties are equal to the target object.</returns>
 	public static bool IsEqual<T>( T? source, T? target ) where T : class
 	{
 		if( source is null || target is null ) { return false; }
@@ -104,7 +104,7 @@ public static class ReflectionHelper
 
 	/// <summary>Creates a deep copy of an object.</summary>
 	/// <param name="obj">Object to copy.</param>
-	/// <returns>Null is returned if the object could not be copied.</returns>
+	/// <returns><see langword="null"/> is returned if the object could not be copied.</returns>
 	/// <remarks>
 	/// When a deep copy operation is performed, the cloned object can be modified
 	/// without affecting the original object.
@@ -276,7 +276,7 @@ public static class ReflectionHelper
 
 	private static bool IsList( Type type )
 	{
-		if( null == type ) throw new ArgumentNullException( nameof( type ) );
+		ArgumentNullException.ThrowIfNull( type );
 
 		if( typeof( IList ).IsAssignableFrom( type ) ) return true;
 
@@ -289,7 +289,7 @@ public static class ReflectionHelper
 
 	private static bool IsDictionary( Type type )
 	{
-		if( null == type ) throw new ArgumentNullException( nameof( type ) );
+		ArgumentNullException.ThrowIfNull( type );
 
 		if( typeof( IDictionary ).IsAssignableFrom( type ) ) return true;
 

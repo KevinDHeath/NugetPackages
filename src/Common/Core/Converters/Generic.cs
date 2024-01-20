@@ -7,7 +7,7 @@ public static class Generic
 	/// <typeparam name="T">Type of object to convert.</typeparam>
 	/// <param name="value">Value to try and convert.</param>
 	/// <param name="defaultValue">Default value, sets the type of the returned value.</param>
-	/// <returns>The converted value, or default if any error occurs.</returns>
+	/// <returns>The converted value, or defaultValue if any error occurs.</returns>
 	private static T? Convert<T>( object? value, T defaultValue )
 	{
 		try
@@ -21,8 +21,8 @@ public static class Generic
 
 	/// <summary>Converts a char object to a 3-state boolean type.</summary>
 	/// <param name="value">Value to try and convert.</param>
-	/// <returns>Null is returned if the value could not be converted,
-	/// true if the value is Y, y, or 1, otherwise false.</returns>
+	/// <returns><see langword="null"/> is returned if the value could not be converted,
+	/// <see langword="true"/> if the value is Y, y, or 1, otherwise <see langword="false"/>.</returns>
 	public static bool? CharToBool( object value )
 	{
 		char? data = Convert<char?>( value, null );
@@ -34,7 +34,7 @@ public static class Generic
 
 	/// <summary>Converts a DateTime object to a DateOnly type.</summary>
 	/// <param name="value">Value to try and convert.</param>
-	/// <returns>Null is returned if the value could not be converted.</returns>
+	/// <returns><see langword="null"/> is returned if the value could not be converted.</returns>
 	public static DateOnly? DateTimeToDateOnly( object value )
 	{
 		DateTime? data = Convert<DateTime?>( value, null );

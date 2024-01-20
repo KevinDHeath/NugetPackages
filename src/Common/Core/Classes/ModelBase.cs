@@ -25,7 +25,7 @@ public abstract class ModelBase : INotifyPropertyChanged
 
 	/// <summary>Calculate the current age based on a DateTime value.</summary>
 	/// <param name="date">Date to use.</param>
-	/// <returns>Null is returned if no date is provided.</returns>
+	/// <returns><see langword="null"/> is returned if no date is provided.</returns>
 	public static int? CalculateAge( DateTime? date )
 	{
 		// https://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-based-on-a-datetime-type-birthday
@@ -34,7 +34,7 @@ public abstract class ModelBase : INotifyPropertyChanged
 
 	/// <summary>Calculate the current age based on a DateOnly value.</summary>
 	/// <param name="date">Date to use.</param>
-	/// <returns>Null is returned if no date is provided.</returns>
+	/// <returns><see langword="null"/> is returned if no date is provided.</returns>
 	public static int? CalculateAge( DateOnly? date )
 	{
 		return date.HasValue ? CalculateAge( date.Value.ToDateTime( TimeOnly.MinValue ) ) : null;
@@ -42,7 +42,7 @@ public abstract class ModelBase : INotifyPropertyChanged
 
 	/// <summary>Sets a string as null if the length is zero.</summary>
 	/// <param name="value">Value to check.</param>
-	/// <returns>Null is returned if the string length is zero.</returns>
+	/// <returns><see langword="null"/> is returned if the string length is zero.</returns>
 	public static string? SetNullString( string? value )
 	{
 		return value is not null && value.Length > 0 ? value : null;

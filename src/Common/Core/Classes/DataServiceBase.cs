@@ -27,7 +27,7 @@ public class DataServiceBase
 	/// <param name="uri">Uniform Resource Identifier.</param>
 	/// <param name="obj">Resource to create.</param>
 	/// <param name="options">Json serializer options.</param>
-	/// <returns>The created resource, or null if there were errors while processing the request.</returns>
+	/// <returns>The created resource, or <see langword="null"/> if there were errors while processing the request.</returns>
 	public T? PostResource<T>( string uri, T obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		string? json = JsonHelper.Serialize( obj );
@@ -50,7 +50,7 @@ public class DataServiceBase
 
 	/// <summary>Retrieves a resource.</summary>
 	/// <param name="uri">Uniform Resource Identifier.</param>
-	/// <returns>Resource as a string, or null if there were errors while processing the request.</returns>
+	/// <returns>Resource as a string, or <see langword="null"/> if there were errors while processing the request.</returns>
 	public string? GetResource( string uri )
 	{
 		CheckUri( ref uri );
@@ -69,7 +69,7 @@ public class DataServiceBase
 	/// <param name="uri">Uniform Resource Identifier.</param>
 	/// <param name="obj">Resource to update.</param>
 	/// <param name="options">Json serializer options.</param>
-	/// <returns>The updated resource, or null if there were errors while processing the request.</returns>
+	/// <returns>The updated resource, or <see langword="null"/> if there were errors while processing the request.</returns>
 	public T? PutResource<T>( string uri, T obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		string? json = JsonHelper.Serialize( obj, options );
@@ -94,7 +94,7 @@ public class DataServiceBase
 	/// <typeparam name="T">Generic class or interface.</typeparam>
 	/// <param name="uri">Uniform Resource Identifier.</param>
 	/// <param name="options">Json serializer options.</param>
-	/// <returns>The deleted resource, or null if there were errors while processing the request.</returns>
+	/// <returns>The deleted resource, or <see langword="null"/> if there were errors while processing the request.</returns>
 	public T? DeleteResource<T>( string uri, JsonSerializerOptions? options = null ) where T : class
 	{
 		CheckUri( ref uri );
@@ -126,7 +126,7 @@ public class DataServiceBase
 
 	private void CheckUri( ref string uri )
 	{
-		if( !uri.ToLowerInvariant().StartsWith( Uri.UriSchemeHttp ) )
+		if( !uri.StartsWith( Uri.UriSchemeHttp, StringComparison.InvariantCultureIgnoreCase ) )
 		{
 			uri = _httpClient.BaseAddress?.OriginalString + uri;
 		}

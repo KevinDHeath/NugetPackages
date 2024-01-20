@@ -15,7 +15,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 	/// <param name="configFile">Full path and file name of the configuration file.
 	/// When no value is passed a new object will be created without a location.</param>
 	/// <returns>FileSettingsStore object implementing the ISettingStore interface.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	public static ISettingsStore Create( string configFile = "" )
 	{
 		// Check the required parameter is supplied
@@ -46,7 +46,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 	/// </summary>
 	/// <param name="configFile">Configuration file containing the settings.</param>
 	/// <returns>FileSettingsStore object implementing the ISettingStore interface.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	public static async Task<ISettingsStore> CreateAsync( FileInfo configFile )
 	{
 		// Check the required parameter is supplied

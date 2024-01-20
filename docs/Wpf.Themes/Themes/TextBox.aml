@@ -28,7 +28,7 @@
         Example of assigning the template to a custom Date Picker style:</para>
         <code language="xaml">
           <![CDATA[
-<Style x:Key="datePickerStyle1" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource commonDatePickerStyle}">
+<Style x:Key="appDatePickerStyle" TargetType="{x:Type DatePicker}" BasedOn="{StaticResource commonDatePickerStyle}">
   <Setter Property="Validation.ErrorTemplate" Value="{StaticResource commonErrorItemTemplate}"/>
 </Style>
 ]]>
@@ -103,7 +103,7 @@
         <para>Example of assigning the template to a custom Text Box style:</para>
         <code language="xaml">
           <![CDATA[
-<Style x:Key="textBoxStyle1" TargetType="{x:Type TextBox}">
+<Style x:Key="appTextBoxStyle" TargetType="{x:Type TextBox}">
   <Setter Property="Template" Value="{StaticResource commonTextBoxEditTemplate}"/>
 </Style>
 ]]>

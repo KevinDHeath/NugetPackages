@@ -52,7 +52,7 @@
       <NamespaceSummaryItem name="Configuration.Helper" isDocumented="True" xmlns="">Configuration Helper classes, interfaces, and enumerations.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Logging.Helper" isDocumented="True" xmlns="">Logging Helper classes and enumerations.</NamespaceSummaryItem>
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+    <VisibleItems>Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <RootNamespaceTitle>Packages</RootNamespaceTitle>
     <HelpTitle>.NET Helper Packages</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>

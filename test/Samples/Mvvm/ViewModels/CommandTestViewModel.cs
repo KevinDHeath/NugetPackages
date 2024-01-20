@@ -40,7 +40,8 @@ public class CommandTestViewModel : ViewModelBase
 		AddCommand = new DelegateCommand( _ => Item = new Account() );
 		RemoveCommand = new DelegateCommand( _ => Item = null );
 
-		//TestCommand = new DelegateCommand( delegate { } );
-		TestCommand = new DelegateCommand( _ => Item = _testItem );
+		//TestCommand = new DelegateCommand( _ => Item = _testItem );
+		TestCommand = new DelegateCommand( _ => Item = _testItem, null,
+			this, new List<string> { nameof( Item ), } );
 	}
 }

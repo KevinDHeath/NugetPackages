@@ -60,7 +60,7 @@ public abstract class ConfigFileHelper
 
 	/// <summary>Returns the setting value in the configuration file for a given key.</summary>
 	/// <param name="settingKey">Key of the setting.</param>
-	/// <returns>Null is returned if the setting is not found.</returns>
+	/// <returns><see langword="null"/> is returned if the setting is not found.</returns>
 	protected string? GetSetting( string settingKey )
 	{
 		// Check the required parameter is supplied
@@ -77,7 +77,7 @@ public abstract class ConfigFileHelper
 	/// <summary>Returns the setting value in the configuration file for a given key and prefix.</summary>
 	/// <param name="settingKey">Key of the setting.</param>
 	/// <param name="prefix">Prefix for the setting.</param>
-	/// <returns>Null is returned if the setting is not found.</returns>
+	/// <returns><see langword="null"/> is returned if the setting is not found.</returns>
 	protected string? GetSetting( string settingKey, string prefix )
 	{
 		// Check the required parameter is supplied
@@ -113,7 +113,7 @@ public abstract class ConfigFileHelper
 
 		// Return the setting value
 		argumentKey = argumentKey.Trim();
-		return Arguments.ContainsKey( argumentKey ) ? Arguments[argumentKey] : string.Empty;
+		return Arguments.TryGetValue( argumentKey, out string? value ) ? value : string.Empty;
 	}
 
 	#endregion
@@ -123,14 +123,11 @@ public abstract class ConfigFileHelper
 	/// <summary>Gets a Setting Store object.</summary>
 	/// <param name="configFile">Configuration file name.</param>
 	/// <returns>ISettingsStore object.</returns>
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is null.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	public static ISettingsStore GetConfiguration( string configFile )
 	{
 		// Check the required parameter is supplied
-		if( null == configFile )
-		{
-			throw new ArgumentNullException( nameof( configFile ) );
-		}
+		ArgumentNullException.ThrowIfNull( configFile );
 
 		var exists = IOHelper.DoesFileExist( configFile );
 		if( !exists )
@@ -148,7 +145,8 @@ public abstract class ConfigFileHelper
 
 	/// <summary>Converts a string to a secure string.</summary>
 	/// <param name="strValue">Value to secure - this will be empty on return.</param>
-	/// <returns>If the string value is null, empty, or whitespace, then the return value will have a length of zero.</returns>
+	/// <returns>If the string value is <see langword="null"/>, empty, or whitespace, then the
+	/// return value will have a length of zero.</returns>
 	public static SecureString ConvertToSecureString( ref string strValue )
 	{
 		// Set the return value

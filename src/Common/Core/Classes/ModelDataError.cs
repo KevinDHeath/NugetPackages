@@ -101,7 +101,7 @@ public class ModelDataError : ModelBase, INotifyDataErrorInfo
 	public bool HasErrors => _errors.Any( propErrors => propErrors.Value.Count > 0 );
 
 	/// <summary>Gets the validation errors for a specified property or for the entire entity.</summary>
-	/// <param name="propertyName">The name of the property to retrieve validation errors for; or null
+	/// <param name="propertyName">The name of the property to retrieve validation errors for; or <see langword="null"/>
 	/// or Empty, to retrieve entity-level errors.</param>
 	/// <returns>The validation errors for the property or entity.</returns>
 	public IEnumerable GetErrors( string? propertyName )
@@ -172,7 +172,7 @@ public class ModelDataError : ModelBase, INotifyDataErrorInfo
 	/// <summary>Validates a property with a specified name and a given input value.</summary>
 	/// <param name="value">The value to test for the specified property.</param>
 	/// <param name="propertyName">The name of the property to validate.</param>
-	/// <returns>True if the value is valid, false if any errors are found.</returns>
+	/// <returns><see langword="true"/> if the value is valid, <see langword="false"/> if any errors are found.</returns>
 	public bool ValidateProperty( object? value, [CallerMemberName] string propertyName = "" )
 	{
 		if( string.IsNullOrEmpty( propertyName ) ) return true;

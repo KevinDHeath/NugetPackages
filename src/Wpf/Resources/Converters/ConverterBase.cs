@@ -11,7 +11,7 @@ public abstract class ConverterBase : IValueConverter
 	/// <param name="targetType">The type of the binding target property.</param>
 	/// <param name="parameter">The converter parameter to use.</param>
 	/// <param name="culture">The culture to use in the converter.</param>
-	/// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+	/// <returns>A converted value. If the method returns <see langword="null"/>, the valid null value is used.</returns>
 	/// <remarks>The data binding engine calls this method when it propagates a
 	/// value from the binding source to the binding target.
 	/// </remarks>
@@ -22,7 +22,7 @@ public abstract class ConverterBase : IValueConverter
 	/// <param name="targetType">The type to convert to.</param>
 	/// <param name="parameter">The converter parameter to use.</param>
 	/// <param name="culture">The culture to use in the converter.</param>
-	/// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+	/// <returns>A converted value. If the method returns <see langword="null"/>, the valid null value is used.</returns>
 	/// <remarks>The data binding engine calls this method when it propagates a value from
 	/// the binding target to the binding source.
 	/// The implementation of this method must be the inverse of the Convert method.

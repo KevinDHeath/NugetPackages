@@ -53,7 +53,7 @@ public class ModalDialog : ContentControl
 
 	#region Private Methods
 
-	private static object CreateDefaultBackground()
+	private static SolidColorBrush CreateDefaultBackground()
 	{
 		return new SolidColorBrush( Colors.Black )
 		{

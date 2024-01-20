@@ -1,5 +1,7 @@
 # Common.Core Change Log
 
+- v2.1.1
+  - Added a `Find` method to the `IDataFactory` interface.
 - v2.1.0
   - See [v2.1.0 Notes](v2.1.0-Notes.md) for information on migrating any databases containing data for any of the models mentioned below.
   - **Breaking Changes:** `Common.Models.Address`, `Common.Interfaces.IPerson` and `Common.Models.Person` have changed to support multi-country address data. 

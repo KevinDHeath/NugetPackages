@@ -26,6 +26,7 @@
       <self:ComponentsList Component="IntegerToString" View="Unit Tests" Type="Converter"/>
       <self:ComponentsList Component="ModalDialog" View="Login" Type="Control"/>
       <self:ComponentsList Component="NumericSpinner" View="Unit Tests" Type="Control"/>
+      <self:ComponentsList Component="PasswordExtend" View="Login" Type="Control"/>
       <self:ComponentsList Component="RelayCommand" View="Unit Tests" Type="Command"/>
       <self:ComponentsList Component="RequiredRule" View="Unit Tests" Type="Rule"/>
       <self:ComponentsList Component="SearchTextBox" View="User List" Type="Control"/>

@@ -12,7 +12,7 @@ public class JsonDecimalString : JsonConverter<decimal?>
 	/// <param name="reader">The reader.</param>
 	/// <param name="typeToConvert">The type to convert.</param>
 	/// <param name="options">An object that specifies serialization options to use.</param>
-	/// <returns>The converted value.</returns>
+	/// <returns>The converted value or <see langword="null"/> if the value could not be converted.</returns>
 	public override decimal? Read( ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options )
 	{
 		switch( reader.TokenType )
