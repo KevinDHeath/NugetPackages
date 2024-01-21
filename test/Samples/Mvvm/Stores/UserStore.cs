@@ -4,6 +4,7 @@ namespace Sample.Mvvm.Stores;
 
 public class UserStore( SettingsStore settingsStore )
 {
+	private readonly Settings _settings = settingsStore.Settings;
 	private readonly List<User> _users = settingsStore.Settings.Users;
 
 	internal IList<User> Users { get { return _users; } }
@@ -16,6 +17,7 @@ public class UserStore( SettingsStore settingsStore )
 	{
 		CurrentUser = user;
 		_users.Add( user );
+		SettingsStore.Save( _settings );
 		UserAdded?.Invoke( user );
 	}
 

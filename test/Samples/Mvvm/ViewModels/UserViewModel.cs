@@ -18,7 +18,6 @@ public class UserViewModel : ViewModelBase
 		get => _mod.Name;
 		set
 		{
-			value = value.Trim(); // Whitespace not allowed
 			ValidateProperty( value );
 			_mod.Name = value;
 			OnPropertyChanged();
