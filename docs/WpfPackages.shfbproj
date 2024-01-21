@@ -45,12 +45,13 @@
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
+      <NamespaceSummaryItem name="Common.Wpf.Attributes" isDocumented="True">Contains classes for custom validation attributes.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Common.Wpf.Commands" isDocumented="True">Contains classes that implement the ICommand interface which enables a user to interact with the business logic.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Common.Wpf.Controls" isDocumented="True">Contains classes to create elements, known as controls, that enables a user to interact with an application.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Common.Wpf.Converters" isDocumented="True">Contains classes to convert binding source data to target data.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Common.Wpf.Rules" isDocumented="True">Contains classes to validate the WPF user interface elements.</NamespaceSummaryItem>
     </NamespaceSummaries>
-    <VisibleItems>ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+    <VisibleItems>Protected, SealedProtected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <BuildLogFile>C:\Temp\Documentation\WpfPackages.log</BuildLogFile>
     <ComponentConfigurations>
       <ComponentConfig id="Syntax Component" enabled="True" xmlns="">

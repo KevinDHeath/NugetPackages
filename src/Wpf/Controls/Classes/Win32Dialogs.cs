@@ -15,7 +15,7 @@ public static class Win32Dialogs
 	// https://learn.microsoft.com/en-us/dotnet/api/microsoft.win32.openfolderdialog
 
 	/// <summary>Displays a standard dialog box that prompts the user to select a folder.</summary>
-	/// <param name="folder">Initial directory..</param>
+	/// <param name="folder">Initial directory.</param>
 	/// <returns>The selected folder path. If nothing is selected an empty string is returned.</returns>
 	public static string ShowSelectFolder( string? folder )
 	{

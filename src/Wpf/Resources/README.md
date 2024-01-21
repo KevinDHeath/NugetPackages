@@ -2,6 +2,8 @@
 Provides UI resources for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.4
+  - Added attribute validations for `NoFutureDate` and a `cEmail` constant for regular expressions.
 - v2.0.3
   - Fixed `DateOnly` rule so it doesn't wipe out invalid values. 
   - Added ability for `DelegateCommand` to monitor changes to a specific object and properties.

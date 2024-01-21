@@ -19,7 +19,7 @@ public class DatePicker : System.Windows.Controls.DatePicker
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 
 	/// <summary>Gets or sets whether error messages are shown to the user below the control.
-	/// The default is false.</summary>
+	/// The default is <see langword="false"/>.</summary>
 	public bool IsErrorShown
 	{
 		get { return (bool)GetValue( IsErrorShownProperty ); }
@@ -38,10 +38,6 @@ public class DatePicker : System.Windows.Controls.DatePicker
 		DefaultStyleKeyProperty.OverrideMetadata( typeof( DatePicker ),
 			new FrameworkPropertyMetadata( typeof( DatePicker ) ) );
 	}
-
-	/// <summary>Initializes a new instance of the DatePicker class.</summary>
-	public DatePicker()
-	{ }
 
 	#endregion
 }

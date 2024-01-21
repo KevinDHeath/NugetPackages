@@ -11,7 +11,7 @@ public class DateOnlyRule : RuleBase
 {
 	#region Properties
 
-	/// <summary>Indicates if a value is required. The default is false.</summary>
+	/// <summary>Indicates if a value is required. The default is <see langword="false"/>.</summary>
 	public bool Rqd { get; set; }
 
 	#endregion
