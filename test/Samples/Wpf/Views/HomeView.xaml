@@ -20,11 +20,13 @@
       <self:ComponentsList Component="DecimalToString" View="Unit Tests" Type="Converter"/>
       <self:ComponentsList Component="DelegateCommand" View="Command Test" Type="Command"/>
       <self:ComponentsList Component="DoubleToString" View="Unit Tests" Type="Converter"/>
+      <self:ComponentsList Component="EmailRegEx" View="User Edit" Type="Attribute"/>
       <self:ComponentsList Component="FilePathTextBox" View="Unit Tests" Type="Control"/>
       <self:ComponentsList Component="HamburgerMenu" View="This App" Type="Control"/>
       <self:ComponentsList Component="IntegerRule" View="Unit Tests" Type="Rule"/>
       <self:ComponentsList Component="IntegerToString" View="Unit Tests" Type="Converter"/>
       <self:ComponentsList Component="ModalDialog" View="Login" Type="Control"/>
+      <self:ComponentsList Component="NoFutureDate" View="User Edit" Type="Attribute"/>
       <self:ComponentsList Component="NumericSpinner" View="Unit Tests" Type="Control"/>
       <self:ComponentsList Component="PasswordExtend" View="Login" Type="Control"/>
       <self:ComponentsList Component="RelayCommand" View="Unit Tests" Type="Command"/>
