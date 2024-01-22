@@ -49,7 +49,7 @@ public class SortableListView : ListView
 		typeMetadata: new PropertyMetadata( defaultValue: cDftColIndex ) );
 
 	/// <summary>Gets or sets the default one-based column index.<br/>
-	/// The default value is 1.</summary>
+	/// The default value is <c>1</c>.</summary>
 	public int DefaultColumn
 	{
 		get => (int)GetValue( DefaultColumnProperty );
@@ -88,15 +88,13 @@ public class SortableListView : ListView
 			new FrameworkPropertyMetadata( typeof( SortableListView ) ) );
 	}
 
-	/// <summary>Initializes a new instance of the SortableListView class.</summary>
-	public SortableListView() { }
-
 	#endregion
 
 	#region Public Methods
 
 	/// <summary>Sorts the list view on a one-based column index.</summary>
-	/// <param name="columnIndex">Column index to use as the default sort column.</param>
+	/// <param name="columnIndex">Column index to use as the default sort column.
+	/// The default value is <c>1</c>.</param>
 	/// <remarks>This method should be called when the list view is first initialized.</remarks>
 	public void Sort( int columnIndex = cDftColIndex )
 	{

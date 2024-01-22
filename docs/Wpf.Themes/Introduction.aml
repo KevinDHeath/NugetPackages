@@ -14,6 +14,11 @@
       <content>
         <table>
           <row>
+            <entry><para><externalLink><linkText>Attributes</linkText><linkUri>N_Common_Wpf_Attributes.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
+            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <entry><para>Contains classes for custom validation attributes.</para></entry>
+          </row>
+          <row>
             <entry><para><externalLink><linkText>Commands</linkText><linkUri>N_Common_Wpf_Commands.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
             <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
             <entry><para>Contains classes that implement the ICommand interface which enables a user to interact with the business logic.</para></entry>

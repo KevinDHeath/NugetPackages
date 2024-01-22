@@ -37,7 +37,7 @@ public class FilePathTextBox : TextBox
 			new PropertyMetadata( DialogTypes.File ) );
 
 	/// <summary>Gets or sets the dialog type that will be shown to the user.<br/>
-	/// The default is File.</summary>
+	/// The default is <c>File</c>.</summary>
 	/// <remarks>File names must have an extension.</remarks>
 	public DialogTypes DialogType
 	{
@@ -63,7 +63,7 @@ public class FilePathTextBox : TextBox
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 
 	/// <summary>Gets or sets whether error messages are shown to the user below the control.
-	/// The default is false.</summary>
+	/// The default is <see langword="false"/>.</summary>
 	public bool IsErrorShown
 	{
 		get { return (bool)GetValue( IsErrorShownProperty ); }

@@ -112,7 +112,7 @@ public static class PasswordBoxExtend
 
 	/// <summary>Gets the Bind Password property.</summary>
 	/// <param name="dp">Dependency object.</param>
-	/// <returns>True if the password is bound, otherwise false is returned.</returns>
+	/// <returns><see langword="true"/> if the password is bound, otherwise <see langword="false"/> is returned.</returns>
 	public static bool GetBindPassword( DependencyObject dp ) => (bool)dp.GetValue( BindPassword );
 
 	/// <summary>Sets the Bound Password property.</summary>

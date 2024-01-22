@@ -19,7 +19,7 @@ public class ComboBox : System.Windows.Controls.ComboBox
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 
 	/// <summary>Gets or sets whether error messages are shown to the user below the control.
-	/// The default is false.</summary>
+	/// The default is <see langword="false"/>.</summary>
 	public bool IsErrorShown
 	{
 		get { return (bool)GetValue( IsErrorShownProperty ); }
@@ -38,10 +38,6 @@ public class ComboBox : System.Windows.Controls.ComboBox
 		DefaultStyleKeyProperty.OverrideMetadata( typeof( ComboBox ),
 			new FrameworkPropertyMetadata( typeof( ComboBox ) ) );
 	}
-
-	/// <summary>Initializes a new instance of the ComboBox class.</summary>
-	public ComboBox()
-	{ }
 
 	#endregion
 }

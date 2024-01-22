@@ -35,7 +35,7 @@ public class NumericSpinner : TextBox
 		typeMetadata: new PropertyMetadata( defaultValue: new decimal( 1 ) ) );
 
 	/// <summary>Gets or sets the increase/decrease value whenever a button is used.
-	/// The default is one.</summary>
+	/// The default is <c>one</c>.</summary>
 	public decimal Step
 	{
 		get { return (decimal)GetValue( StepProperty ); }
@@ -50,7 +50,7 @@ public class NumericSpinner : TextBox
 		name: nameof( Decimals ), propertyType: typeof( int ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: 0 ) );
 
-	/// <summary>Gets or sets the number of decimals to display. The default is zero.</summary>
+	/// <summary>Gets or sets the number of decimals to display. The default is <c>zero</c>.</summary>
 	public int Decimals
 	{
 		get { return (int)GetValue( DecimalsProperty ); }
@@ -65,7 +65,7 @@ public class NumericSpinner : TextBox
 		name: nameof( MinValue ), propertyType: typeof( decimal ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: decimal.MinValue ) );
 
-	/// <summary>Gets or sets the minimum value allowed. The default is decimal minimum.</summary>
+	/// <summary>Gets or sets the minimum value allowed. The default is <c>decimal minimum</c>.</summary>
 	public decimal MinValue
 	{
 		get { return (decimal)GetValue( MinValueProperty ); }
@@ -81,7 +81,7 @@ public class NumericSpinner : TextBox
 		name: nameof( MaxValue ), propertyType: typeof( decimal ), ownerType: typeof( NumericSpinner ),
 		typeMetadata: new PropertyMetadata( defaultValue: decimal.MaxValue ) );
 
-	/// <summary>Gets or sets the maximum value allowed. The default is decimal maximum.</summary>
+	/// <summary>Gets or sets the maximum value allowed. The default is <c>decimal maximum</c>.</summary>
 	public decimal MaxValue
 	{
 		get { return (decimal)GetValue( MaxValueProperty ); }
@@ -98,7 +98,7 @@ public class NumericSpinner : TextBox
 		typeMetadata: new PropertyMetadata( defaultValue: false ) );
 
 	/// <summary>Gets or sets whether error messages are shown to the user below the control.
-	/// The default is false.</summary>
+	/// The default is <see langword="false"/>.</summary>
 	public bool IsErrorShown
 	{
 		get { return (bool)GetValue( IsErrorShownProperty ); }

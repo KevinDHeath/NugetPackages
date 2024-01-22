@@ -35,7 +35,7 @@ public class HamburgerMenu : Control
 			typeMetadata: new PropertyMetadata( defaultValue: false,
 				propertyChangedCallback: OnIsOpenPropertyChanged ) );
 
-	/// <summary>Gets or sets the menu open indicator. The default is false.</summary>
+	/// <summary>Gets or sets the menu open indicator. The default is <see langword="false"/>.</summary>
 	public bool IsOpen
 	{
 		get { return (bool)GetValue( IsOpenProperty ); }
@@ -47,7 +47,7 @@ public class HamburgerMenu : Control
 		DependencyProperty.Register( nameof( OpenCloseDuration ), typeof( Duration ),
 			typeof( HamburgerMenu ), new PropertyMetadata( defaultValue: Duration.Automatic ) );
 
-	/// <summary>Gets or sets the menu open duration. The default is Automatic.</summary>
+	/// <summary>Gets or sets the menu open duration. The default is <c>Automatic</c>.</summary>
 	public Duration OpenCloseDuration
 	{
 		get { return (Duration)GetValue( OpenCloseDurationProperty ); }
@@ -59,7 +59,7 @@ public class HamburgerMenu : Control
 		DependencyProperty.Register( nameof( FallBackOpenWidth ), typeof( double ),
 			typeof( HamburgerMenu ), new PropertyMetadata( 100.0 ) );
 
-	/// <summary>Gets or sets the fall-back menu open width. The default is 100.</summary>
+	/// <summary>Gets or sets the fall-back menu open width. The default is <c>100</c>.</summary>
 	public double FallBackOpenWidth
 	{
 		get { return (double)GetValue( FallBackOpenWidthProperty ); }

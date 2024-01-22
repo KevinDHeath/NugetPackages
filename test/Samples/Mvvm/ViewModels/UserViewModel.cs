@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
+using Common.Wpf.Attributes;
 using Common.Wpf.Commands;
 using Sample.Mvvm.Models;
 using Sample.Mvvm.Validations;
@@ -25,7 +26,7 @@ public class UserViewModel : ViewModelBase
 	}
 
 	[Required( ErrorMessage = "{0} cannot be empty." )]
-	[RegularExpression( cEmailRegex, ErrorMessage = "Format not valid." )]
+	[RegularExpression( RegExAttribute.cEmail, ErrorMessage = "Format not valid." )]
 	[StringLength( 50, ErrorMessage = "{0} cannot be longer than {1}." )]
 	[UserEmail]
 	public string Email
@@ -33,7 +34,7 @@ public class UserViewModel : ViewModelBase
 		get => _mod.Email;
 		set
 		{
-			value = value.Trim(); // Whitespace not allowed
+			value = value.Trim(); // No spaces allowed
 			ValidateProperty( value );
 			_mod.Email = value;
 			OnPropertyChanged();
@@ -41,6 +42,8 @@ public class UserViewModel : ViewModelBase
 	}
 
 	[Required( ErrorMessage = "{0} cannot be empty." )]
+	[NoFutureDate]
+	[Display( Name = "Birthday" )]
 	public DateOnly? BirthDate
 	{
 		get => _mod.BirthDate;

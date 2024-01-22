@@ -9,16 +9,10 @@ namespace Common.Wpf.Rules;
 /// </summary>
 public class RequiredRule : RuleBase
 {
-	#region Properties and Constructor
+	#region Properties
 
-	/// <summary>Minimum number of characters. The default is 1.</summary>
-	public int Min { get; set; }
-
-	/// <summary>Initializes a new instance of the RequiredRule class.</summary>
-	public RequiredRule()
-	{
-		Min = 1;
-	}
+	/// <summary>Minimum number of characters. The default is <c>1</c>.</summary>
+	public int Min { get; set; } = 1;
 
 	#endregion
 

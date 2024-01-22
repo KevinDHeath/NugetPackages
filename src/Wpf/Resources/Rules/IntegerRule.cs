@@ -11,13 +11,13 @@ public class IntegerRule : RuleBase
 {
 	#region Properties and Constructor
 
-	/// <summary>Minimum value. The default is -2,147,483,648.</summary>
+	/// <summary>Minimum value. The default is <c>-2,147,483,648</c>.</summary>
 	public int Min { get; set; }
 
-	/// <summary>Maximum value. The default is 2,147,483,647.</summary>
+	/// <summary>Maximum value. The default is <c>2,147,483,647</c>.</summary>
 	public int Max { get; set; }
 
-	/// <summary>Indicates if a value is required. The default is false.</summary>
+	/// <summary>Indicates if a value is required. The default is <see langword="false"/>.</summary>
 	public bool Rqd { get; set; }
 
 	/// <summary>Initializes a new instance of the IntegerRule class.</summary>

@@ -12,10 +12,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.3</Version>
-    <PackageReleaseNotes>* Fixed DateOnly Rule so it doesn't wipe out invalid values.
-* Added ability for DelegateCommand to monitor for changes to a specific object and properties.
-* Added common styles for the PasswordBox control.</PackageReleaseNotes>
+    <Version>2.0.4</Version>
+    <PackageReleaseNotes>* Added attribute validations for NoFutureDate and a cEmail constant for regular expressions.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
