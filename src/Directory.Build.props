@@ -3,7 +3,6 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackLocal>$(SolutionDir)local</PackLocal>
-    <!-- <PackNoSolution>true</PackNoSolution> -->
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 

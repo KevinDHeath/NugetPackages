@@ -21,10 +21,6 @@ public class Province : ModelData
 	[MaxLength( 50 )]
 	public string Name { get; set; } = string.Empty;
 
-	/// <summary>Initializes a new instance of the Province class.</summary>
-	public Province()
-	{ }
-
 	/// <summary>Builds a Province object from a database table row.</summary>
 	/// <param name="row">Database row containing the Province columns.</param>
 	/// <returns>Province object containing the database values.</returns>

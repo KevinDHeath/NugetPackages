@@ -39,14 +39,6 @@ public class User : ModelEdit, IUser
 
 	#endregion
 
-	#region Constructor
-
-	/// <summary>Initializes a new instance of the User class.</summary>
-	public User()
-	{ }
-
-	#endregion
-
 	#region Public Methods
 
 	/// <inheritdoc/>

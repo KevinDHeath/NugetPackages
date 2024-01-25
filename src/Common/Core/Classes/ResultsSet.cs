@@ -25,18 +25,10 @@ public class ResultsSet<T> where T : class
 	[JsonIgnore]
 	public int Max { get; private set; } = 10;
 
-	#region Constructors
-
-	/// <summary>Initializes a new instance of the ResultsSet class.</summary>
-	public ResultsSet()
-	{ }
-
 	/// <summary>Initializes a new instance of the ResultsSet class.</summary>
 	/// <param name="max">Maximum numbers of results to return.</param>
 	public ResultsSet( int? max = 0 )
 	{
 		if( max is not null and > 0 ) { Max = max.Value; }
 	}
-
-	#endregion
 }

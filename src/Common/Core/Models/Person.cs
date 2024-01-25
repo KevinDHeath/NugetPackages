@@ -21,7 +21,7 @@ public class Person : ModelEdit, IPerson
 	private string? _firstName;
 	private string? _middleName;
 	private string? _lastName;
-	private Address _address;
+	private Address _address = new();
 	private string? _governmentNumber;
 	private string? _idProvince;
 	private string? _idNumber;
@@ -202,16 +202,6 @@ public class Person : ModelEdit, IPerson
 			var values = new[] { FirstName.Trim(), MiddleName?.Trim(), LastName.Trim() };
 			return string.Join( " ", values.Where( s => !string.IsNullOrEmpty( s ) ) );
 		}
-	}
-
-	#endregion
-
-	#region Constructor
-
-	/// <summary>Initializes a new instance of the Person class.</summary>
-	public Person()
-    {
-		_address = new Address();
 	}
 
 	#endregion

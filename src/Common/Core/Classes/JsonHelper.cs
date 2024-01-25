@@ -92,10 +92,11 @@ public static class JsonHelper
 	/// <summary>Returns a collection of settings from a Json application settings file.</summary>
 	/// <param name="fileName">Json application settings file name.</param>
 	/// <param name="section">Application settings section to return <i>(case-sensitive)</i>.</param>
+	/// <param name="maxDepth">Maximum depth allowed when parsing JSON data.</param>
 	/// <returns>An empty collection is returned if the settings section could not be found.</returns>
 	/// <remarks>If no section is provided it is assumed that the settings are in the root.
-	/// <br/>Otherwise it is assumed that the section name is case-sensitive and only 2 levels deep.</remarks>
-	public static Dictionary<string, string?> ReadAppSettings( ref string fileName, ref string? section )
+	/// <br/>Otherwise it is assumed that the section name is case-sensitive and only 3 levels deep.</remarks>
+	public static Dictionary<string, string?> ReadAppSettings( ref string fileName, ref string? section, int maxDepth = 2 )
 	{
 		Dictionary<string, string?> rtn = [];
 		if( string.IsNullOrEmpty( Path.GetDirectoryName( fileName ) ) )
@@ -109,7 +110,7 @@ public static class JsonHelper
 			JsonDocumentOptions options = new()
 			{
 				AllowTrailingCommas = true,
-				MaxDepth = 2,
+				MaxDepth = maxDepth,
 				CommentHandling = JsonCommentHandling.Skip
 			};
 			using JsonDocument document = JsonDocument.Parse( json, options );

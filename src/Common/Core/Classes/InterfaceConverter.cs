@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Common.Core.Classes;
@@ -6,6 +7,7 @@ namespace Common.Core.Classes;
 /// <summary>Converts a concrete class object from Json and returns it as an interface.</summary>
 /// <typeparam name="M">The concrete class type.</typeparam>
 /// <typeparam name="I">The interface type.</typeparam>
+[ExcludeFromCodeCoverage]
 internal class InterfaceConverter<M, I> : JsonConverter<I> where M : class, I
 {
 	#region Overridden Methods

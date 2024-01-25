@@ -29,14 +29,6 @@ public class ISOCountry : ModelData
 
 	#endregion
 
-	#region Constructor
-
-	/// <summary>Initializes a new instance of the ISOCountry class.</summary>
-	public ISOCountry()
-	{ }
-
-	#endregion
-
 	#region Public Methods
 
 	/// <summary>Builds an ISOCountry object from a database table row.</summary>

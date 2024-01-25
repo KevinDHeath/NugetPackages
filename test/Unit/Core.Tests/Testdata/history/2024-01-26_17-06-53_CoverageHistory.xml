@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2024-01-26_17-06-53" tag="">
+  <assembly name="Common.Core">
+    <class name="Common.Core.Classes.AddressFactoryBase" coveredlines="0" coverablelines="47" totallines="124" coveredbranches="0" totalbranches="46" coveredcodeelements="0" totalcodeelements="15" />
+    <class name="Common.Core.Classes.DataFactoryBase" coveredlines="0" coverablelines="34" totallines="87" coveredbranches="0" totalbranches="12" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="Common.Core.Classes.DataServiceBase" coveredlines="0" coverablelines="79" totallines="146" coveredbranches="0" totalbranches="18" coveredcodeelements="0" totalcodeelements="8" />
+    <class name="Common.Core.Classes.InterfaceFactory" coveredlines="0" coverablelines="10" totallines="46" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="Common.Core.Classes.JsonHelper" coveredlines="0" coverablelines="117" totallines="201" coveredbranches="0" totalbranches="38" coveredcodeelements="0" totalcodeelements="8" />
+    <class name="Common.Core.Classes.ModelBase" coveredlines="0" coverablelines="12" totallines="52" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Common.Core.Classes.ModelData" coveredlines="0" coverablelines="23" totallines="46" coveredbranches="0" totalbranches="28" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Common.Core.Classes.ModelDataError" coveredlines="0" coverablelines="117" totallines="303" coveredbranches="0" totalbranches="40" coveredcodeelements="0" totalcodeelements="14" />
+    <class name="Common.Core.Classes.ReflectionHelper" coveredlines="0" coverablelines="189" totallines="317" coveredbranches="0" totalbranches="140" coveredcodeelements="0" totalcodeelements="11" />
+    <class name="Common.Core.Classes.ResultsSet`1" coveredlines="0" coverablelines="11" totallines="42" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="7" />
+    <class name="Common.Core.Converters.Generic" coveredlines="0" coverablelines="19" totallines="44" coveredbranches="0" totalbranches="12" coveredcodeelements="0" totalcodeelements="3" />
+    <class name="Common.Core.Converters.JsonBooleanString" coveredlines="0" coverablelines="20" totallines="56" coveredbranches="0" totalbranches="11" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Common.Core.Converters.JsonDateOnlyString" coveredlines="0" coverablelines="18" totallines="50" coveredbranches="0" totalbranches="8" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Common.Core.Converters.JsonDecimalString" coveredlines="0" coverablelines="19" totallines="53" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Common.Core.Converters.JsonIntegerString" coveredlines="0" coverablelines="19" totallines="53" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Common.Core.Converters.StringConverter" coveredlines="0" coverablelines="81" totallines="221" coveredbranches="0" totalbranches="24" coveredcodeelements="0" totalcodeelements="18" />
+    <class name="Common.Core.Models.Address" coveredlines="0" coverablelines="80" totallines="177" coveredbranches="0" totalbranches="40" coveredcodeelements="0" totalcodeelements="15" />
+    <class name="Common.Core.Models.Company" coveredlines="0" coverablelines="163" totallines="346" coveredbranches="0" totalbranches="84" coveredcodeelements="0" totalcodeelements="29" />
+    <class name="Common.Core.Models.CountryCode" coveredlines="0" coverablelines="1" totallines="6" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="1" />
+    <class name="Common.Core.Models.ISOCountry" coveredlines="0" coverablelines="15" totallines="58" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="6" />
+    <class name="Common.Core.Models.Person" coveredlines="0" coverablelines="160" totallines="337" coveredbranches="0" totalbranches="102" coveredcodeelements="0" totalcodeelements="28" />
+    <class name="Common.Core.Models.Postcode" coveredlines="0" coverablelines="17" totallines="50" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="7" />
+    <class name="Common.Core.Models.Province" coveredlines="0" coverablelines="13" totallines="41" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="Common.Core.Models.User" coveredlines="0" coverablelines="53" totallines="129" coveredbranches="0" totalbranches="36" coveredcodeelements="0" totalcodeelements="12" />
+  </assembly>
+</coverage>

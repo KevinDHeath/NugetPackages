@@ -21,7 +21,7 @@ public class Company : ModelEdit, ICompany
 
 	private int _id;
 	private string? _name;
-	private Address _address;
+	private Address _address = new();
 	private string? _governmentNumber;
 	private string? _primaryPhone;
 	private string? _secondaryPhone;
@@ -208,16 +208,6 @@ public class Company : ModelEdit, ICompany
 				OnPropertyChanged( nameof( DepositsBal ) );
 			}
 		}
-	}
-
-	#endregion
-
-	#region Constructor
-
-	/// <summary>Initializes a new instance of the Company class.</summary>
-	public Company()
-    {
-		_address = new Address();
 	}
 
 	#endregion

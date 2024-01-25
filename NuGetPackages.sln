@@ -7,9 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Reposit
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		src\Directory.Build.props = src\Directory.Build.props
-		src\Directory.Build.targets = src\Directory.Build.targets
-		src\Directory.Packages.props = src\Directory.Packages.props
 		icon.png = icon.png
 		LICENSE = LICENSE
 		nuget.config = nuget.config
@@ -39,19 +36,23 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{D6A0B8BF-E3DB-436C-81D3-061C8C40F830}"
 	ProjectSection(SolutionItems) = preProject
 		test\Directory.Build.props = test\Directory.Build.props
-		test\Directory.Packages.props = test\Directory.Packages.props
-		test\Samples\README.md = test\Samples\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.AspNet", "test\Samples\AspNet\Sample.AspNet.csproj", "{CF960633-1BA0-4258-9F9A-780003B13121}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}"
+	ProjectSection(SolutionItems) = preProject
+		test\Integration\Directory.Packages.props = test\Integration\Directory.Packages.props
+		test\Integration\README.md = test\Integration\README.md
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Console", "test\Samples\Console\Sample.Console.csproj", "{C80F96C0-3DCE-46C8-9EF9-A1C3E2EFD135}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.AspNet", "test\Integration\AspNet\Sample.AspNet.csproj", "{CF960633-1BA0-4258-9F9A-780003B13121}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Mvvm", "test\Samples\Mvvm\Sample.Mvvm.csproj", "{4038AA34-EABA-44F7-8ABE-7F3060961FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Console", "test\Integration\Console\Sample.Console.csproj", "{C80F96C0-3DCE-46C8-9EF9-A1C3E2EFD135}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Wpf", "test\Samples\Wpf\Sample.Wpf.csproj", "{407C99BB-A2DD-4E4B-90F3-789D86D22E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Mvvm", "test\Integration\Mvvm\Sample.Mvvm.csproj", "{4038AA34-EABA-44F7-8ABE-7F3060961FEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Controls", "test\Samples\Controls\Sample.Controls.csproj", "{DB41A9C6-4FA4-4631-B589-DB42C06ABF14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Wpf", "test\Integration\Wpf\Sample.Wpf.csproj", "{407C99BB-A2DD-4E4B-90F3-789D86D22E8C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Controls", "test\Integration\Controls\Sample.Controls.csproj", "{DB41A9C6-4FA4-4631-B589-DB42C06ABF14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E81DA897-FAEF-4403-8B32-B8D77C417D54}"
 	ProjectSection(SolutionItems) = preProject
@@ -60,7 +61,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{E81DA8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core", "src\Common\Core\Common.Core.csproj", "{FDFBAFDA-5814-491E-B24C-36F9BB76DF33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveThirdPartyReferenceLinks", "src\Helper\ResolveThirdPartyReferenceLinks\ResolveThirdPartyReferenceLinks.csproj", "{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{A3987174-754C-42B0-8AEF-C615B4E2EEF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveThirdPartyReferenceLinks", "src\Tools\ResolveThirdPartyReferenceLinks\ResolveThirdPartyReferenceLinks.csproj", "{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{2572BBA6-10AD-4ED6-A92B-BA4DE5374C7E}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+		src\Directory.Build.targets = src\Directory.Build.targets
+		src\Directory.Packages.props = src\Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{AF651211-B7C4-4153-B4DF-B4FF1F312B15}"
+	ProjectSection(SolutionItems) = preProject
+		test\Unit\Directory.Packages.props = test\Unit\Directory.Packages.props
+		test\Unit\README.md = test\Unit\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "test\Unit\Core.Tests\Core.Tests.csproj", "{C1846851-B4E5-442C-925A-8A886C07491B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,23 +140,34 @@ Global
 		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1846851-B4E5-442C-925A-8A886C07491B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1846851-B4E5-442C-925A-8A886C07491B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1846851-B4E5-442C-925A-8A886C07491B}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1846851-B4E5-442C-925A-8A886C07491B}.Testing|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B55E700F-9B77-4C21-88E0-1B10D5A7F344} = {2572BBA6-10AD-4ED6-A92B-BA4DE5374C7E}
 		{E1370363-1AEE-4CA0-A2CA-F5FE9A1D643E} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
 		{92AEC90F-44A4-4A70-96B7-629B8F16615B} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
 		{40BAEB28-7F05-4DBF-8C99-CDC983820027} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
+		{6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF} = {2572BBA6-10AD-4ED6-A92B-BA4DE5374C7E}
 		{97A9AB84-8415-43A4-BB8B-9E9508C0A478} = {6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}
 		{A2DDF9FC-FB19-4480-8AC2-ECA692332380} = {6DA0FE98-46BC-45A3-965B-DB66F3D5C7BF}
-		{CF960633-1BA0-4258-9F9A-780003B13121} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
-		{C80F96C0-3DCE-46C8-9EF9-A1C3E2EFD135} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
-		{4038AA34-EABA-44F7-8ABE-7F3060961FEF} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
-		{407C99BB-A2DD-4E4B-90F3-789D86D22E8C} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
-		{DB41A9C6-4FA4-4631-B589-DB42C06ABF14} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{10A465A0-E6C2-4F15-A6F1-C0DD6A869E65} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{CF960633-1BA0-4258-9F9A-780003B13121} = {10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}
+		{C80F96C0-3DCE-46C8-9EF9-A1C3E2EFD135} = {10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}
+		{4038AA34-EABA-44F7-8ABE-7F3060961FEF} = {10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}
+		{407C99BB-A2DD-4E4B-90F3-789D86D22E8C} = {10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}
+		{DB41A9C6-4FA4-4631-B589-DB42C06ABF14} = {10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}
+		{E81DA897-FAEF-4403-8B32-B8D77C417D54} = {2572BBA6-10AD-4ED6-A92B-BA4DE5374C7E}
 		{FDFBAFDA-5814-491E-B24C-36F9BB76DF33} = {E81DA897-FAEF-4403-8B32-B8D77C417D54}
-		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7} = {B55E700F-9B77-4C21-88E0-1B10D5A7F344}
+		{A3987174-754C-42B0-8AEF-C615B4E2EEF1} = {2572BBA6-10AD-4ED6-A92B-BA4DE5374C7E}
+		{A83846BA-F612-4B1D-8EB3-49AFA60C57F7} = {A3987174-754C-42B0-8AEF-C615B4E2EEF1}
+		{AF651211-B7C4-4153-B4DF-B4FF1F312B15} = {D6A0B8BF-E3DB-436C-81D3-061C8C40F830}
+		{C1846851-B4E5-442C-925A-8A886C07491B} = {AF651211-B7C4-4153-B4DF-B4FF1F312B15}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39730524-1930-4E69-985A-41B9AFE5050B}

@@ -10,3 +10,6 @@ References:
 - [Understanding and Using ConfigureAwait](https://dev.to/this-is-learning/understanding-and-using-configureawait-in-asynchronous-programming-2da3)
 - [Null Forgiving Operator in C#](https://jeremybytes.blogspot.com/2022/07/null-forgiving-operator-in-c.html)
 - [Serialize Interface Instances With System.Text.Json](https://khalidabuhakmeh.com/serialize-interface-instances-system-text-json)
+
+Unit Testing:
+- [Latest code coverage report](https://kevindheath.github.io/codecoverage/coretests/)
