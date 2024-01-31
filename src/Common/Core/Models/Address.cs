@@ -118,14 +118,6 @@ public class Address : ModelBase, IEquatable<object>
 
 	#endregion
 
-	#region Constructor
-
-	/// <summary>Initializes a new instance of the Address class.</summary>
-	public Address()
-    { }
-
-	#endregion
-
 	#region Internal Methods
 
 	/// <inheritdoc/>

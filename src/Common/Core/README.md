@@ -1,5 +1,6 @@
 # Common.Core Change Log
-
+- v2.1.2
+  - Added an optional `maxDepth` parameter to the `JsonHelper.ReadAppSettings` method with a default value of 2.
 - v2.1.1
   - Added a `Find` method to the `IDataFactory` interface.
 - v2.1.0

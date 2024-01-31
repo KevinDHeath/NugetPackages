@@ -10,8 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
-    <Version>2.1.1</Version>
-    <PackageReleaseNotes>* Added a Find method to the IDataFactory interface.</PackageReleaseNotes>
+    <Version>2.1.2</Version>
+    <PackageReleaseNotes>* Added an optional maxDepth parameter to the JsonHelper.ReadAppSettings method with a default value of 2.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

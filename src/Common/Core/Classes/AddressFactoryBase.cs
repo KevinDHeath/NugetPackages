@@ -87,12 +87,12 @@ public abstract class AddressFactoryBase
 	public static bool CheckProvinceCode( string? code )
 	{
 		if( code is null || code.Length > 10 ) { return false; }
-		var state = Provinces.FirstOrDefault( x =>
+		var province = Provinces.FirstOrDefault( x =>
 		{
 			if( x is null || x.Code is null ) { return false; }
 			return x.Code.Equals( code, sCompare );
 		} );
-		return state is not null;
+		return province is not null;
 	}
 
 	/// <summary>Gets the name for a Province code.</summary>
@@ -101,12 +101,12 @@ public abstract class AddressFactoryBase
 	public static string GetProvinceName( string? code )
 	{
 		if( code is null || code.Length > 10 ) { return string.Empty; }
-		var state = Provinces.FirstOrDefault( x =>
+		var province = Provinces.FirstOrDefault( x =>
 		{
 			if( x is null || x.Code is null ) { return false; }
 			return x.Code.Equals( code, sCompare );
 		} );
-		return state is not null ? state.Name : string.Empty;
+		return province is not null ? province.Name : string.Empty;
 	}
 
 	/// <summary>Gets the information for a Postcode.</summary>

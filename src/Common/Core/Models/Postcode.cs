@@ -28,10 +28,6 @@ public class Postcode : ModelData
 	[MaxLength( 50 )]
 	public string? City { get; set; }
 
-	/// <summary>Initializes a new instance of the Postcode class.</summary>
-	public Postcode()
-	{ }
-
 	/// <summary>Builds a Postcode object from a database table row.</summary>
 	/// <param name="row">Database row containing the Postcode columns.</param>
 	/// <returns>Postcode object containing the database values.</returns>

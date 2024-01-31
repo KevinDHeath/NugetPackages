@@ -5,12 +5,15 @@
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <IsPackable>false</IsPackable>
+    <RunSettingsFilePath>$(MSBuildProjectDirectory)\unittest.runsettings</RunSettingsFilePath>
+    <NoWarn>CA1707</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>
     <Authors>Kevin Heath</Authors>
     <Product>NuGet Package Testing</Product>
-    <Copyright>Copyright © 2023 KevinDHeath</Copyright>
+    <Copyright>Copyright © 2024 KevinDHeath</Copyright>
   </PropertyGroup>
 
 </Project>
