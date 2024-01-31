@@ -7,28 +7,28 @@
 
   <ItemGroup>
 
-    <!-- Transitive, referenced by Microsoft.NET.Test.Sdk -->
-    <PackageVersion Include="Microsoft.CodeCoverage" Version="17.8.0" />
-    <PackageVersion Include="Microsoft.TestPlatform.TestHost" Version="17.8.0" />
-
-    <!-- Transitive, referenced by Microsoft.TestPlatform.TestHost -->
-    <PackageVersion Include="Microsoft.TestPlatform.ObjectModel" Version="17.8.0" />
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
-
     <!-- Transitive, referenced by Microsoft.TestPlatform.ObjectModel -->
     <PackageVersion Include="NuGet.Frameworks" Version="6.8.0" />
     <PackageVersion Include="System.Reflection.Metadata" Version="8.0.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
 
-    <!-- Transitive, referenced by xunit -->
-    <PackageVersion Include="xunit.analyzers" Version="1.10.0" />
-    <PackageVersion Include="xunit.assert" Version="2.6.6" />
-    <PackageVersion Include="xunit.core" Version="2.6.6" />
+    <!-- Transitive, referenced by Microsoft.TestPlatform.TestHost -->
+    <PackageVersion Include="Microsoft.TestPlatform.ObjectModel" Version="17.8.0" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+
+    <!-- Transitive, referenced by Microsoft.NET.Test.Sdk -->
+    <PackageVersion Include="Microsoft.CodeCoverage" Version="17.8.0" />
+    <PackageVersion Include="Microsoft.TestPlatform.TestHost" Version="17.8.0" />
 
     <!-- Transitive, referenced by xunit.core -->
     <PackageVersion Include="xunit.extensibility.core" Version="2.6.6" />
     <PackageVersion Include="xunit.abstractions" Version="2.0.3" />
     <PackageVersion Include="xunit.extensibility.execution" Version="2.6.6" />
+
+    <!-- Transitive, referenced by xunit -->
+    <PackageVersion Include="xunit.analyzers" Version="1.10.0" />
+    <PackageVersion Include="xunit.assert" Version="2.6.6" />
+    <PackageVersion Include="xunit.core" Version="2.6.6" />
 
     <!-- Transitive, referenced by FluentAssertions -->
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
@@ -37,6 +37,9 @@
 
     <!-- Transitive, referenced by FluentAssertions -->
     <PackageVersion Include="Validation" Version="2.5.51" />
+
+    <!-- Integration Testing -->
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 
     <!-- Unit Testing -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />

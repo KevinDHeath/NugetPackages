@@ -1,6 +1,7 @@
 # Package Testing
-There are 4 types of integration testing projects:
-- ASP.NET - This is only used to trigger the GitHub Actions node to appear in Solution Explorer. _(Also requires Visual Studio Tools > Options > Projects and Solutions > Web Projects > Show GitHub Actions workflows in Solution Explorer)_
+An _integration test_ differs from a unit test in that it exercises two or more software components' ability to function together, also known as their "integration." These tests operate on a broader spectrum of the system under test, whereas unit tests focus on individual components. Often, integration tests do include infrastructure concerns.
+
+There are 3 types of integration testing projects:
 - MVVM - Core component to provide data and services for user interface applications.
 - Console - Used to test the functionality of the `Helper` packages.
 - WPF - UI used to test the functionality of the `WPF` packages.

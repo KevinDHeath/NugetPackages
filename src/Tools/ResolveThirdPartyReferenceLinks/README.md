@@ -2,9 +2,6 @@
 
 Sandcastle (SHFB) component to resolve third-party reference links.
 
-- [Cross Repo GitHub Pages API Links?](https://github.com/EWSoftware/SHFB/issues/998)\
-[Source code](https://github.com/GridProtectionAlliance/ResolveThirdPartyReferenceLinks)
-
 ## How To Use
 
 ### Deploy
