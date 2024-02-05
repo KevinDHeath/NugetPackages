@@ -13,6 +13,13 @@ public static class JsonHelper
 	/// <param name="fileName">Json file name.</param>
 	/// <param name="options">Optional Json serializer options.</param>
 	/// <returns><see langword="null"/> is returned if the object could not be populated.</returns>
+	/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+	/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+	/// <exception cref="NotSupportedException">Thrown when an invoked method is not supported, or when there
+	/// is an attempt to read, seek, or write to a stream that does not support the invoked functionality.</exception>
+	/// <exception cref="OutOfMemoryException">Thrown when there is not enough memory to continue.</exception>
+	/// <exception cref="SecurityException">Thrown when a security error is detected.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown when the operating system denies access because of an I/O error or a specific type of security error.</exception>
 	public static T? DeserializeFile<T>( string fileName, JsonSerializerOptions? options = null ) where T : class
 	{
 		T? rtn = null;
@@ -34,9 +41,7 @@ public static class JsonHelper
 			options ??= DefaultSerializerOptions();
 			rtn = JsonSerializer.Deserialize<T>( json, options );
 		}
-		catch( ArgumentException ) { }
-		catch( JsonException ) { }
-		catch( NotSupportedException ) { }
+		catch( Exception ) { }
 
 		return rtn;
 	}
@@ -48,43 +53,41 @@ public static class JsonHelper
 	/// <returns>An empty list is returned if the string could not be converted.</returns>
 	public static List<T> DeserializeList<T>( ref string? json, JsonSerializerOptions? options = null )
 	{
+		List<T> rtn = [];
 		if( json is not null )
 		{
 			options ??= DefaultSerializerOptions();
 			try
 			{
 				List<T>? obj = JsonSerializer.Deserialize<List<T>>( json, options );
-				if( obj is not null ) { return obj; }
+				if( obj is not null ) { rtn = obj; }
 			}
-			catch( ArgumentException ) { }
-			catch( JsonException ) { }
-			catch( NotSupportedException ) { }
+			catch( Exception ) { }
 		}
 
-		return [];
+		return rtn;
 	}
 
 	/// <summary>Reads the Json from a file.</summary>
 	/// <param name="fileName">Json file name.</param>
 	/// <returns><see langword="null"/> is returned if the file could not be accessed.</returns>
+	/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+	/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+	/// <exception cref="NotSupportedException">Thrown when an invoked method is not supported, or when there
+	/// is an attempt to read, seek, or write to a stream that does not support the invoked functionality.</exception>
+	/// <exception cref="OutOfMemoryException">Thrown when there is not enough memory to continue.</exception>
+	/// <exception cref="SecurityException">Thrown when a security error is detected.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown when the operating system denies access because of an I/O error or a specific type of security error.</exception>
 	public static string? ReadJsonFromFile( string fileName )
 	{
 		if( string.IsNullOrWhiteSpace( fileName ) ) { return null; }
 		string? json = null;
-		try
+		FileInfo fi = new( fileName );
+		if( fi.Exists )
 		{
-			FileInfo fi = new( fileName );
-			if( fi.Exists )
-			{
-				using StreamReader sr = new( fi.FullName );
-				json = sr.ReadToEnd();
-			}
+			using StreamReader sr = new( fi.FullName );
+			json = sr.ReadToEnd();
 		}
-		catch( ArgumentException ) { }
-		catch( NotSupportedException ) { }
-		catch( PathTooLongException ) { }
-		catch( SecurityException ) { }
-		catch( UnauthorizedAccessException ) { }
 
 		return json;
 	}
@@ -99,14 +102,14 @@ public static class JsonHelper
 	public static Dictionary<string, string?> ReadAppSettings( ref string fileName, ref string? section, int maxDepth = 2 )
 	{
 		Dictionary<string, string?> rtn = [];
-		if( string.IsNullOrEmpty( Path.GetDirectoryName( fileName ) ) )
-		{
-			fileName = ReflectionHelper.AddCurrentPath( fileName );
-		}
-		string? json = ReadJsonFromFile( fileName );
-		if( string.IsNullOrWhiteSpace( json ) ) { return rtn; }
 		try
 		{
+			if( string.IsNullOrEmpty( Path.GetDirectoryName( fileName ) ) )
+			{
+				fileName = ReflectionHelper.AddCurrentPath( fileName );
+			}
+			string? json = ReadJsonFromFile( fileName );
+			if( string.IsNullOrWhiteSpace( json ) ) { return rtn; }
 			JsonDocumentOptions options = new()
 			{
 				AllowTrailingCommas = true,
@@ -124,10 +127,7 @@ public static class JsonHelper
 				}
 			}
 		}
-		catch( ArgumentException ) { }
-		catch( InvalidOperationException ) { }
-		catch( JsonException ) { }
-		catch( KeyNotFoundException ) { }
+		catch( Exception ) { }
 
 		return rtn;
 	}
@@ -138,27 +138,19 @@ public static class JsonHelper
 	/// <param name="fileName">Json file name.</param>
 	/// <param name="options">Optional Json serializer options.</param>
 	/// <returns><see langword="true"/> if the object was saved.</returns>
+	/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+	/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+	/// <exception cref="NotSupportedException">Thrown when an invoked method is not supported, or when there
+	/// is an attempt to read, seek, or write to a stream that does not support the invoked functionality.</exception>
+	/// <exception cref="SecurityException">Thrown when a security error is detected.</exception>
+	/// <exception cref="UnauthorizedAccessException">Thrown when the operating system denies access because of an I/O error or a specific type of security error.</exception>
 	public static bool Serialize<T>( T? obj, string fileName, JsonSerializerOptions? options = null ) where T : class
 	{
 		if( obj is null || string.IsNullOrWhiteSpace( fileName ) ) { return false; }
-		try
-		{
-			options ??= DefaultSerializerOptions();
-			string json = JsonSerializer.Serialize( obj, options );
-			if( json is not null )
-			{
-				File.WriteAllText( fileName, json );
-				return true;
-			}
-		}
-		catch( ArgumentException ) { }
-		catch( DirectoryNotFoundException ) { }
-		catch( IOException ) { }
-		catch( NotSupportedException ) { }
-		catch( SecurityException ) { }
-		catch( UnauthorizedAccessException ) { }
-
-		return false;
+		options ??= DefaultSerializerOptions();
+		string json = JsonSerializer.Serialize( obj, options );
+		File.WriteAllText( fileName, json );
+		return true;
 	}
 
 	/// <summary>Returns a Json string of the provided object type.</summary>
@@ -166,17 +158,13 @@ public static class JsonHelper
 	/// <param name="obj">Object to serialize.</param>
 	/// <param name="options">Optional Json serializer options.</param>
 	/// <returns><see langword="null"/> is returned if the serialization fails.</returns>
+	/// <exception cref="NotSupportedException">Thrown when an invoked method is not supported, or when there
+	/// is an attempt to read, seek, or write to a stream that does not support the invoked functionality.</exception>
 	public static string? Serialize<T>( T? obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		if( obj is null ) { return null; }
-		try
-		{
-			options ??= DefaultSerializerOptions();
-			return JsonSerializer.Serialize( obj, options );
-		}
-		catch( NotSupportedException ) { }
-
-		return null;
+		options ??= DefaultSerializerOptions();
+		return JsonSerializer.Serialize( obj, options );
 	}
 
 	/// <summary>Gets a default set of Json Serializer options.</summary>

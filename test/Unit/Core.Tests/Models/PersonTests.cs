@@ -21,9 +21,53 @@ public class PersonTests
 	{
 		// Arrange
 		Person source = FakeData.CreatePerson();
+		Person target = FakeData.CreatePerson();
 
-		// Act
-		bool result = source.Equals( null );
+		// Act (plus branch coverage)
+		_ = source.Equals( target );
+
+		target.Id = 2;
+		_ = source.Equals( target );
+		target.Id = source.Id;
+		target.FirstName = "mod";
+		_ = source.Equals( target );
+		target.FirstName = source.FirstName;
+		target.MiddleName = "X";
+		_ = source.Equals( target );
+		target.MiddleName = source.MiddleName;
+		target.LastName = "mod";
+		_ = source.Equals( target );
+		target.LastName = source.LastName;
+		target.Address.Street = null;
+		_ = source.Equals( target );
+		target.Address.Street = source.Address.Street;
+		target.Address.City = null;
+		_ = source.Equals( target );
+		target.Address.City = source.Address.City;
+		target.Address.Province = null;
+		_ = source.Equals( target );
+		target.Address.Province = source.Address.Province;
+		target.Address.Postcode = null;
+		_ = source.Equals( target );
+		target.Address.Postcode = source.Address.Postcode;
+		target.Address.Country = null;
+		_ = source.Equals( target );
+		target.Address.Country = source.Address.Country;
+		target.GovernmentNumber = null;
+		_ = source.Equals( target );
+		target.GovernmentNumber = source.GovernmentNumber;
+		target.IdProvince = null;
+		_ = source.Equals( target );
+		target.IdProvince = source.IdProvince;
+		target.IdNumber = null;
+		_ = source.Equals( target );
+		target.IdNumber = source.IdNumber;
+		target.HomePhone = null;
+		_ = source.Equals( target );
+		target.HomePhone = source.HomePhone;
+		target.BirthDate = null;
+
+		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
@@ -49,7 +93,7 @@ public class PersonTests
 		var result = Person.GetSerializerOptions();
 
 		// Assert
-		_ = result.Should().BeAssignableTo<System.Text.Json.JsonSerializerOptions>();
+		_ = result.Should().BeAssignableTo<JsonSerializerOptions>();
 	}
 
 	[Fact]
@@ -71,6 +115,7 @@ public class PersonTests
 		// Arrange
 		Person source = FakeData.CreatePerson();
 		Person target = FakeData.CreatePerson( mod: true );
+		_ = target.FullName;
 
 		// Act
 		target.Update( source );

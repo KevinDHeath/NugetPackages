@@ -66,4 +66,24 @@ public class ModelDataErrorTests
 		// Assert
 		_ = errors.Should().BeTrue();
 	}
+
+	[Fact]
+	public void ValidateProperty_should_be_false()
+	{
+		// Arrange
+		TestError testError = new();
+		DateTime value = DateTime.MinValue;
+
+		// Act
+		bool result = testError.ValidateProperty( value, nameof( TestError.Created ) );
+
+		// Assert
+		_ = result.Should().BeFalse();
+	}
+}
+
+public class TestError : ModelDataError
+{
+	[MaxLength( 10 )]
+	public DateTime Created { get; set; } = DateTime.Now;
 }

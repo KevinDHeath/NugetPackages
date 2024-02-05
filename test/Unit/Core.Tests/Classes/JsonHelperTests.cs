@@ -74,7 +74,7 @@ public class JsonHelperTests
 		string? json = string.Empty;
 
 		// Act
-		List<User> result = JsonHelper.DeserializeList<User>( ref json );
+		List<Province> result = JsonHelper.DeserializeList<Province>( ref json );
 
 		// Assert
 		_ = result.Count.Should().Be( 0 );
@@ -100,6 +100,34 @@ public class JsonHelperTests
 		// Arrange
 		string fileName = string.Empty;
 		string? section = null;
+
+		// Act
+		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section, 3 );
+
+		// Assert
+		_ = result.Count.Should().Be( 0 );
+	}
+
+	[Fact]
+	public void ReadAppSettings_invalid_max_depth_returns_0()
+	{
+		// Arrange
+		string fileName = Global.cSettings;
+		string? section = @"connectionstrings";
+
+		// Act
+		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section );
+
+		// Assert
+		_ = result.Count.Should().Be( 0 );
+	}
+
+	[Fact]
+	public void ReadAppSettings_invalid_section_returns_0()
+	{
+		// Arrange
+		string fileName = Global.cSettings;
+		string? section = @"connectionstrings";
 
 		// Act
 		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section, 3 );

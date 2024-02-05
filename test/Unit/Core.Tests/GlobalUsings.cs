@@ -43,7 +43,7 @@ public class Global
 		return string.Empty;
 	}
 
-	internal static List<T> GetJsonList<T>( string? filename, JsonSerializerOptions? options = null )
+	internal static List<T> GetJsonList<T>( string? filename )
 	{
 		string? json = GetFileContents( filename );
 		if( json.Length > 0 )

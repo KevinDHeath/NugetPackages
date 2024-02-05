@@ -77,7 +77,7 @@ public abstract class AddressFactoryBase
 	public static bool CheckCountryCode( string? code )
 	{
 		if( code is null || code.Length != ( UseAlpha2 ? 2 : 3 ) ) { return false; }
-		var country = Countries.FirstOrDefault( x => x.Code.Equals( code, sCompare ) );
+		CountryCode? country = Countries.FirstOrDefault( x => x.Code.Equals( code, sCompare ) );
 		return country is not null;
 	}
 
@@ -86,11 +86,10 @@ public abstract class AddressFactoryBase
 	/// <returns><see langword="true"/> if the Province code was found.</returns>
 	public static bool CheckProvinceCode( string? code )
 	{
-		if( code is null || code.Length > 10 ) { return false; }
-		var province = Provinces.FirstOrDefault( x =>
+		if( code is not null && code.Length > 10 ) { return false; }
+		Province? province = Provinces.FirstOrDefault( x =>
 		{
-			if( x is null || x.Code is null ) { return false; }
-			return x.Code.Equals( code, sCompare );
+			return code == x.Code;
 		} );
 		return province is not null;
 	}
@@ -100,11 +99,10 @@ public abstract class AddressFactoryBase
 	/// <returns>An empty string is returned if the Province code was not found.</returns>
 	public static string GetProvinceName( string? code )
 	{
-		if( code is null || code.Length > 10 ) { return string.Empty; }
-		var province = Provinces.FirstOrDefault( x =>
+		if( code is not null && code.Length > 10 ) { return string.Empty; }
+		Province? province = Provinces.FirstOrDefault( x =>
 		{
-			if( x is null || x.Code is null ) { return false; }
-			return x.Code.Equals( code, sCompare );
+			return code == x.Code;
 		} );
 		return province is not null ? province.Name : string.Empty;
 	}

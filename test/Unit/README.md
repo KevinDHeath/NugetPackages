@@ -10,7 +10,7 @@ Dependencies:
 References:
 - [Unit testing best practices](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices)
 - [About xUnit.net](https://xunit.net/)
-- [Fluent assertions](https://fluentassertions.com/introduction)
+- [Fluent assertions](https://fluentassertions.com/tips/)
 
 
 ## Generating a Code Coverage report
@@ -23,16 +23,31 @@ Code coverage is a measurement of the amount of code that is run by unit tests -
 
 > _The code coverage feature is only available in Visual Studio Enterprise edition._
 
-Install or update the ReportGenerator package as a global .NET tool.
+Install or update the ReportGenerator package as a global .NET tool:
 ```shell
 dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.2.0
 dotnet tool update --global dotnet-reportgenerator-globaltool
 reportgenerator -help
 ```
 \
-Run the tests and generate the coverage report using .NET CLI.
+Run the tests and generate the coverage report:
+```shell
+cd [project folder]
+dotnet test --collect:"XPlat Code Coverage"
+reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage"
+```
+\
+Run the tests with no build and generate the coverage report with history:
+```shell
+cd [project folder]
+dotnet test --collect:"XPlat Code Coverage" --no-build
+reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage" -historydir:"Testdata\history"
+```
+\
+Run the tests and generate the coverage report with increased cyclomatic complexity threshold _(the default is 30)_:
 ```shell
 cd [project folder]
 dotnet test --collect:"XPlat Code Coverage" --settings unittest.runsettings --no-build
 reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage" -historydir:"Testdata\history" --riskHotspotsAnalysisThresholds:metricThresholdForCyclomaticComplexity=36
+```
 

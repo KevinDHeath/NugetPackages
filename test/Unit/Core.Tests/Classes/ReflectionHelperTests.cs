@@ -29,12 +29,36 @@ public class ReflectionHelperTests
 	}
 
 	[Fact]
-	public void DeepCopy_should_be_ReflectionClass()
+	public void DeepCopy_should_be_date_array()
+	{
+		// Arrange
+		DateTime[] obj = [new( 2001, 1, 1 ), new( 2001, 1, 2 )];
+
+		// Act
+		object result = ReflectionHelper.CreateDeepCopy( obj )!;
+
+		// Assert
+		_ = result.Should().BeAssignableTo<Array>();
+	}
+
+	[Fact]
+	public void DeepCopy_should_be_int_array()
+	{
+		// Arrange
+		int[] obj = [1, 2, 3];
+
+		// Act
+		object result = ReflectionHelper.CreateDeepCopy( obj )!;
+
+		// Assert
+		_ = result.Should().BeAssignableTo<Array>();
+	}
+
+	[Fact]
+	public void DeepCopy_should_be_ComplexClass()
 	{
 		// Arrange
 		ComplexClass source = new();
-		source.Headers.Add( @"foo", "bar" );
-		source.Keys.Add( "bar" );
 
 		// Act
 		object result = ReflectionHelper.CreateDeepCopy( source )!;

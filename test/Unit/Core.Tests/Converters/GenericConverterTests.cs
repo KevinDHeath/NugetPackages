@@ -6,13 +6,13 @@ public class GenericConverterTests
 	public void CharToBool_should_be_false()
 	{
 		// Arrange
-		object obj = 'n';
+		object obj = 'x';
 
 		// Act
 		bool? result = Generic.CharToBool( obj );
 
 		// Assert
-		_ = result.Should().BeFalse();
+		_ = result.Should().BeNull();
 	}
 
 	[Fact]
@@ -26,6 +26,19 @@ public class GenericConverterTests
 
 		// Assert
 		_ = result.Should().BeTrue();
+	}
+
+	[Fact]
+	public void CharToBool_should_return_null()
+	{
+		// Arrange
+		object obj = DateTime.Now;
+
+		// Act
+		bool? result = Generic.CharToBool( obj );
+
+		// Assert
+		_ = result.Should().BeNull();
 	}
 
 	[Fact]

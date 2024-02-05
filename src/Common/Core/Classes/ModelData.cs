@@ -12,18 +12,6 @@ public abstract class ModelData : ModelBase
 
 	#region Internal Methods
 
-	internal static bool Changed( string prop, IList<string> sql,
-		object? objVal, object? modVal, object? curVal )
-	{
-		string? objStr = objVal?.ToString();
-		string? modStr = modVal?.ToString();
-		string? curStr = curVal?.ToString();
-
-		if( objStr != modStr && objStr == curStr ) { SetSQLColumn( prop, modVal, sql ); }
-		else if( modStr != curStr ) { return true; }
-		return false;
-	}
-
 	internal static void SetSQLColumn( string colName, object? newValue, IList<string> sql )
 	{
 		string quote = string.Empty;

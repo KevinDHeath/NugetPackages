@@ -29,7 +29,7 @@ public abstract class ModelBase : INotifyPropertyChanged
 	public static int? CalculateAge( DateTime? date )
 	{
 		// https://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-based-on-a-datetime-type-birthday
-		return date.HasValue ? (int)( ( DateTime.Now - date.Value ).TotalDays / 365.242199 ) : null;
+		return date is not null ? (int)( ( DateTime.Now - date.Value ).TotalDays / 365.242199 ) : null;
 	}
 
 	/// <summary>Calculate the current age based on a DateOnly value.</summary>

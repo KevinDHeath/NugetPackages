@@ -8,6 +8,11 @@ namespace Common.Core.Converters;
 /// <summary>Converts a nullable integer (System.Int32) string to or from JSON.</summary>
 public class JsonIntegerString : JsonConverter<int?>
 {
+	/// <summary>
+	/// Gets a value that indicates whether null should be passed to the converter on serialization.
+	/// </summary>
+	public override bool HandleNull => true;
+
 	/// <summary>Reads and converts the JSON to a nullable integer.</summary>
 	/// <param name="reader">The reader.</param>
 	/// <param name="typeToConvert">The type to convert.</param>
@@ -22,8 +27,8 @@ public class JsonIntegerString : JsonConverter<int?>
 
 			case JsonTokenType.String:
 				string? value = reader.GetString();
-				if( value is not null && StringConverter.TryParse( ref value, out int result ) )
-				{ return result; }
+				value ??= string.Empty;
+				if( StringConverter.TryParse( ref value, out int result ) ) { return result; }
 				break;
 
 			default:

@@ -3,14 +3,26 @@
 public class ResultsSetTests
 {
 	[Fact]
+	public void Max_should_be_10()
+	{
+		// Arrange
+		int? max = null;
+
+		// Act
+		ResultsSet<User> result = new( max );
+
+		// Assert
+		_ = result.Max.Should().Be( 10 );
+	}
+
+	[Fact]
 	public void Results_should_have_values()
 	{
 		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
+		List<User> list = FakeData.GetUserList();
 
 		// Act
-		ResultsSet<User> result = new( 5 )
+		ResultsSet<User> result = new( list.Count )
 		{
 			Next = string.Empty,
 			Previous = string.Empty,

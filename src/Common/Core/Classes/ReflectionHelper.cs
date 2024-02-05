@@ -27,24 +27,18 @@ public static class ReflectionHelper
 				object? sourceVal = prop.GetValue( source );
 				object? targetVal = prop.GetValue( target );
 
-				// String is classified as a class as is SecureString
-				if( ( prop.PropertyType.IsClass || prop.PropertyType.IsInterface ) &&
-					prop.PropertyType != _stringType && prop.PropertyType != _secureType )
+				if( IsClassOrInterface( prop ) && !IsStringType( prop ) )
 				{
-					// It must be a legitimate class right?
-					if( sourceVal is not null && targetVal is not null )
+					if( sourceVal is null && targetVal is not null ) { target = source; }
+					else
 					{
+						//if( sourceVal is not null && targetVal is null ) { target = ; }
 						ApplyChanges( sourceVal, targetVal );
 					}
 				}
-                else
-                {
-					if( sourceVal is null && targetVal is not null ||
-						sourceVal is not null && targetVal is null ||
-						(sourceVal is not null && targetVal is not null && !sourceVal.Equals( targetVal )) )
-					{
-						prop.SetValue( target, sourceVal );
-					}
+				else
+				{
+					prop.SetValue( target, sourceVal );
 				}
 			}
 		}
@@ -70,27 +64,15 @@ public static class ReflectionHelper
 				object? sourceVal = prop.GetValue( source );
 				object? targetVal = prop.GetValue( target );
 
-				// String is classified as a class as is SecureString
-				if( (prop.PropertyType.IsClass || prop.PropertyType.IsInterface) &&
-					prop.PropertyType != _stringType && prop.PropertyType != _secureType )
+				if( IsClassOrInterface( prop ) && !IsStringType( prop ) )
 				{
-					// It must be a legitimate class right?
-					if( sourceVal is not null && targetVal is not null )
-					{
-						if( !IsEqual( sourceVal, targetVal ) )
-						{
-							return false;
-						}
-					}
+					if( sourceVal is null & targetVal is not null ) { return false; }
+					else if( sourceVal is not null & targetVal is null ) { return false; }
+					else if( !IsEqual( sourceVal, targetVal ) ) { return false; }
 				}
 				else
 				{
-					if( sourceVal is null &&  targetVal is not null ||
-						sourceVal is not null && targetVal is null ||
-						(sourceVal is not null && targetVal is not null && !sourceVal.Equals( targetVal )) )
-					{
-						return false;
-					}
+					if( sourceVal is not null && !sourceVal.Equals( targetVal ) ) { return false; }
 				}
 			}
 		}
@@ -123,7 +105,7 @@ public static class ReflectionHelper
 		// https://codereview.stackexchange.com/questions/147856/generic-null-empty-check-for-each-property-of-a-class
 
 		if( obj == null ) return null;
-		var typ = obj.GetType();
+		Type typ = obj.GetType();
 
 		if( typ == _stringType )
 		{
@@ -147,8 +129,7 @@ public static class ReflectionHelper
 
 		// Try and create an instance of the object type
 		object? objCopy = null;
-		try{ objCopy = Activator.CreateInstance( type: typ, nonPublic: true ); }
-		catch( Exception ) {}
+		try { objCopy = Activator.CreateInstance( type: typ, nonPublic: true ); } catch( Exception ) { }
 		if( objCopy is null ) { return objCopy; }
 
 		if( typ.IsClass )
@@ -174,17 +155,10 @@ public static class ReflectionHelper
 		else
 		{
 			// For anything else use the fields
-			foreach( var field in GetFields( typ ) )
+			var fields = GetFields( typ );
+			foreach( FieldInfo field in fields )
 			{
-				if( !field.FieldType.IsPrimitive && field.FieldType != _stringType )
-				{
-					var fieldCopy = CreateDeepCopy( field.GetValue( obj ) );
-					field.SetValue( objCopy, fieldCopy );
-				}
-				else
-				{
-					field.SetValue( objCopy, field.GetValue( obj ) );
-				}
+				field.SetValue( objCopy, field.GetValue( obj ) );
 			}
 		}
 
@@ -194,6 +168,18 @@ public static class ReflectionHelper
 	#endregion
 
 	#region Private Functions
+
+	private static bool IsClassOrInterface( PropertyInfo prop )
+	{
+		// String is classified as a class as is SecureString
+		return prop.PropertyType.IsClass || prop.PropertyType.IsInterface;
+	}
+
+	private static bool IsStringType( PropertyInfo prop )
+	{
+		// String is classified as a class as is SecureString
+		return prop.PropertyType == _stringType || prop.PropertyType == _secureType;
+	}
 
 	private static PropertyInfo[] GetProperties<T>( T type ) where T : Type
 	{
@@ -213,7 +199,11 @@ public static class ReflectionHelper
 
 	private static object? ProcessCollection( Type typ, object obj )
 	{
-		if( IsList( typ ) )
+		bool isList = IsList( typ );
+		bool isDictionary = IsDictionary( typ );
+		if( !isList && !isDictionary ) return Activator.CreateInstance( typ );
+
+		if( isList )
 		{
 			var org = (IList)obj;
 			IList? ret = (IList)Activator.CreateInstance( typ )!;
@@ -228,30 +218,24 @@ public static class ReflectionHelper
 			return ret;
 		}
 
-		if( IsDictionary( typ ) )
+		IDictionary? orgd = (IDictionary)obj;
+		IDictionary? retd = (IDictionary)Activator.CreateInstance( typ )!;
+		if( orgd is not null && retd is not null )
 		{
-			//typ.IsGenericType
-			var org = (IDictionary)obj;
-			IDictionary? ret = (IDictionary)Activator.CreateInstance( typ )!;
-			if( org is not null && ret is not null )
+			foreach( object orgKey in orgd.Keys )
 			{
-				foreach( var orgKey in org.Keys )
-				{
-					var orgVal = org[orgKey];
-					var cpyKey = CreateDeepCopy( orgKey );
-					var cpyVal = CreateDeepCopy( orgVal );
+				var orgVal = orgd[orgKey];
+				var cpyKey = CreateDeepCopy( orgKey );
+				var cpyVal = CreateDeepCopy( orgVal );
 
-					if( cpyKey is not null )
-					{
-						ret.Add( cpyKey, cpyVal );
-					}
+				if( cpyKey is not null )
+				{
+					retd.Add( cpyKey, cpyVal );
 				}
 			}
-
-			return ret;
 		}
 
-		return Activator.CreateInstance( typ );
+			return retd;
 	}
 
 	private static Array? ProcessArray( object obj )
@@ -276,26 +260,24 @@ public static class ReflectionHelper
 
 	private static bool IsList( Type type )
 	{
-		ArgumentNullException.ThrowIfNull( type );
-
 		if( typeof( IList ).IsAssignableFrom( type ) ) return true;
 
-		foreach( var it in type.GetInterfaces() )
-			if( it.IsGenericType && typeof( IList<> ) == it.GetGenericTypeDefinition() )
-				return true;
+		foreach( Type it in type.GetInterfaces() )
+		{
+			if( it.IsGenericType && typeof( IList<> ) == it.GetGenericTypeDefinition() ) return true;
+		}
 
 		return false;
 	}
 
 	private static bool IsDictionary( Type type )
 	{
-		ArgumentNullException.ThrowIfNull( type );
-
 		if( typeof( IDictionary ).IsAssignableFrom( type ) ) return true;
 
-		foreach( var it in type.GetInterfaces() )
-			if( it.IsGenericType && typeof( IDictionary<,> ) == it.GetGenericTypeDefinition() )
-				return true;
+		foreach( Type it in type.GetInterfaces() )
+		{
+			if( it.IsGenericType && typeof( IDictionary<,> ) == it.GetGenericTypeDefinition() ) return true;
+		}
 
 		return false;
 	}

@@ -146,23 +146,34 @@ public class Address : ModelBase, IEquatable<object>
 		};
 	}
 
-	internal static void UpdateAddress( Address obj, Address mod, Address cur, IList<string> sql,
+	/// <summary>Builds the SQL script for any value changes.</summary>
+	/// <param name="obj">Address object containing the original values.</param>
+	/// <param name="mod">Address object containing the modified values.</param>
+	/// <param name="cur">Address object containing the current values.</param>
+	/// <param name="list">List of SQL script changes.</param>
+	/// <param name="prefix">Table column name prefix for Address fields (if required).</param>
+	/// <returns><see langword="true"/> if the current object is equal to the object containing the
+	/// original values; otherwise, <see langword="false"/>.</returns>
+	/// <remarks>This method assumes that the table column names are the same as the property names.</remarks>
+	public static bool UpdateAddress( Address obj, Address mod, Address cur, IList<string> list,
 		string prefix = "" )
 	{
-		if( ModelData.Changed( prefix + nameof( Street ), sql, obj.Street, mod.Street, cur.Street ) )
-		{ mod.Street = cur.Street; }
+		if( !cur.Equals( obj ) )
+		{
+			mod.Street = cur.Street;
+			mod.City = cur.City;
+			mod.Province = cur.Province;
+			mod.Postcode = cur.Postcode;
+			mod.Country = cur.Country;
+			return false;
+		}
 
-		if( ModelData.Changed( prefix + nameof( City ), sql, obj.City, mod.City, cur.City ) )
-		{ mod.City = cur.City; }
-
-		if( ModelData.Changed( prefix + nameof( Province ), sql, obj.Province, mod.Province, cur.Province ) )
-		{ mod.Province = cur.Province; }
-
-		if( ModelData.Changed( prefix + nameof( Postcode ), sql, obj.Postcode, mod.Postcode, cur.Postcode ) )
-		{ mod.Postcode = cur.Postcode; }
-
-		if( ModelData.Changed( prefix + nameof( Country ), sql, obj.Country, mod.Country, cur.Country ) )
-		{ mod.Country = cur.Country; }
+		if( obj.Street != mod.Street ) { ModelData.SetSQLColumn( prefix + nameof( Street ), mod.Street, list ); }
+		if( obj.City != mod.City ) { ModelData.SetSQLColumn( prefix + nameof( City ), mod.City, list ); }
+		if( obj.Province != mod.Province ) { ModelData.SetSQLColumn( prefix + nameof( Province ), mod.Province, list ); }
+		if( obj.Postcode != mod.Postcode ) { ModelData.SetSQLColumn( prefix + nameof( Postcode ), mod.Postcode, list ); }
+		if( obj.Country != mod.Country ) { ModelData.SetSQLColumn( prefix + nameof( Country ), mod.Country, list ); }
+		return true;
 	}
 
 	#endregion

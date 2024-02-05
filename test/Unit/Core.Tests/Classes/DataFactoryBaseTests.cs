@@ -31,6 +31,21 @@ public class DataFactoryBaseTests : DataFactoryBase
 	}
 
 	[Fact]
+	public void DeserializeJson_should_be_null()
+	{
+		// Arrange
+		string folder = string.Empty;
+		string file = string.Empty;
+		JsonSerializerOptions options = Converters.JsonConverterTests.ConfigureConverters();
+
+		// Act
+		DataFactoryBaseTests? result = DeserializeJson<DataFactoryBaseTests>( folder, file, options );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
 	public void DeserializeJson_should_not_be_null()
 	{
 		// Arrange
@@ -49,10 +64,11 @@ public class DataFactoryBaseTests : DataFactoryBase
 	public void GetFileResource_should_be_null()
 	{
 		// Arrange
-		string path = Path.GetInvalidPathChars()[0].ToString() + Path.DirectorySeparatorChar.ToString();
+		string path = string.Empty;
+		string file = string.Empty;
 
 		// Act
-		string? result = GetFileResource( path, FakeData.cUserFile );
+		string? result = GetFileResource( path, file );
 
 		// Assert
 		_ = result.Should().BeNull();
@@ -74,11 +90,10 @@ public class DataFactoryBaseTests : DataFactoryBase
 	}
 
 	[Fact]
-	public void ReturnItems_should_be_2()
+	public void ReturnItems_should_be_lt_list_count()
 	{
 		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
+		List<User> list = FakeData.GetUserList();
 		int count = 2;
 
 		// Act
@@ -92,8 +107,7 @@ public class DataFactoryBaseTests : DataFactoryBase
 	public void ReturnItems_should_eq_list_count()
 	{
 		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
+		List<User> list = FakeData.GetUserList();
 		int count = list.Count + 1;
 
 		// Act

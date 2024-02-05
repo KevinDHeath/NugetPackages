@@ -1,6 +1,8 @@
 # Common.Core Change Log
 - v2.1.2
+  - See [v2.1.0 Notes](v2.1.2-Notes.md) for the code refactoring based on the unit test results.
   - Added an optional `maxDepth` parameter to the `JsonHelper.ReadAppSettings` method with a default value of 2.
+  - Added an optional `timeoutSeconds` parameter to the `DataServiceBase` constructor with a default value of 100 seconds.
 - v2.1.1
   - Added a `Find` method to the `IDataFactory` interface.
 - v2.1.0
