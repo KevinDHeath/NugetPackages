@@ -6,7 +6,7 @@ public class PostcodeTests
 	public void Read_should_be_Postcode()
 	{
 		// Arrange
-		var row = FakeData.GetPostcodeRow();
+		DataRow row = FakeData.GetPostcodeRow();
 
 		// Act
 		Postcode result = Postcode.Read( row );

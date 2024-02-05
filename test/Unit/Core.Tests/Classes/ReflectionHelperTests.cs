@@ -29,9 +29,22 @@ public class ReflectionHelperTests
 	}
 
 	[Fact]
-	public void DeepCopy_should_be_date_array()
+	public void DeepCopy_should_be_ComplexClass()
 	{
 		// Arrange
+		ComplexClass source = new();
+
+		// Act
+		object result = ReflectionHelper.CreateDeepCopy( source )!;
+
+		// Assert
+		_ = result.Should().BeAssignableTo<ComplexClass>();
+	}
+
+	[Fact]
+	public void DeepCopy_should_be_date_array()
+	{
+		// Arrange (with branch coverage)
 		DateTime[] obj = [new( 2001, 1, 1 ), new( 2001, 1, 2 )];
 
 		// Act
@@ -44,7 +57,7 @@ public class ReflectionHelperTests
 	[Fact]
 	public void DeepCopy_should_be_int_array()
 	{
-		// Arrange
+		// Arrange (with branch coverage)
 		int[] obj = [1, 2, 3];
 
 		// Act
@@ -52,19 +65,6 @@ public class ReflectionHelperTests
 
 		// Assert
 		_ = result.Should().BeAssignableTo<Array>();
-	}
-
-	[Fact]
-	public void DeepCopy_should_be_ComplexClass()
-	{
-		// Arrange
-		ComplexClass source = new();
-
-		// Act
-		object result = ReflectionHelper.CreateDeepCopy( source )!;
-
-		// Assert
-		_ = result.Should().BeAssignableTo<ComplexClass>();
 	}
 
 	[Fact]

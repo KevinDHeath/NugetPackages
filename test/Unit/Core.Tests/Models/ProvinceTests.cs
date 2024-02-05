@@ -6,7 +6,7 @@ public class ProvinceTests
 	public void Read_should_be_Province()
 	{
 		// Arrange
-		var row = FakeData.GetProvinceRow();
+		DataRow row = FakeData.GetProvinceRow();
 
 		// Act
 		Province result = Province.Read( row );

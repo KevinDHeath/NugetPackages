@@ -3,7 +3,40 @@
 public class AddressTests
 {
 	[Fact]
-	public void FullAddress_length_should_be_0()
+	public void Equals_should_be_false()
+	{
+		// Arrange
+		Address source = FakeData.CreateAddress();
+		Address target = FakeData.CreateAddress();
+
+		// Act (with branch coverage)
+		_ = source.Equals( target );
+		_ = new Address().Equals( null );
+		_ = new Address().Equals( new User() );
+
+		target.Street = null;
+		_ = source.Equals( target );
+		target.Street = source.Street;
+		target.City = null;
+		_ = source.Equals( target );
+		target.City = source.City;
+		target.Province = null;
+		_ = source.Equals( target );
+		target.Province = source.Province;
+		target.Postcode = null;
+		_ = source.Equals( target );
+		target.Postcode = source.Postcode;
+		target.Country = null;
+
+		// Act
+		bool result = source.Equals( target );
+
+		// Assert
+		_ = result.Should().BeFalse();
+	}
+
+	[Fact]
+	public void FullAddress_should_be_empty()
 	{
 		// Arrange
 		Address address = new();
@@ -12,11 +45,11 @@ public class AddressTests
 		string result = address.FullAddress;
 
 		// Assert
-		_ = result.Length.Should().Be( 0 );
+		_ = result.Should().BeEmpty();
 	}
 
 	[Fact]
-	public void FullAddress_length_should_be_gt_0()
+	public void FullAddress_should_not_be_empty()
 	{
 		// Arrange
 		Address address = FakeData.CreateAddress();
@@ -25,7 +58,7 @@ public class AddressTests
 		string result = address.FullAddress;
 
 		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
+		_ = result.Should().NotBeEmpty();
 	}
 
 	[Fact]

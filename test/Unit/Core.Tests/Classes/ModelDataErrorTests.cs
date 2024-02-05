@@ -4,6 +4,8 @@ namespace Core.Tests.Classes;
 
 public class ModelDataErrorTests
 {
+	#region Properties and Constructor
+
 	private readonly ModelDataError _validator;
 
 	[Required( ErrorMessage = "Name cannot be empty." )]
@@ -19,6 +21,8 @@ public class ModelDataErrorTests
 		Name = string.Empty;
 		Location = string.Empty;
 	}
+
+	#endregion
 
 	[Fact]
 	public void HasErrors_should_be_false()
@@ -41,7 +45,7 @@ public class ModelDataErrorTests
 		Name = string.Empty;
 		Location = string.Empty;
 
-		// Act
+		// Act (with branch coverage)
 		_validator.ValidateAllProperties();
 		_ = _validator.GetErrors( null );
 		_ = _validator.GetErrors( nameof( Location ) );

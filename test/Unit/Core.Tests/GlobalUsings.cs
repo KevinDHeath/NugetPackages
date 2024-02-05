@@ -1,4 +1,5 @@
-﻿global using System.Text.Json;
+﻿global using System.Data;
+global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using FluentAssertions;
 global using Xunit;
@@ -7,9 +8,6 @@ global using Common.Core.Classes;
 global using Common.Core.Converters;
 global using Common.Core.Interfaces;
 global using Common.Core.Models;
-
-using System.Diagnostics.CodeAnalysis;
-[assembly: SuppressMessage( "Naming", "VSSpell001:Spell Check", Justification = "<Pending>", Scope = "member", Target = "~M:Core.Tests.Classes.DataFactoryBaseTests.ReturnItems_should_eq_list_count" )]
 
 namespace Core.Tests;
 

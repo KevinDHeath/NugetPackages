@@ -3,7 +3,7 @@
 public class PersonTests
 {
 	[Fact]
-	public void Clone_should_be_Equal()
+	public void Clone_should_be_equal()
 	{
 		// Arrange
 		Person source = FakeData.CreatePerson();
@@ -23,8 +23,10 @@ public class PersonTests
 		Person source = FakeData.CreatePerson();
 		Person target = FakeData.CreatePerson();
 
-		// Act (plus branch coverage)
+		// Act (with branch coverage)
 		_ = source.Equals( target );
+		_ = new Person().Equals( null );
+		_ = new Person().Equals( new Address() );
 
 		target.Id = 2;
 		_ = source.Equals( target );
@@ -38,21 +40,6 @@ public class PersonTests
 		target.LastName = "mod";
 		_ = source.Equals( target );
 		target.LastName = source.LastName;
-		target.Address.Street = null;
-		_ = source.Equals( target );
-		target.Address.Street = source.Address.Street;
-		target.Address.City = null;
-		_ = source.Equals( target );
-		target.Address.City = source.Address.City;
-		target.Address.Province = null;
-		_ = source.Equals( target );
-		target.Address.Province = source.Address.Province;
-		target.Address.Postcode = null;
-		_ = source.Equals( target );
-		target.Address.Postcode = source.Address.Postcode;
-		target.Address.Country = null;
-		_ = source.Equals( target );
-		target.Address.Country = source.Address.Country;
 		target.GovernmentNumber = null;
 		_ = source.Equals( target );
 		target.GovernmentNumber = source.GovernmentNumber;
@@ -66,7 +53,11 @@ public class PersonTests
 		_ = source.Equals( target );
 		target.HomePhone = source.HomePhone;
 		target.BirthDate = null;
+		_ = source.Equals( target );
+		target.BirthDate = source.BirthDate;
+		target.Address.Street = null;
 
+		// Act
 		bool result = source.Equals( target );
 
 		// Assert
@@ -74,7 +65,7 @@ public class PersonTests
 	}
 
 	[Fact]
-	public void FullName_should_be_gt_0()
+	public void FullName_should_not_be_empty()
 	{
 		// Arrange
 		Person person = FakeData.CreatePerson();
@@ -83,14 +74,14 @@ public class PersonTests
 		string result = person.FullName;
 
 		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
+		_ = result.Should().NotBeEmpty();
 	}
 
 	[Fact]
-	public void GetSerializerOptions_should_be_true()
+	public void GetSerializerOptions_should_be_JsonSerializerOptions()
 	{
 		// Act
-		var result = Person.GetSerializerOptions();
+		JsonSerializerOptions result = Person.GetSerializerOptions();
 
 		// Assert
 		_ = result.Should().BeAssignableTo<JsonSerializerOptions>();
@@ -100,7 +91,7 @@ public class PersonTests
 	public void Read_should_be_Person()
 	{
 		// Arrange
-		var row = FakeData.GetPersonRow();
+		DataRow row = FakeData.GetPersonRow();
 
 		// Act
 		Person result = Person.Read( row, FakeData.cAddrPrefix );
@@ -126,25 +117,10 @@ public class PersonTests
 	}
 
 	[Fact]
-	public void UpdateSQL_length_should_be_gt_0()
+	public void UpdateSQL_should_be_empty()
 	{
 		// Arrange
-		var row = FakeData.GetPersonRow();
-		Person obj = Person.Read( row, FakeData.cAddrPrefix );
-		Person mod = FakeData.CreatePerson( mod: true );
-
-		// Act
-		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
-
-		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
-	}
-
-	[Fact]
-	public void UpdateSQL_length_should_be_0()
-	{
-		// Arrange
-		var row = FakeData.GetPersonRow();
+		DataRow row = FakeData.GetPersonRow();
 		Person obj = FakeData.CreatePerson( mod: true );
 		Person mod = (Person)obj.Clone();
 
@@ -152,6 +128,21 @@ public class PersonTests
 		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
 
 		// Assert
-		_ = result.Length.Should().BeLessThan( 1 );
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_should_not_be_empty()
+	{
+		// Arrange
+		DataRow row = FakeData.GetPersonRow();
+		Person obj = Person.Read( row, FakeData.cAddrPrefix );
+		Person mod = FakeData.CreatePerson( mod: true );
+
+		// Act
+		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+
+		// Assert
+		_ = result.Should().NotBeEmpty();
 	}
 }

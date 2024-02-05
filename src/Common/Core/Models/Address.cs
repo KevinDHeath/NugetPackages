@@ -118,10 +118,11 @@ public class Address : ModelBase, IEquatable<object>
 
 	#endregion
 
-	#region Internal Methods
+	#region Public Methods
 
 	/// <inheritdoc/>
-	internal new bool Equals( object? obj )
+	/// <param name="obj">An Address object to compare with this object.</param>
+	public new bool Equals( object? obj )
 	{
 		if( obj is null || obj is not Address other ) { return false; }
 
@@ -132,18 +133,6 @@ public class Address : ModelBase, IEquatable<object>
 		if( other.Country != Country ) { return false; }
 
 		return true;
-	}
-
-	internal static Address BuildAddress( DataRow row, string prefix = "" )
-	{
-		return new Address()
-		{
-			Street = row.Field<string?>( prefix + nameof( Street ) ),
-			City = row.Field<string?>( prefix + nameof( City ) ),
-			Province = row.Field<string?>( prefix + nameof( Province ) ),
-			Postcode = row.Field<string?>( prefix + nameof( Postcode ) ),
-			Country = row.Field<string?>( prefix + nameof( Country ) )
-		};
 	}
 
 	/// <summary>Builds the SQL script for any value changes.</summary>
@@ -174,6 +163,22 @@ public class Address : ModelBase, IEquatable<object>
 		if( obj.Postcode != mod.Postcode ) { ModelData.SetSQLColumn( prefix + nameof( Postcode ), mod.Postcode, list ); }
 		if( obj.Country != mod.Country ) { ModelData.SetSQLColumn( prefix + nameof( Country ), mod.Country, list ); }
 		return true;
+	}
+
+	#endregion
+
+	#region Internal Methods
+
+	internal static Address BuildAddress( DataRow row, string prefix = "" )
+	{
+		return new Address()
+		{
+			Street = row.Field<string?>( prefix + nameof( Street ) ),
+			City = row.Field<string?>( prefix + nameof( City ) ),
+			Province = row.Field<string?>( prefix + nameof( Province ) ),
+			Postcode = row.Field<string?>( prefix + nameof( Postcode ) ),
+			Country = row.Field<string?>( prefix + nameof( Country ) )
+		};
 	}
 
 	#endregion

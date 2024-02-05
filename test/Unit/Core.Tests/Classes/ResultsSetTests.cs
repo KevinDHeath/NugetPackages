@@ -16,7 +16,17 @@ public class ResultsSetTests
 	}
 
 	[Fact]
-	public void Results_should_have_values()
+	public void Results_list_should_be_empty()
+	{
+		// Act
+		ResultsSet<User> result = new( 0 );
+
+		// Assert
+		_ = result.Results.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void Results_list_should_not_be_empty()
 	{
 		// Arrange
 		List<User> list = FakeData.GetUserList();
@@ -31,16 +41,6 @@ public class ResultsSetTests
 		};
 
 		// Assert
-		_ = result.Results.Count.Should().BeGreaterThan( 0 );
-	}
-
-	[Fact]
-	public void Results_should_not_have_values()
-	{
-		// Act
-		ResultsSet<User> result = new( 0 );
-
-		// Assert
-		_ = result.Results.Count.Should().Be( 0 );
+		_ = result.Results.Should().NotBeEmpty();
 	}
 }

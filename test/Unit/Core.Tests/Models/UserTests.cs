@@ -23,8 +23,11 @@ public class UserTests
 		User source = FakeData.CreateUser();
 		User target = FakeData.CreateUser();
 
-		// Act (plus branch coverage)
+		// Act (with branch coverage)
 		_ = source.Equals( target );
+		_ = new User().Equals( null );
+		_ = new User().Equals( new Address() );
+
 		target.Name = null;
 		_ = source.Equals( target );
 		target.Name = source.Name;
@@ -38,6 +41,8 @@ public class UserTests
 		_ = source.Equals( target );
 		target.BirthDate = source.BirthDate;
 		target.Gender = Genders.Male;
+
+		// Act
 		bool result = source.Equals( target );
 
 		// Assert
@@ -73,6 +78,10 @@ public class UserTests
 		// Arrange
 		User source = FakeData.CreateUser();
 		User target = FakeData.CreateUser( mod: true );
+
+		// Act (with branch coverage)
+		new User().Update( null );
+		new User().Update( new Address() );
 
 		// Act
 		target.Update( source );

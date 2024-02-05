@@ -32,7 +32,7 @@ public class AddressFactoryAlpha2Tests : AddressFactoryBase
 	[Fact]
 	public void Countries_list_should_be_empty()
 	{
-		// Arrange
+		// Arrange (with branch coverage)
 		UseAlpha2 = true;
 		_ = DefaultCountry;
 
@@ -41,7 +41,7 @@ public class AddressFactoryAlpha2Tests : AddressFactoryBase
 	}
 
 	[Fact]
-	public void GetPostcode_should_return_null()
+	public void GetPostcode_should_be_null()
 	{
 		// Arrange
 		string? code = null;
@@ -59,7 +59,7 @@ public class AddressFactoryAlpha2Tests : AddressFactoryBase
 		// Arrange
 		UseAlpha2 = true;
 
-		// Act
+		// Act (with branch coverage)
 		string result = GetProvinceName( null );
 		string result1 = GetProvinceName( "ABCDEFGHIJK" );
 		string result2 = GetProvinceName( "ABC" );
@@ -71,6 +71,16 @@ public class AddressFactoryAlpha2Tests : AddressFactoryBase
 	}
 
 	[Fact]
+	public void Postcode_list_should_be_empty()
+	{
+		// Arrange
+		UseAlpha2 = true;
+
+		// Assert
+		_ = Postcodes.Should().BeEmpty();
+	}
+
+	[Fact]
 	public void Provinces_list_should_be_empty()
 	{
 		// Arrange
@@ -79,20 +89,39 @@ public class AddressFactoryAlpha2Tests : AddressFactoryBase
 		// Assert
 		_ = Provinces.Should().BeEmpty();
 	}
+
+	[Fact]
+	public void UseAlpha2_should_be_true()
+	{
+		// Arrange
+		UseAlpha2 = true;
+
+		// Act
+		bool result = UseAlpha2;
+
+		// Assert
+		_ = result.Should().BeTrue();
+	}
 }
 
 [Collection( "Sequential" )]
 public class AddressFactoryAlpha3Tests : AddressFactoryBase
 {
+	#region Constructor
+
 	public AddressFactoryAlpha3Tests()
 	{
 		UseAlpha2 = false;
 		_ = DefaultCountry;
 		DefaultCountry = "USA";
+
+		SetCountries( FakeData.GetISOCountries() );
 		Postcodes = FakeData.GetPostcodes();
 		PostcodeCount = Postcodes.Count;
 		Provinces = FakeData.GetProvinces();
 	}
+
+	#endregion
 
 	[Fact]
 	public void CheckCountryCode_should_be_false()
@@ -111,10 +140,10 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 	public void CheckCountryCode_should_be_true()
 	{
 		// Arrange
-		SetCountries( FakeData.GetISOCountries() );
+		string code = "USA";
 
 		// Act
-		bool result = CheckCountryCode( "USA" );
+		bool result = CheckCountryCode( code );
 
 		// Assert
 		_ = result.Should().BeTrue();
@@ -123,7 +152,7 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 	[Fact]
 	public void CheckProvinceCode_should_be_false()
 	{
-		// Act
+		// Act (with branch coverage)
 		bool result = CheckProvinceCode( null );
 		bool result1 = CheckProvinceCode( "ABCDEFGHIJK" );
 		bool result2 = CheckProvinceCode( "ABC" );
@@ -151,13 +180,13 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 	public void DefaultCountry_should_be_USA()
 	{
 		// Arrange
-		UseAlpha2 = false;
+		string code = "USA";
 
 		// Act
 		string result = DefaultCountry;
 
 		// Assert
-		_ = result.Should().Be( "USA" );
+		_ = result.Should().Be( code );
 	}
 
 	[Fact]
@@ -174,7 +203,7 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 	}
 
 	[Fact]
-	public void GetPostcode_should_return_null()
+	public void GetPostcode_should_be_null()
 	{
 		// Arrange
 		string code = string.Empty;
@@ -187,7 +216,7 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 	}
 
 	[Fact]
-	public void GetProvinceName_length_should_be_0()
+	public void GetProvinceName_should_be_empty()
 	{
 		// Arrange
 		string code = "ABCDEFGHIJK";
@@ -196,11 +225,11 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 		string result = GetProvinceName( code );
 
 		// Assert
-		_ = result.Length.Should().Be( 0 );
+		_ = result.Should().BeEmpty();
 	}
 
 	[Fact]
-	public void GetProvinceName_length_should_be_gt_0()
+	public void GetProvinceName_should_not_be_empty()
 	{
 		// Arrange
 		string code = "NY";
@@ -209,13 +238,13 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 		string result = GetProvinceName( code );
 
 		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
+		_ = result.Should().NotBeEmpty();
 	}
 
 	[Fact]
-	public void SetCountries_count_should_be_gt_0()
+	public void SetCountries_should_not_be_empty()
 	{
-		// Arrange
+		// Arrange (with branch coverage)
 		List<ISOCountry> list = FakeData.GetISOCountries();
 		UseAlpha2 = true;
 		SetCountries( list );
@@ -225,7 +254,7 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 		SetCountries( list );
 
 		// Assert
-		_ = Countries.Count.Should().BeGreaterThan( 0 );
+		_ = Countries.Should().NotBeEmpty();
 	}
 
 	[Fact]
@@ -239,18 +268,5 @@ public class AddressFactoryAlpha3Tests : AddressFactoryBase
 
 		// Assert
 		_ = result.Should().BeFalse();
-	}
-
-	[Fact]
-	public void UseAlpha2_should_be_true()
-	{
-		// Arrange
-		UseAlpha2 = true;
-
-		// Act
-		bool result = UseAlpha2;
-
-		// Assert
-		_ = result.Should().BeTrue();
 	}
 }

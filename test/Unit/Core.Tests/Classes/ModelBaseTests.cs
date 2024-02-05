@@ -3,6 +3,31 @@
 public class ModelBaseTests : ModelBase
 {
 	[Fact]
+	public void CalculateAge_from_DateOnly_should_be_null()
+	{
+		// Arrange
+		DateOnly? date = null;
+
+		// Act
+		int? result = CalculateAge( date );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
+	public void CalculateAge_from_DateTime_should_be_null()
+	{
+		// Arrange
+		DateTime? date = null;
+
+		// Act
+		int? result = CalculateAge( date );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+	[Fact]
 	public void CalculateAge_should_be_gt_0()
 	{
 		// Arrange
@@ -17,31 +42,6 @@ public class ModelBaseTests : ModelBase
 		_ = result.Should().BeGreaterThan( 0 );
 	}
 
-	[Fact]
-	public void CalculateAge_DateOnly_should_return_null()
-	{
-		// Arrange
-		DateOnly? date = null;
-
-		// Act
-		int? result = CalculateAge( date );
-
-		// Assert
-		_ = result.Should().BeNull();
-	}
-
-	[Fact]
-	public void CalculateAge_DateTime_should_return_null()
-	{
-		// Arrange
-		DateTime? date = null;
-
-		// Act
-		int? result = CalculateAge( date );
-
-		// Assert
-		_ = result.Should().BeNull();
-	}
 
 	[Theory]
 	[InlineData( null, true )]

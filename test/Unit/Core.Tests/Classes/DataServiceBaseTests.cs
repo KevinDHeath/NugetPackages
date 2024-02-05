@@ -4,7 +4,6 @@ public class DataServiceBaseTests
 {
 	#region Constructor and variables
 
-	// Set this to true to skip online tests
 	private readonly bool _notOnline = false;
 	private const string cSkipReason = "Not online";
 
@@ -15,8 +14,8 @@ public class DataServiceBaseTests
 	{
 		_httpbin = new( "https://httpbin.org", 20 );
 		try { _ = _httpbin.GetResource( "status/200" ); }
-		catch( Exception ) { _notOnline = true; }
-		_local = new( @"http:\\localhost" ); // Should be corrected in code
+		catch( Exception ) { _notOnline = true; } // Set to true to skip online tests
+		_local = new( @"http:\\localhost" ); // (for branch coverage)
 	}
 
 	#endregion
@@ -30,10 +29,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.DeleteResource<DataServiceBaseTests>( uri );
-		}
+		try { result = _httpbin.DeleteResource<DataServiceBaseTests>( uri ); }
 		catch( Exception ) { }
 
 		// Assert
@@ -49,10 +45,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.DeleteResource<DataServiceBaseTests>( uri );
-		}
+		try { result = _httpbin.DeleteResource<DataServiceBaseTests>( uri ); }
 		catch ( Exception ) { }
 
 		// Assert
@@ -81,10 +74,7 @@ public class DataServiceBaseTests
 
 		// Act
 		string? result = null;
-		try
-		{
-			result = _httpbin.GetResource( uri );
-		}
+		try { result = _httpbin.GetResource( uri ); }
 		catch( Exception ) { }
 
 		// Assert
@@ -113,10 +103,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.PostResource( uri, this );
-		}
+		try { result = _httpbin.PostResource( uri, this ); }
 		catch( Exception ) { }
 
 		// Assert
@@ -132,10 +119,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.PostResource( uri, this );
-		}
+		try { result = _httpbin.PostResource( uri, this ); }
 		catch( Exception ) { }
 
 		// Assert
@@ -164,10 +148,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.PutResource( uri, this );
-		}
+		try { result = _httpbin.PutResource( uri, this ); }
 		catch( Exception ) { }
 
 		// Assert
@@ -183,10 +164,7 @@ public class DataServiceBaseTests
 
 		// Act
 		DataServiceBaseTests? result = null;
-		try
-		{
-			result = _httpbin.PutResource( uri, this );
-		}
+		try { result = _httpbin.PutResource( uri, this ); }
 		catch( Exception ) { }
 
 		// Assert

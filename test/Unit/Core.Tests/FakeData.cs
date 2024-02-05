@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Core.Tests;
+﻿namespace Core.Tests;
 
 internal class FakeData
 {
@@ -78,7 +76,7 @@ internal class FakeData
 		return new()
 		{
 			Id = id,
-			Name = !mod ? "A" : @"o'mod", // special character handling
+			Name = !mod ? "A" : @"o'mod", // for branch coverage
 			Address = CreateAddress( mod ),
 			GovernmentNumber = !mod ? "A" : "mod",
 			PrimaryPhone = !mod ? "A" : "mod",
