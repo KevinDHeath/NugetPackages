@@ -29,7 +29,20 @@ public class Global
 
 	#endregion
 
-	#region Methods
+	#region Internal Methods
+
+	internal static T? Deserialize<T>( string file, JsonSerializerOptions? options = null ) where T : class
+	{
+		string? json = GetFileContents( file );
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return json is null ? null : DeserializeJson<T>( ref json, options );
+	}
+
+	internal static T? DeserializeJson<T>( ref string json, JsonSerializerOptions? options = null )
+	{
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return JsonSerializer.Deserialize<T>( json, options );
+	}
 
 	internal static string GetFileContents( string? filename )
 	{
@@ -50,6 +63,13 @@ public class Global
 			if( rtn is not null ) { return rtn; }
 		}
 		return [];
+	}
+
+	internal static string? Serialize<T>( T? obj, JsonSerializerOptions? options = null )
+	{
+		if( obj is null ) { return null; }
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return JsonSerializer.Serialize( obj, options );
 	}
 
 	#endregion

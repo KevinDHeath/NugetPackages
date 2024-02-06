@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Nodes;
-
-namespace Core.Tests.Converters;
+﻿namespace Core.Tests.Converters;
 
 public class JsonConverterTests
 {
@@ -17,13 +15,13 @@ public class JsonConverterTests
 	}
 
 	[Fact]
-	public void Read_should_be_JsonData()
+	public void Read_should_be_Global()
 	{
 		// Arrange
 		string fileName = Global.cDataFolder + Global.cGlobalData;
 
 		// Act
-		Global? result = JsonHelper.DeserializeFile<Global>( fileName, ConfigureConverters() );
+		Global? result = Global.Deserialize<Global>( fileName, ConfigureConverters() );
 
 		// Assert
 		_ = result.Should().BeAssignableTo<Global>();
@@ -41,7 +39,7 @@ public class JsonConverterTests
 	public void ReadWrite( object? bVal, object? doVal, object? dVal, object? iVal )
 	{
 		// Arrange
-		string json = new JsonObject()
+		string json = new System.Text.Json.Nodes.JsonObject()
 		{
 			{ "Boolean", bVal is not null and bool b ? b : bVal?.ToString() },
 			{ "DateOnly", doVal is not null and int di ? di : doVal?.ToString() },
@@ -51,8 +49,8 @@ public class JsonConverterTests
 
 		// Act
 		JsonSerializerOptions options = ConfigureConverters();
-		Global? obj = JsonHelper.DeserializeJson<Global>( ref json, options );
-		string? str = JsonHelper.Serialize( obj, options );
+		Global? obj = Global.DeserializeJson<Global>( ref json, options );
+		string? str = Global.Serialize( obj, options );
 		bool result = json is not null && str is not null;
 
 		// Assert
@@ -60,13 +58,13 @@ public class JsonConverterTests
 	}
 
 	[Fact]
-	public void Write_nulls_should_have_values()
+	public void Write_nulls_should_not_be_null_or_empty()
 	{
 		// Arrange
 		var obj = new Global();
 
 		// Act
-		string? result = JsonHelper.Serialize( obj, ConfigureConverters() );
+		string? result = Global.Serialize( obj, ConfigureConverters() );
 
 		// Assert
 		_ = result.Should().NotBeNullOrEmpty();
@@ -85,7 +83,7 @@ public class JsonConverterTests
 		};
 
 		// Act
-		string? result = JsonHelper.Serialize( obj, ConfigureConverters() );
+		string? result = Global.Serialize( obj, ConfigureConverters() );
 
 		// Assert
 		_ = result.Should().NotBeNullOrEmpty();

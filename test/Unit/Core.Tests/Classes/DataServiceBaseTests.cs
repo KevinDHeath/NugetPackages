@@ -2,10 +2,11 @@
 
 public class DataServiceBaseTests
 {
+	private readonly bool _Online = false; // Set to false to skip online tests
+
 	#region Constructor and variables
 
-	private readonly bool _notOnline = false;
-	private const string cSkipReason = "Not online";
+	private const string cSkipReason = "Online is false";
 
 	private readonly DataServiceBase _httpbin;
 	private readonly DataServiceBase _local;
@@ -13,9 +14,13 @@ public class DataServiceBaseTests
 	public DataServiceBaseTests()
 	{
 		_httpbin = new( "https://httpbin.org", 20 );
-		try { _ = _httpbin.GetResource( "status/200" ); }
-		catch( Exception ) { _notOnline = true; } // Set to true to skip online tests
-		_local = new( @"http:\\localhost" ); // (for branch coverage)
+		_local = new( @"http:\\localhost" ); // (with branch coverage)
+
+		if( _Online )
+		{
+			try { _ = _httpbin.GetResource( "status/200" ); }
+			catch( Exception ) { _Online = false; }
+		}
 	}
 
 	#endregion
@@ -24,7 +29,7 @@ public class DataServiceBaseTests
 	public void DeleteResource_should_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = @"status/200";
 
 		// Act
@@ -40,7 +45,7 @@ public class DataServiceBaseTests
 	public void DeleteResource_should_not_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = @"\anything\1";
 
 		// Act
@@ -69,7 +74,7 @@ public class DataServiceBaseTests
 	public void GetResource_should_not_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = @"\anything\1";
 
 		// Act
@@ -98,7 +103,7 @@ public class DataServiceBaseTests
 	public void PostResource_should_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = "https://httpbin.org/status/200";
 
 		// Act
@@ -114,7 +119,7 @@ public class DataServiceBaseTests
 	public void PostResource_should_not_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = @"\anything\1";
 
 		// Act
@@ -143,7 +148,7 @@ public class DataServiceBaseTests
 	public void PutResource_should_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = "status/200";
 
 		// Act
@@ -159,7 +164,7 @@ public class DataServiceBaseTests
 	public void PutResource_should_not_be_null()
 	{
 		// Arrange
-		Skip.If( _notOnline, cSkipReason );
+		Skip.If( !_Online, cSkipReason );
 		string uri = @"\anything\1";
 
 		// Act
