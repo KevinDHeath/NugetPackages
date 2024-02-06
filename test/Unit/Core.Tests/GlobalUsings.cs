@@ -1,4 +1,5 @@
-﻿global using System.Text.Json;
+﻿global using System.Data;
+global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using FluentAssertions;
 global using Xunit;
@@ -7,9 +8,6 @@ global using Common.Core.Classes;
 global using Common.Core.Converters;
 global using Common.Core.Interfaces;
 global using Common.Core.Models;
-
-using System.Diagnostics.CodeAnalysis;
-[assembly: SuppressMessage( "Naming", "VSSpell001:Spell Check", Justification = "<Pending>", Scope = "member", Target = "~M:Core.Tests.Classes.DataFactoryBaseTests.ReturnItems_should_eq_list_count" )]
 
 namespace Core.Tests;
 
@@ -31,7 +29,20 @@ public class Global
 
 	#endregion
 
-	#region Methods
+	#region Internal Methods
+
+	internal static T? Deserialize<T>( string file, JsonSerializerOptions? options = null ) where T : class
+	{
+		string? json = GetFileContents( file );
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return json is null ? null : DeserializeJson<T>( ref json, options );
+	}
+
+	internal static T? DeserializeJson<T>( ref string json, JsonSerializerOptions? options = null )
+	{
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return JsonSerializer.Deserialize<T>( json, options );
+	}
 
 	internal static string GetFileContents( string? filename )
 	{
@@ -43,7 +54,7 @@ public class Global
 		return string.Empty;
 	}
 
-	internal static List<T> GetJsonList<T>( string? filename, JsonSerializerOptions? options = null )
+	internal static List<T> GetJsonList<T>( string? filename )
 	{
 		string? json = GetFileContents( filename );
 		if( json.Length > 0 )
@@ -52,6 +63,13 @@ public class Global
 			if( rtn is not null ) { return rtn; }
 		}
 		return [];
+	}
+
+	internal static string? Serialize<T>( T? obj, JsonSerializerOptions? options = null )
+	{
+		if( obj is null ) { return null; }
+		options ??= JsonHelper.DefaultSerializerOptions();
+		return JsonSerializer.Serialize( obj, options );
 	}
 
 	#endregion

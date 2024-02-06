@@ -228,7 +228,7 @@ public class Person : ModelEdit, IPerson
 		if( other.IdProvince != IdProvince ) { return false; }
 		if( other.IdNumber != IdNumber ) { return false; }
 		if( other.HomePhone != HomePhone ) { return false; }
-		if( other.BirthDate != BirthDate ) { return false; }
+		if( !other.BirthDate.Equals( BirthDate ) ) { return false; }
 		if( !other.Address.Equals( Address ) ) { return false; }
 
 		return true;
@@ -289,36 +289,33 @@ public class Person : ModelEdit, IPerson
 		Person cur = Read( row, addPrefix );
 		if( cur.Id != mod.Id ) { return string.Empty; }
 
-		if( Changed( nameof( FirstName ), sql, obj.FirstName, mod.FirstName, cur.FirstName ) )
-		{ mod.FirstName = cur.FirstName; }
-
-		if( Changed( nameof( MiddleName ), sql, obj.MiddleName, mod.MiddleName, cur.MiddleName ) )
-		{ mod.MiddleName = cur.MiddleName; }
-
-		if( Changed( nameof( LastName ), sql, obj.LastName, mod.LastName, cur.LastName ) )
-		{ mod.LastName = cur.LastName; }
-
-		Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
-
-		if( Changed( nameof( GovernmentNumber ), sql, obj.GovernmentNumber, mod.GovernmentNumber, cur.GovernmentNumber ) )
-		{ mod.GovernmentNumber = cur.GovernmentNumber; }
-
-		if( Changed( nameof( IdProvince ), sql, obj.IdProvince, mod.IdProvince, cur.IdProvince ) )
-		{ mod.IdProvince = cur.IdProvince; }
-
-		if( Changed( nameof( IdNumber ), sql, obj.IdNumber, mod.IdNumber, cur.IdNumber ) )
-		{ mod.IdNumber = cur.IdNumber; }
-
-		if( Changed( nameof( HomePhone ), sql, obj.HomePhone, mod.HomePhone, cur.HomePhone ) )
-		{ mod.HomePhone = cur.HomePhone; }
-
-		// Special handling for DateOnly format
-		if( obj.BirthDate != mod.BirthDate && obj.BirthDate == cur.BirthDate )
+		if( !cur.Equals( obj ) )
 		{
+			mod.FirstName = cur.FirstName;
+			mod.MiddleName = cur.MiddleName;
+			mod.LastName = cur.LastName;
+			mod.Address = cur.Address;
+			mod.GovernmentNumber = cur.GovernmentNumber;
+			mod.IdProvince = cur.IdProvince;
+			mod.IdNumber = cur.IdNumber;
+			mod.BirthDate = cur.BirthDate;
+			return string.Empty;
+		}
+
+		if( obj.FirstName != mod.FirstName ) { SetSQLColumn( nameof( FirstName ), mod.FirstName, sql ); }
+		if( obj.MiddleName != mod.MiddleName ) { SetSQLColumn( nameof( MiddleName ), mod.MiddleName, sql ); }
+		if( obj.LastName != mod.LastName ) { SetSQLColumn( nameof( LastName ), mod.LastName, sql ); }
+		_ = Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
+		if( obj.GovernmentNumber != mod.GovernmentNumber ) { SetSQLColumn( nameof( GovernmentNumber ), mod.GovernmentNumber, sql ); }
+		if( obj.IdProvince != mod.IdProvince ) { SetSQLColumn( nameof( IdProvince ), mod.IdProvince, sql ); }
+		if( obj.IdNumber != mod.IdNumber ) { SetSQLColumn( nameof( IdNumber ), mod.IdNumber, sql ); }
+		if( obj.HomePhone != mod.HomePhone ) { SetSQLColumn( nameof( HomePhone ), mod.HomePhone, sql ); }
+		if( !obj.BirthDate.Equals( mod.BirthDate ) )
+		{
+			// Special handling for DateOnly format
 			string? val = mod.BirthDate?.ToString( "yyyy-MM-dd" );
 			SetSQLColumn( nameof( BirthDate ), val, sql );
 		}
-		else if( mod.BirthDate != cur.BirthDate ) { mod.BirthDate = cur.BirthDate; }
 
 		return string.Join( ", ", sql );
 	}

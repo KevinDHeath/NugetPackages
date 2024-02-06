@@ -2,6 +2,22 @@
 
 public class StringConverterTests
 {
+	[Theory]
+	[InlineData( "0", false )]
+	[InlineData( "N", false )]
+	[InlineData( "NO", false )]
+	[InlineData( "1", true )]
+	[InlineData( "Y", true )]
+	[InlineData( "Yes", true )]
+	public void Bool( string value, bool result )
+	{
+		// Act
+		_ = StringConverter.TryParse( ref value, out bool rtn );
+
+		// Assert
+		_ = rtn.Should().Be( result );
+	}
+
 	[Fact]
 	public void TryParse_bool_should_be_true()
 	{
@@ -13,22 +29,6 @@ public class StringConverterTests
 
 		// Assert
 		_ = result.Should().BeTrue();
-	}
-
-	[Theory]
-	[InlineData( "0", false )]
-	[InlineData( "N", false )]
-	[InlineData( "NO", false )]
-	[InlineData( "1", true )]
-	[InlineData( "Y", true )]
-	[InlineData( "Yes", true )]
-	public void BoolTheory( string val, bool res )
-	{
-		// Act
-		_ = StringConverter.TryParse( ref val, out bool result );
-
-		// Assert
-		_ = result.Should().Be( res );
 	}
 
 	[Fact]

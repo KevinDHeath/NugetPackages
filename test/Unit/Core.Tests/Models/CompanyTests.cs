@@ -3,13 +3,13 @@
 public class CompanyTests
 {
 	[Fact]
-	public void Clone_should_be_Equal()
+	public void Clone_should_be_equal()
 	{
 		// Arrange
 		Company source = FakeData.CreateCompany();
-		Company target = (Company)source.Clone();
 
 		// Act
+		Company target = (Company)source.Clone();
 		bool result = source.Equals( target );
 
 		// Assert
@@ -21,19 +21,55 @@ public class CompanyTests
 	{
 		// Arrange
 		Company source = FakeData.CreateCompany();
+		Company target = FakeData.CreateCompany();
+
+		// Act (with branch coverage)
+		_ = source.Equals( target );
+		_ = new Company().Equals( null );
+		_ = new Company().Equals( new Address() );
+
+		target.Id = 2;
+		_ = source.Equals( target );
+		target.Id = source.Id;
+		target.Name = "mod";
+		_ = source.Equals( target );
+		target.Name = source.Name;
+		target.PrimaryPhone = null;
+		_ = source.Equals( target );
+		target.PrimaryPhone = source.PrimaryPhone;
+		target.SecondaryPhone = null;
+		_ = source.Equals( target );
+		target.SecondaryPhone = source.SecondaryPhone;
+		target.GovernmentNumber = null;
+		_ = source.Equals( target );
+		target.GovernmentNumber = source.GovernmentNumber;
+		target.NaicsCode = null;
+		_ = source.Equals( target );
+		target.NaicsCode = source.NaicsCode;
+		target.Private = null;
+		_ = source.Equals( target );
+		target.Private = source.Private;
+		target.DepositsCount = null;
+		_ = source.Equals( target );
+		target.DepositsCount = source.DepositsCount;
+		target.DepositsBal = null;
+		_ = source.Equals( target );
+		target.DepositsBal = source.DepositsBal;
+		target.DepositsBal = source.DepositsBal;
+		target.Address.Street = null;
 
 		// Act
-		bool result = source.Equals( null );
+		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
 	}
 
 	[Fact]
-	public void GetSerializerOptions_should_be_true()
+	public void GetSerializerOptions_should_be_JsonSerializerOptions()
 	{
 		// Act
-		var result = Company.GetSerializerOptions();
+		JsonSerializerOptions result = Company.GetSerializerOptions();
 
 		// Assert
 		_ = result.Should().BeAssignableTo<JsonSerializerOptions>();
@@ -43,7 +79,8 @@ public class CompanyTests
 	public void Read_should_be_Company()
 	{
 		// Arrange
-		var row = FakeData.GetCompanyRow();
+		DataRow row = FakeData.GetCompanyRow();
+		row[nameof( Company.Private )] = DBNull.Value;
 
 		// Act
 		Company result = Company.Read( row, FakeData.cAddrPrefix );
@@ -68,25 +105,10 @@ public class CompanyTests
 	}
 
 	[Fact]
-	public void UpdateSQL_length_should_be_gt_0()
+	public void UpdateSQL_should_be_empty()
 	{
 		// Arrange
-		var row = FakeData.GetCompanyRow();
-		Company obj = Company.Read( row, FakeData.cAddrPrefix );
-		Company mod = FakeData.CreateCompany( mod: true );
-
-		// Act
-		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
-
-		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
-	}
-
-	[Fact]
-	public void UpdateSQL_length_should_be_0()
-	{
-		// Arrange
-		var row = FakeData.GetCompanyRow();
+		DataRow row = FakeData.GetCompanyRow();
 		Company obj = FakeData.CreateCompany( mod: true );
 		Company mod = (Company)obj.Clone();
 
@@ -94,6 +116,21 @@ public class CompanyTests
 		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
 
 		// Assert
-		_ = result.Length.Should().BeLessThan( 1 );
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_should_not_be_empty()
+	{
+		// Arrange
+		DataRow row = FakeData.GetCompanyRow();
+		Company obj = Company.Read( row, FakeData.cAddrPrefix );
+		Company mod = FakeData.CreateCompany( mod: true );
+
+		// Act
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+
+		// Assert
+		_ = result.Should().NotBeEmpty();
 	}
 }

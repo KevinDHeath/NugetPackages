@@ -6,7 +6,7 @@ public class ISOCountryTests
 	public void Read_should_be_ISOCountry()
 	{
 		// Arrange
-		var row = FakeData.GetISOCountryRow();
+		DataRow row = FakeData.GetISOCountryRow();
 
 		// Act
 		ISOCountry result = ISOCountry.Read( row );

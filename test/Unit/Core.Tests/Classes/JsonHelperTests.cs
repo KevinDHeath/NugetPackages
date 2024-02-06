@@ -3,6 +3,19 @@
 public class JsonHelperTests
 {
 	[Fact]
+	public void DeserializeFile_should_be_null()
+	{
+		// Arrange
+		string fileName = string.Empty;
+
+		// Act
+		User? result = JsonHelper.DeserializeFile<User>( fileName );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
 	public void DeserializeFile_should_be_User()
 	{
 		// Arrange
@@ -16,13 +29,13 @@ public class JsonHelperTests
 	}
 
 	[Fact]
-	public void DeserializeFile_should_return_null()
+	public void DeserializeJson_should_be_null()
 	{
 		// Arrange
-		string fileName = string.Empty;
+		string json = string.Empty;
 
 		// Act
-		User? result = JsonHelper.DeserializeFile<User>( fileName );
+		User? result = JsonHelper.DeserializeJson<User>( ref json );
 
 		// Assert
 		_ = result.Should().BeNull();
@@ -42,20 +55,7 @@ public class JsonHelperTests
 	}
 
 	[Fact]
-	public void DeserializeJson_should_return_null()
-	{
-		// Arrange
-		string json = string.Empty;
-
-		// Act
-		User? result = JsonHelper.DeserializeJson<User>( ref json );
-
-		// Assert
-		_ = result.Should().BeNull();
-	}
-
-	[Fact]
-	public void DeserializeList_count_should_be_gt_0()
+	public void DeserializeList_should_have_count_gt_0()
 	{
 		// Arrange
 		string? json = Global.GetFileContents( FakeData.cProvincesFile );
@@ -64,24 +64,24 @@ public class JsonHelperTests
 		List<Province> result = JsonHelper.DeserializeList<Province>( ref json );
 
 		// Assert
-		_ = result.Count.Should().BeGreaterThan( 0 );
+		_ = result.Should().HaveCountGreaterThan( 0 );
 	}
 
 	[Fact]
-	public void DeserializeList_count_should_be_0()
+	public void DeserializeList_should_have_count_of_0()
 	{
 		// Arrange
 		string? json = string.Empty;
 
 		// Act
-		List<User> result = JsonHelper.DeserializeList<User>( ref json );
+		List<Province> result = JsonHelper.DeserializeList<Province>( ref json );
 
 		// Assert
-		_ = result.Count.Should().Be( 0 );
+		_ = result.Should().HaveCount( 0 );
 	}
 
 	[Fact]
-	public void ReadAppSettings_count_should_be_gt_0()
+	public void ReadAppSettings_should_have_count_gt_0()
 	{
 		// Arrange
 		string fileName = Global.cSettings;
@@ -91,11 +91,11 @@ public class JsonHelperTests
 		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section, 3 );
 
 		// Assert
-		_ = result.Count.Should().BeGreaterThan( 0 );
+		_ = result.Should().HaveCountGreaterThan( 0 );
 	}
 
 	[Fact]
-	public void ReadAppSettings_count_should_be_0()
+	public void ReadAppSettings_should_have_count_of_0()
 	{
 		// Arrange
 		string fileName = string.Empty;
@@ -105,7 +105,35 @@ public class JsonHelperTests
 		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section, 3 );
 
 		// Assert
-		_ = result.Count.Should().Be( 0 );
+		_ = result.Should().HaveCount( 0 );
+	}
+
+	[Fact]
+	public void ReadAppSettings_with_bad_max_depth_should_have_count_of_0()
+	{
+		// Arrange
+		string fileName = Global.cSettings;
+		string? section = @"connectionstrings";
+
+		// Act
+		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section );
+
+		// Assert
+		_ = result.Should().HaveCount( 0 );
+	}
+
+	[Fact]
+	public void ReadAppSettings_with_bad_section_should_have_count_of_0()
+	{
+		// Arrange
+		string fileName = Global.cSettings;
+		string? section = @"connectionstrings";
+
+		// Act
+		Dictionary<string, string?> result = JsonHelper.ReadAppSettings( ref fileName, ref section, 3 );
+
+		// Assert
+		_ = result.Should().HaveCount( 0 );
 	}
 
 	[Fact]
@@ -149,6 +177,16 @@ public class JsonHelperTests
 	}
 
 	[Fact]
+	public void Serialize_should_be_null()
+	{
+		// Act
+		string? result = JsonHelper.Serialize<Global>( null );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
 	public void Serialize_should_be_true()
 	{
 		// Arrange
@@ -174,15 +212,5 @@ public class JsonHelperTests
 
 		// Assert
 		_ = result.Should().NotBeNull();
-	}
-
-	[Fact]
-	public void Serialize_should_return_null()
-	{
-		// Act
-		string? result = JsonHelper.Serialize<Global>( null );
-
-		// Assert
-		_ = result.Should().BeNull();
 	}
 }

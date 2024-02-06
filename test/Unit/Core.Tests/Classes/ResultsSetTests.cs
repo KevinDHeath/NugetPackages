@@ -3,14 +3,36 @@
 public class ResultsSetTests
 {
 	[Fact]
-	public void Results_should_have_values()
+	public void Max_should_be_10()
 	{
 		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
+		int? max = null;
 
 		// Act
-		ResultsSet<User> result = new( 5 )
+		ResultsSet<User> result = new( max );
+
+		// Assert
+		_ = result.Max.Should().Be( 10 );
+	}
+
+	[Fact]
+	public void Results_list_should_be_empty()
+	{
+		// Act
+		ResultsSet<User> result = new( 0 );
+
+		// Assert
+		_ = result.Results.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void Results_list_should_not_be_empty()
+	{
+		// Arrange
+		List<User> list = FakeData.GetUserList();
+
+		// Act
+		ResultsSet<User> result = new( list.Count )
 		{
 			Next = string.Empty,
 			Previous = string.Empty,
@@ -19,16 +41,6 @@ public class ResultsSetTests
 		};
 
 		// Assert
-		_ = result.Results.Count.Should().BeGreaterThan( 0 );
-	}
-
-	[Fact]
-	public void Results_should_not_have_values()
-	{
-		// Act
-		ResultsSet<User> result = new( 0 );
-
-		// Assert
-		_ = result.Results.Count.Should().Be( 0 );
+		_ = result.Results.Should().NotBeEmpty();
 	}
 }

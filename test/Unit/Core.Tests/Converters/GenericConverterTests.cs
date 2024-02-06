@@ -6,13 +6,26 @@ public class GenericConverterTests
 	public void CharToBool_should_be_false()
 	{
 		// Arrange
-		object obj = 'n';
+		object obj = 'x';
 
 		// Act
 		bool? result = Generic.CharToBool( obj );
 
 		// Assert
-		_ = result.Should().BeFalse();
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
+	public void CharToBool_should_be_null()
+	{
+		// Arrange
+		object obj = DateTime.Now;
+
+		// Act
+		bool? result = Generic.CharToBool( obj );
+
+		// Assert
+		_ = result.Should().BeNull();
 	}
 
 	[Fact]
@@ -29,7 +42,7 @@ public class GenericConverterTests
 	}
 
 	[Fact]
-	public void DateTimeToDateOnly_should_have_value()
+	public void DateTimeToDateOnly_should_not_be_null()
 	{
 		// Arrange
 		object obj = DateTime.MinValue;
@@ -38,6 +51,6 @@ public class GenericConverterTests
 		DateOnly? result = Generic.DateTimeToDateOnly( obj );
 
 		// Assert
-		_ = result.Should().HaveValue();
+		_ = result.Should().NotBeNull();
 	}
 }

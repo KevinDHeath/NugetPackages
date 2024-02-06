@@ -7,7 +7,8 @@ This repository contains the source code from the following [kdheath](https://ww
 
 __.NET Helpers__
 - [Application.Helper](./src/Helper/Application.Helper)
-- [Common.Core](./src/Common/Core)
+- [Common.Core](./src/Common/Core)\
+_[Code coverage report](https://kevindheath.github.io/codecoverage/coretests/)_
 - [Configuration.Helper](./src/Helper/Configuration.Helper)
 - [Logging.Helper](./src/Helper/Logging.Helper)
 

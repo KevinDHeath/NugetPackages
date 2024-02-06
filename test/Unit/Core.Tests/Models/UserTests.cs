@@ -21,12 +21,45 @@ public class UserTests
 	{
 		// Arrange
 		User source = FakeData.CreateUser();
+		User target = FakeData.CreateUser();
+
+		// Act (with branch coverage)
+		_ = source.Equals( target );
+		_ = new User().Equals( null );
+		_ = new User().Equals( new Address() );
+
+		target.Name = null;
+		_ = source.Equals( target );
+		target.Name = source.Name;
+		target.Email = null;
+		_ = source.Equals( target );
+		target.Email = source.Email;
+		target.Age = null;
+		_ = source.Equals( target );
+		target.Age = source.Age;
+		target.BirthDate = null;
+		_ = source.Equals( target );
+		target.BirthDate = source.BirthDate;
+		target.Gender = Genders.Male;
 
 		// Act
-		bool result = source.Equals( null );
+		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
+	}
+
+	[Fact]
+	public void Equal_should_be_true()
+	{
+		// Arrange
+		User source = FakeData.CreateUser();
+
+		// Act
+		bool result = source.Equals( source );
+
+		// Assert
+		_ = result.Should().BeTrue();
 	}
 
 	[Fact]
@@ -44,12 +77,11 @@ public class UserTests
 	{
 		// Arrange
 		User source = FakeData.CreateUser();
-		User target = (User)source.Clone();
-		source.Name = "mod";
-		source.Email = "mod";
-		source.BirthDate = new DateOnly( 2000, 1, 1 );
-		source.Age = ModelBase.CalculateAge( source.BirthDate );
-		source.Gender = Genders.Male;
+		User target = FakeData.CreateUser( mod: true );
+
+		// Act (with branch coverage)
+		new User().Update( null );
+		new User().Update( new Address() );
 
 		// Act
 		target.Update( source );

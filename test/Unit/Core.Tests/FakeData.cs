@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Core.Tests;
+﻿namespace Core.Tests;
 
 internal class FakeData
 {
@@ -78,7 +76,7 @@ internal class FakeData
 		return new()
 		{
 			Id = id,
-			Name = !mod ? "A" : "mod",
+			Name = !mod ? "A" : @"o'mod", // for branch coverage
 			Address = CreateAddress( mod ),
 			GovernmentNumber = !mod ? "A" : "mod",
 			PrimaryPhone = !mod ? "A" : "mod",
@@ -87,7 +85,7 @@ internal class FakeData
 			NaicsCode = !mod ? "A" : "mod",
 			Private = mod,
 			DepositsCount = !mod ? 0 : 1,
-			DepositsBal = !mod ? 0 : 1
+			DepositsBal = !mod ? 0 : null
 		};
 	}
 
@@ -262,14 +260,14 @@ internal class FakeData
 		return new()
 		{
 			Id = id,
-			FirstName = !mod ? "A" : "mod",
-			MiddleName = !mod ? "A" : "mod",
+			FirstName = !mod ? "A" : @"o'mod", // special character handling
+			MiddleName = !mod ? null : "mod",
 			LastName = !mod ? "A" : "mod",
 			Address = CreateAddress( mod ),
 			GovernmentNumber = !mod ? "A" : "mod",
 			IdProvince = !mod ? "A" : "mod",
 			IdNumber = !mod ? "A" : "mod",
-			HomePhone = !mod ? "A" : "mod",
+			HomePhone = !mod ? "A" : null,
 			BirthDate = !mod ? new DateOnly( 1995, 1, 1 ) : new DateOnly( 2000, 2, 15 )
 		};
 	}
@@ -498,33 +496,23 @@ internal class FakeData
 
 	internal const string cUserFile = "user.json";
 
-	internal static User CreateUser()
+	internal static User CreateUser( int id = 1, bool mod = false )
 	{
+		DateOnly birthDate = !mod ? new DateOnly( 1995, 1, 1 ) : new DateOnly( 2000, 2, 15 );
 		return new()
 		{
-			Id = 1,
-			Name = "A",
-			BirthDate = new DateOnly( 1995, 1, 1 ),
-			Email = "A",
-			Gender = Genders.Unknown
+			Id = id,
+			Name = !mod ? "A" : "mod",
+			BirthDate = birthDate,
+			Email = !mod ? "A" : "mod",
+			Gender = !mod ? Genders.Unknown : Genders.Male,
+			Age = ModelBase.CalculateAge( birthDate )
 		};
 	}
 
-	internal static string GetUserListJson()
+	internal static List<User> GetUserList()
 	{
-		string json = Global.GetFileContents( DataFactoryBase.cConfigFile );
-		if( string.IsNullOrWhiteSpace( json ) ) { return string.Empty; }
-
-		using JsonDocument document = JsonDocument.Parse( json );
-		JsonElement coll = document.RootElement;
-		foreach( JsonProperty prop in coll.EnumerateObject() )
-		{
-			if( prop.Value.ValueKind is not JsonValueKind.Object && prop.Name == "Users" )
-			{
-				return prop.Value.ToString();
-			}
-		}
-		return string.Empty;
+		return (List<User>)User.GetUsers();
 	}
 
 	#endregion

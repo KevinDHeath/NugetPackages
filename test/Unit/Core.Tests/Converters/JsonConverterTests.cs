@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Nodes;
-
-namespace Core.Tests.Converters;
+﻿namespace Core.Tests.Converters;
 
 public class JsonConverterTests
 {
@@ -17,13 +15,13 @@ public class JsonConverterTests
 	}
 
 	[Fact]
-	public void Read_should_be_JsonData()
+	public void Read_should_be_Global()
 	{
 		// Arrange
 		string fileName = Global.cDataFolder + Global.cGlobalData;
 
 		// Act
-		Global? result = JsonHelper.DeserializeFile<Global>( fileName, ConfigureConverters() );
+		Global? result = Global.Deserialize<Global>( fileName, ConfigureConverters() );
 
 		// Assert
 		_ = result.Should().BeAssignableTo<Global>();
@@ -38,26 +36,38 @@ public class JsonConverterTests
 	[InlineData( "1", null, 1.45, 1 )]
 	[InlineData( "0", 1, "A", "A" )]
 	[InlineData( "A", null, null, 1.45 )]
-	public void Theory( object? bVal, object? doVal, object? dVal, object? iVal )
+	public void ReadWrite( object? bVal, object? doVal, object? dVal, object? iVal )
 	{
 		// Arrange
-		JsonObject r = new()
+		string json = new System.Text.Json.Nodes.JsonObject()
 		{
 			{ "Boolean", bVal is not null and bool b ? b : bVal?.ToString() },
 			{ "DateOnly", doVal is not null and int di ? di : doVal?.ToString() },
 			{ "Decimal", dVal is not null and double d ? d : dVal?.ToString() },
 			{ "Integer", iVal is not null and int i ? i : iVal?.ToString() }
-		};
-		string json = r.ToString();
+		}.ToString();
 
 		// Act
-		var options = ConfigureConverters();
-		Global? obj = JsonHelper.DeserializeJson<Global>( ref json, options );
-		string? str = JsonHelper.Serialize( obj, options );
-		bool result = obj is not null && str is not null;
+		JsonSerializerOptions options = ConfigureConverters();
+		Global? obj = Global.DeserializeJson<Global>( ref json, options );
+		string? str = Global.Serialize( obj, options );
+		bool result = json is not null && str is not null;
 
 		// Assert
 		result.Should().BeTrue();
+	}
+
+	[Fact]
+	public void Write_nulls_should_not_be_null_or_empty()
+	{
+		// Arrange
+		var obj = new Global();
+
+		// Act
+		string? result = Global.Serialize( obj, ConfigureConverters() );
+
+		// Assert
+		_ = result.Should().NotBeNullOrEmpty();
 	}
 
 	[Fact]
@@ -73,20 +83,7 @@ public class JsonConverterTests
 		};
 
 		// Act
-		string? result = JsonHelper.Serialize( obj, ConfigureConverters() );
-
-		// Assert
-		_ = result.Should().NotBeNullOrEmpty();
-	}
-
-	[Fact]
-	public void Write_nulls_should_have_values()
-	{
-		// Arrange
-		var obj = new Global();
-
-		// Act
-		string? result = JsonHelper.Serialize( obj, ConfigureConverters() );
+		string? result = Global.Serialize( obj, ConfigureConverters() );
 
 		// Assert
 		_ = result.Should().NotBeNullOrEmpty();

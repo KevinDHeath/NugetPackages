@@ -31,9 +31,24 @@ public class DataFactoryBaseTests : DataFactoryBase
 	}
 
 	[Fact]
+	public void DeserializeJson_should_be_null()
+	{
+		// Arrange (with branch coverage)
+		string folder = string.Empty;
+		string file = string.Empty;
+		JsonSerializerOptions options = Converters.JsonConverterTests.ConfigureConverters();
+
+		// Act
+		DataFactoryBaseTests? result = DeserializeJson<DataFactoryBaseTests>( folder, file, options );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
 	public void DeserializeJson_should_not_be_null()
 	{
-		// Arrange
+		// Arrange (with branch coverage)
 		string folder = Global.cDataFolder;
 		string file = Global.cGlobalData;
 		JsonSerializerOptions options = Converters.JsonConverterTests.ConfigureConverters();
@@ -49,17 +64,18 @@ public class DataFactoryBaseTests : DataFactoryBase
 	public void GetFileResource_should_be_null()
 	{
 		// Arrange
-		string path = Path.GetInvalidPathChars()[0].ToString() + Path.DirectorySeparatorChar.ToString();
+		string path = string.Empty;
+		string file = string.Empty;
 
 		// Act
-		string? result = GetFileResource( path, FakeData.cUserFile );
+		string? result = GetFileResource( path, file );
 
 		// Assert
 		_ = result.Should().BeNull();
 	}
 
 	[Fact]
-	public void GetFileResource_length_should_be_gt_0()
+	public void GetFileResource_should_not_be_empty()
 	{
 		// Arrange
 		string path = Global.cDataFolder;
@@ -70,37 +86,35 @@ public class DataFactoryBaseTests : DataFactoryBase
 		result ??= string.Empty;
 
 		// Assert
-		_ = result.Length.Should().BeGreaterThan( 0 );
+		_ = result.Should().NotBeEmpty();
 	}
 
 	[Fact]
-	public void ReturnItems_should_be_2()
+	public void ReturnItems_should_be_list_count()
 	{
 		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
-		int count = 2;
-
-		// Act
-		IList<User> result = ReturnItems( list, count );
-
-		// Assert
-		_ = result.Count.Should().Be( count );
-	}
-
-	[Fact]
-	public void ReturnItems_should_eq_list_count()
-	{
-		// Arrange
-		string? json = FakeData.GetUserListJson();
-		List<User> list = JsonHelper.DeserializeList<User>( ref json );
+		List<User> list = FakeData.GetUserList();
 		int count = list.Count + 1;
 
 		// Act
 		IList<User> result = ReturnItems( list, count );
 
 		// Assert
-		_ = result.Count.Should().Be( list.Count );
+		_ = result.Should().HaveCount( list.Count );
+	}
+
+	[Fact]
+	public void ReturnItems_should_have_count_of_2()
+	{
+		// Arrange
+		List<User> list = FakeData.GetUserList();
+		int count = 2;
+
+		// Act
+		IList<User> result = ReturnItems( list, count );
+
+		// Assert
+		_ = result.Should().HaveCount( count );
 	}
 
 	[Fact]

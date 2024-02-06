@@ -56,7 +56,7 @@ public class User : ModelEdit, IUser
 		if( user.Name != Name ) { return false; }
 		if( user.Email != Email ) { return false; }
 		if( user.Age != Age ) { return false; }
-		if( user.BirthDate != BirthDate ) { return false; }
+		if( !user.BirthDate.Equals( BirthDate ) ) { return false; }
 		if( user.Gender != Gender ) { return false; }
 
 		return true;
@@ -71,7 +71,7 @@ public class User : ModelEdit, IUser
 		if( other.Name != Name ) { Name = other.Name; OnPropertyChanged( nameof( Name ) ); }
 		if( other.Age != Age ) { Age = other.Age; OnPropertyChanged( nameof( Age ) ); }
 		if( other.Email != Email ) { Email = other.Email; OnPropertyChanged( nameof( Email ) ); }
-		if( other.BirthDate != BirthDate ) { BirthDate = other.BirthDate; OnPropertyChanged( nameof( BirthDate ) ); }
+		if( !other.BirthDate.Equals( BirthDate ) ) { BirthDate = other.BirthDate; OnPropertyChanged( nameof( BirthDate ) ); }
 		if( other.Gender != Gender ) { Gender = other.Gender; OnPropertyChanged( nameof( Gender ) ); }
 	}
 

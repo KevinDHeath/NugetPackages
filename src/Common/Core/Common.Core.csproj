@@ -11,7 +11,9 @@
   <!-- Package Information -->
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
     <Version>2.1.2</Version>
-    <PackageReleaseNotes>* Added an optional maxDepth parameter to the JsonHelper.ReadAppSettings method with a default value of 2.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Applied code refactoring based on the unit test results.
+* Added an optional maxDepth parameter to the JsonHelper.ReadAppSettings method with a default value of 2.
+* Added an optional timeoutSeconds parameter to the DataServiceBase constructor with a default value of 100 seconds.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
@@ -21,7 +23,7 @@
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="$(SolutionDir)docs\Common.Core\README.md" Pack="true" PackagePath="" Link="Properties\README.md" />
+    <None Include="..\..\..\docs\Common.Core\README.md" Pack="true" PackagePath="" Link="Properties\README.md" />
   </ItemGroup>
 
 </Project>

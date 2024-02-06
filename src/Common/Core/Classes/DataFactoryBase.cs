@@ -44,12 +44,7 @@ public abstract class DataFactoryBase
 	{
 		try
 		{
-			var fi = new FileInfo( Path.Combine( path, file ) );
-			if( fi.Exists )
-			{
-				return File.ReadAllText( fi.FullName, Encoding.ASCII );
-			}
-
+			return File.ReadAllText( Path.Combine( path, file ), Encoding.ASCII );
 		}
 		catch( Exception ) { }
 		return null;

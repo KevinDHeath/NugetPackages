@@ -8,6 +8,11 @@ namespace Common.Core.Converters;
 /// <summary>Converts a nullable boolean (System.Boolean) string to or from JSON.</summary>
 public class JsonBooleanString : JsonConverter<bool?>
 {
+	/// <summary>
+	/// Gets a value that indicates whether null should be passed to the converter on serialization.
+	/// </summary>
+	public override bool HandleNull => true;
+
 	/// <summary>Reads and converts the JSON to a nullable boolean.</summary>
 	/// <param name="reader">The reader.</param>
 	/// <param name="typeToConvert">The type to convert.</param>
@@ -25,8 +30,8 @@ public class JsonBooleanString : JsonConverter<bool?>
 
 			case JsonTokenType.String:
 				string? value = reader.GetString();
-				if( value is not null && StringConverter.TryParse( ref value, out bool result ) )
-				{ return result; }
+				value ??= string.Empty;
+				if( StringConverter.TryParse( ref value, out bool result ) ) { return result; }
 				break;
 
 			default:

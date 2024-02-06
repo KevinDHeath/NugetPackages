@@ -296,38 +296,36 @@ public class Company : ModelEdit, ICompany
 		Company cur = Read( row, addPrefix );
 		if( cur.Id != mod.Id ) { return string.Empty; }
 
-		if( Changed( nameof( Name ), sql, obj.Name, mod.Name, cur.Name ) ) { mod.Name = cur.Name; }
-
-		Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
-
-		if( Changed( nameof( GovernmentNumber ), sql, obj.GovernmentNumber, mod.GovernmentNumber, cur.GovernmentNumber ) )
-		{ mod.GovernmentNumber = cur.GovernmentNumber; }
-
-		if( Changed( nameof( PrimaryPhone ), sql, obj.PrimaryPhone, mod.PrimaryPhone, cur.PrimaryPhone ) )
-		{ mod.PrimaryPhone = cur.PrimaryPhone; }
-
-		if( Changed( nameof( SecondaryPhone ), sql, obj.SecondaryPhone, mod.SecondaryPhone, cur.SecondaryPhone ) )
-		{ mod.SecondaryPhone = cur.SecondaryPhone; }
-
-		if( Changed( nameof( Email ), sql, obj.Email, mod.Email, cur.Email ) )
-		{ mod.Email = cur.Email; }
-
-		if( Changed( nameof( NaicsCode ), sql, obj.NaicsCode, mod.NaicsCode, cur.NaicsCode ) )
-		{ mod.NaicsCode = cur.NaicsCode; }
-
-		if( Changed( nameof( DepositsCount ), sql, obj.DepositsCount, mod.DepositsCount, cur.DepositsCount ) )
-		{ mod.DepositsCount = cur.DepositsCount; }
-
-		if( Changed( nameof( DepositsBal ), sql, obj.DepositsBal, mod.DepositsBal, cur.DepositsBal ) )
-		{ mod.DepositsBal = cur.DepositsBal; }
-
-		// Special handling for boolean as char
-		if( obj.Private != mod.Private && obj.Private == cur.Private )
+		if( !cur.Equals( obj ) )
 		{
+			mod.Name = cur.Name;
+			mod.Address = cur.Address;
+			mod.GovernmentNumber = cur.GovernmentNumber;
+			mod.PrimaryPhone = cur.PrimaryPhone;
+			mod.SecondaryPhone = cur.SecondaryPhone;
+			mod.Email = cur.Email;
+			mod.NaicsCode = cur.NaicsCode;
+			mod.DepositsCount = cur.DepositsCount;
+			mod.DepositsBal = cur.DepositsBal;
+			mod.Private = cur.Private;
+			return string.Empty;
+		}
+
+		if( obj.Name != mod.Name ) { SetSQLColumn( nameof( Name ), mod.Name, sql ); }
+		_ = Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
+		if( obj.GovernmentNumber != mod.GovernmentNumber ) { SetSQLColumn( nameof( GovernmentNumber ), mod.GovernmentNumber, sql ); }
+		if( obj.PrimaryPhone != mod.PrimaryPhone ) { SetSQLColumn( nameof( PrimaryPhone ), mod.PrimaryPhone, sql ); }
+		if( obj.SecondaryPhone != mod.SecondaryPhone ) { SetSQLColumn( nameof( SecondaryPhone ), mod.SecondaryPhone, sql ); }
+		if( obj.Email != mod.Email ) { SetSQLColumn( nameof( Email ), mod.Email, sql ); }
+		if( obj.NaicsCode != mod.NaicsCode ) { SetSQLColumn( nameof( NaicsCode ), mod.NaicsCode, sql ); }
+		if( obj.DepositsCount != mod.DepositsCount ) { SetSQLColumn( nameof( DepositsCount ), mod.DepositsCount.ToString(), sql ); }
+		if( obj.DepositsBal != mod.DepositsBal ) { SetSQLColumn( nameof( DepositsBal ), mod.DepositsBal.ToString(), sql ); }
+		if( obj.Private != mod.Private )
+		{
+			// Special handling for boolean as char
 			char? val = mod.Private is null ? null : mod.Private.Value ? 'Y' : 'N';
 			SetSQLColumn( nameof( Private ), val, sql );
 		}
-		else if( mod.Private != cur.Private ) { mod.Private = cur.Private; }
 
 		return string.Join( ", ", sql );
 	}
