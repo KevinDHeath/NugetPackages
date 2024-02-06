@@ -20,7 +20,7 @@
     <PackageVersion Include="System.ComponentModel.Composition" Version="8.0.0" />
 
     <!-- Logging.Helper -->
-    <PackageVersion Include="NLog" Version="5.2.5" />
+    <PackageVersion Include="NLog" Version="5.2.8" />
 
     <!-- Tools: AspNet -->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />

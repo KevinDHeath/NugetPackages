@@ -2,6 +2,8 @@
 The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.
 
 ## Change Log
+- v2.0.2
+  - Updated to use NLog 5.2.8
 - v2.0.1
   - Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.
 - v2.0.0 - **Breaking change**
