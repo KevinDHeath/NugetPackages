@@ -2,10 +2,6 @@
 // NLog Home
 // http://nlog-project.org/
 
-// NLog NuGet package
-// https://www.nuget.org/packages/NLog/
-// Install-Package NLog -Version 4.7.2
-
 // NLog Documentation
 // https://github.com/nlog/nlog/wiki
 
@@ -15,6 +11,7 @@
 #endregion
 
 using System;
+using NLog.Config;
 
 namespace Logging.Helper
 {
@@ -159,14 +156,7 @@ namespace Logging.Helper
 		/// <summary>Called once the object has been disposed.</summary>
 		~ImplNLog()
 		{
-			try
-			{
-				NLog.LogManager.Shutdown(); // Flush and close down internal threads and timers
-			}
-			catch( Exception )
-			{
-				// Do nothing
-			}
+			NLog.LogManager.Shutdown(); // Flush and close down internal threads and timers
 		}
 
 		#endregion
@@ -174,10 +164,10 @@ namespace Logging.Helper
 		#region Private Methods
 
 		/// <summary>Gets a default console configuration.</summary>
-		private static NLog.Config.LoggingConfiguration GetDefaultConfig()
+		private static LoggingConfiguration GetDefaultConfig()
 		{
 			// Create configuration object 
-			var retValue = new NLog.Config.LoggingConfiguration();
+			LoggingConfiguration retValue = new LoggingConfiguration();
 
 			// Create target and add it to the configuration 
 			var consoleTarget = new NLog.Targets.ConsoleTarget();
@@ -187,7 +177,7 @@ namespace Logging.Helper
 			consoleTarget.Layout = cDefaultPattern;
 
 			// Define rules
-			var rule = new NLog.Config.LoggingRule( "*", NLog.LogLevel.Debug, consoleTarget );
+			LoggingRule rule = new LoggingRule( "*", NLog.LogLevel.Debug, consoleTarget );
 			retValue.LoggingRules.Add( rule );
 
 			return retValue;
