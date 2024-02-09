@@ -2,6 +2,10 @@
 The application helper is a light-weight platform for .NET console applications.
 
 ## Change Log
+- v2.0.2
+  - Added an optional `detectDebugMode` parameter to the `ConsoleApp` constructor with a default value of `true`.
+  - Added a set-only `IsUnitTest` property with a default value of false.
+  - Fixed the formating of an `AggregateException` in the `GenericException.FormatException` method.
 - v2.0.1
   - Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.
 - v2.0.0 - **Breaking change**

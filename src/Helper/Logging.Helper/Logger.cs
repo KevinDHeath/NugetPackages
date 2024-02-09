@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Security;
 using Application.Helper;
 
 namespace Logging.Helper
@@ -131,10 +132,7 @@ namespace Logging.Helper
 		/// <summary>Gets or sets the maximum number of log files to keep.</summary>
 		public int MaxLogFiles
 		{
-			get
-			{
-				return LogImpl?.MaxLogFiles ?? 0;
-			}
+			get => LogImpl?.MaxLogFiles ?? 0;
 			set
 			{
 				if( null != LogImpl )
@@ -145,7 +143,7 @@ namespace Logging.Helper
 		}
 
 		/// <summary>Gets the logging configuration file name.</summary>
-		public string ConfigFile { get; private set; }
+		public string ConfigFile { get; private set; } = string.Empty;
 
 		/// <summary>Gets the count of warning messages logged.</summary>
 		public int WarnCount { get; private set; }
@@ -173,6 +171,8 @@ namespace Logging.Helper
 		/// Initializes a new instance of the Logger class using an optional configuration file name.
 		/// </summary>
 		/// <param name="configFile">Logging configuration file name to use.</param>
+		/// <exception cref="NLog.NLogConfigurationException">Thrown if the NLog configuration is invalid.</exception>
+		/// <exception cref="TargetException">Thrown when an attempt is made to invoke an invalid target.</exception>
 		public Logger( string configFile = "" )
 		{
 			Initialize( Assembly.GetCallingAssembly(), MethodBase.GetCurrentMethod().DeclaringType, configFile );
@@ -183,6 +183,7 @@ namespace Logging.Helper
 		/// </summary>
 		/// <param name="loggerType">Type to be used as the name of the logger to retrieve.</param>
 		/// <param name="configFile">Logging configuration file name to use.</param>
+		/// <exception cref="NLog.NLogConfigurationException">Thrown if the NLog configuration is invalid.</exception>
 		public Logger( Type loggerType, string configFile = "" )
 		{
 			Initialize( Assembly.GetCallingAssembly(), loggerType, configFile );
@@ -190,30 +191,24 @@ namespace Logging.Helper
 
 		private void Initialize( Assembly assembly, Type loggerType, string configFile )
 		{
-			if( configFile.Length > 0 )
+			try
 			{
-				// Set the configuration file name
-				ConfigFile = Path.GetFullPath( configFile );
+				if( configFile.Length > 0 )
+				{
+					// Set the configuration file name
+					ConfigFile = Path.GetFullPath( configFile );
 
-				// Check if the configuration file exists
-				if( !File.Exists( ConfigFile ) )
-				{
-					ConfigFile = string.Empty;
-				}
-			}
-			else
-			{
-				// If no configuration file supplied check if an app.config file exists
-				configFile = assembly.Location + ".config";
-				if( File.Exists( configFile ) )
-				{
-					ConfigFile = configFile;
+					// Check if the configuration file exists
+					if( !File.Exists( ConfigFile ) ) { ConfigFile = string.Empty; }
 				}
 				else
 				{
-					ConfigFile = string.Empty;
+					// If no configuration file supplied check if an app.config file exists
+					configFile = assembly.Location + ".config";
+					if( File.Exists( configFile ) ) { ConfigFile = configFile; }
 				}
 			}
+			catch { ConfigFile = string.Empty; }
 
 			// Initialize the logging implementation
 			//LogImpl = new ImplBasicLog();
@@ -250,8 +245,6 @@ namespace Logging.Helper
 
 			switch( severity )
 			{
-				case LogSeverity.Debug:
-					return LogImpl.IsDebugEnabled;
 				case LogSeverity.Error:
 					return LogImpl.IsErrorEnabled;
 				case LogSeverity.Fatal:
@@ -261,7 +254,7 @@ namespace Logging.Helper
 				case LogSeverity.Warning:
 					return LogImpl.IsWarnEnabled;
 				default:
-					return false;
+					return LogImpl.IsDebugEnabled;
 			}
 		}
 
@@ -299,11 +292,9 @@ namespace Logging.Helper
 				case LogSeverity.Information:
 					retValue = Info( msg );
 					break;
-				case LogSeverity.Debug:
+				default:
 					retValue = Debug( msg );
 					break;
-				default:
-					throw new NotImplementedException( $@"Unrecognized severity '{severity}' during logging." );
 			}
 
 			return retValue;
@@ -342,7 +333,6 @@ namespace Logging.Helper
 
 			LogImpl.Info( string.Format( message, args ) );
 			return true;
-
 		}
 
 		#endregion
@@ -421,7 +411,12 @@ namespace Logging.Helper
 		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( string message, Exception exception )
 		{
-			return Log( GenericException.FormatException( message, exception ), LogSeverity.Error );
+			ErrorCount++;
+			if( !CanLog( LogSeverity.Error ) ) return false;
+			message = CleanString( message );
+
+			LogImpl.Error( message, exception );
+			return true;
 		}
 
 		/// <summary>Logs an exception.</summary>
@@ -429,7 +424,11 @@ namespace Logging.Helper
 		/// <returns><see langword="true"/> if the message was logged, otherwise <see langword="false"/> is returned.</returns>
 		public bool Error( Exception exception )
 		{
-			return Log( GenericException.FormatException( exception ), LogSeverity.Error );
+			ErrorCount++;
+			if( !CanLog( LogSeverity.Error ) ) return false;
+
+			LogImpl.Error( exception );
+			return true;
 		}
 
 		#endregion
@@ -517,6 +516,11 @@ namespace Logging.Helper
 		/// <summary>Sets the location of the log file and optionally, the log file name.</summary>
 		/// <param name="logDirectory">Location of the log file.</param>
 		/// <param name="logFileName">Name of the log file.</param>
+		/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+		/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+		/// <exception cref="NotSupportedException">Thrown when an invoked method is not supported, or when there
+		/// is an attempt to read, seek, or write to a stream that does not support the invoked functionality.</exception>
+		/// <exception cref="SecurityException">Thrown when a security error is detected.</exception>
 		public void SetLogFile( string logDirectory, string logFileName = "" )
 		{
 			// Check the parameter values
@@ -529,7 +533,7 @@ namespace Logging.Helper
 				logDirectory = Path.GetFullPath( logDirectory );
 
 				// If a file extension is found then a file name is also present
-				var ext = Path.GetExtension( logDirectory );
+				string ext = Path.GetExtension( logDirectory );
 				if( ext.Length > 0 & logFileName.Length == 0 )
 				{
 					logFileName = Path.GetFileName( logDirectory );
@@ -537,11 +541,8 @@ namespace Logging.Helper
 				}
 
 				// Check that the directory path is valid
-				var dir = new DirectoryInfo( logDirectory );
-				if( null == dir || !dir.Root.Exists )
-				{
-					throw new DirectoryNotFoundException( logDirectory );
-				}
+				DirectoryInfo dir = new DirectoryInfo( logDirectory );
+				if( null == dir || !dir.Root.Exists ) { throw new DirectoryNotFoundException( logDirectory ); }
 			}
 
 			if( logFileName.Length > 0 )
@@ -570,7 +571,7 @@ namespace Logging.Helper
 		/// </example>
 		public bool RemoveLogs( string directory, string logNameMask, int maxFiles = 0 )
 		{
-			var dir = new DirectoryInfo( directory );
+			DirectoryInfo dir = new DirectoryInfo( directory );
 
 			// Check the required parameters have been passed
 			if( null == dir || string.IsNullOrEmpty( logNameMask ) || maxFiles <= 0 )
@@ -582,15 +583,9 @@ namespace Logging.Helper
 			FileInfo[] logFiles = null;
 			try
 			{
-				if( dir.Exists )
-				{
-					logFiles = dir.GetFiles( logNameMask );
-				}
+				logFiles = dir.GetFiles( logNameMask );
 			}
-			catch( Exception )
-			{
-				// ignored
-			}
+			catch( Exception ) { } // ignored
 
 			if( null == logFiles )
 			{
@@ -598,7 +593,7 @@ namespace Logging.Helper
 			}
 
 			// Create list of log files that are not read-only
-			var list = new List<FileInfo>();
+			List<FileInfo> list = new List<FileInfo>();
 			foreach( var fi in logFiles )
 			{
 				// Exclude read-only files from deletion
@@ -619,19 +614,16 @@ namespace Logging.Helper
 
 			// Delete old log files
 			maxFiles = list.Count - maxFiles;
-			var count = 0;
+			int count = 0;
 			for( var i = 0; i < maxFiles; i++ )
 			{
-				var fi = list[i];
+				FileInfo fi = list[i];
 				try
 				{
 					fi.Delete();
 					count++;
 				}
-				catch( Exception )
-				{
-					Error( @"Could not delete log file " + fi.FullName );
-				}
+				catch( Exception ) { Error( @"Could not delete log file " + fi.FullName ); }
 			}
 
 			return count > 0;

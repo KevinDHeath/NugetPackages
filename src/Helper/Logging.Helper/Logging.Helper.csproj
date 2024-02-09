@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application.Helper\Application.Helper.csproj" />
+    <PackageReference Include="kdheath.Application.Helper" />
     <PackageReference Include="NLog" />
   </ItemGroup>
 

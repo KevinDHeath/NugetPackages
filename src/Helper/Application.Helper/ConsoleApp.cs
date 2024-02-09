@@ -27,6 +27,9 @@ namespace Application.Helper
 		/// <summary>Gets the total elapsed time measured.</summary>
 		public TimeSpan ElapsedTime => _stopWatch.Elapsed;
 
+		/// <summary>Sets whether this is running as a unit test.</summary>
+		public bool IsUnitTest { private get; set; } = false;
+
 		#endregion
 
 		#region Constructor
@@ -37,11 +40,15 @@ namespace Application.Helper
 		private bool _started;
 
 		/// <summary>Creates a new instance of the ConsoleApp class.</summary>
-		public ConsoleApp()
+		/// <param name="detectDebugMode">Detect if a debugger is attached or not.<br/>
+		/// The default is <see langword="true"/></param>
+		/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+		/// <exception cref="TypeLoadException">Thrown when type-loading failures occur.</exception>
+		public ConsoleApp( bool detectDebugMode = true )
 		{
 			ConfigFile = GetAppConfigFile();
 			Title = FormatTitle( Assembly.GetEntryAssembly() );
-			DebugMode = Debugger.IsAttached;
+			DebugMode = !detectDebugMode || Debugger.IsAttached;
 		}
 
 		#endregion
@@ -52,7 +59,7 @@ namespace Application.Helper
 		/// <returns>An empty string is returned if the configuration file could not be determined.</returns>
 		private static string GetAppConfigFile()
 		{
-			var retValue = "appsettings.json";
+			string retValue = "appsettings.json";
 			if( File.Exists( retValue ) ) return retValue;
 
 			// Get the name of the executable
@@ -71,30 +78,27 @@ namespace Application.Helper
 
 		private static T GetAssemblyAttribute<T>( ICustomAttributeProvider assembly ) where T : Attribute
 		{
-			var attributes = assembly.GetCustomAttributes( typeof( T ), false );
+			object[] attributes = assembly.GetCustomAttributes( typeof( T ), false );
 			return attributes.Length == 0 ? null : attributes.OfType<T>().SingleOrDefault();
 		}
 
 		private static void SetStartTime( ConsoleApp app )
 		{
-			if( !app.DebugMode ) return;
+			if( !app.DebugMode ) { return; }
 
 			// Log the start time
 			Console.WriteLine( @"Start..: " + DateTime.Now.ToString( @"HH:mm:ss.fffffff" ) );
 			Console.WriteLine();
 		}
 
-		private static void SetEndTime( ConsoleApp app, bool result )
+		private static void SetEndTime( ConsoleApp app, bool result, bool unitTest )
 		{
-			if( app._stopWatch.IsRunning )
-			{
-				app.SuspendElapsed();
-			}
+			if( app._stopWatch.IsRunning ) { app.SuspendElapsed(); }
 
 			if( !app.DebugMode ) return;
 
 			// Log the completion and elapsed times
-			var exitCode = Environment.ExitCode > 0 ? " with exit code " + Environment.ExitCode : string.Empty;
+			string exitCode = Environment.ExitCode > 0 ? " with exit code " + Environment.ExitCode : string.Empty;
 			Console.WriteLine();
 			Console.WriteLine( @"Runtime: " + app.ElapsedTime );
 			Console.WriteLine( @"Result.: " + ( result ? "Success" : "Failed" ) + exitCode );
@@ -102,27 +106,21 @@ namespace Application.Helper
 
 			Console.WriteLine( string.Empty );
 			Console.Write( @"Press any key to continue . . . " );
-			Console.Read();
+			if( !unitTest ) { _ = Console.Read(); }
 		}
 
 		private static string FormatTitle( Assembly assembly )
 		{
-			var titleAttr = GetAssemblyAttribute<AssemblyTitleAttribute>( assembly );
-			var titleStr = titleAttr?.Title.Trim() ?? string.Empty;
+			AssemblyTitleAttribute titleAttr = GetAssemblyAttribute<AssemblyTitleAttribute>( assembly );
+			string titleStr = titleAttr?.Title.Trim() ?? string.Empty;
 
 			// Get the file version
 			string versionStr = null;
-			var versionAttr = GetAssemblyAttribute<AssemblyFileVersionAttribute>( assembly );
-			if( null != versionAttr )
-			{
-				versionStr = versionAttr.Version.Trim();
-			}
+			AssemblyFileVersionAttribute versionAttr = GetAssemblyAttribute<AssemblyFileVersionAttribute>( assembly );
+			if( null != versionAttr ) { versionStr = versionAttr.Version.Trim(); }
 
 			// If no file version get it from the full name
-			if( null == versionStr )
-			{
-				versionStr = assembly.GetName().Version.ToString();
-			}
+			if( null == versionStr ) { versionStr = assembly.GetName().Version.ToString(); }
 
 			return versionStr.Length > 0 ? (titleStr + $" [Version {versionStr}]").Trim() : titleStr;
 		}
@@ -130,9 +128,9 @@ namespace Application.Helper
 		private void ShowProgramInfo( ICustomAttributeProvider assembly )
 		{
 			// Add the description to the title
-			var descAttr = GetAssemblyAttribute<AssemblyDescriptionAttribute>( assembly );
-			var descStr = descAttr?.Description.Trim() ?? string.Empty;
-			var titleStr = descStr.Length > 0 ? ( Title + $" {descStr}" ).Trim() : Title;
+			AssemblyDescriptionAttribute descAttr = GetAssemblyAttribute<AssemblyDescriptionAttribute>( assembly );
+			string descStr = descAttr?.Description.Trim() ?? string.Empty;
+			string titleStr = descStr.Length > 0 ? ( Title + $" {descStr}" ).Trim() : Title;
 
 			// Display the title line
 			if( titleStr.Length > 0 )
@@ -141,7 +139,7 @@ namespace Application.Helper
 			}
 
 			// Display the copyright line
-			var copyAttr = GetAssemblyAttribute<AssemblyCopyrightAttribute>( assembly );
+			AssemblyCopyrightAttribute copyAttr = GetAssemblyAttribute<AssemblyCopyrightAttribute>( assembly );
 			if( copyAttr != null && copyAttr.Copyright.Length > 0 )
 			{
 				Console.WriteLine( copyAttr.Copyright );
@@ -159,10 +157,7 @@ namespace Application.Helper
 		public bool StartApp()
 		{
 			// Check whether the application has already been started
-			if( _started )
-			{
-				return true;
-			}
+			if( _started ) { return true; }
 			_started = true;
 
 			// Show the application start time and start the stopwatch
@@ -177,10 +172,7 @@ namespace Application.Helper
 		public void StartApp( IReadOnlyList<string> args )
 		{
 			// Check whether the application has already been started
-			if( StartApp() )
-			{
-				return;
-			}
+			if( StartApp() ) { return; }
 
 			// Check for command line help request
 			args = args ?? new List<string>();
@@ -197,6 +189,7 @@ namespace Application.Helper
 		/// <remarks>This method can be overridden in a derived class to provide specific
 		/// information about the program when the command line help request is made using
 		/// ? anywhere in the first argument.</remarks>
+		/// <exception cref="TypeLoadException">Thrown when type-loading failures occur.</exception>
 		public virtual void ShowProgramInfo()
 		{
 			ShowProgramInfo( Assembly.GetEntryAssembly() );
@@ -207,10 +200,7 @@ namespace Application.Helper
 		public void StopApp( bool result = true )
 		{
 			// Check whether the application has already been stopped
-			if( !_started )
-			{
-				return;
-			}
+			if( !_started ) { return; }
 			_started = false;
 
 			// Set the return code if it is not already set
@@ -220,7 +210,7 @@ namespace Application.Helper
 			}
 
 			// Set the application stop variables
-			SetEndTime( this, result );
+			SetEndTime( this, result, IsUnitTest );
 		}
 
 		/// <summary>Formats a title line to be logged.</summary>
@@ -230,18 +220,12 @@ namespace Application.Helper
 		public string FormatTitleLine( string text, int maxWidth = 80 )
 		{
 			text = text ?? string.Empty;
-			if( text.Length >= maxWidth )
-			{
-				return text;
-			}
+			if( text.Length >= maxWidth ) { return text; }
 
 			// Center the title and pad width '-' characters
-			var filler = ( maxWidth - text.Length ) / 2;
-			var padding = new string( '-', filler );
-			if( text.Length + filler * 2 != maxWidth )
-			{
-				text += "-";
-			}
+			int filler = ( maxWidth - text.Length ) / 2;
+			string padding = new string( '-', filler );
+			if( text.Length + filler * 2 != maxWidth ) { text += "-"; }
 
 			return padding + text + padding;
 		}
@@ -249,19 +233,13 @@ namespace Application.Helper
 		/// <summary>Resumes measuring elapsed time for an interval.</summary>
 		public void ResumeElapsed()
 		{
-			if( !_stopWatch.IsRunning )
-			{
-				_stopWatch.Start();
-			}
+			if( !_stopWatch.IsRunning ) { _stopWatch.Start(); }
 		}
 
 		/// <summary>Suspends measuring elapsed time for an interval.</summary>
 		public void SuspendElapsed()
 		{
-			if( _stopWatch.IsRunning )
-			{
-				_stopWatch.Stop();
-			}
+			if( _stopWatch.IsRunning ) { _stopWatch.Stop(); }
 		}
 
 		#endregion

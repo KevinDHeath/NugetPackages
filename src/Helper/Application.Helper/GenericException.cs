@@ -37,25 +37,22 @@ namespace Application.Helper
 		/// <returns>String containing the exception details.</returns>
 		public static string FormatException( Exception exception )
 		{
-			var retValue = string.Empty;
+			string retValue = string.Empty;
 
 			if( null == exception )
 			{
 				retValue = "Undefined exception encountered.";
 			}
-			else if( exception is AggregateException )
+			else if( exception is AggregateException ae )
 			{
-				while( exception.InnerException != null )
+				foreach( Exception ex in ae.InnerExceptions )
 				{
 					if( retValue.Length > 0 )
 					{
 						retValue += Environment.NewLine;
 					}
-					retValue += exception.InnerException.GetType() + ": " +
-					            exception.InnerException.Message + Environment.NewLine +
-					            exception.InnerException.StackTrace;
-
-					exception = exception.InnerException;
+					retValue += ex.GetType() + ": " + ex.Message;
+					if( ex.StackTrace != null ) retValue += Environment.NewLine + ex.StackTrace;
 				}
 			}
 			else if( exception is GenericException )
@@ -80,11 +77,8 @@ namespace Application.Helper
 
 			if( exception != null )
 			{
-				if( msg.Length > 0 )
-				{
-					// Add a line break after the message
-					msg += Environment.NewLine;
-				}
+				// Add a line break after the message
+				if( msg.Length > 0 ) { msg += Environment.NewLine; }
 				msg += FormatException( exception );
 			}
 

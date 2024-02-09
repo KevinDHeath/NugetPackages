@@ -65,6 +65,20 @@
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <BuildLogFile>C:\Temp\Documentation\NuGetPackages.log</BuildLogFile>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <ComponentConfigurations>
+      <ComponentConfig id="Resolve ThirdParty Reference Links" enabled="True">
+        <component id="Resolve ThirdParty Reference Links">
+          <configuration>
+            <urlProviders>
+              <formattedProvider title="NLog URL Provider">
+                <targetMatcher pattern=".:NLog(\.|$).*" fullyQualifiedMemberName="false" sandcastleTarget="true" />
+                <urlFormatter format="https://nlog-project.org/documentation/v5.0.0/html/{target}.htm" />
+              </formattedProvider>
+            </urlProviders>
+          </configuration>
+        </component>
+      </ComponentConfig>
+    </ComponentConfigurations>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
