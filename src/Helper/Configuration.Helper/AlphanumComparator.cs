@@ -14,20 +14,12 @@ public class AlphanumComparator : IComparer
 
 	private static bool InChunk( char ch, char otherCh )
 	{
-		var type = ChunkType.Alphanumeric;
+		ChunkType type = ChunkType.Alphanumeric;
 
-		if( char.IsDigit( otherCh ) )
-		{
-			type = ChunkType.Numeric;
-		}
+		if( char.IsDigit( otherCh ) ) { type = ChunkType.Numeric; }
 
-		if( ( type == ChunkType.Alphanumeric && char.IsDigit( ch ) )
-			|| ( type == ChunkType.Numeric && !char.IsDigit( ch ) ) )
-		{
-			return false;
-		}
-
-		return true;
+		return ( type != ChunkType.Alphanumeric || !char.IsDigit( ch ) )
+			&& ( type != ChunkType.Numeric || char.IsDigit( ch ) );
 	}
 
 	#endregion
@@ -47,39 +39,27 @@ public class AlphanumComparator : IComparer
 	/// </returns>
 	public int Compare( object? x, object? y )
 	{
-		if( x is not string s1 || y is not string s2 )
-		{
-			return 0;
-		}
+		if( x is not string s1 || y is not string s2 ) { return 0; }
 
-		var thisMarker = 0;
-		var thatMarker = 0;
+		int thisMarker = 0;
+		int thatMarker = 0;
 
 		while( ( thisMarker < s1.Length ) || ( thatMarker < s2.Length ) )
 		{
-			if( thisMarker >= s1.Length )
-			{
-				return -1;
-			}
-			if( thatMarker >= s2.Length )
-			{
-				return 1;
-			}
+			if( thisMarker >= s1.Length ) { return -1; }
+			if( thatMarker >= s2.Length ) { return 1; }
 
-			var thisCh = s1[thisMarker];
-			var thatCh = s2[thatMarker];
-			var thisChunk = new StringBuilder();
-			var thatChunk = new StringBuilder();
+			char thisCh = s1[thisMarker];
+			char thatCh = s2[thatMarker];
+			StringBuilder thisChunk = new();
+			StringBuilder thatChunk = new();
 
 			while( ( thisMarker < s1.Length ) && ( thisChunk.Length == 0 || InChunk( thisCh, thisChunk[0] ) ) )
 			{
 				thisChunk.Append( thisCh );
 				thisMarker++;
 
-				if( thisMarker < s1.Length )
-				{
-					thisCh = s1[thisMarker];
-				}
+				if( thisMarker < s1.Length ) { thisCh = s1[thisMarker]; }
 			}
 
 			while( thatMarker < s2.Length && ( thatChunk.Length == 0 || InChunk( thatCh, thatChunk[0] ) ) )
@@ -87,39 +67,26 @@ public class AlphanumComparator : IComparer
 				thatChunk.Append( thatCh );
 				thatMarker++;
 
-				if( thatMarker < s2.Length )
-				{
-					thatCh = s2[thatMarker];
-				}
+				if( thatMarker < s2.Length ) { thatCh = s2[thatMarker]; }
 			}
 
-			var result = 0;
+			int result = 0;
 
 			// If both chunks contain numeric characters, sort them numerically
 			if( char.IsDigit( thisChunk[0] ) && char.IsDigit( thatChunk[0] ) )
 			{
-				var thisNumericChunk = Convert.ToInt32( thisChunk.ToString() );
-				var thatNumericChunk = Convert.ToInt32( thatChunk.ToString() );
+				int thisNumericChunk = Convert.ToInt32( thisChunk.ToString() );
+				int thatNumericChunk = Convert.ToInt32( thatChunk.ToString() );
 
-				if( thisNumericChunk < thatNumericChunk )
-				{
-					result = -1;
-				}
-
-				if( thisNumericChunk > thatNumericChunk )
-				{
-					result = 1;
-				}
+				if( thisNumericChunk < thatNumericChunk ) { result = -1; }
+				else if( thisNumericChunk > thatNumericChunk ) { result = 1; }
 			}
 			else
 			{
 				result = string.Compare( thisChunk.ToString(), thatChunk.ToString(), StringComparison.Ordinal );
 			}
 
-			if( result != 0 )
-			{
-				return result;
-			}
+			if( result != 0 ) { return result; }
 		}
 
 		return 0;

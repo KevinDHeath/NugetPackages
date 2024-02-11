@@ -8,7 +8,6 @@ namespace Helper.Tests;
 [Collection( "LoggerTests" )]
 public class LoggerTests
 {
-	private const string cAppConfig = @"Helper.Tests.dll.config";
 	private const string cMessage = @"Log to memory target";
 
 	[Fact]
@@ -28,7 +27,7 @@ public class LoggerTests
 	public void DefaultConfig_should_be_true()
 	{
 		// Arrange
-		string configFile = "NLogNoTargets.config";
+		string configFile = @"Testdata\NLogNoTargets.config";
 
 		// Act
 		Logger logger = new( configFile );
@@ -42,7 +41,7 @@ public class LoggerTests
 	public void Has_Errors_should_be_true()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 		Exception exception = new( cMessage );
 
 		// Act (with branch coverage)
@@ -59,7 +58,7 @@ public class LoggerTests
 	public void Log_Fatal_should_be_true()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 
 		// Act
 		bool result = logger.Fatal( cMessage );
@@ -72,7 +71,7 @@ public class LoggerTests
 	public void Log_Info_should_be_false()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 
 		// Act
 		bool result = logger.Info( cMessage );
@@ -85,7 +84,7 @@ public class LoggerTests
 	public void Log_Warning_should_be_true()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 
 		// Act
 		bool result = logger.Warn( cMessage );
@@ -98,7 +97,7 @@ public class LoggerTests
 	public void MaxLogFiles_should_be_1()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig ) { MaxLogFiles = 1 };
+		Logger logger = new() { MaxLogFiles = 1 };
 
 		// Act
 		int result = logger.MaxLogFiles;
@@ -111,7 +110,7 @@ public class LoggerTests
 	public void OnRaiseLog_should_be_true()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 		LoggerEventTests logic = new();
 		logic.RaiseLogHandler += logger.OnRaiseLog;
 
@@ -128,7 +127,7 @@ public class LoggerTests
 	public void SetLogFile_should_be_true()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 
 		// Act
 		logger.SetLogFile( @"logger.log" );
@@ -142,15 +141,16 @@ public class LoggerTests
 	public void RemoveLogs_should_be_true()
 	{
 		// Arrange
-		if( !File.Exists( @".\NLog1.log" ) ) { File.Create( @".\NLog1.log" ); }
-		if( !File.Exists( @".\NLog2.log" ) ) { File.Create( @".\NLog2.log" ); }
-		Logger logger = new( cAppConfig );
+		string path = @".\Testdata\";
+		Global.CreateLogFile( path + "NLog1.log" );
+		Global.CreateLogFile( path + "NLog2.log" );
+		Logger logger = new();
 
 		// Act (with branch coverage)
-		_ = logger.RemoveLogs( @".\", @"NLog*.log", 0 );       // maxFiles <= 0
-		_ = logger.RemoveLogs( @".\", @"NLog*.log", 5 );       // file count is < maximum number
+		_ = logger.RemoveLogs( path, "NLog*.log", 0 );       // maxFiles <= 0
+		_ = logger.RemoveLogs( path, "NLog*.log", 5 );       // file count is < maximum number
 		_ = logger.RemoveLogs( @"notexist", @"temp*.log", 1 ); // bad directory name
-		bool result = logger.RemoveLogs( @".\", @"NLog*.log", 1 );
+		bool result = logger.RemoveLogs( path, "NLog*.log", 1 );
 
 		// Assert
 		_ = result.Should().BeTrue();
@@ -160,7 +160,7 @@ public class LoggerTests
 	public void ToString_should_end_with_NLog()
 	{
 		// Arrange
-		Logger logger = new( cAppConfig );
+		Logger logger = new();
 
 		// Act
 		string result = logger.ToString();

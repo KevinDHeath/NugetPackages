@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<coverage version="1.0" date="2024-02-10_13-07-41" tag="">
+  <assembly name="Application.Helper">
+    <class name="Application.Helper.ConsoleApp" coveredlines="110" coverablelines="110" totallines="247" coveredbranches="51" totalbranches="72" coveredcodeelements="20" totalcodeelements="20" />
+    <class name="Application.Helper.GenericException" coveredlines="42" coverablelines="42" totallines="90" coveredbranches="16" totalbranches="20" coveredcodeelements="5" totalcodeelements="5" />
+  </assembly>
+  <assembly name="Configuration.Helper">
+    <class name="Configuration.Helper.AlphanumComparator" coveredlines="0" coverablelines="71" totallines="129" coveredbranches="0" totalbranches="48" coveredcodeelements="0" totalcodeelements="2" />
+    <class name="Configuration.Helper.ConfigFileHelper" coveredlines="0" coverablelines="72" totallines="190" coveredbranches="0" totalbranches="30" coveredcodeelements="0" totalcodeelements="12" />
+    <class name="Configuration.Helper.FileFolderInfo" coveredlines="0" coverablelines="50" totallines="106" coveredbranches="0" totalbranches="20" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Configuration.Helper.FileSettingsStore" coveredlines="0" coverablelines="68" totallines="141" coveredbranches="0" totalbranches="16" coveredcodeelements="0" totalcodeelements="5" />
+    <class name="Configuration.Helper.FolderInfoBase" coveredlines="0" coverablelines="30" totallines="79" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="9" />
+    <class name="Configuration.Helper.IOHelper" coveredlines="0" coverablelines="118" totallines="282" coveredbranches="0" totalbranches="70" coveredcodeelements="0" totalcodeelements="15" />
+    <class name="Configuration.Helper.SettingsSection" coveredlines="0" coverablelines="34" totallines="83" coveredbranches="0" totalbranches="14" coveredcodeelements="0" totalcodeelements="4" />
+    <class name="Configuration.Helper.SettingsStoreBase" coveredlines="0" coverablelines="109" totallines="231" coveredbranches="0" totalbranches="46" coveredcodeelements="0" totalcodeelements="14" />
+    <class name="Configuration.Helper.WebConnectionStringBuilder" coveredlines="0" coverablelines="117" totallines="375" coveredbranches="0" totalbranches="26" coveredcodeelements="0" totalcodeelements="40" />
+  </assembly>
+  <assembly name="Logging.Helper">
+    <class name="Logging.Helper.ImplNLog" coveredlines="65" coverablelines="65" totallines="188" coveredbranches="15" totalbranches="22" coveredcodeelements="17" totalcodeelements="17" />
+    <class name="Logging.Helper.Logger" coveredlines="217" coverablelines="219" totallines="634" coveredbranches="77" totalbranches="106" coveredcodeelements="31" totalcodeelements="31" />
+    <class name="Logging.Helper.LoggerEvent" coveredlines="50" coverablelines="50" totallines="139" coveredbranches="10" totalbranches="10" coveredcodeelements="9" totalcodeelements="9" />
+    <class name="Logging.Helper.LoggerEventArgs" coveredlines="7" coverablelines="7" totallines="31" coveredbranches="2" totalbranches="2" coveredcodeelements="3" totalcodeelements="3" />
+  </assembly>
+</coverage>

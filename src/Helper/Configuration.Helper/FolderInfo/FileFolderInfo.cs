@@ -20,10 +20,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 	{
 		// Check the required parameter
 		const string cMethod = @"FileFolderInfo.Create";
-		if( null == dirInfo )
-		{
-			throw new ArgumentNullException( nameof( dirInfo ), cMethod );
-		}
+		if( null == dirInfo ) { throw new ArgumentNullException( nameof( dirInfo ), cMethod ); }
 
 		return dirInfo.Exists ? Initialize( dirInfo, string.Empty, includeFolders, filter ) : new FileFolderInfo();
 	}
@@ -88,10 +85,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 			retValue = dirInfo.FullName.Replace( root, string.Empty );
 
 			// Remove leading separator
-			if( retValue.StartsWith( _separator ) )
-			{
-				retValue = retValue[1..];
-			}
+			if( retValue.StartsWith( _separator ) ) { retValue = retValue[1..]; }
 		}
 		else
 		{

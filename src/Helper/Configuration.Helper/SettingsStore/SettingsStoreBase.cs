@@ -48,21 +48,12 @@ public abstract class SettingsStoreBase : ISettingsStore
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.GetSection";
-		if( null == sectionName )
-		{
-			throw new ArgumentNullException( nameof( sectionName ), cMethod );
-		}
+		if( null == sectionName ) { throw new ArgumentNullException( nameof( sectionName ), cMethod ); }
 		sectionName = sectionName.Trim();
-		if( sectionName.Length == 0 )
-		{
-			throw new ArgumentException( cMethod, nameof( sectionName ) );
-		}
+		if( sectionName.Length == 0 ) { throw new ArgumentException( cMethod, nameof( sectionName ) ); }
 
 		// Return the section if it exists
-		if( Sections.TryGetValue( sectionName, out SettingsSection? value ) )
-		{
-			return value;
-		}
+		if( Sections.TryGetValue( sectionName, out SettingsSection? value ) ) { return value; }
 
 		// Return a new section if not found
 		var retValue = new SettingsSection( _comparer );
@@ -121,20 +112,13 @@ public abstract class SettingsStoreBase : ISettingsStore
 	private void ProcessSetting( XElement elem )
 	{
 		// The element must have a parent section
-		if( null == elem || null == elem.Parent )
-		{
-			return;
-		}
+		if( null == elem || null == elem.Parent ) { return; }
 		var sectionName = elem.Parent.Name.LocalName;
 
 		// Check for application setting
 		var settingKey = elem.Attribute( cAppSettingKey ) ?? elem.Attribute( cConnectionKey );
 
-		if( null == settingKey )
-		{
-			// Setting type not supported
-			return;
-		}
+		if( null == settingKey ) { return; } // Setting type not supported
 
 		// Get the setting value
 		XAttribute? settingVal = null;
@@ -184,17 +168,11 @@ public abstract class SettingsStoreBase : ISettingsStore
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.LoadFromStream";
-		if( null == config )
-		{
-			throw new ArgumentNullException( nameof( config ), cMethod );
-		}
+		if( null == config ) { throw new ArgumentNullException( nameof( config ), cMethod ); }
 
 		// Check the required parameter has a value
 		config = config.Trim();
-		if( config.Length == 0 )
-		{
-			throw new ArgumentException( cMethod, nameof( config ) );
-		}
+		if( config.Length == 0 ) { throw new ArgumentException( cMethod, nameof( config ) ); }
 
 		if( ConfigFileHelper.cJsonExtension.Equals( fileExtension, StringComparison.CurrentCultureIgnoreCase ) )
 		{

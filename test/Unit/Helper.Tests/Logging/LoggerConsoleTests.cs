@@ -3,7 +3,7 @@
 [Collection( "LoggerTests" )]
 public class LoggerConsoleTests
 {
-	private const string cNLogConfig = @"NLog.config";
+	private const string cNLogConfig = @"Testdata\NLog.config";
 
 	[Fact]
 	public void Log_Debug_should_start_with_DEBUG()

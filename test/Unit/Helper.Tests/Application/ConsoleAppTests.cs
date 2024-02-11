@@ -3,7 +3,7 @@
 public class ConsoleAppTests
 {
 	[Fact]
-	public void ConfigFile_should_be_Empty()
+	public void ConfigFile_should_be_empty()
 	{
 		// Arrange
 		ConsoleApp app = new();
@@ -16,7 +16,7 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
-	public void DebugMode_should_be_True()
+	public void DebugMode_should_be_true()
 	{
 		// Arrange
 		ConsoleApp app = new( detectDebugMode: false ) { IsUnitTest = true };
@@ -31,7 +31,7 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
-	public void FormatTitleLine_should_not_be_Empty()
+	public void FormatTitleLine_should_not_be_empty()
 	{
 		// Arrange
 		ConsoleApp app = new();
@@ -75,7 +75,7 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
-	public void Title_should_not_be_Empty()
+	public void Title_should_not_be_empty()
 	{
 		// Arrange
 		ConsoleApp app = new();

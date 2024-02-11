@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Helper\Application.Helper\Application.Helper.csproj" />
+    <ProjectReference Include="..\..\..\src\Helper\Configuration.Helper\Configuration.Helper.csproj" />
     <ProjectReference Include="..\..\..\src\Helper\Logging.Helper\Logging.Helper.csproj" />
   </ItemGroup>
 
@@ -32,10 +33,13 @@
     <None Update="Helper.Tests.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="NLog.config">
+    <None Update="Testdata\NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="NLogNoTargets.config">
+    <None Update="Testdata\NLogNoTargets.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Testdata\ConfigFileHelper.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

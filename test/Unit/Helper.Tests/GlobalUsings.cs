@@ -1,6 +1,7 @@
 ﻿global using FluentAssertions;
 global using Xunit;
 global using Application.Helper;
+global using Configuration.Helper;
 global using Logging.Helper;
 
 namespace Helper.Tests;
@@ -30,5 +31,10 @@ internal class Global : LoggerEvent
 		Console.SetOut( standardOutput );
 
 		return result;
+	}
+
+	internal static void CreateLogFile( string fileName )
+	{
+		if( !File.Exists( fileName ) ) { using FileStream fs = File.Create( fileName ); }
 	}
 }
