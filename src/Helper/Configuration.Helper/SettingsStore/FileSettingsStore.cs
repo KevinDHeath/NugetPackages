@@ -24,7 +24,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 
 		// Check the parameter has a value
 		configFile = configFile.Trim();
-		var retValue = new FileSettingsStore();
+		FileSettingsStore retValue = new();
 		if( configFile.Length == 0 )
 		{
 			retValue.IsInitialized = true;
@@ -32,7 +32,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 		}
 
 		// Create a Settings Store using a disk file name
-		var fileInfo = IOHelper.GetFileInfo( configFile );
+		FileInfo? fileInfo = IOHelper.GetFileInfo( configFile );
 		if( fileInfo is not null ) { retValue.Initialize( fileInfo ); }
 
 		return retValue;
@@ -51,7 +51,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 		if( null == configFile ) { throw new ArgumentNullException( nameof( configFile ), cMethod ); }
 
 		// Create a Settings Store using a disk file
-		var retValue = new FileSettingsStore();
+		FileSettingsStore retValue = new();
 		await retValue.InitializeAsync( configFile );
 
 		return retValue;
@@ -73,14 +73,14 @@ public sealed class FileSettingsStore : SettingsStoreBase
 		try
 		{
 			// Initialize the Setting Store
-			using( var stream = new MemoryStream() )
+			using( MemoryStream stream = new() )
 			{
 				// Copy the stream and place in a stream reader
 				configFile.OpenRead().CopyTo( stream );
 				stream.Position = 0;
-				using var reader = new StreamReader( stream );
+				using StreamReader reader = new( stream );
 				// Initialize the setting store from the stream reader
-				var config = reader.ReadToEnd();
+				string config = reader.ReadToEnd();
 				LoadFromStream( ref config );
 			}
 			Location = configFile.FullName;
@@ -103,14 +103,14 @@ public sealed class FileSettingsStore : SettingsStoreBase
 		try
 		{
 			// Initialize the Setting Store
-			using( var stream = new MemoryStream() )
+			using( MemoryStream stream = new() )
 			{
 				// Copy the stream and place in a stream reader
 				await configFile.OpenRead().CopyToAsync( stream );
 				stream.Position = 0;
-				using var reader = new StreamReader( stream );
+				using StreamReader reader = new( stream );
 				// Initialize the setting store from the stream reader
-				var config = await reader.ReadToEndAsync();
+				string config = await reader.ReadToEndAsync();
 				LoadFromStream( ref config );
 			}
 			Location = configFile.FullName;

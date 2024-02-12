@@ -10,7 +10,7 @@ public class AlphanumComparatorTests
 		// Arrange
 		AlphanumComparator comparer = new();
 
-		// Act
+		// Act (with branch coverage)
 		int result = comparer.Compare( "1", "1" );
 		_ = comparer.Compare( "", "" );   // Empty strings
 		_ = comparer.Compare( 123, 456 ); // Not strings

@@ -170,7 +170,7 @@ namespace Logging.Helper
 			LoggingConfiguration retValue = new LoggingConfiguration();
 
 			// Create target and add it to the configuration 
-			var consoleTarget = new NLog.Targets.ConsoleTarget();
+			NLog.Targets.ConsoleTarget consoleTarget = new NLog.Targets.ConsoleTarget();
 			retValue.AddTarget( "console", consoleTarget );
 
 			// Set target properties 

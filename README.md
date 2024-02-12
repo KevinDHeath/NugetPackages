@@ -10,7 +10,8 @@ __.NET Helpers__
 <sub><sup>[_(Code coverage report)_](https://kevindheath.github.io/codecoverage/helpertests/)</sup></sub>
 - [Common.Core](./src/Common/Core)\
 <sub><sup>[_(Code coverage report)_](https://kevindheath.github.io/codecoverage/coretests/)</sup></sub>
-- [Configuration.Helper](./src/Helper/Configuration.Helper)
+- [Configuration.Helper](./src/Helper/Configuration.Helper)\
+<sub><sup>[_(Code coverage report)_](https://kevindheath.github.io/codecoverage/helpertests/)</sup></sub>
 - [Logging.Helper](./src/Helper/Logging.Helper)\
 <sub><sup>[_(Code coverage report)_](https://kevindheath.github.io/codecoverage/helpertests/)</sup></sub>
 

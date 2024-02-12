@@ -94,7 +94,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 		get
 		{
 			const string lastChar = @"/";
-			var value = GetProperty( Alias.url );
+			string value = GetProperty( Alias.url );
 			// Make sure the URL ends with a delimiting character 
 			if( value.Length > 0 & !value.EndsWith( lastChar ) & !value.EndsWith( '\\' ) )
 			{
@@ -281,7 +281,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	/// <returns>An empty string is returned if the key is not found.</returns>
 	private string GetProperty( params string[] keyAliases )
 	{
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
 			if( TryGetValue( alias, out object? value ) )
 			{ string? wrk = value.ToString(); if( wrk is not null ) { return wrk.Trim(); } }
@@ -318,7 +318,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	private string RemoveValue( params string[] keyAliases )
 	{
 		string? retValue = null;
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
 			if( TryGetValue( alias, out object? value ) )
 			{
@@ -338,7 +338,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	/// <param name="keyAliases">Collection of keywords.</param>
 	private void SetValue( string newValue, params string[] keyAliases )
 	{
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
 			if( TryGetValue( alias, out _ ) ) { this[alias] = newValue; return; }
 		}

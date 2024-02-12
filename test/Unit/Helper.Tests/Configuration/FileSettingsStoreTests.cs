@@ -5,6 +5,33 @@ namespace Helper.Tests.Configuration;
 public class FileSettingsStoreTests
 {
 	[Fact]
+	public void FileSettingStore_should_not_be_initialized()
+	{
+		// Arrange
+		string configFile = @".\Testdata\BadConfig.json";
+
+		// Act
+		ISettingsStore result = FileSettingsStore.Create( configFile );
+
+		// Assert
+		_ = result.IsInitialized.Should().BeFalse();
+	}
+
+	[Fact]
+	public async Task FileSettingStoreAsync_should_not_be_initialized()
+	{
+		// Arrange
+		string configFile = @".\Testdata\BadConfig.json";
+		FileInfo fi = new( configFile );
+
+		// Act
+		ISettingsStore result = await FileSettingsStore.CreateAsync( fi );
+
+		// Assert
+		_ = result.IsInitialized.Should().BeFalse();
+	}
+
+	[Fact]
 	public void SortFileList_should_have_count_eq_0()
 	{
 		// Arrange

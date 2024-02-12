@@ -58,7 +58,7 @@ public class ConfigFileHelperTests : ConfigFileHelper
 	}
 
 	[Fact]
-	public void ConvertToSecureString_should_have_value()
+	public void ConvertToSecureString_should_have_length()
 	{
 		// Arrange
 		string value = @"abcdefg";
@@ -98,7 +98,7 @@ public class ConfigFileHelperTests : ConfigFileHelper
 	}
 
 	[Fact]
-	public void GetSecureSetting_should_have_value()
+	public void GetSecureSetting_should_have_length()
 	{
 		// Arrange
 		string section = "Custom";
@@ -118,12 +118,12 @@ public class ConfigFileHelperTests : ConfigFileHelper
 		string key = "FavoriteMovie";
 
 		// Act
-		string? result = GetSetting( key );
-		string? result1 = Settings?.GetSetting( key );
+		string? result1 = GetSetting( key );
+		string? result2 = Settings?.GetSetting( key );
 
 		// Assert
-		_ = result.Should().NotBeNullOrEmpty();
 		_ = result1.Should().NotBeNullOrEmpty();
+		_ = result2.Should().NotBeNullOrEmpty();
 	}
 
 	[Fact]

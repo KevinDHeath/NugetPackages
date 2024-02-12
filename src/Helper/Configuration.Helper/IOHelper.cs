@@ -112,7 +112,7 @@ public static class IOHelper
 
 		List<string> retValue = new();
 		if( dir is null ) return retValue;
-		foreach( var file in dir.GetFiles( searchPattern ) )
+		foreach( FileInfo file in dir.GetFiles( searchPattern ) )
 		{
 			retValue.Add( file.FullName );
 		}

@@ -39,7 +39,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 	/// <returns>A FileFolderInfo object.</returns>
 	private static FileFolderInfo Initialize( DirectoryInfo dirInfo, string root, bool includeFolders, params string[] filter )
 	{
-		var retValue = new FileFolderInfo { Location = FormatLocation( dirInfo, ref root ) };
+		FileFolderInfo retValue = new() { Location = FormatLocation( dirInfo, ref root ) };
 
 		// Set a default filter if not supplied
 		if( filter.Length == 0 )
@@ -48,9 +48,9 @@ public sealed class FileFolderInfo : FolderInfoBase
 		}
 
 		// Populate the file list using the filter
-		foreach( var ext in filter )
+		foreach( string ext in filter )
 		{
-			foreach( var fi in dirInfo.GetFiles( ext, SearchOption.TopDirectoryOnly ) )
+			foreach( FileInfo fi in dirInfo.GetFiles( ext, SearchOption.TopDirectoryOnly ) )
 			{
 				if( !fi.Name.Contains( @".vshost.", StringComparison.CurrentCultureIgnoreCase ) ) // Ignore Visual Studio debugging files
 				{
@@ -62,7 +62,7 @@ public sealed class FileFolderInfo : FolderInfoBase
 		if( includeFolders )
 		{
 			// Process the sub-folders
-			foreach( var di in dirInfo.GetDirectories() )
+			foreach( DirectoryInfo di in dirInfo.GetDirectories() )
 			{
 				retValue.FolderList.Add( di.Name, Initialize( di, root, true ) );
 			}
