@@ -129,11 +129,11 @@ public abstract class ConfigFileHelper
 		// Check the required parameter is supplied
 		ArgumentNullException.ThrowIfNull( configFile );
 
-		var exists = IOHelper.DoesFileExist( configFile );
+		bool exists = IOHelper.DoesFileExist( configFile );
 		if( !exists )
 		{
 			// No path so try using current location
-			var path = IOHelper.Combine( Assembly.GetExecutingAssembly().Location, IOHelper.GetFileName( configFile ) );
+			string path = IOHelper.Combine( Assembly.GetExecutingAssembly().Location, IOHelper.GetFileName( configFile ) );
 			if( configFile != path )
 			{
 				configFile = IOHelper.GetFullPath( configFile );
@@ -150,7 +150,7 @@ public abstract class ConfigFileHelper
 	public static SecureString ConvertToSecureString( ref string strValue )
 	{
 		// Set the return value
-		var retValue = new SecureString();
+		SecureString retValue = new();
 
 		// Check the required parameter is supplied
 		if( string.IsNullOrWhiteSpace( strValue ) || strValue.Length == 0 )
@@ -178,8 +178,8 @@ public abstract class ConfigFileHelper
 		string? str = null;
 		if( IOHelper.DoesFileExist( configFile ) )
 		{
-			var config = GetConfiguration( configFile );
-			var section = config.GetSection( sectionName );
+			ISettingsStore config = GetConfiguration( configFile );
+			ISettingsSection section = config.GetSection( sectionName );
 			str = null != section ? section.GetSetting( key ) : string.Empty;
 		}
 

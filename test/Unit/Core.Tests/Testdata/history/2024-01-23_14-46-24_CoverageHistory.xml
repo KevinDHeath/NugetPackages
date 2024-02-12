@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<coverage version="1.0" date="2024-01-26_17-06-53" tag="">
+<coverage version="1.0" date="2024-01-23_14-46-24" tag="">
   <assembly name="Common.Core">
     <class name="Common.Core.Classes.AddressFactoryBase" coveredlines="0" coverablelines="47" totallines="124" coveredbranches="0" totalbranches="46" coveredcodeelements="0" totalcodeelements="15" />
     <class name="Common.Core.Classes.DataFactoryBase" coveredlines="0" coverablelines="34" totallines="87" coveredbranches="0" totalbranches="12" coveredcodeelements="0" totalcodeelements="6" />
     <class name="Common.Core.Classes.DataServiceBase" coveredlines="0" coverablelines="79" totallines="146" coveredbranches="0" totalbranches="18" coveredcodeelements="0" totalcodeelements="8" />
+    <class name="Common.Core.Classes.InterfaceConverter`2" coveredlines="0" coverablelines="13" totallines="42" coveredbranches="0" totalbranches="4" coveredcodeelements="0" totalcodeelements="2" />
     <class name="Common.Core.Classes.InterfaceFactory" coveredlines="0" coverablelines="10" totallines="46" coveredbranches="0" totalbranches="0" coveredcodeelements="0" totalcodeelements="5" />
     <class name="Common.Core.Classes.JsonHelper" coveredlines="0" coverablelines="117" totallines="201" coveredbranches="0" totalbranches="38" coveredcodeelements="0" totalcodeelements="8" />
     <class name="Common.Core.Classes.ModelBase" coveredlines="0" coverablelines="12" totallines="52" coveredbranches="0" totalbranches="10" coveredcodeelements="0" totalcodeelements="4" />

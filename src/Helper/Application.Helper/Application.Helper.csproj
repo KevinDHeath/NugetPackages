@@ -8,8 +8,10 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.1</Version>
-    <PackageReleaseNotes>* Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.</PackageReleaseNotes>
+    <Version>2.0.2</Version>
+    <PackageReleaseNotes>* Added an optional detectDebugMode parameter to the ConsoleApp constructor with a default value of true.
+* Added a set-only IsUnitTest property with a default value of false.
+* Fixed the formating of an AggregateException in the GenericException.FormatException method.</PackageReleaseNotes>
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

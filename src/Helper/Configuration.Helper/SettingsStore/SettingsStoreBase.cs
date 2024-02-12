@@ -48,24 +48,15 @@ public abstract class SettingsStoreBase : ISettingsStore
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.GetSection";
-		if( null == sectionName )
-		{
-			throw new ArgumentNullException( nameof( sectionName ), cMethod );
-		}
+		if( null == sectionName ) { throw new ArgumentNullException( nameof( sectionName ), cMethod ); }
 		sectionName = sectionName.Trim();
-		if( sectionName.Length == 0 )
-		{
-			throw new ArgumentException( cMethod, nameof( sectionName ) );
-		}
+		if( sectionName.Length == 0 ) { throw new ArgumentException( cMethod, nameof( sectionName ) ); }
 
 		// Return the section if it exists
-		if( Sections.TryGetValue( sectionName, out SettingsSection? value ) )
-		{
-			return value;
-		}
+		if( Sections.TryGetValue( sectionName, out SettingsSection? value ) ) { return value; }
 
 		// Return a new section if not found
-		var retValue = new SettingsSection( _comparer );
+		SettingsSection retValue = new( _comparer );
 		Sections.Add( sectionName, retValue );
 		return retValue;
 	}
@@ -111,7 +102,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 	{
 		if( element.ValueKind != JsonValueKind.Object ) return;
 
-		foreach( var item in element.EnumerateObject() )
+		foreach( JsonProperty item in element.EnumerateObject() )
 		{
 			string? val = item.Value.GetString();
 			AddSetting( ref sectionName, item.Name, val ?? string.Empty );
@@ -121,20 +112,13 @@ public abstract class SettingsStoreBase : ISettingsStore
 	private void ProcessSetting( XElement elem )
 	{
 		// The element must have a parent section
-		if( null == elem || null == elem.Parent )
-		{
-			return;
-		}
-		var sectionName = elem.Parent.Name.LocalName;
+		if( null == elem || null == elem.Parent ) { return; }
+		string sectionName = elem.Parent.Name.LocalName;
 
 		// Check for application setting
-		var settingKey = elem.Attribute( cAppSettingKey ) ?? elem.Attribute( cConnectionKey );
+		XAttribute? settingKey = elem.Attribute( cAppSettingKey ) ?? elem.Attribute( cConnectionKey );
 
-		if( null == settingKey )
-		{
-			// Setting type not supported
-			return;
-		}
+		if( null == settingKey ) { return; } // Setting type not supported
 
 		// Get the setting value
 		XAttribute? settingVal = null;
@@ -158,7 +142,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 	private void AddSetting( ref string sectionName, string settingKey, string settingVal )
 	{
 		// Try getting existing section
-		var section = Sections.TryGetValue( sectionName, out SettingsSection? value ) ? value : null;
+		SettingsSection? section = Sections.TryGetValue( sectionName, out SettingsSection? value ) ? value : null;
 
 		if( null == section )
 		{
@@ -184,29 +168,23 @@ public abstract class SettingsStoreBase : ISettingsStore
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.LoadFromStream";
-		if( null == config )
-		{
-			throw new ArgumentNullException( nameof( config ), cMethod );
-		}
+		if( null == config ) { throw new ArgumentNullException( nameof( config ), cMethod ); }
 
 		// Check the required parameter has a value
 		config = config.Trim();
-		if( config.Length == 0 )
-		{
-			throw new ArgumentException( cMethod, nameof( config ) );
-		}
+		if( config.Length == 0 ) { throw new ArgumentException( cMethod, nameof( config ) ); }
 
 		if( ConfigFileHelper.cJsonExtension.Equals( fileExtension, StringComparison.CurrentCultureIgnoreCase ) )
 		{
 			// Convert the string to JSON
-			using var doc = JsonDocument.Parse( config, new JsonDocumentOptions
+			using JsonDocument doc = JsonDocument.Parse( config, new JsonDocumentOptions
 				{ AllowTrailingCommas = true, MaxDepth = 2 } );
 			{
-				var root = doc.RootElement;
+				JsonElement root = doc.RootElement;
 				if( root.ValueKind == JsonValueKind.Object )
 				{
 					// find name of section
-					foreach( var element in root.EnumerateObject() )
+					foreach( JsonProperty element in root.EnumerateObject() )
 					{
 						string section = element.Name;
 						ProcessSetting( element.Value, section );
@@ -217,10 +195,10 @@ public abstract class SettingsStoreBase : ISettingsStore
 		else
 		{
 			// Convert the string to XML
-			var xml = XElement.Parse( config );
+			XElement xml = XElement.Parse( config );
 
 			// Process each configuration settings
-			foreach( var elem in xml.Descendants( @"add" ) )
+			foreach( XElement elem in xml.Descendants( @"add" ) )
 			{
 				ProcessSetting( elem );
 			}

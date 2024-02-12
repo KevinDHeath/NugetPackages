@@ -21,6 +21,10 @@
 
     <!-- Logging.Helper -->
     <PackageVersion Include="NLog" Version="5.2.8" />
+    <PackageVersion Include="kdheath.Application.Helper" Version="2.0.1" />
+
+    <!-- Wpf.Controls -->
+    <PackageVersion Include="kdheath.Wpf.Resources" Version="2.0.0" />
 
     <!-- Tools: AspNet -->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />

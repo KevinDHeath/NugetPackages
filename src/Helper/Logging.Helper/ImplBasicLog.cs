@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Logging.Helper
 {
 	/// <summary>Class that implements a basic Console logger.</summary>
+	[ExcludeFromCodeCoverage]
 	internal class ImplBasicLog : ILog
 	{
 		#region ILog Implementation
@@ -87,7 +89,7 @@ namespace Logging.Helper
 
 		private static string GetLayoutPrefix( LogSeverity severity )
 		{
-			var time = DateTime.Now.ToString( @"HH:mm:ss" );
+			string time = DateTime.Now.ToString( @"HH:mm:ss" );
 
 			switch( severity )
 			{

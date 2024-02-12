@@ -9,8 +9,9 @@ namespace Configuration.Helper;
 /// strings used for a Microsoft Dataverse connection.</summary>
 /// <remarks>
 /// See<a href="https://learn.microsoft.com/en-us/power-apps/developer/data-platform/xrm-tooling/use-connection-strings-xrm-tooling-connect" target="_blank">
-/// Use connection strings in XRM tooling to connect to Microsoft Dataverse</a>
-/// for more information.
+/// Use connection strings in XRM tooling to connect to Microsoft Dataverse</a> and
+/// <a href="https://learn.microsoft.com/en-us/dynamics365/customerengagement/on-premises/developer/xrm-tooling/use-connection-strings-xrm-tooling-connect" target="_blank">
+/// Use connection strings in XRM tooling</a> for more information.
 /// </remarks>
 public class WebConnectionStringBuilder : DbConnectionStringBuilder
 {
@@ -33,6 +34,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 		internal static readonly string[] thumbprint = { @"Thumbprint", "CertThumbprint" };
 		internal static readonly string[] skipDiscovery = { "SkipDiscovery" };
 		internal static readonly string[] integratedSecurity = { "Integrated Security" };
+		internal static readonly string[] domain = { "Domain" };
 	}
 
 	#endregion
@@ -92,9 +94,9 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 		get
 		{
 			const string lastChar = @"/";
-			var value = GetProperty( Alias.url );
+			string value = GetProperty( Alias.url );
 			// Make sure the URL ends with a delimiting character 
-			if( value.Length > 0 & !value.EndsWith( lastChar ) & !value.EndsWith( @"\" ) )
+			if( value.Length > 0 & !value.EndsWith( lastChar ) & !value.EndsWith( '\\' ) )
 			{
 				return value + lastChar;
 			}
@@ -242,6 +244,13 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 		set { SetProperty( value.ToString().ToLower(), Alias.integratedSecurity ); }
 	}
 
+	/// <summary>Gets or sets the domain that will verify user credentials.</summary>
+	public string Domain
+	{
+		get { return GetProperty( GetProperty( Alias.domain ) ); }
+		set { SetProperty( value, Alias.domain ); }
+	}
+
 	#endregion
 
 	#region Constructors
@@ -272,13 +281,10 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	/// <returns>An empty string is returned if the key is not found.</returns>
 	private string GetProperty( params string[] keyAliases )
 	{
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
 			if( TryGetValue( alias, out object? value ) )
-			{
-				string? wrk = value.ToString();
-				if( wrk is not null ) { return wrk.Trim(); }
-			}
+			{ string? wrk = value.ToString(); if( wrk is not null ) { return wrk.Trim(); } }
 		}
 
 		return string.Empty;
@@ -312,7 +318,7 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	private string RemoveValue( params string[] keyAliases )
 	{
 		string? retValue = null;
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
 			if( TryGetValue( alias, out object? value ) )
 			{
@@ -332,13 +338,9 @@ public class WebConnectionStringBuilder : DbConnectionStringBuilder
 	/// <param name="keyAliases">Collection of keywords.</param>
 	private void SetValue( string newValue, params string[] keyAliases )
 	{
-		foreach( var alias in keyAliases )
+		foreach( string alias in keyAliases )
 		{
-			if( TryGetValue( alias, out _ ) )
-			{
-				this[alias] = newValue;
-				return;
-			}
+			if( TryGetValue( alias, out _ ) ) { this[alias] = newValue; return; }
 		}
 
 		this[keyAliases[0]] = newValue;

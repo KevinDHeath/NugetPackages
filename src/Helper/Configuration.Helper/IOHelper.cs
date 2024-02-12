@@ -14,14 +14,8 @@ public static class IOHelper
 	{
 		if( !string.IsNullOrWhiteSpace( directoryName ) && directoryName.Length > 0 )
 		{
-			try
-			{
-				return new DirectoryInfo( directoryName );
-			}
-			catch( Exception )
-			{
-				// Directory name is not valid;
-			}
+			try { return new DirectoryInfo( directoryName ); }
+			catch( Exception ) { } // Directory name is not valid;
 		}
 		return null;
 	}
@@ -34,13 +28,9 @@ public static class IOHelper
 	public static bool DoesDirectoryExist( string directoryName, bool throwNotFound = false )
 	{
 		// Get the file information and check existence
-		var di = GetDirectoryInfo( directoryName );
-		var retValue = null != di && di.Exists;
-
-		if( retValue || !throwNotFound )
-		{
-			return retValue;
-		}
+		DirectoryInfo? di = GetDirectoryInfo( directoryName );
+		bool retValue = null != di && di.Exists;
+		if( retValue || !throwNotFound ) { return retValue; }
 
 		// Set the file name to use and throw exception
 		directoryName = string.IsNullOrWhiteSpace( directoryName ) ? string.Empty : directoryName.Trim();
@@ -70,15 +60,8 @@ public static class IOHelper
 	{
 		if( string.IsNullOrWhiteSpace( fileName ) || fileName.Length <= 0 ) return null;
 
-		try
-		{
-			return new FileInfo( fileName.Trim() );
-		}
-		catch( Exception )
-		{
-			// File name is not valid;
-		}
-		return null;
+		try { return new FileInfo( fileName.Trim() ); }
+		catch( Exception ) { return null; } // File name is not valid;
 	}
 
 	/// <summary>Checks whether a file exists.</summary>
@@ -89,13 +72,9 @@ public static class IOHelper
 	public static bool DoesFileExist( string fileName, bool throwNotFound = false )
 	{
 		// Get the file information and check existence
-		var fi = GetFileInfo( fileName );
-		var retValue = null != fi && fi.Exists;
-
-		if( retValue || !throwNotFound )
-		{
-			return retValue;
-		}
+		FileInfo? fi = GetFileInfo( fileName );
+		bool retValue = null != fi && fi.Exists;
+		if( retValue || !throwNotFound ) { return retValue; }
 
 		// Set the file name to use and throw exception
 		fileName = string.IsNullOrWhiteSpace( fileName ) ? string.Empty : fileName.Trim();
@@ -129,11 +108,11 @@ public static class IOHelper
 	public static IList<string> GetFileNames( string path, string searchPattern )
 	{
 		searchPattern = string.IsNullOrWhiteSpace( searchPattern ) ? @"*.*" : searchPattern.Trim();
-		var dir = GetDirectoryInfo( path );
+		DirectoryInfo? dir = GetDirectoryInfo( path );
 
-		var retValue = new List<string>();
+		List<string> retValue = new();
 		if( dir is null ) return retValue;
-		foreach( var file in dir.GetFiles( searchPattern ) )
+		foreach( FileInfo file in dir.GetFiles( searchPattern ) )
 		{
 			retValue.Add( file.FullName );
 		}
@@ -147,18 +126,10 @@ public static class IOHelper
 	/// <returns>A string containing all lines in the file.</returns>
 	public static string ReadAllText( string path )
 	{
-		if( string.IsNullOrWhiteSpace( path ) )
-		{
-			return string.Empty;
-		}
-		try
-		{
-			return File.ReadAllText( path );
-		}
-		catch( Exception )
-		{
-			return string.Empty;
-		}
+		if( string.IsNullOrWhiteSpace( path ) ) { return string.Empty; }
+
+		try { return File.ReadAllText( path ); }
+		catch( Exception ) { return string.Empty; }
 	}
 
 	/// <summary>
@@ -169,18 +140,10 @@ public static class IOHelper
 	/// <returns>A string containing all lines in the file.</returns>
 	public static string ReadAllText( string path, Encoding encoding )
 	{
-		if( string.IsNullOrWhiteSpace( path ) )
-		{
-			return string.Empty;
-		}
-		try
-		{
-			return File.ReadAllText( path, encoding );
-		}
-		catch( Exception )
-		{
-			return string.Empty;
-		}
+		if( string.IsNullOrWhiteSpace( path ) ) { return string.Empty; }
+
+		try { return File.ReadAllText( path, encoding ); }
+		catch( Exception ) { return string.Empty; }
 	}
 
 	#endregion
@@ -212,15 +175,8 @@ public static class IOHelper
 	/// If path2 contains an absolute path, this method returns path2.</returns>
 	public static string Combine( string path1, string path2 )
 	{
-		if( string.IsNullOrWhiteSpace( path1 ) )
-		{
-			path1 = string.Empty;
-		}
-
-		if( string.IsNullOrWhiteSpace( path2 ) )
-		{
-			path2 = string.Empty;
-		}
+		if( string.IsNullOrWhiteSpace( path1 ) ) { path1 = string.Empty; }
+		if( string.IsNullOrWhiteSpace( path2 ) ) { path2 = string.Empty; }
 
 		return Path.Combine( path1, path2 );
 	}
@@ -230,10 +186,7 @@ public static class IOHelper
 	/// <returns>The path without any trailing separator character.</returns>
 	public static string RemoveLastDirSeparator( string path )
 	{
-		if( string.IsNullOrWhiteSpace( path ) )
-		{
-			return path;
-		}
+		if( string.IsNullOrWhiteSpace( path ) ) { return path; }
 
 		if( path.EndsWith( Path.DirectorySeparatorChar.ToString() ) ||
 		    path.EndsWith( Path.AltDirectorySeparatorChar.ToString() ) )

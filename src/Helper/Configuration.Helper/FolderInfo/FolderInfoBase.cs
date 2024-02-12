@@ -31,7 +31,7 @@ public abstract class FolderInfoBase : IFolderInfo
 	{
 		if( FileList.Count > 0 )
 		{
-			var retValue = FileList.Keys.ToArray();
+			string[] retValue = FileList.Keys.ToArray();
 			Array.Sort( retValue, new AlphanumComparator() );
 			return retValue;
 		}
@@ -44,7 +44,7 @@ public abstract class FolderInfoBase : IFolderInfo
 	{
 		if( FolderList.Count > 0 )
 		{
-			var retValue = FolderList.Keys.ToArray();
+			string[] retValue = FolderList.Keys.ToArray();
 			Array.Sort( retValue, new AlphanumComparator() );
 			return retValue;
 		}

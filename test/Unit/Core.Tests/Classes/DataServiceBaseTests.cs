@@ -2,7 +2,7 @@
 
 public class DataServiceBaseTests
 {
-	private readonly bool _Online = false; // Set to false to skip online tests
+	private readonly bool _Online = true; // Set to false to skip online tests
 
 	#region Constructor and variables
 
