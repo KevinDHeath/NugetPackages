@@ -132,7 +132,7 @@ namespace Logging.Helper
 		/// <summary>Gets or sets the maximum number of log files to keep.</summary>
 		public int MaxLogFiles
 		{
-			get => LogImpl?.MaxLogFiles ?? 0;
+			get => LogImpl.MaxLogFiles;
 			set
 			{
 				if( null != LogImpl )
@@ -224,7 +224,7 @@ namespace Logging.Helper
 		/// <returns>Instance value.</returns>
 		public override string ToString()
 		{
-			return null == LogImpl ? GetType().ToString() : LogImpl.ToString();
+			return LogImpl.ToString();
 		}
 
 		#endregion
@@ -527,6 +527,9 @@ namespace Logging.Helper
 			logDirectory = CleanString( logDirectory );
 			logFileName = CleanString( logFileName );
 
+			// Check that the directory path is valid
+			_ = new DirectoryInfo( logDirectory );
+
 			// Process the directory first as it could contain the file name as well
 			if( logDirectory.Length > 0 )
 			{
@@ -539,10 +542,6 @@ namespace Logging.Helper
 					logFileName = Path.GetFileName( logDirectory );
 					logDirectory = Path.GetDirectoryName( logDirectory );
 				}
-
-				// Check that the directory path is valid
-				DirectoryInfo dir = new DirectoryInfo( logDirectory );
-				if( null == dir || !dir.Root.Exists ) { throw new DirectoryNotFoundException( logDirectory ); }
 			}
 
 			if( logFileName.Length > 0 )
@@ -569,25 +568,23 @@ namespace Logging.Helper
 		/// logging.RemoveLogs( directory, mask, maxLogFiles );
 		/// </code>
 		/// </example>
+		/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
+		/// <exception cref="IOException">Thrown when an I/O error occurs.</exception>
+		/// <exception cref="SecurityException">Thrown when a security error is detected.</exception>
+		/// <exception cref="UnauthorizedAccessException">Thrown when the operating system denies access because of an I/O error or a specific type of security error.</exception>
 		public bool RemoveLogs( string directory, string logNameMask, int maxFiles = 0 )
 		{
 			DirectoryInfo dir = new DirectoryInfo( directory );
 
 			// Check the required parameters have been passed
-			if( null == dir || string.IsNullOrEmpty( logNameMask ) || maxFiles <= 0 )
+			if( !dir.Exists || string.IsNullOrEmpty( logNameMask ) || maxFiles <= 0 )
 			{
 				return false;
 			}
 
 			// Check if the directory contains any log files
-			FileInfo[] logFiles = null;
-			try
-			{
-				logFiles = dir.GetFiles( logNameMask );
-			}
-			catch( Exception ) { } // ignored
-
-			if( null == logFiles )
+			FileInfo[] logFiles = dir.GetFiles( logNameMask );
+			if( logFiles.Length == 0 )
 			{
 				return false;
 			}
@@ -618,12 +615,8 @@ namespace Logging.Helper
 			for( var i = 0; i < maxFiles; i++ )
 			{
 				FileInfo fi = list[i];
-				try
-				{
-					fi.Delete();
-					count++;
-				}
-				catch( Exception ) { Error( @"Could not delete log file " + fi.FullName ); }
+				fi.Delete();
+				count++;
 			}
 
 			return count > 0;

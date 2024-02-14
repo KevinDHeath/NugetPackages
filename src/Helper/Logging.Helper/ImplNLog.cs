@@ -34,19 +34,19 @@ namespace Logging.Helper
 		public int MaxLogFiles { get; set; }
 
 		/// <inheritdoc/>
-		public bool IsDebugEnabled => _logger?.IsDebugEnabled ?? false;
+		public bool IsDebugEnabled => _logger.IsDebugEnabled;
 
 		/// <inheritdoc/>
-		public bool IsErrorEnabled => _logger?.IsErrorEnabled ?? false;
+		public bool IsErrorEnabled => _logger.IsErrorEnabled;
 
 		/// <inheritdoc/>
-		public bool IsFatalEnabled => _logger?.IsFatalEnabled ?? false;
+		public bool IsFatalEnabled => _logger.IsFatalEnabled;
 
 		/// <inheritdoc/>
-		public bool IsInfoEnabled => _logger?.IsInfoEnabled ?? false;
+		public bool IsInfoEnabled => _logger.IsInfoEnabled;
 
 		/// <inheritdoc/>
-		public bool IsWarnEnabled => _logger?.IsWarnEnabled ?? false;
+		public bool IsWarnEnabled => _logger.IsWarnEnabled;
 
 		#endregion
 
@@ -137,7 +137,7 @@ namespace Logging.Helper
 			{
 				// Set the configuration from a file
 				NLog.LogManager.ThrowConfigExceptions = true;
-				NLog.LogManager.Configuration = new NLog.Config.XmlLoggingConfiguration( configFile );
+				NLog.LogManager.Configuration = new XmlLoggingConfiguration( configFile );
 			}
 
 			if( null == NLog.LogManager.Configuration || // No configuration file

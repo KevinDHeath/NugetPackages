@@ -27,15 +27,15 @@ public static class IOHelper
 	/// <exception cref="DirectoryNotFoundException">Thrown if the directory is not found and throwNotFound is True.</exception>
 	public static bool DoesDirectoryExist( string directoryName, bool throwNotFound = false )
 	{
-		// Get the file information and check existence
+		// Get the directory information and check existence
 		DirectoryInfo? di = GetDirectoryInfo( directoryName );
 		bool retValue = null != di && di.Exists;
-		if( retValue || !throwNotFound ) { return retValue; }
-
-		// Set the file name to use and throw exception
-		directoryName = string.IsNullOrWhiteSpace( directoryName ) ? string.Empty : directoryName.Trim();
-		directoryName = null != di ? di.FullName : directoryName;
-		throw new DirectoryNotFoundException( directoryName );
+		if( !retValue && throwNotFound )
+		{
+			// Set the directory name to use and throw exception
+			throw new DirectoryNotFoundException( directoryName.Trim() );
+		}
+		return retValue;
 	}
 
 	/// <summary>Returns the directory name for the specified path string.</summary>
@@ -45,7 +45,7 @@ public static class IOHelper
 	public static string GetDirectoryName( string path )
 	{
 		string? wrk = null;
-		if ( path is not null ) wrk = Path.GetDirectoryName( path );
+		if( !string.IsNullOrWhiteSpace( path ) ) { wrk = Path.GetDirectoryName( path ); }
 		return string.IsNullOrWhiteSpace( wrk ) ? string.Empty : wrk;
 	}
 
@@ -74,12 +74,12 @@ public static class IOHelper
 		// Get the file information and check existence
 		FileInfo? fi = GetFileInfo( fileName );
 		bool retValue = null != fi && fi.Exists;
-		if( retValue || !throwNotFound ) { return retValue; }
-
-		// Set the file name to use and throw exception
-		fileName = string.IsNullOrWhiteSpace( fileName ) ? string.Empty : fileName.Trim();
-		fileName = null != fi ? fi.FullName : fileName;
-		throw new FileNotFoundException( fileName );
+		if( !retValue && throwNotFound )
+		{
+			// Set the file name to use and throw exception
+			throw new FileNotFoundException( fileName.Trim() );
+		}
+		return retValue;
 	}
 
 	/// <summary>Returns the file name and extension of the specified path string.</summary>

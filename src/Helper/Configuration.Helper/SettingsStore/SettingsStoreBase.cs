@@ -35,16 +35,14 @@ public abstract class SettingsStoreBase : ISettingsStore
 	/// <inheritdoc />
 	public bool AddSetting( string settingKey, string settingValue )
 	{
-		SettingsSection? section = Sections.TryGetValue( cAppSettings, out SettingsSection? value ) ? value : null;
-
 		// Add the setting value to the AppSettings section
-		return section != null && section.AddSetting( settingKey, settingValue );
+		string section = cAppSettings;
+		AddSetting( ref section, settingKey, settingValue );
+		return true;
 	}
 
 	/// <inheritdoc />
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
-	/// <exception cref="ArgumentException">Thrown if the parameter is empty.</exception>
-	public ISettingsSection GetSection( string sectionName )
+	public ISettingsSection GetSection( string? sectionName )
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.GetSection";
@@ -118,21 +116,14 @@ public abstract class SettingsStoreBase : ISettingsStore
 		// Check for application setting
 		XAttribute? settingKey = elem.Attribute( cAppSettingKey ) ?? elem.Attribute( cConnectionKey );
 
-		if( null == settingKey ) { return; } // Setting type not supported
-
 		// Get the setting value
-		XAttribute? settingVal = null;
-		switch( settingKey.Name.LocalName )
+		XAttribute? settingVal = ( settingKey?.Name.LocalName ) switch
 		{
-			case cAppSettingKey:
-				settingVal = elem.Attribute( @"value" );
-				break;
-			case cConnectionKey:
-				settingVal = elem.Attribute( @"connectionString" );
-				break;
-		}
+			cConnectionKey => elem.Attribute( @"connectionString" ),
+			_ => elem.Attribute( @"value" ),
+		};
 
-		if( null != settingVal )
+		if( null != settingVal && null != settingKey )
 		{
 			// Add the value to the section
 			AddSetting( ref sectionName, settingKey.Value, settingVal.Value );
@@ -161,14 +152,12 @@ public abstract class SettingsStoreBase : ISettingsStore
 
 	/// <summary>Initializes the Setting Store object.</summary>
 	/// <param name="config">String containing the configuration file contents.</param>
-	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
 	/// <exception cref="ArgumentException">Thrown if the parameter is empty.</exception>
 	/// <exception cref="JsonException">The JSON text to parse does not represent a valid single JSON value.</exception>
 	protected void LoadFromStream( ref string config )
 	{
 		// Check the required parameter is supplied
 		const string cMethod = @"SettingsStoreBase.LoadFromStream";
-		if( null == config ) { throw new ArgumentNullException( nameof( config ), cMethod ); }
 
 		// Check the required parameter has a value
 		config = config.Trim();

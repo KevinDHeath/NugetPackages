@@ -64,7 +64,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 	private void Initialize( FileInfo configFile )
 	{
 		// Return an uninitialized Setting Store if the file does not exist
-		if( null == configFile || !configFile.Exists ) { return; }
+		if( !configFile.Exists ) { return; }
 
 		// Store the configuration file extension
 		fileExtension = IOHelper.GetExtension( configFile.Name ).ToLower();
@@ -94,7 +94,7 @@ public sealed class FileSettingsStore : SettingsStoreBase
 	private async Task InitializeAsync( FileInfo configFile )
 	{
 		// Return an uninitialized Setting Store if the file does not exist
-		if( null == configFile || !configFile.Exists ) { return; }
+		if( !configFile.Exists ) { return; }
 
 		// Store the configuration file extension
 		fileExtension = IOHelper.GetExtension( configFile.Name ).ToLower();

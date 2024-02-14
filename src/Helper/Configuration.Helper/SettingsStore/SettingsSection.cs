@@ -16,7 +16,6 @@ public class SettingsSection : ISettingsSection
 	/// <param name="comparer">Comparer to use for the key/value collection.</param>
 	internal SettingsSection( StringComparer comparer )
 	{
-		if( null == comparer ) { comparer = StringComparer.OrdinalIgnoreCase; }
 		Settings = new SortedDictionary<string, string>( comparer );
 	}
 
@@ -31,7 +30,7 @@ public class SettingsSection : ISettingsSection
 	internal bool AddSetting( string key, string value )
 	{
 		// Check the required parameters are supplied
-		if( string.IsNullOrWhiteSpace( key ) || null == value ) { return false; }
+		if( string.IsNullOrWhiteSpace( key ) ) { return false; }
 
 		// Update or add the setting
 		key = key.Trim();
@@ -51,10 +50,7 @@ public class SettingsSection : ISettingsSection
 	{
 		// Check the required parameter is supplied
 		if( string.IsNullOrWhiteSpace( settingKey ) ) { return string.Empty; }
-
-		// Check the required parameter has a value
 		settingKey = settingKey.Trim();
-		if( settingKey.Length == 0 ) { return string.Empty; }
 
 		// Return the setting value
 		return Settings.ContainsKey( settingKey ) ? Settings[settingKey] : string.Empty;
