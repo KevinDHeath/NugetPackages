@@ -2,6 +2,7 @@
 
 public class LoggerEventTests : LoggerEvent
 {
+	private const string cTimerStarted = "Timer started";
 	[Fact]
 	public void LoggerEventArgs_message_should_not_be_empty()
 	{
@@ -49,9 +50,9 @@ public class LoggerEventTests : LoggerEvent
 		LoggerEvent loggerevent = new();
 
 		// Act (with branch coverage)
-		loggerevent.StartTimer( "Timer started" );
-		loggerevent.RestartTimer( "Timer restarted" );
-		loggerevent.ResetTimer();
+		loggerevent.StartTimer( cTimerStarted );
+		loggerevent.RestartTimer( "restart" ); // Restart timer
+		loggerevent.ResetTimer();              // Reset timer
 		bool result = true;
 
 		// Assert
@@ -65,7 +66,7 @@ public class LoggerEventTests : LoggerEvent
 		LoggerEvent loggerevent = new();
 
 		// Act
-		loggerevent.StartTimer( "Timer started" );
+		loggerevent.StartTimer( cTimerStarted );
 		bool result = true;
 
 		// Assert
@@ -77,7 +78,7 @@ public class LoggerEventTests : LoggerEvent
 	{
 		// Arrange
 		LoggerEvent loggerevent = new();
-		loggerevent.StartTimer( "Timer started" );
+		loggerevent.StartTimer( cTimerStarted );
 
 		// Act
 		loggerevent.StopTimer();

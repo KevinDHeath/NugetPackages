@@ -8,33 +8,18 @@ namespace Helper.Tests;
 
 internal class Global : LoggerEvent
 {
-	internal static string CaptureLog( Logger logger, LogSeverity logType )
-	{
-		string msg = "Capture console log";
-		using StringWriter stringWriter = new();
-		Console.SetOut( stringWriter );
-
-		switch( logType )
-		{
-			case LogSeverity.Error:
-				Exception ex = new( msg );
-				logger.Error( ex );
-				break;
-			default:
-				logger.Log( msg, logType );
-				break;
-		}
-		string result = stringWriter.ToString();
-
-		// Recover the standard output stream
-		StreamWriter standardOutput = new( Console.OpenStandardOutput() ) { AutoFlush = true };
-		Console.SetOut( standardOutput );
-
-		return result;
-	}
+	internal const string cTestFolder = @".\Testdata";
+	internal const string cConfigFileHelper = "ConfigFileHelper";
+	internal const string cInvalidFile = "bad.config";
+	internal const string cInvalidPath = @".\baddir";
 
 	internal static void CreateLogFile( string fileName )
 	{
 		if( !File.Exists( fileName ) ) { using FileStream fs = File.Create( fileName ); }
+	}
+
+	internal static string GetLongPath( string fileName = "" )
+	{
+		return new string( 'a', 32768 ) + fileName;
 	}
 }
