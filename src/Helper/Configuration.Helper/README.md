@@ -1,8 +1,9 @@
 # Configuration Helper
-The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
 ## Change Log
 - v2.0.2
+  - See [Refactoring Notes](v2.0.2-Notes.md) for details of the code refactoring based on the February 12, 2024 unit test results.
   - Added a `Domain` property to the `WebConnectionStringBuilder` class.
 - v2.0.1
   - Corrected the Source Link paths by specifying the source repository URL as the root rather than a sub-folder.

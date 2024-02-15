@@ -40,7 +40,9 @@ public interface ISettingsStore
 	/// <summary>Returns the specified SettingsSection object.</summary>
 	/// <param name="sectionName">The path to the section to be returned.</param>
 	/// <returns>The specified SettingsSection object. A new section is returned if it is not found.</returns>
-	ISettingsSection GetSection( string sectionName );
+	/// <exception cref="ArgumentException">Thrown when an argument does not meet the contract of the method.</exception>
+	/// <exception cref="ArgumentNullException">Thrown if the parameter is <see langword="null"/>.</exception>
+	ISettingsSection GetSection( string? sectionName );
 
 	/// <summary>Returns the value of the specified AppSettings key.</summary>
 	/// <param name="settingKey">Key of the setting to be returned.</param>

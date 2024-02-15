@@ -1,26 +1,32 @@
-﻿// Ignore Spelling: Alphanum
+﻿// Ignore Spelling: Alphanum eq
 
 namespace Helper.Tests.Configuration;
 
 public class AlphanumComparatorTests
 {
+	public AlphanumComparatorTests()
+	{
+		// For branch coverage
+		AlphanumComparator comparer = new();
+		_ = comparer.Compare( "", "" );   // Empty strings
+		_ = comparer.Compare( 123, 456 ); // Numeric values
+	}
+
 	[Fact]
-	public void Compare_should_be_equal()
+	public void X_should_be_eq_Y()
 	{
 		// Arrange
 		AlphanumComparator comparer = new();
 
-		// Act (with branch coverage)
+		// Act
 		int result = comparer.Compare( "1", "1" );
-		_ = comparer.Compare( "", "" );   // Empty strings
-		_ = comparer.Compare( 123, 456 ); // Not strings
 
 		// Assert
 		result.Should().Be( 0 );
 	}
 
 	[Fact]
-	public void Compare_should_be_greater_than()
+	public void X_should_be_gt_Y()
 	{
 		// Arrange
 		AlphanumComparator comparer = new();
@@ -33,7 +39,7 @@ public class AlphanumComparatorTests
 	}
 
 	[Fact]
-	public void Compare_should_be_less_than()
+	public void X_should_be_lt_Y()
 	{
 		// Arrange
 		AlphanumComparator comparer = new();

@@ -21,7 +21,7 @@ Code coverage is a measurement of the amount of code that is run by unit tests -
 - [Code coverage report generator](https://reportgenerator.io/getstarted)
 - [Code Coverage Metrics](https://dunnhq.com/posts/2023/code-coverage-metrics/)
 
-> _The code coverage feature is only available in Visual Studio Enterprise edition._
+> _The code coverage feature in Visual Studio is only available with the Enterprise edition._
 
 Install or update the ReportGenerator package as a global .NET tool:
 ```shell
@@ -30,24 +30,32 @@ dotnet tool update --global dotnet-reportgenerator-globaltool
 reportgenerator -help
 ```
 \
-Run the tests and generate the coverage report:
-```shell
-cd [project folder]
-dotnet test --collect:"XPlat Code Coverage"
-reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage"
-```
-\
-Run the tests with no build and generate the coverage report with history:
+Run the tests with no build and generate the HTML coverage report:
 ```shell
 cd [project folder]
 dotnet test --collect:"XPlat Code Coverage" --no-build
-reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage" -historydir:"Testdata\history"
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports\html
+
+# Optional reports
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports -reporttypes:MarkdownSummaryGithub
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports\badges -reporttypes:Badges
+```
+\
+Run the tests with build and generate the HTML coverage report with history:\
+_(__Important:__ These create a new *CoverageHistory.xml file)_
+```shell
+cd [project folder]
+dotnet test --collect:"XPlat Code Coverage" --configuration "Testing"
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports\html -historydir:Testdata\history
+
+# Optional reports
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports -reporttypes:SvgChart -historydir:Testdata\history
 ```
 \
 Run the tests and generate the coverage report with increased cyclomatic complexity threshold _(the default is 30)_:
 ```shell
 cd [project folder]
 dotnet test --collect:"XPlat Code Coverage" --settings unittest.runsettings --no-build
-reportgenerator -reports:"TestResults\*\coverage.cobertura.xml" -targetdir:"TestResults\reportcoverage" -historydir:"Testdata\history" --riskHotspotsAnalysisThresholds:metricThresholdForCyclomaticComplexity=36
+reportgenerator -reports:TestResults\*\coverage.cobertura.xml -targetdir:TestResults\reports\html --riskHotspotsAnalysisThresholds:metricThresholdForCyclomaticComplexity=36
 ```
 

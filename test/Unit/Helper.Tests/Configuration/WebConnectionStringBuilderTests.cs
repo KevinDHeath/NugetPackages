@@ -7,13 +7,14 @@ namespace Helper.Tests.Configuration;
 public class WebConnectionStringBuilderTests
 {
 	private const string cUrl = @"https://contosotest.crm.dynamics.com";
+	private const string cAppId = @"51f81489-12ee-4a9e-aaae-a2591f45987d";
 
 	public WebConnectionStringBuilderTests()
 	{
 		// For code coverage
 		WebConnectionStringBuilder builder = new( @"Url=" + cUrl + @"/;" )
 		{
-			{ "AppId", @"51f81489-12ee-4a9e-aaae-a2591f45987d" }
+			{ "AppId", cAppId }
 		};
 
 		_ = builder.Url;
@@ -91,7 +92,7 @@ public class WebConnectionStringBuilderTests
 			TokenCacheStorePath = @"c:\MyTokenCache",
 			LoginPrompt = WebConnectionStringBuilder.LoginPromptType.Auto
 		};
-		builder.Add( "AppId", @"51f81489-12ee-4a9e-aaae-a2591f45987d" );
+		builder.Add( "AppId", cAppId );
 
 		// Act
 		string result = builder.ConnectionString;

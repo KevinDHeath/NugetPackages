@@ -11,7 +11,7 @@ public abstract class ConfigFileHelper
 	/// <summary>Gets or sets the configuration file name.</summary>
 	protected string ConfigFile
 	{
-		get { return _configFile ?? string.Empty; }
+		get { return _configFile; }
 		set { Initialize( ref value ); }
 	}
 
@@ -32,7 +32,7 @@ public abstract class ConfigFileHelper
 	#region Instance Variables
 
 	/// <summary>Configuration file information.</summary>
-	private string? _configFile;
+	private string _configFile = string.Empty;
 
 	#endregion
 
@@ -170,9 +170,10 @@ public abstract class ConfigFileHelper
 
 	/// <summary>Gets a secure string value of a configuration file key.</summary>
 	/// <param name="configFile">Full path and name of the configuration file.</param>
-	/// <param name="sectionName">Name of the section name containing the key.</param>
+	/// <param name="sectionName">Name of the section containing the key.</param>
 	/// <param name="key">Key of the value to return.</param>
 	/// <returns>If the key cannot be retrieved then the return value will have a length of zero.</returns>
+	/// <exception cref="ArgumentException">Thrown when the <paramref name="sectionName"/> parameter is empty.</exception>
 	public static SecureString GetSecureSetting( string configFile, string sectionName, string key )
 	{
 		string? str = null;
@@ -180,10 +181,10 @@ public abstract class ConfigFileHelper
 		{
 			ISettingsStore config = GetConfiguration( configFile );
 			ISettingsSection section = config.GetSection( sectionName );
-			str = null != section ? section.GetSetting( key ) : string.Empty;
+			str = section.Settings.Count > 0 ? section.GetSetting( key ) : string.Empty;
 		}
 
-		return str is not null ? ConvertToSecureString( ref str ) : new SecureString();
+		return !string.IsNullOrEmpty( str ) ? ConvertToSecureString( ref str ) : new SecureString();
 	}
 
 	#endregion
