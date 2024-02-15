@@ -1,7 +1,7 @@
 <Project>
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' != 'Testing'">true</GeneratePackageOnBuild>
     <PackLocal>..\..\..\local</PackLocal>
     <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
