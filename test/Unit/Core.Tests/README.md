@@ -1,11 +1,7 @@
-# Common.Core Unit Tests
-![line](https://kevindheath.github.io/codecoverage/core/badge_linecoverage.svg)
-![branch](https://kevindheath.github.io/codecoverage/core/badge_branchcoverage.svg)
-![method](https://kevindheath.github.io/codecoverage/helpers/badge_methodcoverage.svg)\
-[Detailed report with history](https://kevindheath.github.io/codecoverage/core/html/)
-
-## Summary
-<details><summary>Common.Core - 100%</summary>
+# Core unit test results
+[<img src="https://kevindheath.github.io/codecoverage/core/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
+[<img src="https://kevindheath.github.io/codecoverage/core/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
+[<img src="https://kevindheath.github.io/codecoverage/core/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
@@ -34,5 +30,3 @@
 |Common.Core.Models.Postcode|100%||
 |Common.Core.Models.Province|100%||
 |Common.Core.Models.User|100%|100%|
-
-</details>

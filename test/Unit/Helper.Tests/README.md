@@ -1,10 +1,9 @@
-# Helper Unit Tests
-![line](https://kevindheath.github.io/codecoverage/helpers/badge_linecoverage.svg)
-![branch](https://kevindheath.github.io/codecoverage/helpers/badge_branchcoverage.svg)
-![method](https://kevindheath.github.io/codecoverage/helpers/badge_methodcoverage.svg)\
-[Detailed report with history](https://kevindheath.github.io/codecoverage/helpers/html/)
+# Helper unit test results
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
-## Summary
+## NuGet Packages
 <details><summary>Application.Helper - 100%</summary>
 
 |**Name**|**Line**|**Branch**|

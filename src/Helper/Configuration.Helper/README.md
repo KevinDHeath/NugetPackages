@@ -1,5 +1,5 @@
 # Configuration Helper
-The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
 ## Change Log
 - v2.0.2

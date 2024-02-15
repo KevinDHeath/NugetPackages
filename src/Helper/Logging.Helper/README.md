@@ -1,5 +1,5 @@
 # Logging.Helper
-The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.
+[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
 ## Change Log
 - v2.0.3
