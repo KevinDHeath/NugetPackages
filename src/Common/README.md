@@ -1,8 +1,14 @@
-# Common Core
-The Common Core package contains classes and interfaces for .NET components.
+# Common
+The package documentation can be found at [.NET Helper Packages](https://kevindheath.github.io/nuget).
 
-Dependencies:
-- None
+## Common Core
+[![NuGet](https://img.shields.io/nuget/v/kdheath.Common.Core.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)
+[![NuGet](https://img.shields.io/nuget/dt/kdheath.Common.Core.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)
+
+Framework: .NET 8.0
+
+Dependencies:\
+&nbsp;None
 
 References:
 - [Get Application Version in .NET Core](https://edi.wang/post/2018/9/27/get-app-version-net-core)

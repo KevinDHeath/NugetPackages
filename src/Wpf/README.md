@@ -7,8 +7,8 @@ The Wpf packages documentation for .NET Windows Presentation Foundation applicat
 
 Framework: .NET 8.0
 
-Dependencies:
-- [kdheath.Wpf.Resources](https://www.nuget.org/packages/kdheath.Wpf.Resources)
+Dependencies:\
+&nbsp;[kdheath.Wpf.Resources](https://www.nuget.org/packages/kdheath.Wpf.Resources)
 
 References:
 - [Sort a GridView Column When a Header Is Clicked](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/how-to-sort-a-gridview-column-when-a-header-is-clicked)
@@ -19,8 +19,8 @@ References:
 
 Framework: .NET 7.0 _and_ .NET 8.0
 
-Dependencies:
-- None
+Dependencies:\
+&nbsp;None
 
 References:
 - [Validating User Input With Regular Expressions](https://www.c-sharpcorner.com/UploadFile/87b416/validating-user-input-with-regular-expressions/)
