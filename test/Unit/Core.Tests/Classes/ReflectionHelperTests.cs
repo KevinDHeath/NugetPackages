@@ -72,7 +72,7 @@ public class ReflectionHelperTests
 	{
 		// Arrange
 		Person source = FakeData.CreatePerson();
-		object target = ReflectionHelper.CreateDeepCopy( source )!;
+		object? target = ReflectionHelper.CreateDeepCopy( source );
 
 		// Act
 		bool result = ReflectionHelper.IsEqual( source, target );

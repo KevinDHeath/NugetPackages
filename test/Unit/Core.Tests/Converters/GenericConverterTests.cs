@@ -42,6 +42,19 @@ public class GenericConverterTests
 	}
 
 	[Fact]
+	public void DateTimeToDateOnly_should_be_null()
+	{
+		// Arrange
+		string obj = "ABC";
+
+		// Act
+		DateOnly? result = Generic.DateTimeToDateOnly( obj );
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
+	[Fact]
 	public void DateTimeToDateOnly_should_not_be_null()
 	{
 		// Arrange

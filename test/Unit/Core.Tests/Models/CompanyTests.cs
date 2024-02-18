@@ -76,6 +76,19 @@ public class CompanyTests
 	}
 
 	[Fact]
+	public void Name_should_be_empty()
+	{
+		// Arrange
+		Company company = new();
+
+		// Act
+		string result = company.Name;
+
+		// Assert
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
 	public void Read_should_be_Company()
 	{
 		// Arrange
@@ -113,7 +126,7 @@ public class CompanyTests
 		Company mod = (Company)obj.Clone();
 
 		// Act
-		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().BeEmpty();
@@ -128,9 +141,41 @@ public class CompanyTests
 		Company mod = FakeData.CreateCompany( mod: true );
 
 		// Act
-		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().NotBeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_with_different_id_should_be_empty()
+	{
+		// Arrange
+		DataRow row = FakeData.GetCompanyRow();
+		Company obj = Company.Read( row, FakeData.cAddrPrefix );
+		Company mod = FakeData.CreateCompany( mod: true );
+		mod.Id = 10;
+
+		// Act
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_with_null_private_should_contain_NULL()
+	{
+		// Arrange
+		DataRow row = FakeData.GetCompanyRow();
+		Company obj = Company.Read( row, FakeData.cAddrPrefix );
+		Company mod = FakeData.CreateCompany( mod: true );
+		mod.Private = null;
+
+		// Act
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().Contain( "[Private]=NULL" );
 	}
 }

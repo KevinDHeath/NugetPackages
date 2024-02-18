@@ -11,9 +11,11 @@ public class ComplexClass
 
 	// Collections
 	public IDictionary<string, string> Headers { get; set; } = new Dictionary<string, string>();
+	public Dictionary<string, string> Footers { get; set; } = [];
 	public SortedDictionary<string, User?> Users { get; set; } = new SortedDictionary<string, User?>();
 
 	public IList<string?> Keys { get; set; } = new List<string?>();
+	public List<string?> Values { get; set; } = [];
 
 	public int Count { get; set; }
 
@@ -32,10 +34,13 @@ public class ComplexClass
 		Secure = new System.Net.NetworkCredential( "", "password" ).SecurePassword;
 		String = "ABC";
 		Headers.Add( @"foo", "bar" );
+		Footers.Add( "bar", @"foo" );
 		Users.Add( "A", new User() );
 		Users.Add( "B", null );
 		Keys.Add( "key" );
 		Keys.Add( "null" );
+		Values.Add( "value" );
+		Values.Add( "null" );
 		Count = 1;
 	}
 }

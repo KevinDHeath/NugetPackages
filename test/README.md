@@ -4,7 +4,6 @@ Automated tests are a great way to ensure that the application code does what it
 ## Unit tests
 A [unit test](Unit/README.md) is a test that exercises individual software components or methods, also known as a "unit of work." Unit tests should only test code within the developer's control. They do not test infrastructure concerns such as interacting with databases, file systems, and network resources.
 - [Unit testing best practices](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices)
-- [Unit Testing in C# 2022](https://www.youtube.com/playlist?list=PL82C6-O4XrHeyeJcI5xrywgpfbrqdkQd4) <sub><sup>(YouTube)</sup></sub>
 
 ## Integration tests
 An [integration test](Integration/README.md) differs from a unit test in that it exercises two or more software components' ability to function together, also known as their "integration." These tests operate on a broader spectrum of the system under test, whereas unit tests focus on individual components. Often, integration tests do include infrastructure concerns.

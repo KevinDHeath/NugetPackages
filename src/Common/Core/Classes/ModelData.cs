@@ -14,19 +14,28 @@ public abstract class ModelData : ModelBase
 
 	internal static void SetSQLColumn( string colName, object? newValue, IList<string> sql )
 	{
+		const char cCharQuote = '\'';
+		const string cStrQuote = "'";
+		const string cDblQuote = "''";
+
 		string quote = string.Empty;
-		if( newValue is not null and string str )
+		bool hasNewValue = newValue is not null;
+
+		if( hasNewValue )
 		{
-			quote = "'";
-			if( str.Contains( '\'' ) ) { newValue = str.Replace( "'", "''" ); } // Check for "'" in string
-		}
-		if( newValue is not null and char chr )
-		{
-			quote = "'";
-			if( chr == '\'' ) { newValue = "''"; } // Check for "'" in char
+			if( newValue is string str )
+			{
+				quote = cStrQuote;
+				if( str.Contains( cCharQuote ) ) { newValue = str.Replace( cStrQuote, cDblQuote ); }
+			}
+			else if( newValue is char chr )
+			{
+				quote = cStrQuote;
+				if( chr == cCharQuote ) { newValue = cDblQuote; }
+			}
 		}
 
-		newValue = newValue is not null ? $"{quote}{newValue}{quote}" : "NULL";
+		newValue = hasNewValue ? $"{quote}{newValue}{quote}" : "NULL";
 		sql.Add( $"[{colName}]={newValue}" );
 	}
 

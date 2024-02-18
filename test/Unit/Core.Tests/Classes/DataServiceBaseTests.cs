@@ -1,4 +1,6 @@
-﻿namespace Core.Tests.Classes;
+﻿// https://apievangelist.com/2021/08/12/what-is-httpbin-and-what-can-you-do-with-the-api/
+
+namespace Core.Tests.Classes;
 
 public class DataServiceBaseTests
 {
@@ -144,6 +146,21 @@ public class DataServiceBaseTests
 		_ = act.Should().Throw<AggregateException>().WithInnerException<HttpRequestException>();
 	}
 
+	[Fact]
+	public void PostResource_with_null_should_return_null()
+	{
+		// Arrange
+		string uri = "https://httpbin.org/status/200";
+
+		// Act
+		object? result = null;
+		try { result = _httpbin.PostResource<Global>( uri, null ); }
+		catch( Exception ) { }
+
+		// Assert
+		_ = result.Should().BeNull();
+	}
+
 	[SkippableFact]
 	public void PutResource_should_be_null()
 	{
@@ -187,5 +204,20 @@ public class DataServiceBaseTests
 
 		// Assert
 		_ = act.Should().Throw<AggregateException>().WithInnerException<HttpRequestException>();
+	}
+
+	[Fact]
+	public void PutResource_with_null_should_return_null()
+	{
+		// Arrange
+		string uri = "https://httpbin.org/status/200";
+
+		// Act
+		object? result = null;
+		try { result = _httpbin.PutResource<Global>( uri, null ); }
+		catch( Exception ) { }
+
+		// Assert
+		_ = result.Should().BeNull();
 	}
 }

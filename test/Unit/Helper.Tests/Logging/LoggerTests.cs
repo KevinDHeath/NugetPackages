@@ -1,4 +1,7 @@
-﻿namespace Helper.Tests.Logging;
+﻿// https://github.com/NLog/NLog/wiki/Memory-target
+// https://stackoverflow.com/questions/68100146/how-to-use-nlog-in-xunit-tests-from-net-core
+
+namespace Helper.Tests.Logging;
 
 [Collection( "LoggerTests" )]
 public class LoggerTests

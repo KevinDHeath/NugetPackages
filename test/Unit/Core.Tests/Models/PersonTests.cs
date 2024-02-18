@@ -65,6 +65,19 @@ public class PersonTests
 	}
 
 	[Fact]
+	public void FullName_should_be_empty()
+	{
+		// Arrange
+		Person person = new();
+
+		// Act
+		string result = person.FullName;
+
+		// Assert
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
 	public void FullName_should_not_be_empty()
 	{
 		// Arrange
@@ -125,7 +138,7 @@ public class PersonTests
 		Person mod = (Person)obj.Clone();
 
 		// Act
-		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().BeEmpty();
@@ -140,9 +153,41 @@ public class PersonTests
 		Person mod = FakeData.CreatePerson( mod: true );
 
 		// Act
-		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().NotBeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_with_different_id_should_be_empty()
+	{
+		// Arrange
+		DataRow row = FakeData.GetPersonRow();
+		Person obj = FakeData.CreatePerson( mod: true );
+		Person mod = (Person)obj.Clone();
+		mod.Id = 10;
+
+		// Act
+		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_with_null_date_should_contain_NULL()
+	{
+		// Arrange
+		DataRow row = FakeData.GetPersonRow();
+		Person obj = Person.Read( row, FakeData.cAddrPrefix );
+		Person mod = FakeData.CreatePerson( mod: true );
+		mod.BirthDate = null;
+
+		// Act
+		string result = Person.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().Contain( "[BirthDate]=NULL" );
 	}
 }

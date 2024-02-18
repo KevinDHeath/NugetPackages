@@ -11,7 +11,7 @@
     <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
 
     <!-- Transitive, referenced by Microsoft.AspNetCore.OpenApi -->
-    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.11" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.13" />
 
     <!-- Transitive, referenced by Swashbuckle.AspNetCore -->
     <PackageVersion Include="Microsoft.Extensions.ApiDescription.Server" Version="8.0.1" />
@@ -27,7 +27,7 @@
     <PackageVersion Include="kdheath.Wpf.Resources" Version="2.0.0" />
 
     <!-- Tools: AspNet -->
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 
     <!-- Tools: ResolveThirdPartyReferenceLinks -->

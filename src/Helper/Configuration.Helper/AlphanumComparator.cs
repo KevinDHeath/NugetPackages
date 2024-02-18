@@ -12,6 +12,10 @@ public class AlphanumComparator : IComparer
 
 	private enum ChunkType { Alphanumeric, Numeric };
 
+	private const int clt = -1;
+	private const int ceq = 0;
+	private const int cgt = 1;
+
 	private static bool InChunk( char ch, char otherCh )
 	{
 		ChunkType type = ChunkType.Alphanumeric;
@@ -21,8 +25,6 @@ public class AlphanumComparator : IComparer
 		return ( type != ChunkType.Alphanumeric || !char.IsDigit( ch ) )
 			&& ( type != ChunkType.Numeric || char.IsDigit( ch ) );
 	}
-
-	#endregion
 
 	private static StringBuilder GetStringBuilder( ref string str, ref int marker )
 	{
@@ -40,6 +42,28 @@ public class AlphanumComparator : IComparer
 		return rtn;
 	}
 
+	private static bool IsNumeric( char x, char y )
+	{
+		return char.IsDigit( x ) && char.IsDigit( y );
+	}
+
+	private static int SortNumeric( string x, string y )
+	{
+		int xNumber = Convert.ToInt32( x );
+		int yNumber = Convert.ToInt32( y );
+
+		if( xNumber < yNumber ) { return clt; }
+		else if( xNumber > yNumber ) { return cgt; }
+		return ceq;
+	}
+
+	private static bool MoreToCheck( int xPos, string s1, int yPos, string s2 )
+	{
+		return ( xPos < s1.Length ) || ( yPos < s2.Length );
+	}
+
+	#endregion
+
 	#region IComparer Implementation
 
 	/// <summary>
@@ -55,39 +79,31 @@ public class AlphanumComparator : IComparer
 	/// </returns>
 	public int Compare( object? x, object? y )
 	{
-		if( x is not string s1 || y is not string s2 ) { return 0; }
+		if( x is not string s1 || y is not string s2 ) { return ceq; }
 
-		int thisMarker = 0;
-		int thatMarker = 0;
+		int xPosition = 0;
+		int yPosition = 0;
 
-		while( ( thisMarker < s1.Length ) || ( thatMarker < s2.Length ) )
+		while( MoreToCheck( xPosition, s1, yPosition, s2 ) )
 		{
-			if( thisMarker >= s1.Length ) { return -1; }
-			if( thatMarker >= s2.Length ) { return 1; }
+			if( xPosition >= s1.Length ) { return clt; }
+			if( yPosition >= s2.Length ) { return cgt; }
 
-			StringBuilder thisChunk = GetStringBuilder( ref s1, ref thisMarker );
-			StringBuilder thatChunk = GetStringBuilder( ref s2, ref thatMarker );
+			StringBuilder xChunk = GetStringBuilder( ref s1, ref xPosition );
+			StringBuilder yChunk = GetStringBuilder( ref s2, ref yPosition );
 
-			int result = 0;
+			string xStr = xChunk.ToString();
+			string yStr = yChunk.ToString();
 
 			// If both chunks contain numeric characters, sort them numerically
-			if( char.IsDigit( thisChunk[0] ) && char.IsDigit( thatChunk[0] ) )
-			{
-				int thisNumericChunk = Convert.ToInt32( thisChunk.ToString() );
-				int thatNumericChunk = Convert.ToInt32( thatChunk.ToString() );
+			int result = IsNumeric( xChunk[0], yChunk[0] )
+				? SortNumeric( xStr, yStr )
+				: string.Compare( xStr, yStr, StringComparison.Ordinal );
 
-				if( thisNumericChunk < thatNumericChunk ) { result = -1; }
-				else if( thisNumericChunk > thatNumericChunk ) { result = 1; }
-			}
-			else
-			{
-				result = string.Compare( thisChunk.ToString(), thatChunk.ToString(), StringComparison.Ordinal );
-			}
-
-			if( result != 0 ) { return result; }
+			if( result != ceq ) { return result; }
 		}
 
-		return 0;
+		return ceq;
 	}
 
 	#endregion
