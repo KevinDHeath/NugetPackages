@@ -152,7 +152,7 @@ public abstract class SettingsStoreBase : ISettingsStore
 
 	/// <summary>Initializes the Setting Store object.</summary>
 	/// <param name="config">String containing the configuration file contents.</param>
-	/// <exception cref="ArgumentException">Thrown if the parameter is empty.</exception>
+	/// <exception cref="ArgumentException">Thrown if the parameter is null or empty.</exception>
 	/// <exception cref="JsonException">The JSON text to parse does not represent a valid single JSON value.</exception>
 	protected void LoadFromStream( ref string config )
 	{
@@ -160,8 +160,8 @@ public abstract class SettingsStoreBase : ISettingsStore
 		const string cMethod = @"SettingsStoreBase.LoadFromStream";
 
 		// Check the required parameter has a value
+		if( string.IsNullOrWhiteSpace( config ) ) { throw new ArgumentException( cMethod, nameof( config ) ); }
 		config = config.Trim();
-		if( config.Length == 0 ) { throw new ArgumentException( cMethod, nameof( config ) ); }
 
 		if( ConfigFileHelper.cJsonExtension.Equals( fileExtension, StringComparison.CurrentCultureIgnoreCase ) )
 		{

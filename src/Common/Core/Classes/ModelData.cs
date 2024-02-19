@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo( "Core.Tests" )]
 namespace Common.Core.Classes;
 
 /// <summary>Base class for models with an integer as the primary key.</summary>

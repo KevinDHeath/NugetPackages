@@ -22,46 +22,14 @@ public class PersonTests
 		// Arrange
 		Person source = FakeData.CreatePerson();
 		Person target = FakeData.CreatePerson();
-
-		// Act (with branch coverage)
-		_ = source.Equals( target );
-		_ = new Person().Equals( null );
-		_ = new Person().Equals( new Address() );
-
 		target.Id = 2;
-		_ = source.Equals( target );
-		target.Id = source.Id;
-		target.FirstName = "mod";
-		_ = source.Equals( target );
-		target.FirstName = source.FirstName;
-		target.MiddleName = "X";
-		_ = source.Equals( target );
-		target.MiddleName = source.MiddleName;
-		target.LastName = "mod";
-		_ = source.Equals( target );
-		target.LastName = source.LastName;
-		target.GovernmentNumber = null;
-		_ = source.Equals( target );
-		target.GovernmentNumber = source.GovernmentNumber;
-		target.IdProvince = null;
-		_ = source.Equals( target );
-		target.IdProvince = source.IdProvince;
-		target.IdNumber = null;
-		_ = source.Equals( target );
-		target.IdNumber = source.IdNumber;
-		target.HomePhone = null;
-		_ = source.Equals( target );
-		target.HomePhone = source.HomePhone;
-		target.BirthDate = null;
-		_ = source.Equals( target );
-		target.BirthDate = source.BirthDate;
-		target.Address.Street = null;
 
 		// Act
 		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
+		FakeData.BranchCoveragePerson( FakeData.Method.Equal, source, target );
 	}
 
 	[Fact]
@@ -127,6 +95,7 @@ public class PersonTests
 
 		// Assert
 		_ = result.Should().BeTrue();
+		FakeData.BranchCoveragePerson( FakeData.Method.Update, source );
 	}
 
 	[Fact]

@@ -16,3 +16,4 @@ References:
 - [Understanding and Using ConfigureAwait](https://dev.to/this-is-learning/understanding-and-using-configureawait-in-asynchronous-programming-2da3)
 - [Null Forgiving Operator in C#](https://jeremybytes.blogspot.com/2022/07/null-forgiving-operator-in-c.html)
 - [Serialize Interface Instances With System.Text.Json](https://khalidabuhakmeh.com/serialize-interface-instances-system-text-json)
+- [How to unit test Internal classes in .NET Core](https://anthonygiretti.com/2018/06/27/how-to-unit-test-internal-classes-in-net-core-applications/)

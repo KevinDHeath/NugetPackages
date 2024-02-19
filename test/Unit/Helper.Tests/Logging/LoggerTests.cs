@@ -8,16 +8,29 @@ public class LoggerTests
 {
 	private const string cMsg = "Log to memory target";
 	private const string cArg = "Test {0}";
-	private readonly Logger _logger = new();
+	private readonly Logger _logger;
 
 	public LoggerTests()
 	{
 		// For branch coverage
+
+		Logger blackhole = new( Path.Combine( Global.cTestFolder, "NLogOff.config" ) );
+		Exception ex = new();
+		_ = blackhole.Debug( cMsg );      // Cannot log Debug
+		_ = blackhole.Debug( cArg, "d" ); // Cannot log Debug with single argument
+		_ = blackhole.Info( cMsg );       // Cannot log Info
+		_ = blackhole.Info( cArg, "i" );  // Cannot log Info with single argument
+		_ = blackhole.Warn( cMsg );       // Cannot log Warn
+		_ = blackhole.Warn( cArg, "d" );  // Cannot log Warn with single argument
+		_ = blackhole.Error( cMsg );      // Cannot log Error with message
+		_ = blackhole.Error( cArg, "i" ); // Cannot log Error with single argument
+		_ = blackhole.Error( ex );        // Cannot log Error with exception
+		_ = blackhole.Error( cMsg, ex );  // Cannot log Error with message and exception
+		_ = blackhole.Fatal( cMsg );      // Cannot log Fatal
+		_ = blackhole.Fatal( cArg, "i" ); // Cannot log Fatal with single argument
+
+		_logger = new();
 		_logger.MaxLogFiles = 1;
-		_ = _logger.Debug( cMsg );      // Cannot log Debug
-		_ = _logger.Debug( cArg, "d" ); // Cannot log Debug with single argument
-		_ = _logger.Info( cMsg );       // Cannot log Info
-		_ = _logger.Info( cArg, "i" );  // Cannot log Info with single argument
 	}
 
 	[Fact]

@@ -22,4 +22,12 @@ internal class Global : LoggerEvent
 	{
 		return new string( 'a', 32768 ) + fileName;
 	}
+
+	internal static Exception GetException()
+	{
+		int div = 0;
+		try { div = 10 / div; }
+		catch( Exception ex ) { return ex; }
+		return new Exception();
+	}
 }

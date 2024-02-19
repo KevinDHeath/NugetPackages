@@ -40,7 +40,7 @@ public class UserTests
 		target.BirthDate = null;
 		_ = source.Equals( target );
 		target.BirthDate = source.BirthDate;
-		target.Gender = Genders.Male;
+		target.Gender = Genders.Unknown;
 
 		// Act
 		bool result = source.Equals( target );

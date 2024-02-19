@@ -22,47 +22,17 @@ public class CompanyTests
 		// Arrange
 		Company source = FakeData.CreateCompany();
 		Company target = FakeData.CreateCompany();
-
-		// Act (with branch coverage)
-		_ = source.Equals( target );
-		_ = new Company().Equals( null );
-		_ = new Company().Equals( new Address() );
-
 		target.Id = 2;
+
+		// Act
 		_ = source.Equals( target );
-		target.Id = source.Id;
-		target.Name = "mod";
-		_ = source.Equals( target );
-		target.Name = source.Name;
-		target.PrimaryPhone = null;
-		_ = source.Equals( target );
-		target.PrimaryPhone = source.PrimaryPhone;
-		target.SecondaryPhone = null;
-		_ = source.Equals( target );
-		target.SecondaryPhone = source.SecondaryPhone;
-		target.GovernmentNumber = null;
-		_ = source.Equals( target );
-		target.GovernmentNumber = source.GovernmentNumber;
-		target.NaicsCode = null;
-		_ = source.Equals( target );
-		target.NaicsCode = source.NaicsCode;
-		target.Private = null;
-		_ = source.Equals( target );
-		target.Private = source.Private;
-		target.DepositsCount = null;
-		_ = source.Equals( target );
-		target.DepositsCount = source.DepositsCount;
-		target.DepositsBal = null;
-		_ = source.Equals( target );
-		target.DepositsBal = source.DepositsBal;
-		target.DepositsBal = source.DepositsBal;
-		target.Address.Street = null;
 
 		// Act
 		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
+		FakeData.BranchCoverageCompany( FakeData.Method.Equal, source, target );
 	}
 
 	[Fact]
@@ -115,6 +85,8 @@ public class CompanyTests
 
 		// Assert
 		_ = result.Should().BeTrue();
+		FakeData.BranchCoverageCompany( FakeData.Method.Update, source );
+
 	}
 
 	[Fact]
@@ -145,6 +117,7 @@ public class CompanyTests
 
 		// Assert
 		_ = result.Should().NotBeEmpty();
+		FakeData.BranchCoverageCompany( FakeData.Method.UpdateSQL, obj, mod, row );
 	}
 
 	[Fact]

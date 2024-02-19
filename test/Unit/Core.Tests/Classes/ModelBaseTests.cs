@@ -2,6 +2,23 @@
 
 public class ModelBaseTests : ModelBase
 {
+	#region Property and Constructor
+
+	private int _age;
+	public int Age
+	{
+		get => _age;
+		set { _age = value; OnPropertyChanged(); }
+	}
+
+	public ModelBaseTests()
+	{
+		// For branch coverage
+		OnPropertyChanged();
+	}
+
+	#endregion
+
 	[Fact]
 	public void CalculateAge_from_DateOnly_should_be_null()
 	{
@@ -42,12 +59,25 @@ public class ModelBaseTests : ModelBase
 		_ = result.Should().BeGreaterThan( 0 );
 	}
 
+	[Fact]
+	public void OnPropertyChanged_should_be_raised()
+	{
+		// Arrange
+		using var subject = this.Monitor();
+
+		// Act
+		Age = 20;
+
+		// Assert
+		// https://fluentassertions.com/eventmonitoring/
+		_ = subject.Should().RaisePropertyChangeFor( x => x.Age );
+	}
 
 	[Theory]
 	[InlineData( null, true )]
 	[InlineData( "", true )]
 	[InlineData( "A", false )]
-	public void SetNull( string? value, bool result )
+	public void SetNull_Theory( string? value, bool result )
 	{
 		string? str = SetNullString( value );
 		bool res = str is null;

@@ -25,6 +25,7 @@ public class DataFactoryBaseTests : DataFactoryBase
 
 		// Act
 		int result = GetStartIndex( total, count );
+		_ = GetStartIndex( 2, 0 );
 
 		// Assert
 		_ = result.Should().Be( 0 );
