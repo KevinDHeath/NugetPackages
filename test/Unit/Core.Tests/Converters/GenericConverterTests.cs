@@ -18,14 +18,16 @@ public class GenericConverterTests
 	[Fact]
 	public void CharToBool_should_be_null()
 	{
+#nullable disable
 		// Arrange
-		object obj = DateTime.Now;
+		object obj = null;
 
 		// Act
 		bool? result = Generic.CharToBool( obj );
 
 		// Assert
 		_ = result.Should().BeNull();
+#nullable enable
 	}
 
 	[Fact]

@@ -241,8 +241,6 @@ namespace Logging.Helper
 
 		private bool CanLog( LogSeverity severity )
 		{
-			if( null == LogImpl ) return false;
-
 			switch( severity )
 			{
 				case LogSeverity.Error:

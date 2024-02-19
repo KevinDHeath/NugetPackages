@@ -2,6 +2,13 @@
 
 internal class FakeData
 {
+	internal enum Method
+	{
+		Equal,
+		Update,
+		UpdateSQL
+	}
+
 	#region Address
 
 	internal const string cAddrPrefix = "Address_";
@@ -70,6 +77,73 @@ internal class FakeData
 	#endregion
 
 	#region Company
+
+	#region Branch Coverage
+
+	internal static void BranchCoverageCompany( Method method, Company source, Company? target = null,
+		DataRow? dataRow = null )
+	{
+		switch( method )
+		{
+		  case Method.Equal:
+				_ = new Company().Equals( null );
+				_ = new Company().Equals( new Address() );
+
+				if( target is null ) { return; }
+				target.Id = source.Id;
+				target.Name = "mod";
+				_ = source.Equals( target );
+				target.Name = source.Name;
+				target.PrimaryPhone = null;
+				_ = source.Equals( target );
+				target.PrimaryPhone = source.PrimaryPhone;
+				target.SecondaryPhone = null;
+				_ = source.Equals( target );
+				target.SecondaryPhone = source.SecondaryPhone;
+				target.GovernmentNumber = null;
+				_ = source.Equals( target );
+				target.GovernmentNumber = source.GovernmentNumber;
+				target.NaicsCode = null;
+				_ = source.Equals( target );
+				target.NaicsCode = source.NaicsCode;
+				target.Private = null;
+				_ = source.Equals( target );
+				target.Private = source.Private;
+				target.DepositsCount = null;
+				_ = source.Equals( target );
+				target.DepositsCount = source.DepositsCount;
+				target.DepositsBal = null;
+				_ = source.Equals( target );
+				target.DepositsBal = source.DepositsBal;
+				target.DepositsBal = source.DepositsBal;
+				target.Address.Street = null;
+				return;
+
+			case Method.Update:
+				source.Update( null );
+				source.Update( new Global() );
+				return;
+
+			case Method.UpdateSQL:
+				if( target is null || dataRow is null ) { return; }
+				target.Private = null;
+				_ = Company.UpdateSQL( dataRow, source, target, cAddrPrefix );
+				dataRow["Private"] = "Y";
+				source.Private = true;
+				target.Private = false;
+				_ = Company.UpdateSQL( dataRow, source, target, cAddrPrefix );
+
+				List<string> sql = [];
+				ModelData.SetSQLColumn( "Test", '\'', sql );
+				ModelData.SetSQLColumn( "Test", 123, sql );
+				return;
+
+			default:
+				return;
+		}
+	}
+
+	#endregion
 
 	internal static Company CreateCompany( int id = 1, bool mod = false )
 	{
@@ -254,6 +328,57 @@ internal class FakeData
 	#endregion
 
 	#region Person
+
+	#region Branch Coverage
+
+	internal static void BranchCoveragePerson( Method method, Person source, Person? target = null )
+	{
+		switch( method )
+		{
+			case Method.Equal:
+				_ = new Person().Equals( null );
+				_ = new Person().Equals( new Address() );
+
+				if( target is null ) { return; }
+				target.Id = source.Id;
+				target.FirstName = "mod";
+				_ = source.Equals( target );
+				target.FirstName = source.FirstName;
+				target.MiddleName = "X";
+				_ = source.Equals( target );
+				target.MiddleName = source.MiddleName;
+				target.LastName = "mod";
+				_ = source.Equals( target );
+				target.LastName = source.LastName;
+				target.GovernmentNumber = null;
+				_ = source.Equals( target );
+				target.GovernmentNumber = source.GovernmentNumber;
+				target.IdProvince = null;
+				_ = source.Equals( target );
+				target.IdProvince = source.IdProvince;
+				target.IdNumber = null;
+				_ = source.Equals( target );
+				target.IdNumber = source.IdNumber;
+				target.HomePhone = null;
+				_ = source.Equals( target );
+				target.HomePhone = source.HomePhone;
+				target.BirthDate = null;
+				_ = source.Equals( target );
+				target.BirthDate = source.BirthDate;
+				target.Address.Street = null;
+				return;
+
+			case Method.Update:
+				source.Update( null );
+				source.Update( new Global() );
+				return;
+
+			default:
+				return;
+		}
+	}
+
+	#endregion
 
 	internal static Person CreatePerson( int id = 1, bool mod = false )
 	{

@@ -51,8 +51,16 @@ namespace Application.Helper
 					{
 						retValue += Environment.NewLine;
 					}
-					retValue += ex.GetType() + ": " + ex.Message;
-					if( ex.StackTrace != null ) retValue += Environment.NewLine + ex.StackTrace;
+					retValue = $"{retValue}{ex.GetType()}: {ex.Message}";
+					Exception inner = ex;
+					while( inner != null )
+					{
+						if( inner.StackTrace != null )
+						{
+							retValue = $"{retValue}{Environment.NewLine}{inner.StackTrace}";
+						}
+						inner = inner.InnerException;
+					}
 				}
 			}
 			else if( exception is GenericException )
@@ -73,7 +81,7 @@ namespace Application.Helper
 		/// <returns>String containing the exception details.</returns>
 		public static string FormatException( string msg, Exception exception )
 		{
-			msg = string.IsNullOrWhiteSpace(msg ) ? string.Empty : msg.Trim();
+			msg = string.IsNullOrWhiteSpace( msg ) ? string.Empty : msg.Trim();
 
 			if( exception != null )
 			{
