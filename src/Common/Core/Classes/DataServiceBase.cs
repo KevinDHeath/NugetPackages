@@ -64,7 +64,7 @@ public class DataServiceBase
 	/// <param name="options">Json serializer options.</param>
 	/// <returns>The created resource, or <see langword="null"/> if there were errors while processing the JSON.</returns>
 	/// <exception cref="AggregateException">Represents one or more errors that occur during execution.</exception>
-	public T? PostResource<T>( string uri, T obj, JsonSerializerOptions? options = null ) where T : class
+	public T? PostResource<T>( string uri, T? obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		string? json = JsonHelper.Serialize( obj );
 		if( json is null ) { return null; }
@@ -90,7 +90,7 @@ public class DataServiceBase
 	/// <param name="options">Json serializer options.</param>
 	/// <returns>The updated resource, or <see langword="null"/> if there were errors while processing the JSON.</returns>
 	/// <exception cref="AggregateException">Represents one or more errors that occur during execution.</exception>
-	public T? PutResource<T>( string uri, T obj, JsonSerializerOptions? options = null ) where T : class
+	public T? PutResource<T>( string uri, T? obj, JsonSerializerOptions? options = null ) where T : class
 	{
 		string? json = JsonHelper.Serialize( obj, options );
 		if( json is null ) { return null; }

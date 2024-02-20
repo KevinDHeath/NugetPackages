@@ -22,47 +22,17 @@ public class CompanyTests
 		// Arrange
 		Company source = FakeData.CreateCompany();
 		Company target = FakeData.CreateCompany();
-
-		// Act (with branch coverage)
-		_ = source.Equals( target );
-		_ = new Company().Equals( null );
-		_ = new Company().Equals( new Address() );
-
 		target.Id = 2;
+
+		// Act
 		_ = source.Equals( target );
-		target.Id = source.Id;
-		target.Name = "mod";
-		_ = source.Equals( target );
-		target.Name = source.Name;
-		target.PrimaryPhone = null;
-		_ = source.Equals( target );
-		target.PrimaryPhone = source.PrimaryPhone;
-		target.SecondaryPhone = null;
-		_ = source.Equals( target );
-		target.SecondaryPhone = source.SecondaryPhone;
-		target.GovernmentNumber = null;
-		_ = source.Equals( target );
-		target.GovernmentNumber = source.GovernmentNumber;
-		target.NaicsCode = null;
-		_ = source.Equals( target );
-		target.NaicsCode = source.NaicsCode;
-		target.Private = null;
-		_ = source.Equals( target );
-		target.Private = source.Private;
-		target.DepositsCount = null;
-		_ = source.Equals( target );
-		target.DepositsCount = source.DepositsCount;
-		target.DepositsBal = null;
-		_ = source.Equals( target );
-		target.DepositsBal = source.DepositsBal;
-		target.DepositsBal = source.DepositsBal;
-		target.Address.Street = null;
 
 		// Act
 		bool result = source.Equals( target );
 
 		// Assert
 		_ = result.Should().BeFalse();
+		FakeData.BranchCoverageCompany( FakeData.Method.Equal, source, target );
 	}
 
 	[Fact]
@@ -73,6 +43,19 @@ public class CompanyTests
 
 		// Assert
 		_ = result.Should().BeAssignableTo<JsonSerializerOptions>();
+	}
+
+	[Fact]
+	public void Name_should_be_empty()
+	{
+		// Arrange
+		Company company = new();
+
+		// Act
+		string result = company.Name;
+
+		// Assert
+		_ = result.Should().BeEmpty();
 	}
 
 	[Fact]
@@ -102,6 +85,8 @@ public class CompanyTests
 
 		// Assert
 		_ = result.Should().BeTrue();
+		FakeData.BranchCoverageCompany( FakeData.Method.Update, source );
+
 	}
 
 	[Fact]
@@ -113,7 +98,7 @@ public class CompanyTests
 		Company mod = (Company)obj.Clone();
 
 		// Act
-		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().BeEmpty();
@@ -128,9 +113,42 @@ public class CompanyTests
 		Company mod = FakeData.CreateCompany( mod: true );
 
 		// Act
-		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix ); ;
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
 
 		// Assert
 		_ = result.Should().NotBeEmpty();
+		FakeData.BranchCoverageCompany( FakeData.Method.UpdateSQL, obj, mod, row );
+	}
+
+	[Fact]
+	public void UpdateSQL_with_different_id_should_be_empty()
+	{
+		// Arrange
+		DataRow row = FakeData.GetCompanyRow();
+		Company obj = Company.Read( row, FakeData.cAddrPrefix );
+		Company mod = FakeData.CreateCompany( mod: true );
+		mod.Id = 10;
+
+		// Act
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().BeEmpty();
+	}
+
+	[Fact]
+	public void UpdateSQL_with_null_private_should_contain_NULL()
+	{
+		// Arrange
+		DataRow row = FakeData.GetCompanyRow();
+		Company obj = Company.Read( row, FakeData.cAddrPrefix );
+		Company mod = FakeData.CreateCompany( mod: true );
+		mod.Private = null;
+
+		// Act
+		string result = Company.UpdateSQL( row, obj, mod, FakeData.cAddrPrefix );
+
+		// Assert
+		_ = result.Should().Contain( "[Private]=NULL" );
 	}
 }

@@ -18,14 +18,16 @@ public class GenericConverterTests
 	[Fact]
 	public void CharToBool_should_be_null()
 	{
+#nullable disable
 		// Arrange
-		object obj = DateTime.Now;
+		object obj = null;
 
 		// Act
 		bool? result = Generic.CharToBool( obj );
 
 		// Assert
 		_ = result.Should().BeNull();
+#nullable enable
 	}
 
 	[Fact]
@@ -39,6 +41,19 @@ public class GenericConverterTests
 
 		// Assert
 		_ = result.Should().BeTrue();
+	}
+
+	[Fact]
+	public void DateTimeToDateOnly_should_be_null()
+	{
+		// Arrange
+		string obj = "ABC";
+
+		// Act
+		DateOnly? result = Generic.DateTimeToDateOnly( obj );
+
+		// Assert
+		_ = result.Should().BeNull();
 	}
 
 	[Fact]

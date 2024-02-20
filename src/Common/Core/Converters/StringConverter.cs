@@ -7,26 +7,20 @@ namespace Common.Core.Converters;
 /// <summary>Helper class to convert strings to other data types.</summary>
 public static class StringConverter
 {
+	private static string CheckBoolStr( string value )
+	{
+		if( value[0] is '0' or 'n' ) { return bool.FalseString; }
+		else if( value[0] is '1' or 'y' ) { return bool.TrueString; }
+		return value;
+	}
+
 	/// <summary>Tries to convert the specified string to its System.Boolean equivalent.</summary>
 	/// <param name="value">A string containing the value to convert.</param>
 	/// <param name="result">If the conversion succeeded, contains the value.</param>
 	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out bool result )
 	{
-		value = value.Trim().ToLower();
-		if( value.Length == 1 )
-		{
-			// Check for 1, 0, Y, N values
-			if( value == "0" || value == "n" ) { value = bool.FalseString; }
-			else if( value == "1" || value == "y" ) { value = bool.TrueString; }
-		}
-		else if( value.Length <= 3 )
-		{
-			// Check for Yes, No values
-			if( value == "no" ) { value = bool.FalseString; }
-			else if( value == "yes" ) { value = bool.TrueString; }
-		}
-
+		value = CheckBoolStr( value.ToLower() );
 		return bool.TryParse( value, out result );
 	}
 

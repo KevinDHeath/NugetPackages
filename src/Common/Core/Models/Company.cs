@@ -225,19 +225,7 @@ public class Company : ModelEdit, ICompany
 	public override bool Equals( object? obj )
 	{
 		if( obj is null || obj is not ICompany other ) { return false; }
-
-		if( other.Id != Id ) { return false; }
-		if( other.Name != Name ) { return false; }
-		if( other.PrimaryPhone != PrimaryPhone ) { return false; }
-		if( other.SecondaryPhone != SecondaryPhone ) { return false; }
-		if( other.GovernmentNumber != GovernmentNumber ) { return false; }
-		if( other.NaicsCode != NaicsCode ) { return false; }
-		if( other.Private != Private ) { return false; }
-		if( other.DepositsCount != DepositsCount ) { return false; }
-		if( other.DepositsBal != DepositsBal ) { return false; }
-		if( !other.Address.Equals( Address ) ) { return false; }
-
-		return true;
+		return ReflectionHelper.IsEqual( this, other );
 	}
 
 	/// <inheritdoc/>
@@ -313,13 +301,7 @@ public class Company : ModelEdit, ICompany
 
 		if( obj.Name != mod.Name ) { SetSQLColumn( nameof( Name ), mod.Name, sql ); }
 		_ = Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
-		if( obj.GovernmentNumber != mod.GovernmentNumber ) { SetSQLColumn( nameof( GovernmentNumber ), mod.GovernmentNumber, sql ); }
-		if( obj.PrimaryPhone != mod.PrimaryPhone ) { SetSQLColumn( nameof( PrimaryPhone ), mod.PrimaryPhone, sql ); }
-		if( obj.SecondaryPhone != mod.SecondaryPhone ) { SetSQLColumn( nameof( SecondaryPhone ), mod.SecondaryPhone, sql ); }
-		if( obj.Email != mod.Email ) { SetSQLColumn( nameof( Email ), mod.Email, sql ); }
-		if( obj.NaicsCode != mod.NaicsCode ) { SetSQLColumn( nameof( NaicsCode ), mod.NaicsCode, sql ); }
-		if( obj.DepositsCount != mod.DepositsCount ) { SetSQLColumn( nameof( DepositsCount ), mod.DepositsCount.ToString(), sql ); }
-		if( obj.DepositsBal != mod.DepositsBal ) { SetSQLColumn( nameof( DepositsBal ), mod.DepositsBal.ToString(), sql ); }
+		UpdateOthers( obj, mod, sql );
 		if( obj.Private != mod.Private )
 		{
 			// Special handling for boolean as char
@@ -331,4 +313,15 @@ public class Company : ModelEdit, ICompany
 	}
 
 	#endregion
+
+	private static void UpdateOthers( ICompany obj, ICompany mod, IList<string> sql )
+	{
+		if( obj.GovernmentNumber != mod.GovernmentNumber ) { SetSQLColumn( nameof( GovernmentNumber ), mod.GovernmentNumber, sql ); }
+		if( obj.PrimaryPhone != mod.PrimaryPhone ) { SetSQLColumn( nameof( PrimaryPhone ), mod.PrimaryPhone, sql ); }
+		if( obj.SecondaryPhone != mod.SecondaryPhone ) { SetSQLColumn( nameof( SecondaryPhone ), mod.SecondaryPhone, sql ); }
+		if( obj.Email != mod.Email ) { SetSQLColumn( nameof( Email ), mod.Email, sql ); }
+		if( obj.NaicsCode != mod.NaicsCode ) { SetSQLColumn( nameof( NaicsCode ), mod.NaicsCode, sql ); }
+		if( obj.DepositsCount != mod.DepositsCount ) { SetSQLColumn( nameof( DepositsCount ), mod.DepositsCount.ToString(), sql ); }
+		if( obj.DepositsBal != mod.DepositsBal ) { SetSQLColumn( nameof( DepositsBal ), mod.DepositsBal.ToString(), sql ); }
+	}
 }

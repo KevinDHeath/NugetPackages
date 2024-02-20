@@ -10,10 +10,10 @@ public static class Generic
 	/// <returns>The converted value, or defaultValue if any error occurs.</returns>
 	private static T? Convert<T>( object? value, T defaultValue )
 	{
+		if( value is null or DBNull ) { return defaultValue; }
 		try
 		{
-			return value is null || value is DBNull ? default :
-				(T?)(T)System.Convert.ChangeType( value,
+			return (T?)(T)System.Convert.ChangeType( value,
 					Nullable.GetUnderlyingType( typeof( T ) ) ?? typeof( T ) );
 		}
 		catch { return defaultValue; }

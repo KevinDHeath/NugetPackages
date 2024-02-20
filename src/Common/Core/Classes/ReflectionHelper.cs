@@ -22,24 +22,23 @@ public static class ReflectionHelper
 
 		foreach( PropertyInfo prop in GetProperties( source.GetType() ) )
 		{
-			if( prop.CanWrite )
-			{
-				object? sourceVal = prop.GetValue( source );
-				object? targetVal = prop.GetValue( target );
+			if( !prop.CanWrite ) {  continue; }
 
-				if( IsClassOrInterface( prop ) && !IsStringType( prop ) )
-				{
-					if( sourceVal is null && targetVal is not null ) { target = source; }
-					else
-					{
-						//if( sourceVal is not null && targetVal is null ) { target = ; }
-						ApplyChanges( sourceVal, targetVal );
-					}
-				}
+			object? sourceVal = prop.GetValue( source );
+			object? targetVal = prop.GetValue( target );
+
+			if( IsClassOrInterface( prop ) )
+			{
+				if( sourceVal is null && targetVal is not null ) { target = source; }
 				else
 				{
-					prop.SetValue( target, sourceVal );
+					//if( sourceVal is not null && targetVal is null ) { target = ; }
+					ApplyChanges( sourceVal, targetVal );
 				}
+			}
+			else
+			{
+				prop.SetValue( target, sourceVal );
 			}
 		}
 	}
@@ -59,24 +58,28 @@ public static class ReflectionHelper
 
 		foreach( PropertyInfo prop in GetProperties( source.GetType() ) )
 		{
-			if( prop.CanWrite )
-			{
-				object? sourceVal = prop.GetValue( source );
-				object? targetVal = prop.GetValue( target );
+			if( !prop.CanWrite ) continue;
+			object? sourceVal = prop.GetValue( source );
+			object? targetVal = prop.GetValue( target );
 
-				if( IsClassOrInterface( prop ) && !IsStringType( prop ) )
-				{
-					if( sourceVal is null & targetVal is not null ) { return false; }
-					else if( sourceVal is not null & targetVal is null ) { return false; }
-					else if( !IsEqual( sourceVal, targetVal ) ) { return false; }
-				}
-				else
-				{
-					if( sourceVal is not null && !sourceVal.Equals( targetVal ) ) { return false; }
-				}
+			if( IsClassOrInterface( prop ) )
+			{
+				return IsEqualClass( sourceVal, targetVal );
+			}
+			else
+			{
+				if( sourceVal is not null && !sourceVal.Equals( targetVal ) ) { return false; }
 			}
 		}
 
+		return true;
+	}
+
+	private static bool IsEqualClass( object? sourceVal, object? targetVal )
+	{
+		if( sourceVal is null & targetVal is not null ||
+			sourceVal is not null & targetVal is null ) { return false; }
+		if( !IsEqual( sourceVal, targetVal ) ) { return false; }
 		return true;
 	}
 
@@ -107,62 +110,52 @@ public static class ReflectionHelper
 		if( obj == null ) return null;
 		Type typ = obj.GetType();
 
-		if( typ == _stringType )
+		if( typ == _stringType ) { return obj.ToString(); } // Handle strings differently
+		else if( typ == _secureType ) // Handle secure strings differently
 		{
-			// Handle strings differently
-			return obj.ToString();
-		}
-		else if( typ == _secureType )
-		{
-			// Handle secure strings differently
 			return new System.Net.NetworkCredential( "", new System.Net.NetworkCredential( "",
 				(SecureString)obj ).Password ).SecurePassword;
 		}
-		else if( typ.IsArray )
-		{
-			return ProcessArray( obj );
-		}
-		else if( obj is IEnumerable or ICollection )
-		{
-			return ProcessCollection( typ, obj );
-		}
+		else if( typ.IsArray ) { return ProcessArray( obj ); }
+		else if( obj is IEnumerable or ICollection ) { return ProcessCollection( typ, obj ); }
 
 		// Try and create an instance of the object type
 		object? objCopy = null;
 		try { objCopy = Activator.CreateInstance( type: typ, nonPublic: true ); } catch( Exception ) { }
 		if( objCopy is null ) { return objCopy; }
 
-		if( typ.IsClass )
-		{
-			// For a class use the properties
-			foreach( var prop in GetProperties( typ ) )
-			{
-				if( prop.CanWrite )
-				{
-					if( !prop.PropertyType.IsPrimitive && !prop.PropertyType.IsValueType &&
-						prop.PropertyType != typeof( string ) )
-					{
-						var fieldCopy = CreateDeepCopy( prop.GetValue( obj ) );
-						prop.SetValue( objCopy, fieldCopy );
-					}
-					else
-					{
-						prop.SetValue( objCopy, prop.GetValue( obj ) );
-					}
-				}
-			}
-		}
-		else
-		{
-			// For anything else use the fields
-			var fields = GetFields( typ );
-			foreach( FieldInfo field in fields )
-			{
-				field.SetValue( objCopy, field.GetValue( obj ) );
-			}
-		}
+		if( typ.IsClass ) { CopyProperties( typ, obj, objCopy ); } // For a class use the properties
+		else { CopyFields( typ, obj, objCopy ); } // For anything else use the fields
 
 		return objCopy;
+	}
+
+	private static void CopyProperties( Type typ, object? obj, object? objCopy )
+	{
+		foreach( PropertyInfo prop in GetProperties( typ ) )
+		{
+			if( !prop.CanWrite ) { continue; }
+
+			if( !prop.PropertyType.IsPrimitive && !prop.PropertyType.IsValueType &&
+				prop.PropertyType != _stringType )
+			{
+				object? fieldCopy = CreateDeepCopy( prop.GetValue( obj ) );
+				prop.SetValue( objCopy, fieldCopy );
+			}
+			else
+			{
+				prop.SetValue( objCopy, prop.GetValue( obj ) );
+			}
+		}
+	}
+
+	private static void CopyFields( Type typ, object? obj, object? objCopy )
+	{
+		FieldInfo[] fields = GetFields( typ );
+		foreach( FieldInfo field in fields )
+		{
+			field.SetValue( objCopy, field.GetValue( obj ) );
+		}
 	}
 
 	#endregion
@@ -172,7 +165,7 @@ public static class ReflectionHelper
 	private static bool IsClassOrInterface( PropertyInfo prop )
 	{
 		// String is classified as a class as is SecureString
-		return prop.PropertyType.IsClass || prop.PropertyType.IsInterface;
+		return (prop.PropertyType.IsClass || prop.PropertyType.IsInterface ) && !IsStringType( prop );
 	}
 
 	private static bool IsStringType( PropertyInfo prop )
@@ -205,37 +198,10 @@ public static class ReflectionHelper
 
 		if( isList )
 		{
-			var org = (IList)obj;
-			IList? ret = (IList)Activator.CreateInstance( typ )!;
-			if( org is not null && ret is not null )
-			{
-				foreach( var val in org )
-				{
-					ret.Add( CreateDeepCopy( val ) );
-				}
-			}
-
-			return ret;
+			return ProcessList( typ, obj );
 		}
 
-		IDictionary? orgd = (IDictionary)obj;
-		IDictionary? retd = (IDictionary)Activator.CreateInstance( typ )!;
-		if( orgd is not null && retd is not null )
-		{
-			foreach( object orgKey in orgd.Keys )
-			{
-				var orgVal = orgd[orgKey];
-				var cpyKey = CreateDeepCopy( orgKey );
-				var cpyVal = CreateDeepCopy( orgVal );
-
-				if( cpyKey is not null )
-				{
-					retd.Add( cpyKey, cpyVal );
-				}
-			}
-		}
-
-			return retd;
+		return ProcessDictionary( typ, obj );
 	}
 
 	private static Array? ProcessArray( object obj )
@@ -243,7 +209,7 @@ public static class ReflectionHelper
 		Array org = (Array)obj;
 		Array? ret = null;
 
-		var elm = obj.GetType().GetElementType();
+		Type? elm = obj.GetType().GetElementType();
 		if( elm is not null )
 		{
 			ret = Array.CreateInstance( elm, org.Length );
@@ -252,6 +218,44 @@ public static class ReflectionHelper
 			for( int i = 0; i < org.Length; i++ )
 			{
 				cpy.SetValue( CreateDeepCopy( org.GetValue( i ) ), i );
+			}
+		}
+
+		return ret;
+	}
+
+	private static IDictionary? ProcessDictionary( Type typ, object obj )
+	{
+		IDictionary? org = (IDictionary)obj;
+		IDictionary? ret = (IDictionary)Activator.CreateInstance( typ )!;
+		if( org is not null && ret is not null )
+		{
+			foreach( object orgKey in org.Keys )
+			{
+				var orgVal = org[orgKey];
+				var cpyKey = CreateDeepCopy( orgKey );
+				var cpyVal = CreateDeepCopy( orgVal );
+
+				if( cpyKey is not null )
+				{
+					ret.Add( cpyKey, cpyVal );
+				}
+			}
+		}
+
+		return ret;
+
+	}
+
+	private static IList? ProcessList( Type typ, object obj )
+	{
+		IList? org = (IList)obj;
+		IList? ret = (IList)Activator.CreateInstance( typ )!;
+		if( org is not null && ret is not null )
+		{
+			foreach( object? val in org )
+			{
+				ret.Add( CreateDeepCopy( val ) );
 			}
 		}
 

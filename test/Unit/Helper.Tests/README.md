@@ -8,17 +8,17 @@
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Application.Helper**|**100%**|**83.6%**|
+|**Application.Helper**|**100%**|**88%**|
 |Application.Helper.ConsoleApp|100%|84.7%|
-|Application.Helper.GenericException|100%|80%|
+|Application.Helper.GenericException|100%|100%|
 
 </details>
 <details><summary>Configuration.Helper - 100%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Configuration.Helper**|**100%**|**94.4%**|
-|Configuration.Helper.AlphanumComparator|100%|92.1%|
+|**Configuration.Helper**|**100%**|**94.8%**|
+|Configuration.Helper.AlphanumComparator|100%|94.7%|
 |Configuration.Helper.ConfigFileHelper|100%|96.4%|
 |Configuration.Helper.FileFolderInfo|100%|95%|
 |Configuration.Helper.FileSettingsStore|100%|100%|
@@ -33,9 +33,9 @@
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Logging.Helper**|**100%**|**91.8%**|
+|**Logging.Helper**|**100%**|**99.1%**|
 |Logging.Helper.ImplNLog|100%|91.6%|
-|Logging.Helper.Logger|100%|90.8%|
+|Logging.Helper.Logger|100%|100%|
 |Logging.Helper.LoggerEvent|100%|100%|
 |Logging.Helper.LoggerEventArgs|100%|100%|
 

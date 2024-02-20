@@ -24,14 +24,15 @@ public class GenericExceptionTests
 	public void FormatException_should_contain_GenericException()
 	{
 		// Arrange
-		Exception ex = new( "Base exception" );
+		Exception ex = Global.GetException();
 		GenericException ge = new( cMsg );
-		AggregateException ae = new( [ge, ex] );
+		AggregateException ae = new( [ex, ge] );
 
 		// Act  (with branch coverage)
 		string result = GenericException.FormatException( ae ); // Aggregate exception
 		_ = GenericException.FormatException( null );           // Null exception
 		_ = GenericException.FormatException( null, ex );       // Null message and exception
+		_ = GenericException.FormatException( "Test", ex );     // Message and exception
 		_ = GenericException.FormatException( ex );             // Exception
 		_ = GenericException.FormatException( ge );             // Generic exception
 

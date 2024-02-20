@@ -241,8 +241,6 @@ namespace Logging.Helper
 
 		private bool CanLog( LogSeverity severity )
 		{
-			if( null == LogImpl ) return false;
-
 			switch( severity )
 			{
 				case LogSeverity.Error:
@@ -554,6 +552,30 @@ namespace Logging.Helper
 			LogImpl.SetLogFile( logDirectory, logFileName );
 		}
 
+		private static List<FileInfo> GetFileList( DirectoryInfo dir, string logNameMask )
+		{
+			List<FileInfo> rtn = new List<FileInfo>();
+
+			// Check if the directory contains any log files
+			FileInfo[] logFiles = dir.GetFiles( logNameMask );
+			if( logFiles.Length == 0 )
+			{
+				return rtn;
+			}
+
+			// Create list of log files that are not read-only
+			foreach( var fi in logFiles )
+			{
+				// Exclude read-only files from deletion
+				if( !fi.Attributes.HasFlag( FileAttributes.ReadOnly ) )
+				{
+					rtn.Add( fi );
+				}
+			}
+
+			return rtn;
+		}
+
 		/// <summary>Removes the oldest non-read-only log files in a directory.</summary>
 		/// <param name="directory">Directory containing the log files.</param>
 		/// <param name="logNameMask">Search pattern in the form [LogFile]*.[ext] of the log file names.</param>
@@ -582,23 +604,8 @@ namespace Logging.Helper
 				return false;
 			}
 
-			// Check if the directory contains any log files
-			FileInfo[] logFiles = dir.GetFiles( logNameMask );
-			if( logFiles.Length == 0 )
-			{
-				return false;
-			}
-
-			// Create list of log files that are not read-only
-			List<FileInfo> list = new List<FileInfo>();
-			foreach( var fi in logFiles )
-			{
-				// Exclude read-only files from deletion
-				if( !fi.Attributes.HasFlag( FileAttributes.ReadOnly ) )
-				{
-					list.Add( fi );
-				}
-			}
+			List<FileInfo> list = GetFileList( dir, logNameMask );
+			if( list.Count == 0 ) { return false; }
 
 			// Check that file count is greater than maximum number
 			if( list.Count <= maxFiles )

@@ -8,8 +8,9 @@ public class AlphanumComparatorTests
 	{
 		// For branch coverage
 		AlphanumComparator comparer = new();
-		_ = comparer.Compare( "", "" );   // Empty strings
-		_ = comparer.Compare( 123, 456 ); // Numeric values
+		_ = comparer.Compare( "", "" );     // Empty strings
+		_ = comparer.Compare( 123, 456 );   // Numeric values
+		_ = comparer.Compare( "AB", "A2" ); // Mixed values
 	}
 
 	[Fact]

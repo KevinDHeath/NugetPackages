@@ -184,7 +184,7 @@ public class Person : ModelEdit, IPerson
 		get => _birthDate;
 		set
 		{
-			if( value != _birthDate )
+			if( !value.Equals( _birthDate ) )
 			{
 				_birthDate = value;
 				OnPropertyChanged( nameof( BirthDate ) );
@@ -219,19 +219,7 @@ public class Person : ModelEdit, IPerson
 	public override bool Equals( object? obj )
 	{
 		if( obj is null || obj is not IPerson other ) { return false; }
-
-		if( other.Id != Id ) { return false; }
-		if( other.FirstName != FirstName ) { return false; }
-		if( other.MiddleName != MiddleName ) { return false; }
-		if( other.LastName != LastName ) { return false; }
-		if( other.GovernmentNumber != GovernmentNumber ) { return false; }
-		if( other.IdProvince != IdProvince ) { return false; }
-		if( other.IdNumber != IdNumber ) { return false; }
-		if( other.HomePhone != HomePhone ) { return false; }
-		if( !other.BirthDate.Equals( BirthDate ) ) { return false; }
-		if( !other.Address.Equals( Address ) ) { return false; }
-
-		return true;
+		return ReflectionHelper.IsEqual( this, other );
 	}
 
 	/// <inheritdoc/>
@@ -272,7 +260,7 @@ public class Person : ModelEdit, IPerson
 			IdProvince = row.Field<string?>( nameof( IdProvince ) ),
 			IdNumber = row.Field<string?>( nameof( IdNumber ) ),
 			HomePhone = row.Field<string?>( nameof( HomePhone ) ),
-			BirthDate = Generic.DateTimeToDateOnly( row[nameof( BirthDate )] ),
+			BirthDate = row.Field<DateOnly>( nameof( BirthDate ) ),
 		};
 	}
 
@@ -306,6 +294,15 @@ public class Person : ModelEdit, IPerson
 		if( obj.MiddleName != mod.MiddleName ) { SetSQLColumn( nameof( MiddleName ), mod.MiddleName, sql ); }
 		if( obj.LastName != mod.LastName ) { SetSQLColumn( nameof( LastName ), mod.LastName, sql ); }
 		_ = Address.UpdateAddress( obj.Address, mod.Address, cur.Address, sql, addPrefix );
+		UpdateOthers( obj, mod, sql );
+
+		return string.Join( ", ", sql );
+	}
+
+	#endregion
+
+	private static void UpdateOthers( IPerson obj, IPerson mod, IList<string> sql )
+	{
 		if( obj.GovernmentNumber != mod.GovernmentNumber ) { SetSQLColumn( nameof( GovernmentNumber ), mod.GovernmentNumber, sql ); }
 		if( obj.IdProvince != mod.IdProvince ) { SetSQLColumn( nameof( IdProvince ), mod.IdProvince, sql ); }
 		if( obj.IdNumber != mod.IdNumber ) { SetSQLColumn( nameof( IdNumber ), mod.IdNumber, sql ); }
@@ -316,9 +313,5 @@ public class Person : ModelEdit, IPerson
 			string? val = mod.BirthDate?.ToString( "yyyy-MM-dd" );
 			SetSQLColumn( nameof( BirthDate ), val, sql );
 		}
-
-		return string.Join( ", ", sql );
 	}
-
-	#endregion
 }
