@@ -1,7 +1,7 @@
 # Common.Core Change Log
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
-- - v2.1.2
+- v2.1.2
   - See [Refactoring Notes](v2.1.2-Notes.md) for details of the code refactoring based on the January 31, 2024 unit test results.
   - Added an optional `maxDepth` parameter to the `JsonHelper.ReadAppSettings` method with a default value of 2.
   - Added an optional `timeoutSeconds` parameter to the `DataServiceBase` constructor with a default value of 100 seconds.
