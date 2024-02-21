@@ -17,6 +17,7 @@ Dependencies:\
 Sandcastle (SHFB) component to resolve third-party reference links.
 - [Cross Repo GitHub Pages API Links?](https://github.com/EWSoftware/SHFB/issues/998)\
 [Source code](https://github.com/GridProtectionAlliance/ResolveThirdPartyReferenceLinks)
+- [EWSoftware.Sandcastle.Core 2024.2.18](https://ewsoftware.github.io/SHFB/html/a4050331-ee69-42e2-8c84-2f3a9a890b13.htm)
 
 Dependencies:\
 &nbsp;[EWSoftware.Sandcastle.Core](https://www.nuget.org/packages/EWSoftware.Sandcastle.Core)

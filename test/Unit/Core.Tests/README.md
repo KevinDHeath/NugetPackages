@@ -1,11 +1,10 @@
-# Core unit test results
+# Common.Core unit test metrics
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
-|**Common.Core**|**100%**|**95%**|
 |Common.Core.Classes.AddressFactoryBase|100%|100%|
 |Common.Core.Classes.DataFactoryBase|100%|100%|
 |Common.Core.Classes.DataServiceBase|100%|94.4%|
