@@ -9,9 +9,9 @@ namespace Helper.Tests;
 internal class Global : LoggerEvent
 {
 	internal const string cTestFolder = @".\Testdata";
-	internal const string cConfigFileHelper = "ConfigFileHelper";
 	internal const string cInvalidFile = "bad.config";
 	internal const string cInvalidPath = @".\baddir";
+	internal const string cMachineConfig = "MachineName";
 
 	internal static void CreateLogFile( string fileName )
 	{

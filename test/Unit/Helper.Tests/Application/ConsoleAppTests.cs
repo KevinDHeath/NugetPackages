@@ -25,6 +25,20 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
+	public void ConfigFile_should_not_be_empty()
+	{
+		// Assign
+		string configFile = Global.cMachineConfig + ConfigFileHelper.cJsonExtension;
+		ConsoleApp app = new( Path.Combine( Global.cTestFolder, configFile ) );
+
+		// Act
+		string result = app.ConfigFile;
+
+		// Assert
+		_ = result.Should().NotBeEmpty();
+	}
+
+	[Fact]
 	public void DebugMode_should_be_true()
 	{
 		// Act
@@ -35,7 +49,17 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
-	public void FormatTitleLine_should_not_be_empty()
+	public void ElapsedTime_should_be_positive()
+	{
+		// Act
+		TimeSpan result = _testApp.ElapsedTime;
+
+		// Assert
+		_ = result.Should().BePositive();
+	}
+
+	[Fact]
+	public void FormatTitleLine_length_should_be_80()
 	{
 		// Act (with branch coverage)
 		string result = _testApp.FormatTitleLine( "Unit Testing" ); // Text with even number of chars
@@ -44,7 +68,7 @@ public class ConsoleAppTests
 		_ = _testApp.FormatTitleLine( new string( 'a', 11 ) );      // Text with odd number of chars
 
 		// Assert
-		_ = result.Should().NotBeEmpty();
+		_ = result.Length.Should().Be( 80 );
 	}
 
 	[Fact]
@@ -125,12 +149,12 @@ public class ConsoleAppTests
 	}
 
 	[Fact]
-	public void Title_should_not_be_empty()
+	public void Title_should_contain_Version()
 	{
 		// Act
 		string result = _testApp.Title;
 
 		// Assert
-		_ = result.Should().NotBeEmpty();
+		_ = result.Should().ContainEquivalentOf( "Version" );
 	}
 }
