@@ -7,6 +7,18 @@
 
   <ItemGroup>
 
+    <!-- Transitive, referenced by NETStandard.Library -->
+    <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
+
+    <!-- Transitive, referenced by Microsoft.AspNetCore.OpenApi -->
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.13" />
+
+    <!-- Transitive, referenced by Swashbuckle.AspNetCore -->
+    <PackageVersion Include="Microsoft.Extensions.ApiDescription.Server" Version="8.0.1" />
+
+    <!-- Transitive, referenced by EWSoftware.Sandcastle.Core -->
+    <PackageVersion Include="System.ComponentModel.Composition" Version="8.0.0" />
+
     <!-- Transitive, referenced by Microsoft.TestPlatform.ObjectModel -->
     <PackageVersion Include="NuGet.Frameworks" Version="6.8.0" />
     <PackageVersion Include="System.Reflection.Metadata" Version="8.0.0" />
@@ -20,7 +32,7 @@
     <PackageVersion Include="Microsoft.CodeCoverage" Version="17.9.0" />
     <PackageVersion Include="Microsoft.TestPlatform.TestHost" Version="17.9.0" />
 
-    <!-- Transitive, referenced by xunit -->
+    <!-- Transitive, referenced by xUnit -->
     <PackageVersion Include="xunit.abstractions" Version="2.0.3" />
     <PackageVersion Include="xunit.analyzers" Version="1.11.0" />
     <PackageVersion Include="xunit.assert" Version="2.7.0" />
@@ -35,6 +47,20 @@
     <PackageVersion Include="Validation" Version="2.5.51" />
     <PackageVersion Include="xunit.extensibility.execution" Version="2.7.0" />
 
+    <!-- Logging.Helper -->
+    <PackageVersion Include="NLog" Version="5.2.8" />
+    <PackageVersion Include="kdheath.Application.Helper" Version="2.0.1" />
+
+    <!-- Wpf.Controls -->
+    <PackageVersion Include="kdheath.Wpf.Resources" Version="2.0.1" />
+
+    <!-- Tools: AspNet -->
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+
+    <!-- Tools: ResolveThirdPartyReferenceLinks -->
+    <PackageVersion Include="EWSoftware.Sandcastle.Core" Version="2024.2.18" />
+
     <!-- Integration Testing -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 
@@ -42,7 +68,7 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageVersion Include="xunit" Version="2.7.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.1" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
 
