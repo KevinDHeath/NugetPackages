@@ -2,6 +2,8 @@
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- v2.0.4
+  - Minimum version of `kdheath.Wpf.Resources` dependency changed to 2.0.1.
 - v2.0.3
   - Added the ability to bind the `PasswordBox.Password` property using a `PasswordBoxExtend` extension class.
 - v2.0.2

@@ -40,13 +40,15 @@ namespace Application.Helper
 		private bool _started;
 
 		/// <summary>Creates a new instance of the ConsoleApp class.</summary>
+		/// <param name="configFile">Configuration file name.<br/>
+		/// The default is "appsettings.json"</param>
 		/// <param name="detectDebugMode">Detect if a debugger is attached or not.<br/>
 		/// The default is <see langword="true"/></param>
 		/// <exception cref="ArgumentException">Thrown when one of the arguments provided to a method is not valid.</exception>
 		/// <exception cref="TypeLoadException">Thrown when type-loading failures occur.</exception>
-		public ConsoleApp( bool detectDebugMode = true )
+		public ConsoleApp( string configFile = "appsettings.json", bool detectDebugMode = true )
 		{
-			ConfigFile = GetAppConfigFile();
+			ConfigFile = GetAppConfigFile( configFile );
 			Title = FormatTitle( Assembly.GetEntryAssembly() );
 			DebugMode = !detectDebugMode || Debugger.IsAttached;
 		}
@@ -55,23 +57,21 @@ namespace Application.Helper
 
 		#region Private Methods
 
-		/// <summary>Gets the name of the executable configuration file name.</summary>
-		/// <returns>An empty string is returned if the configuration file could not be determined.</returns>
-		private static string GetAppConfigFile()
+		private static string GetAppConfigFile( string configFile )
 		{
-			string retValue = "appsettings.json";
-			if( File.Exists( retValue ) ) return retValue;
+			string retValue = configFile;
+			if( File.Exists( retValue ) ) { return retValue; }
 
 			// Get the name of the executable
 			retValue = Path.GetFileName( Assembly.GetEntryAssembly().Location );
 
 			// Check for XML config file
 			retValue = Path.ChangeExtension( retValue, ".config" );
-			if( File.Exists( retValue ) ) return retValue;
+			if( File.Exists( retValue ) ) { return retValue; }
 
 			// Check for JSON config file
 			retValue = Path.ChangeExtension( retValue, ".json" );
-			if( File.Exists( retValue ) ) return retValue;
+			if( File.Exists( retValue ) ) { return retValue; }
 
 			return string.Empty;
 		}

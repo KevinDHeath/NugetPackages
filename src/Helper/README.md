@@ -2,7 +2,8 @@
 The packages documentation can be found at [.NET Helper Packages](https://kevindheath.github.io/nuget).
 
 > Note: .NET Standard 2.0 is the highest version of .NET Standard that is supported by the .NET Framework.\
-> See [The future of .NET Standard](https://devblogs.microsoft.com/dotnet/the-future-of-net-standard/) for more information.
+> See [.NET Standard](https://learn.microsoft.com/en-us/dotnet/standard/net-standard) and\
+> [The future of .NET Standard](https://devblogs.microsoft.com/dotnet/the-future-of-net-standard/) for more information.
 
 ## Application.Helper
 [![NuGet](https://img.shields.io/nuget/v/kdheath.Application.Helper.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)

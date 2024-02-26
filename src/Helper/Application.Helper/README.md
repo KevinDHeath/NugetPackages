@@ -2,6 +2,9 @@
 [<img src="https://kevindheath.github.io/codecoverage/helpers/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
 ## Change Log
+- v2.0.3
+  - `GenericException.FormatException` method for `AggregateException` now logs stack traces from all inner exceptions.
+  - Added an optional `configFile` parameter to the `ConsoleApp` constructor. The default is `appsettings.json`
 - v2.0.2
   - Added an optional `detectDebugMode` parameter to the `ConsoleApp` constructor with a default value of `true`.
   - Added a set-only `IsUnitTest` property with a default value of false.

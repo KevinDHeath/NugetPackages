@@ -3,7 +3,7 @@ using System.Security;
 
 namespace Configuration.Helper;
 
-/// <summary>Helper class for Configuration file access.</summary>
+/// <summary>Base helper class to access configuration file information.</summary>
 public abstract class ConfigFileHelper
 {
 	#region Properties and Constants

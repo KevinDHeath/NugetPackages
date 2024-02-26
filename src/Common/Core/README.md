@@ -1,6 +1,10 @@
 # Common.Core Change Log
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
+- v2.1.3
+  - Applied code refactoring based on the Changed Risk Anti-Patterns statistics.
+  - Fixed bug in the `Person` model when setting the `BirthDate` property and retrieving it in the `Read` method.
+  - `DataServiceBase.PostResource` and `DataServiceBase.PutResource` methods now accept a null `obj` parameter.
 - v2.1.2
   - See [Refactoring Notes](v2.1.2-Notes.md) for details of the code refactoring based on the January 31, 2024 unit test results.
   - Added an optional `maxDepth` parameter to the `JsonHelper.ReadAppSettings` method with a default value of 2.

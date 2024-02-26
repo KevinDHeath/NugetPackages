@@ -2,6 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/helpers/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
 
 ## Change Log
+- v2.0.3
+  - Applied code refactoring based on the Changed Risk Anti-Patterns statistics.
 - v2.0.2
   - See [Refactoring Notes](v2.0.2-Notes.md) for details of the code refactoring based on the February 12, 2024 unit test results.
   - Added a `Domain` property to the `WebConnectionStringBuilder` class.
