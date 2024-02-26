@@ -22,6 +22,7 @@
   <xUnit>
     <MethodDisplay>method</MethodDisplay>
     <MethodDisplayOptions>replaceUnderscoreWithSpace,useOperatorMonikers</MethodDisplayOptions>
+    <PreEnumerateTheories>true</PreEnumerateTheories>
   </xUnit>
 
 </RunSettings>

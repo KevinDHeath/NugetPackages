@@ -3,7 +3,7 @@
   <PropertyGroup>
     <GeneratePackageOnBuild Condition="'$(Configuration)' != 'Testing'">true</GeneratePackageOnBuild>
     <PackLocal>..\..\..\local</PackLocal>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <!--<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>-->
   </PropertyGroup>
 
   <PropertyGroup>

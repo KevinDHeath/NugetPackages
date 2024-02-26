@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     <AssemblyTitle>Enables GitHub Action in Solution Explorer.</AssemblyTitle>
     <Description>Tools > Options > Projects and Solutions > Web Projects > Show GitHub Actions workflows in Solution Explorer.</Description>
   </PropertyGroup>
