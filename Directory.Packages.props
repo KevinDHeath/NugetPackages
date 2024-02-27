@@ -7,7 +7,7 @@
 
   <ItemGroup>
 
-    <!-- Transitive, referenced by NETStandard.Library -->
+    <!-- Transitive, referenced by NETStandard.Library target 2.0 -->
     <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
 
     <!-- Transitive, referenced by Microsoft.AspNetCore.OpenApi -->
