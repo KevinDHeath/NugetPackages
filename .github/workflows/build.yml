@@ -71,7 +71,7 @@ jobs:
     name: Build .NET
     runs-on: ${{ inputs.runs-on }}
     env:
-      ARTIFACT_PATH: ${{ env.GITHUB_WORKSPACE }}/local
+      ARTIFACT_PATH: ${{ github.workspace }}/local
 
     # Set the default working directory
     defaults:
@@ -102,7 +102,7 @@ jobs:
 
       - name: Run tests
         shell: pwsh
-        run: $env.GITHUB_WORKSPACE/Test/Unit/RunTests.ps1 ${{ env.ARTIFACT_PATH }}
+        run: ${{ github.workspace }}/Test/Unit/RunTests.ps1 ${{ env.ARTIFACT_PATH }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
