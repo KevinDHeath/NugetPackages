@@ -102,7 +102,7 @@ jobs:
 
       - name: Run tests
         shell: pwsh
-        run: ${{ github.workspace }}/Test/Unit/RunTests.ps1 ${{ env.ARTIFACT_PATH }}
+        run: ./test/Unit/RunTests.ps1 ${{ env.ARTIFACT_PATH }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
