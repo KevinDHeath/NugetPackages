@@ -91,14 +91,14 @@ jobs:
       - name: Create artifacts folder
         run: mkdir ${{ env.ARTIFACT_PATH }}
 
-      - name: Restore build dependencies
-        run: dotnet restore
+      # - name: Restore build dependencies
+      #   run: dotnet restore
 
       - name: Restore testing dependencies
         run: dotnet restore /p:Configuration="Testing"
 
-      - name: Build
-        run: dotnet build --no-restore
+      # - name: Build
+      #   run: dotnet build --no-restore
 
       - name: Run tests
         shell: pwsh
