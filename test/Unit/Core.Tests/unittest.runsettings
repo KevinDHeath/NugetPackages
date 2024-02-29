@@ -3,7 +3,7 @@
 
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
-    <ResultsDirectory>..\TestResults\Core</ResultsDirectory>
+    <ResultsDirectory>..\TestResults\core</ResultsDirectory>
   </RunConfiguration>
 
   <!-- Configuration for loggers -->
