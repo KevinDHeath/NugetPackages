@@ -44,6 +44,7 @@ public class ModelBaseTests : ModelBase
 		// Assert
 		_ = result.Should().BeNull();
 	}
+
 	[Fact]
 	public void CalculateAge_should_be_gt_0()
 	{

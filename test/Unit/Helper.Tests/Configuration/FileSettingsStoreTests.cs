@@ -4,7 +4,7 @@ namespace Helper.Tests.Configuration;
 
 public class FileSettingsStoreTests
 {
-	private const string cBadConfig = "BadConfig.json";
+	private readonly string _badConfig = Path.Combine( Global.cTestFolder, "BadConfig.json" );
 
 	[Fact]
 	public void FileFolderInfo_should_throw_ArgumentNullException()
@@ -24,11 +24,8 @@ public class FileSettingsStoreTests
 	[Fact]
 	public void FileSettingStore_should_not_be_initialized()
 	{
-		// Arrange
-		string configFile = Path.Combine( Global.cTestFolder, cBadConfig );
-
 		// Act
-		ISettingsStore result = FileSettingsStore.Create( configFile );
+		ISettingsStore result = FileSettingsStore.Create( _badConfig );
 
 		// Assert
 		_ = result.IsInitialized.Should().BeFalse();
@@ -53,8 +50,7 @@ public class FileSettingsStoreTests
 	public async Task FileSettingStoreAsync_should_not_be_initialized()
 	{
 		// Arrange
-		string configFile = Path.Combine( Global.cTestFolder, cBadConfig );
-		FileInfo fi = new( configFile );
+		FileInfo fi = new( _badConfig );
 
 		// Act
 		ISettingsStore result = await FileSettingsStore.CreateAsync( fi );

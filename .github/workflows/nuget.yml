@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIGURATION: Release
-      PACKAGE_FOLDER: ${{ inputs.project-folder }}/local
+      ARTIFACT_PATH: ${{ inputs.project-folder }}/local
 
     defaults:
       run:
@@ -29,8 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create packages folder
-        run: mkdir ${{ env.PACKAGE_FOLDER }}
+      - name: Create artifacts folder
+        run: mkdir ${{ env.ARTIFACT_PATH }}
 
       - name: .NET restore
         run: dotnet restore
@@ -41,14 +41,14 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Local-Packages
-          path: ${{ env.PACKAGE_FOLDER }}
+          name: Local-NuGet
+          path: ${{ env.ARTIFACT_PATH }}
           retention-days: 5
 
       - name: NuGet push
         env:
-          NUGET_URL: "https://apiint.nugettest.org/v3/index.json"
+          NUGET_URL: "https://api.nuget.org/v3/index.json"
         shell: pwsh
         run: |
-          foreach($file in (Get-ChildItem "${{env.PACKAGE_FOLDER}}" -Recurse -Include *.nupkg))
-          { dotnet nuget push $file -k "${{secrets.NUGET_TEST_TOKEN}}" -s "${{env.NUGET_URL}}" --skip-duplicate }
+          foreach($file in (Get-ChildItem "${{env.ARTIFACT_PATH}}" -Recurse -Include *.nupkg))
+          { dotnet nuget push $file -k "${{secrets.NUGET_AUTH_TOKEN}}" -s "${{env.NUGET_URL}}" --skip-duplicate }

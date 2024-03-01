@@ -3,6 +3,7 @@
 public class LoggerEventTests : LoggerEvent
 {
 	private const string cTimerStarted = "Timer started";
+
 	[Fact]
 	public void LoggerEventArgs_message_should_not_be_empty()
 	{

@@ -4,7 +4,7 @@ namespace Helper.Tests.Configuration;
 
 public class ConfigFileHelperTests : ConfigFileHelper
 {
-	private readonly string _config = Path.Combine( Global.cTestFolder, Global.cConfigFileHelper );
+	private readonly string _config = Path.Combine( Global.cTestFolder, Global.cMachineConfig );
 
 	public ConfigFileHelperTests() : base( @"Helper.Tests.dll.config" )
 	{
@@ -96,6 +96,20 @@ public class ConfigFileHelperTests : ConfigFileHelper
 	}
 
 	[Fact]
+	public void GetSection_Settings_should_be_empty()
+	{
+		// Arrange
+		string sectionName = "appSettingsX";
+
+		// Act
+		ISettingsSection? section = Settings?.GetSection( sectionName );
+		int? result = section?.Settings.Count;
+
+		// Assert
+		_ = result.Should().Be( 0 );
+	}
+
+	[Fact]
 	public void GetSection_should_be_created()
 	{
 		// Arrange
@@ -107,19 +121,6 @@ public class ConfigFileHelperTests : ConfigFileHelper
 
 		// Assert
 		_ = result.Should().BeAssignableTo<ISettingsSection>();
-	}
-
-	[Fact]
-	public void GetSection_should_be_empty()
-	{
-		// Arrange
-		ISettingsSection? section = Settings?.GetSection( "appSettings" );
-
-		// Act
-		string? result = section?.GetSetting( string.Empty );
-
-		// Assert
-		_ = result.Should().BeNullOrEmpty();
 	}
 
 	[Fact]

@@ -40,10 +40,15 @@ public class ConsoleLog
 					logger.Log( msg, logType );
 					break;
 			}
-			_sw.Flush();
-			string result = _sw.GetStringBuilder().ToString();
-			_sw.GetStringBuilder().Clear();
-			return result;
+			return Capture();
 		}
+	}
+
+	internal string Capture()
+	{
+		_sw.Flush();
+		string result = _sw.GetStringBuilder().ToString();
+		_sw.GetStringBuilder().Clear();
+		return result;
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<coverage version="1.0" date="2024-02-19_16-50-08" tag="">
+<coverage version="1.0" date="2024-02-29_14-56-58" tag="">
   <assembly name="Application.Helper">
-    <class name="Application.Helper.ConsoleApp" coveredlines="110" coverablelines="110" totallines="247" coveredbranches="61" totalbranches="72" coveredcodeelements="20" totalcodeelements="20" />
+    <class name="Application.Helper.ConsoleApp" coveredlines="110" coverablelines="110" totallines="247" coveredbranches="62" totalbranches="72" coveredcodeelements="20" totalcodeelements="20" />
     <class name="Application.Helper.GenericException" coveredlines="50" coverablelines="50" totallines="98" coveredbranches="20" totalbranches="20" coveredcodeelements="5" totalcodeelements="5" />
   </assembly>
   <assembly name="Configuration.Helper">
@@ -11,7 +11,7 @@
     <class name="Configuration.Helper.FileSettingsStore" coveredlines="56" coverablelines="56" totallines="123" coveredbranches="12" totalbranches="12" coveredcodeelements="5" totalcodeelements="5" />
     <class name="Configuration.Helper.FolderInfoBase" coveredlines="30" coverablelines="30" totallines="79" coveredbranches="4" totalbranches="4" coveredcodeelements="9" totalcodeelements="9" />
     <class name="Configuration.Helper.IOHelper" coveredlines="89" coverablelines="89" totallines="235" coveredbranches="58" totalbranches="58" coveredcodeelements="15" totalcodeelements="15" />
-    <class name="Configuration.Helper.SettingsSection" coveredlines="18" coverablelines="18" totallines="60" coveredbranches="8" totalbranches="8" coveredcodeelements="4" totalcodeelements="4" />
+    <class name="Configuration.Helper.SettingsSection" coveredlines="18" coverablelines="18" totallines="60" coveredbranches="7" totalbranches="8" coveredcodeelements="4" totalcodeelements="4" />
     <class name="Configuration.Helper.SettingsStoreBase" coveredlines="93" coverablelines="93" totallines="198" coveredbranches="35" totalbranches="40" coveredcodeelements="14" totalcodeelements="14" />
     <class name="Configuration.Helper.WebConnectionStringBuilder" coveredlines="114" coverablelines="114" totallines="377" coveredbranches="23" totalbranches="26" coveredcodeelements="42" totalcodeelements="42" />
   </assembly>

@@ -1,22 +1,26 @@
 # Common.Core Change Log
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
-- v2.1.2
+- v2.1.3
+  - Applied code refactoring based on the Changed Risk Anti-Patterns statistics.
+  - Fixed bug in the `Person` model when setting the `BirthDate` property and retrieving it in the `Read` method.
+  - `DataServiceBase.PostResource` and `DataServiceBase.PutResource` methods now accept a null `obj` parameter.
+- [v2.1.2](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.1)
   - See [Refactoring Notes](v2.1.2-Notes.md) for details of the code refactoring based on the January 31, 2024 unit test results.
   - Added an optional `maxDepth` parameter to the `JsonHelper.ReadAppSettings` method with a default value of 2.
   - Added an optional `timeoutSeconds` parameter to the `DataServiceBase` constructor with a default value of 100 seconds.
-- v2.1.1
+- [v2.1.1](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2.0.3)
   - Added a `Find` method to the `IDataFactory` interface.
-- v2.1.0
-  - See [v2.1.0 Notes](v2.1.0-Notes.md) for information on migrating any databases containing data for any of the models mentioned below.
-  - **Breaking Changes:** `Common.Models.Address`, `Common.Interfaces.IPerson` and `Common.Models.Person` have changed to support multi-country address data. 
+- [v2.1.0](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2.0.2)
+  - See [v2.1.0 Notes](v2.1.0-Notes.md) for information on migrating databases containing tables for any of the models mentioned below.
+  - `Common.Models.Address`, `Common.Interfaces.IPerson` and `Common.Models.Person` have changed to support multi-country address data.
   - `Common.Classes.AddressFactory` is removed, use `Common.Classes.AddressFactoryBase` _(which was added in v2.0.2)_ instead.
   - `Common.Models.USState` is removed, use `Common.Models.Province` instead.
   - `Common.Models.USZipCode` is removed, use `Common.Models.Postcode` instead.
   - `AddressDataBase` changed to support setting of the `DefaultCountry` property in derived class constructor.
 - v2.0.3
+  - `AddressFactoryBase` namespace changed from `Common.Data.Classes` to `Common.Core.Classes`
   - Fixed issue in `ModelDataError` when an unsupported annotation is applied to a property. For example `StringLength` for a `DataTime` property will result in an `InvalidCastException` exception.
-  - **Breaking Change:** `AddressFactoryBase` namespace changed from `Common.Data.Classes` to `Common.Core.Classes`
 - v2.0.2
   - Added the `AddressFactoryBase` class to support multi-country address data.
 - v2.0.1

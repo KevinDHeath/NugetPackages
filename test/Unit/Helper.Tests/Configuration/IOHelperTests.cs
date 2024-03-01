@@ -4,7 +4,7 @@ namespace Helper.Tests.Configuration;
 
 public class IOHelperTests
 {
-	private const string cConfigFile = Global.cConfigFileHelper + ConfigFileHelper.cJsonExtension;
+	private const string cConfigFile = Global.cMachineConfig + ConfigFileHelper.cExtension;
 
 	public IOHelperTests()
 	{
@@ -156,7 +156,7 @@ public class IOHelperTests
 		string file = cConfigFile;
 
 		// Act
-		string result1 = IOHelper.ReadAllText( Global.GetLongPath( file ) ); ;
+		string result1 = IOHelper.ReadAllText( Global.GetLongPath( file ) );
 		string result2 = IOHelper.ReadAllText( Global.GetLongPath( file ), Encoding.UTF8 );
 
 		// Assert
@@ -168,7 +168,7 @@ public class IOHelperTests
 	public void ReadAllText_should_not_be_empty()
 	{
 		// Arrange
-		System.Text.Encoding encoding = Encoding.UTF8;
+		Encoding encoding = Encoding.UTF8;
 		string path = Path.Combine( Global.cTestFolder, cConfigFile );
 
 		// Act (with branch coverage)

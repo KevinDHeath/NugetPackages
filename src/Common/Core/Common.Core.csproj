@@ -10,10 +10,10 @@
 
   <!-- Package Information -->
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
-    <Version>2.1.2</Version>
-    <PackageReleaseNotes>* Applied code refactoring based on the unit test results.
-* Added an optional maxDepth parameter to the JsonHelper.ReadAppSettings method with a default value of 2.
-* Added an optional timeoutSeconds parameter to the DataServiceBase constructor with a default value of 100 seconds.</PackageReleaseNotes>
+    <Version>2.1.3</Version>
+    <PackageReleaseNotes>* Applied code refactoring based on the Changed Risk Anti-Patterns statistics.
+* DataServiceBase - PostResource and PutResource methods now accepts a null obj parameter.
+* Fixed bug in the Person model when setting the BirthDate property and retrieving it in the Read method.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>

@@ -3,7 +3,7 @@
 
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
-    <ResultsDirectory>.\TestResults</ResultsDirectory>
+    <ResultsDirectory>..\TestResults\core</ResultsDirectory>
   </RunConfiguration>
 
   <!-- Configuration for loggers -->
@@ -22,6 +22,7 @@
   <xUnit>
     <MethodDisplay>method</MethodDisplay>
     <MethodDisplayOptions>replaceUnderscoreWithSpace,useOperatorMonikers</MethodDisplayOptions>
+    <PreEnumerateTheories>true</PreEnumerateTheories>
   </xUnit>
 
 </RunSettings>

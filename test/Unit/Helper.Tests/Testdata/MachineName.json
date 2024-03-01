@@ -5,7 +5,7 @@
 		"FavoriteActor": "Johnny Depp"
 	},
 	"ConnectionStrings": {
-		"Movies": "DataSource=localhost;Initial Catalog=MovieCatalog;Integrated Security=True"
+		"Movies": "DataSource=localhost;Initial Catalog=CommonData;Integrated Security=True"
 	},
 	"Custom": {
 		"Password": "abc123"
