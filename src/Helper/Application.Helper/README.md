@@ -2,7 +2,7 @@
 [<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Change Log
-- v2.0.3
+- [v2.0.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - `GenericException.FormatException` method for `AggregateException` now logs stack traces from all inner exceptions.
   - Added an optional `configFile` parameter to the `ConsoleApp` constructor. The default is `appsettings.json`
 - [v2.0.2](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.2)

@@ -11,7 +11,7 @@
   <!-- Package Information -->
   <PropertyGroup>
     <Version>2.0.3</Version>
-    <PackageReleaseNotes>* Applied code refactoring based on the Changed Risk Anti-Patterns statistics.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.</PackageReleaseNotes>
     <PackageId>kdheath.Configuration.Helper</PackageId>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
