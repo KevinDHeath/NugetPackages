@@ -1,10 +1,10 @@
-# Helper unit test metrics
-[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
-[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
-[<img src="https://kevindheath.github.io/codecoverage/helpers/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/helpers/html/)
+# Helper.Tests
+[<img src="https://kevindheath.github.io/codecoverage/helper/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
+[<img src="https://kevindheath.github.io/codecoverage/helper/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
+[<img src="https://kevindheath.github.io/codecoverage/helper/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Packages
-<details><summary>Application.Helper - Line: 100%, Branch: 88%</summary>
+<details><summary>Application.Helper - Line: 100%, Branch: 89.1%</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
@@ -22,7 +22,7 @@
 |Configuration.Helper.FileSettingsStore|100%|100%|
 |Configuration.Helper.FolderInfoBase|100%|100%|
 |Configuration.Helper.IOHelper|100%|100%|
-|Configuration.Helper.SettingsSection|100%|100%|
+|Configuration.Helper.SettingsSection|100%|87.5%|
 |Configuration.Helper.SettingsStoreBase|100%|87.5%|
 |Configuration.Helper.WebConnectionStringBuilder|100%|88.4%|
 

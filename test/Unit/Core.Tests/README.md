@@ -1,7 +1,10 @@
-# Common.Core unit test metrics
+# Core.Tests
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_linecoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_branchcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_methodcoverage.svg">](https://kevindheath.github.io/codecoverage/core/html/)
+
+## Packages
+<details><summary>Common.Core</summary>
 
 |**Name**|**Line**|**Branch**|
 |:---|---:|---:|
@@ -29,3 +32,5 @@
 |Common.Core.Models.Postcode|100%||
 |Common.Core.Models.Province|100%||
 |Common.Core.Models.User|100%|100%|
+
+</details>
