@@ -2,16 +2,22 @@
 name: 📦 Upload to NuGet
 
 on:
+  release:
+    types: [published]
+    branches:
+      - main
+    inputs:
+      run-name:
+        description: A name for the run
+        type: string
+        default: ""
+
   workflow_dispatch:
     inputs:
       run-name:
         description: A name for the run
         type: string
         required: true
-      project-folder:
-        description: Folder containing the solution
-        type: string
-        default: .
 
 run-name: ${{ inputs.run-name }}
 
@@ -20,11 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIGURATION: Release
-      ARTIFACT_PATH: ${{ inputs.project-folder }}/local
-
-    defaults:
-      run:
-        working-directory: ${{ inputs.project-folder }}
+      ARTIFACT_PATH: ${{ github.workspace }}/local
 
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +43,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Local-NuGet
+          name: NuGet-Local
           path: ${{ env.ARTIFACT_PATH }}
           retention-days: 5
 
