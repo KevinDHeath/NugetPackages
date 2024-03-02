@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <!-- Package Information -->
-  <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
+  <PropertyGroup>
     <Version>2.1.3</Version>
     <PackageReleaseNotes>* Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.
 * DataServiceBase - PostResource and PutResource methods now accepts a null obj parameter.

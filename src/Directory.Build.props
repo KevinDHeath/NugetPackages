@@ -1,15 +1,9 @@
 <Project>
+  <Import Project="..\Common.Build.props" />
 
   <PropertyGroup>
-    <GeneratePackageOnBuild Condition="'$(Configuration)' != 'Testing'">true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackLocal>..\..\..\local</PackLocal>
-    <!--<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>-->
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <Authors>Kevin Heath</Authors>
-    <Product>NuGet Packages</Product>
-    <Copyright>Copyright © 2024 KevinDHeath</Copyright>
     <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
   </PropertyGroup>
 

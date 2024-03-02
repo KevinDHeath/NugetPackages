@@ -11,9 +11,9 @@ function DotNet_Test {
 
   # Build project and run unit tests
   Set-Location "$PSScriptRoot\$testProject"
-  if( "$PSScriptRoot" -eq "$output" ) { dotnet clean -c Testing | Out-Null }
-  dotnet build -c Testing  --no-restore
-  dotnet test -c Testing --collect:"XPlat Code Coverage" --no-build --results-directory "$results"
+  if( "$PSScriptRoot" -eq "$output" ) { dotnet clean | Out-Null }
+  dotnet build --no-restore
+  dotnet test --collect:"XPlat Code Coverage" --no-build --results-directory "$results"
   Set-Location $PSScriptRoot
 
   # If running locally generate reports
@@ -47,4 +47,4 @@ function DotNet_Test {
 
 # Perform tasks  
 DotNet_Test 'Core.Tests'
-DotNet_Test 'Helper.Tests'
+if( "$PSScriptRoot" -eq "$output" ) { DotNet_Test 'Helper.Tests' }
