@@ -45,6 +45,7 @@ jobs:
     name: Build .NET
     runs-on: ${{ inputs.runs-on }}
     env:
+      BUILD_CONFIGURATION: Release
       ARTIFACT_PATH: ${{ github.workspace }}/local
 
     # Set the default working directory
@@ -64,7 +65,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore -c ${{ env.BUILD_CONFIGURATION }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

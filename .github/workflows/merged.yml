@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  if_merged:
+  Merged:
     if: github.event.pull_request.merged == true
     uses: KevinDHeath/NuGetPackages/.github/workflows/build.yml@main
 

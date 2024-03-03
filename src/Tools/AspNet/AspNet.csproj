@@ -4,8 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <IsPackable>false</IsPackable>
     <AssemblyTitle>Enables GitHub Action in Solution Explorer.</AssemblyTitle>
     <Description>Tools > Options > Projects and Solutions > Web Projects > Show GitHub Actions workflows in Solution Explorer.</Description>
   </PropertyGroup>

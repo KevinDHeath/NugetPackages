@@ -1,19 +1,15 @@
 <Project>
+  <Import Project="..\Common.Build.props" />
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Product>NuGet Packages - Testing</Product>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <IsPackable>false</IsPackable>
-    <RunSettingsFilePath>$(MSBuildProjectDirectory)\unittest.runsettings</RunSettingsFilePath>
-    <NoWarn>CA1707</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <Authors>Kevin Heath</Authors>
-    <Product>NuGet Package Testing</Product>
-    <Copyright>Copyright © 2024 KevinDHeath</Copyright>
+  <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
+    <RunSettingsFilePath>$(MSBuildProjectDirectory)\unittest.runsettings</RunSettingsFilePath>
+    <NoWarn>CA1707</NoWarn> <!-- Identifiers should not contain underscores -->
   </PropertyGroup>
 
 </Project>

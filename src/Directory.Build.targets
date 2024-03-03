@@ -1,14 +1,10 @@
 <Project>
 
-  <!-- C# Compiler Options -->
-  <PropertyGroup>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-  </PropertyGroup>
-
   <!-- CI builds -->
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
+    <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
   </PropertyGroup>
 
   <!-- Package Information -->
@@ -16,7 +12,6 @@
     <PackageOutputPath>$(PackLocal)</PackageOutputPath>
     <PackageIcon>icon.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
   </PropertyGroup>
 
   <ItemGroup Condition="'$(PackageReadmeFile)' != ''">

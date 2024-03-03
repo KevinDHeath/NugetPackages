@@ -4,8 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <IsPackable>false</IsPackable>
     <!-- <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <AppendTargetFrameworkToOutputPath Condition="'$(Configuration)'=='Debug'">false</AppendTargetFrameworkToOutputPath> -->
