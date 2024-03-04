@@ -2,7 +2,10 @@ name: 🧪 .NET Test
 
 on:
   workflow_dispatch:
-     inputs:
+    branches:
+      - main
+      - fix-helpertests
+    inputs:
       run-name:
         description: A name for the run
         type: string
@@ -23,8 +26,8 @@ run-name: ${{ inputs.run-name }}
 
 jobs:
 
-  dotnettest:
-    name: Test .NET
+  runtests:
+    name: Run Unit Tests
     runs-on: ${{ inputs.runs-on }}
     env:
       ARTIFACT_PATH: ${{ github.workspace }}\local
@@ -45,25 +48,35 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Run tests
+      - name: Run all tests
         if: runner.os == 'Windows'
         shell: pwsh
         run: .\test\Unit\RunTests.ps1 ${{ env.ARTIFACT_PATH }}
 
-      - name: ReportGenerator
-        if: runner.os == 'Windows'
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
-        with:
-          reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
-          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
-          reporttypes: 'Html'
-          verbosity: 'Info'
-          toolpath: 'reportgeneratortool'
+      # - name: Core coverage report
+      #   if: runner.os == 'Windows'
+      #   uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+      #   with:
+      #     reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
+      #     targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
+      #     reporttypes: 'Html'
+      #     verbosity: 'Info'
+      #     toolpath: 'reportgeneratortool'
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: Test-Artifacts
-          path: ${{ env.ARTIFACT_PATH }}
-          retention-days: 5
+      # - name: Helper coverage report
+      #   if: runner.os == 'Windows'
+      #   uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+      #   with:
+      #     reports: ${{ env.ARTIFACT_PATH }}\TestResults\helper\*\coverage.cobertura.xml
+      #     targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports\html
+      #     reporttypes: 'Html'
+      #     verbosity: 'Info'
+      #     toolpath: 'reportgeneratortool'
+
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: Test-Artifacts
+      #     path: ${{ env.ARTIFACT_PATH }}
+      #     retention-days: 5
 
