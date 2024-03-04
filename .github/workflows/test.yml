@@ -43,7 +43,7 @@ jobs:
         run: mkdir ${{ env.ARTIFACT_PATH }}
 
       - name: Restore dependencies
-        run: dotnet restore /p:Configuration="Testing"
+        run: dotnet restore
 
       - name: Run tests
         if: runner.os == 'Windows'
