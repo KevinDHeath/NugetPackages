@@ -1,5 +1,5 @@
 # Unit Testing
-A _unit test_ helps write simpler, readable code and provides a means of verification for refactoring efforts. Test Driven Development _(TDD)_ is when you write a _unit test_ before the code it's meant to check. 
+A _unit test_ helps write simpler, readable code and provides a means of verification for refactoring efforts. Test Driven Development _(TDD)_ is when you write a _unit test_ before the code it's meant to check.
 - [Test Driven Development](https://deviq.com/practices/test-driven-development)
 - [About xUnit.net](https://xunit.net/)
 - [Fluent assertions](https://fluentassertions.com/tips/)

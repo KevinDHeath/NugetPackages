@@ -7,9 +7,6 @@ The package documentation can be found at [.NET Helper Packages](https://kevindh
 
 Framework: .NET 8.0
 
-Dependencies:\
-&nbsp;None
-
 References:
 - [Get Application Version in .NET Core](https://edi.wang/post/2018/9/27/get-app-version-net-core)
 - [Async and Await in C#](https://www.c-sharpcorner.com/article/async-and-await-in-c-sharp/)

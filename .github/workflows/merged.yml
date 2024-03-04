@@ -1,5 +1,5 @@
 # This workflow is triggered when a pull request is merged and closed
-name: Pull Request Merged
+name: ♾️ Pull Request Merged
 
 on:
   pull_request:

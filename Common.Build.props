@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Authors>Kevin Heath</Authors>
     <Product>NuGet Packages</Product>
-    <Copyright>Copyright © 2024 KevinDHeath</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::Now.Year) KevinDHeath</Copyright>
     <IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)' != 'Release'">false</IncludeSourceRevisionInInformationalVersion>
     <EnableWindowsTargeting Condition="'$(GITHUB_ACTIONS)' == 'true'">true</EnableWindowsTargeting>
   </PropertyGroup>

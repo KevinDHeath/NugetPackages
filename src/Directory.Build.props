@@ -4,7 +4,6 @@
   <PropertyGroup>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackLocal>..\..\..\local</PackLocal>
-    <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
   </PropertyGroup>
 
 </Project>

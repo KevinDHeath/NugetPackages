@@ -1,10 +1,11 @@
 <Project>
 
   <!-- CI builds -->
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+    <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
-    <EmbedAllSources>True</EmbedAllSources> <!-- NuGet Health: Source Links -->
+    <EmbedAllSources>true</EmbedAllSources> <!-- NuGet Health: Source Links -->
   </PropertyGroup>
 
   <!-- Package Information -->

@@ -1,4 +1,4 @@
-# Uploads the release packages to NuGet
+# This workflow is triggered when a release is published
 name: 📦 Upload to NuGet
 
 on:
@@ -22,7 +22,7 @@ on:
 run-name: ${{ inputs.run-name }}
 
 jobs:
-  deploy:
+  upload:
     runs-on: ubuntu-latest
     env:
       BUILD_CONFIGURATION: Release
