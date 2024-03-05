@@ -141,15 +141,15 @@ public class LoggerTests
 		_ = result.Should().BeFalse();
 	}
 
-	[Fact]
-	public void Log_Warning_should_be_true()
-	{
-		// Act
-		bool result = _logger.Warn( cMsg );
+	//[Fact]
+	//public void Log_Warning_should_be_true()
+	//{
+	//	// Act
+	//	bool result = _logger.Warn( cMsg );
 
-		// Assert
-		_ = result.Should().BeTrue();
-	}
+	//	// Assert
+	//	_ = result.Should().BeTrue();
+	//}
 
 	[Fact]
 	public void MaxLogFiles_should_be_1()

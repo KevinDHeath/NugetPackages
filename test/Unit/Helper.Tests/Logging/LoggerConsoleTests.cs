@@ -19,6 +19,7 @@ public class LoggerConsoleTests
 		_ = _logger.Info( cArg, null );  // Info with null argument
 		_ = _logger.Info( cArg, cMsg );  // Info with single argument
 		_ = _logger.Info( "", cMsg );    // Info with empty string and single argument
+		_ = _logger.Warn( cMsg );        // Warn with message
 	}
 
 	[Fact]
