@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
     branches:
       - main
-      - fix-helpertests
     inputs:
       run-name:
         description: A name for the run
