@@ -1,8 +1,26 @@
 ﻿namespace Helper.Tests.Logging;
 
+[Collection( "LoggerTests" )]
 public class LoggerEventTests : LoggerEvent
 {
 	private const string cTimerStarted = "Timer started";
+	private readonly StringWriter _sw = new();
+
+	public LoggerEventTests()
+	{
+		Console.SetOut( _sw );
+	}
+
+	~LoggerEventTests()
+	{
+		_sw.Flush();
+		_sw.Close();
+		_sw.Dispose();
+
+		// Recover the standard output stream
+		StreamWriter so = new( Console.OpenStandardOutput() );
+		Console.SetOut( so );
+	}
 
 	[Fact]
 	public void LoggerEventArgs_message_should_not_be_empty()

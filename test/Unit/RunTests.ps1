@@ -47,4 +47,4 @@ function DotNet_Test {
 
 # Perform tasks  
 DotNet_Test 'Core.Tests'
-if( "$PSScriptRoot" -eq "$output" ) { DotNet_Test 'Helper.Tests' }
+DotNet_Test 'Helper.Tests'

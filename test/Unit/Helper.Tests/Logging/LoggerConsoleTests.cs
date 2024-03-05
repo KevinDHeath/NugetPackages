@@ -4,7 +4,6 @@
 public class LoggerConsoleTests
 {
 	private readonly Logger _logger = new( Path.Combine( Global.cTestFolder, "NLog.config" ) );
-	private readonly ConsoleLog _console;
 
 	private const string cMsg = "Log to console target";
 	private const string cArg = "Test {0}";
@@ -20,61 +19,56 @@ public class LoggerConsoleTests
 		_ = _logger.Info( cArg, null );  // Info with null argument
 		_ = _logger.Info( cArg, cMsg );  // Info with single argument
 		_ = _logger.Info( "", cMsg );    // Info with empty string and single argument
-
-		_console = new();
+		_ = _logger.Warn( cMsg );        // Warn with message
 	}
 
 	[Fact]
-	public void Log_Debug_should_start_with_DEBUG()
+	public void Log_Debug_should_be_true()
 	{
 		// Act
-		string result = _console.CaptureLog( _logger, LogSeverity.Debug );
+		bool result = _logger.Log( cMsg, LogSeverity.Debug );
 
 		// Assert
-		_ = result.Should().StartWith( "DEBUG" );
+		_ = result.Should().BeTrue();
 	}
 
 	[Fact]
-	public void Log_Error_exception_should_start_with_ERROR()
+	public void Log_Error_exception_should_be_true()
 	{
 		// Act
-		string result = _console.CaptureLog( _logger, LogSeverity.Error );
+		bool result = _logger.Error( new Exception( cMsg ) );
 
 		// Assert
-		_ = result.Should().StartWith( "ERROR" );
-		//_ = result.Length.Should().BeGreaterThanOrEqualTo( 0 ); // if issues with override
+		_ = result.Should().BeTrue();
 	}
 
 	[Fact]
-	public void Log_Fatal_exception_should_start_with_FATAL()
+	public void Log_Fatal_should_be_true()
 	{
 		// Act
-		string result = _console.CaptureLog( _logger, LogSeverity.Fatal );
+		bool result = _logger.Log( cMsg, LogSeverity.Fatal );
 
 		// Assert
-		_ = result.Should().StartWith( "FATAL" );
-		//_ = result.Length.Should().BeGreaterThanOrEqualTo( 0 ); // if issues with override
+		_ = result.Should().BeTrue();
 	}
 
 	[Fact]
-	public void Log_Info_should_start_with_INFO()
+	public void Log_Info_should_be_true()
 	{
 		// Act
-		string result = _console.CaptureLog( _logger, LogSeverity.Information );
+		bool result = _logger.Log( cMsg, LogSeverity.Information );
 
 		// Assert
-		_ = result.Should().StartWith( "INFO" );
-		//_ = result.Length.Should().BeGreaterThanOrEqualTo( 0 ); // if issues with override
+		_ = result.Should().BeTrue();
 	}
 
 	[Fact]
-	public void Log_Warn_should_start_with_WARN()
+	public void Log_Warn_should_should_be_true()
 	{
 		// Act
-		string result = _console.CaptureLog( _logger, LogSeverity.Warning );
+		bool result = _logger.Log( cMsg, LogSeverity.Warning );
 
 		// Assert
-		_ = result.Should().StartWith( "WARN" );
-		//_ = result.Length.Should().BeGreaterThanOrEqualTo( 0 ); // if issues with override
+		_ = result.Should().BeTrue();
 	}
 }

@@ -3,15 +3,24 @@
 public class ConsoleAppTests
 {
 	private readonly ConsoleApp _testApp = new( detectDebugMode: false ) { IsUnitTest = true };
+	private readonly StringWriter _sw = new ();
 
 	public ConsoleAppTests()
 	{
-		_testApp.StartApp();
+		Console.SetOut( _sw );
+		_ = _testApp.StartApp();
 	}
 
 	~ConsoleAppTests()
 	{
 		_testApp.StopApp();
+		_sw.Flush();
+		_sw.Close();
+		_sw.Dispose();
+
+		// Recover the standard output stream
+		StreamWriter so = new( Console.OpenStandardOutput() );
+		Console.SetOut( so );
 	}
 
 	[Fact]

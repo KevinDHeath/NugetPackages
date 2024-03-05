@@ -13,7 +13,6 @@ public class LoggerTests
 	public LoggerTests()
 	{
 		// For branch coverage
-
 		Logger blackhole = new( Path.Combine( Global.cTestFolder, "NLogOff.config" ) );
 		Exception ex = new();
 		_ = blackhole.Debug( cMsg );      // Cannot log Debug
@@ -29,8 +28,7 @@ public class LoggerTests
 		_ = blackhole.Fatal( cMsg );      // Cannot log Fatal
 		_ = blackhole.Fatal( cArg, "i" ); // Cannot log Fatal with single argument
 
-		_logger = new();
-		_logger.MaxLogFiles = 1;
+		_logger = new() { MaxLogFiles = 1 };
 	}
 
 	[Fact]
@@ -141,16 +139,6 @@ public class LoggerTests
 
 		// Assert
 		_ = result.Should().BeFalse();
-	}
-
-	[Fact]
-	public void Log_Warning_should_be_true()
-	{
-		// Act
-		bool result = _logger.Warn( cMsg );
-
-		// Assert
-		_ = result.Should().BeTrue();
 	}
 
 	[Fact]

@@ -1,19 +1,14 @@
-name: 🧪 .NET Test
+name: 🚥 Run Tests
 
 on:
   workflow_dispatch:
-     inputs:
+    branches:
+      - main
+    inputs:
       run-name:
         description: A name for the run
         type: string
         required: true
-      runs-on:
-        description: The runner type to use
-        type: choice
-        options:
-        - ubuntu-latest
-        - windows-latest
-        default: windows-latest
       project-folder:
         description: Folder containing the solution
         type: string
@@ -23,9 +18,9 @@ run-name: ${{ inputs.run-name }}
 
 jobs:
 
-  dotnettest:
-    name: Test .NET
-    runs-on: ${{ inputs.runs-on }}
+  unittests:
+    name: Unit Tests
+    runs-on: windows-latest
     env:
       ARTIFACT_PATH: ${{ github.workspace }}\local
 
@@ -40,22 +35,30 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create artifacts folder
-        run: mkdir ${{ env.ARTIFACT_PATH }}
+        shell: pwsh
+        run: mkdir ${{ env.ARTIFACT_PATH }} > $null
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore /property:Configuration=Testing
 
-      - name: Run tests
-        if: runner.os == 'Windows'
+      - name: Run all tests
         shell: pwsh
         run: .\test\Unit\RunTests.ps1 ${{ env.ARTIFACT_PATH }}
 
-      - name: ReportGenerator
-        if: runner.os == 'Windows'
+      - name: Core coverage report
         uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
         with:
           reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
           targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
+          reporttypes: 'Html'
+          verbosity: 'Info'
+          toolpath: 'reportgeneratortool'
+
+      - name: Helper coverage report
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        with:
+          reports: ${{ env.ARTIFACT_PATH }}\TestResults\helper\*\coverage.cobertura.xml
+          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports\html
           reporttypes: 'Html'
           verbosity: 'Info'
           toolpath: 'reportgeneratortool'
