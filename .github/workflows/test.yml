@@ -53,30 +53,30 @@ jobs:
         shell: pwsh
         run: .\test\Unit\RunTests.ps1 ${{ env.ARTIFACT_PATH }}
 
-      # - name: Core coverage report
-      #   if: runner.os == 'Windows'
-      #   uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
-      #   with:
-      #     reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
-      #     targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
-      #     reporttypes: 'Html'
-      #     verbosity: 'Info'
-      #     toolpath: 'reportgeneratortool'
+      - name: Core coverage report
+        if: runner.os == 'Windows'
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        with:
+          reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
+          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
+          reporttypes: 'Html'
+          verbosity: 'Info'
+          toolpath: 'reportgeneratortool'
 
-      # - name: Helper coverage report
-      #   if: runner.os == 'Windows'
-      #   uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
-      #   with:
-      #     reports: ${{ env.ARTIFACT_PATH }}\TestResults\helper\*\coverage.cobertura.xml
-      #     targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports\html
-      #     reporttypes: 'Html'
-      #     verbosity: 'Info'
-      #     toolpath: 'reportgeneratortool'
+      - name: Helper coverage report
+        if: runner.os == 'Windows'
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        with:
+          reports: ${{ env.ARTIFACT_PATH }}\TestResults\helper\*\coverage.cobertura.xml
+          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports\html
+          reporttypes: 'Html'
+          verbosity: 'Info'
+          toolpath: 'reportgeneratortool'
 
-      # - name: Upload artifacts
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Test-Artifacts
-      #     path: ${{ env.ARTIFACT_PATH }}
-      #     retention-days: 5
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test-Artifacts
+          path: ${{ env.ARTIFACT_PATH }}
+          retention-days: 5
 
