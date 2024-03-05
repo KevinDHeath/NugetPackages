@@ -3,7 +3,6 @@
   <!-- CI builds -->
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
-    <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <DeterministicSourcePaths>true</DeterministicSourcePaths> <!-- NuGet Health: Deterministic -->
     <EmbedAllSources>true</EmbedAllSources> <!-- NuGet Health: Source Links -->
   </PropertyGroup>
