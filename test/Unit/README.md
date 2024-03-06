@@ -24,6 +24,7 @@ Dependencies:\
 
 To install or update the ReportGenerator package as a global .NET tool use  the following `powershell` commands:
 ```shell
+dotnet tool list --global
 dotnet tool install --global dotnet-reportgenerator-globaltool
 
 dotnet tool update --global dotnet-reportgenerator-globaltool
