@@ -1,11 +1,18 @@
 ## About
 The Logging.Helper package is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Logging.Helper/README.md) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Logging.Helper#logginghelper) for all release notes.
 
 ## Key Features
 - Supports .NET Framework, .NET Core, and .NET 5.0+
 - By default, logging will only be output to the console window.
+
+## Main Types
+- `Logger` - Class that provides common logging properties and methods.
+- `LoggerEvent` - Base class to handle logging using an event handler.
+- `LoggerEventArgs` - Common event arguments to use when logging a message.
+
+See [.NET Helper Packages](https://kevindheath.github.io/nuget/html/N_Logging_Helper.htm) for technical documentation.
 
 ## How to Use
 To use in a C# program:
@@ -84,11 +91,6 @@ Example XML for a stand-alone NLog.config:
   </rules>
 </nlog>
 ```
-
-## Main Types
-- `Logger` - Class that provides common logging properties and methods.
-- `LoggerEvent` - Base class to handle logging using an event handler.
-- `LoggerEventArgs` - Common event arguments to use when logging a message.
 
 ## Feedback
 This is provided as open source under the MIT license.\

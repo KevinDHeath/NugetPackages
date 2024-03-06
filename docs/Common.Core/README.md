@@ -1,7 +1,7 @@
 ## About
-The Common Core package contains useful classes and interfaces for .NET components.
+The Common.Core package provides classes and interfaces for .NET components.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Core) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Core#commoncore) for all release notes.
 
 ## Key Features
 It provides:
@@ -14,8 +14,10 @@ It provides:
 - `Classes.JsonHelper` - Provides methods for serialization of data files and custom object types.
 - `Classes.ModelBase` - Base class for models that require the `INotifyPropertyChanged` interface.
 - `Classes.ModelDataError` - Base class for models _(and view models)_ that require the `INotifyPropertyChanged` and `INotifyDataErrorInfo` interfaces.
-- `Converters.JsonBoolean` - Additionally converts `1/0`. `y/n`, or 'yes/no` string values to a boolean.
+- `Converters.JsonBoolean` - Additionally converts `1/0`. `y/n`, or `yes/no` string values to a boolean.
 - `Converters.StringConverter` - Provides Try/Parse static methods to convert strings to other data types.
+
+See [.NET Helper Packages](https://kevindheath.github.io/nuget/html/R_Project_NuGetPackages.htm) for technical documentation.
 
 ## Feedback
 This is provided as open source under the MIT license.\

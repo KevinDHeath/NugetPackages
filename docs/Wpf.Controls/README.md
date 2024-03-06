@@ -1,21 +1,10 @@
 ## About
 The Wpf.Controls package contains classes to create elements, known as controls, that enables a user to interact with an application.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Wpf/Controls/README.md) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Wpf/Controls#wpfcontrols) for all release notes.
 
 ## Key Features
 Custom controls for user interface elements such as `ComboBoxes`, `DatePickers` and `TextBoxes`.
-
-## How to Use
-To include the controls in a WPF project:
-- Add a reference to the `Common.Wpf.Controls` package.
-- Include the required controls in a `.xaml` file.
-
-```xml
-xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
-'''
-<cc:NumericSpinner Step="2" ... />
-```
 
 ## Main Types
 - `ComboBox` - Extension to the System.Windows.Controls.ComboBox class.
@@ -27,6 +16,19 @@ xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
 - `PasswordBoxExtend` - Extends the `PasswordBox` control to allow binding of the `Password` property.
 - `SearchTextBox` - Control to implement the entry of search criteria in a TextBox.
 - `SortableListView` - Control to implement the sorting and filtering of a ListView.
+
+See [WPF Packages](https://kevindheath.github.io/shfb/html/9488fab8-02de-4046-a582-c44f4c2a945f.htm) for technical documentation.
+
+## How to Use
+To include the controls in a WPF project:
+- Add a reference to the `Common.Wpf.Controls` package.
+- Include the required controls in a `.xaml` file.
+
+```xml
+xmlns:cc="clr-namespace:Common.Wpf.Controls;assembly=Common.Wpf.Controls"
+'''
+<cc:NumericSpinner Step="2" ... />
+```
 
 ## Feedback
 This is provided as open source under the MIT license.\

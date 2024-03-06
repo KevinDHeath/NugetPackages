@@ -15,7 +15,7 @@
 * DataServiceBase - PostResource and PutResource methods now accepts a null obj parameter.
 * Fixed bug in the Person model when setting the BirthDate property and retrieving it in the Read method.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
-    <PackageDescription>The Common Core package contains classes and interfaces for .NET components.</PackageDescription>
+    <PackageDescription>The common core provides classes and interfaces for .NET components.</PackageDescription>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
     <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

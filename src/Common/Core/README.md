@@ -1,5 +1,7 @@
-# Common.Core Change Log
+# Common.Core
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
+
+## Change Log
 
 - [v2.1.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.

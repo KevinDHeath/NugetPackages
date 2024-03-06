@@ -1,10 +1,17 @@
 ## About
 The Wpf.Resources package contains Windows Desktop resources which can be includes in .NET WPF projects.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Wpf/Resources/README.md) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Wpf/Resources#wpfresources) for all release notes.
 
 ## Key Features
 Custom styles for `Buttons`, `CheckBoxes`, `ListViews`, `TabControls`, and `TextBoxes`.
+
+## Main Types
+- `RelayCommand` - Classes to relay functionality to other objects by invoking delegates.
+- `ConverterBase` - Base class for `IValueConverter` classes.
+- `RuleBase` - Base class for validation rules.
+
+See [WPF Packages](https://kevindheath.github.io/shfb/html/9488fab8-02de-4046-a582-c44f4c2a945f.htm) for technical documentation.
 
 ## How to Use
 To include the resources in a WPF project:
@@ -18,11 +25,6 @@ To include the resources in a WPF project:
   </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
 ```
-
-## Main Types
-- `RelayCommand` - Classes to relay functionality to other objects by invoking delegates.
-- `ConverterBase` - Base class for `IValueConverter` classes.
-- `RuleBase` - Base class for validation rules.
 
 ## Feedback
 This is provided as open source under the MIT license.\

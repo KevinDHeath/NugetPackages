@@ -1,7 +1,7 @@
 ## About
 The Application.Helper package is a light-weight platform for .NET console applications.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Application.Helper/README.md) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Application.Helper#applicationhelper) for all release notes.
 
 ## Key Features
 - Supports .NET Framework, .NET Core, and .NET 5.0+
@@ -13,6 +13,12 @@ It provides:
 - Methods to suspend and resume elapse time recording are available.
 - Indication of whether the program is running in debug mode.
 - Indication of whether help was requested from the command line arguments.
+
+## Main Types
+- `ConsoleApp` - Helper class for Console Applications.
+- `GenericException` - Represents errors that occur during application execution.
+
+See [.NET Helper Packages](https://kevindheath.github.io/nuget/html/N_Application_Helper.htm) for technical documentation.
 
 ## How to Use
 To provide help information about the program:
@@ -61,10 +67,6 @@ Result.: Success
 
 Press any key to continue . . .
 ```
-
-## Main Types
-- `ConsoleApp` - Helper class for Console Applications.
-- `GenericException` - Represents errors that occur during application execution.
 
 ## Feedback
 This is provided as open source under the MIT license.\

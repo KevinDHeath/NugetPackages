@@ -1,4 +1,4 @@
-# Configuration Helper
+# Configuration.Helper
 [<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Change Log

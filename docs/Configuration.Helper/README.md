@@ -1,7 +1,14 @@
 ## About
 The Configuration.Helper package is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1, the newer style of JSON files.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Configuration.Helper/README.md) for release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Configuration.Helper#configurationhelper) for all release notes.
+
+## Main Types
+- `ConfigFileHelper` - Helper class for Configuration file access.
+- `IOHelper` - Helper class for `System.IO` operations.
+- `WebConnectionStringBuilder` - Provides a simple way to create and manage the contents of connection strings used for a Microsoft Dataverse connection.
+
+See [.NET Helper Packages](https://kevindheath.github.io/nuget/html/N_Configuration_Helper.htm) for technical documentation.
 
 ## How to Use
 - The naming of the standard sections **`AppSettings`** and **`ConnectionStrings`** along with any custom sections are case _insensitive_.
@@ -65,11 +72,6 @@ var password = config.GetSection( "custom" ).GetSetting( "password" );
 var ok = config.AddSetting( "FavouriteActress", "Julia Roberts" );
 ok = config.AddSetting( @"favouriteactress", "Angelina Jolie" );
 ```
-
-## Main Types
-- `ConfigFileHelper` - Helper class for Configuration file access.
-- `IOHelper` - Helper class for `System.IO` operations.
-- `WebConnectionStringBuilder` - Provides a simple way to create and manage the contents of connection strings used for a Microsoft Dataverse connection.
 
 ## Feedback
 This is provided as open source under the MIT license.\
