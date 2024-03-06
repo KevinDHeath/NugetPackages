@@ -49,24 +49,28 @@ jobs:
         uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
         with:
           reports: ${{ env.ARTIFACT_PATH }}\TestResults\core\*\coverage.cobertura.xml
-          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports\html
-          reporttypes: 'Html'
-          verbosity: 'Info'
+          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\core\reports
+          reporttypes: 'Html;Badges;MarkdownSummaryGithub'
+          historydir: ${{ env.ARTIFACT_PATH }}\TestResults\core\history
+          verbosity: 'Warning'
+          customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
           toolpath: 'reportgeneratortool'
 
       - name: Helper coverage report
         uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
         with:
           reports: ${{ env.ARTIFACT_PATH }}\TestResults\helper\*\coverage.cobertura.xml
-          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports\html
-          reporttypes: 'Html'
-          verbosity: 'Info'
+          targetdir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\reports
+          reporttypes: 'Html;Badges;MarkdownSummaryGithub'
+          historydir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\history
+          verbosity: 'Warning'
+          customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
           toolpath: 'reportgeneratortool'
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Test-Artifacts
+          name: UnitTest-Artifacts
           path: ${{ env.ARTIFACT_PATH }}
           retention-days: 5
 
