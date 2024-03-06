@@ -7,7 +7,7 @@ function DotNet_Test {
   $history = "$results\history"
 
   # Build projects and run unit tests
-  Push-Location "$output\$testProject"
+  Push-Location "$PSScriptRoot\$testProject"
   if( "$PSScriptRoot" -eq "$output" ) { dotnet clean | Out-Null }
   dotnet build --no-restore
   if( $LASTEXITCODE -gt 0 ) { Pop-Location; exit 1 }
