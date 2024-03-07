@@ -1,7 +1,7 @@
 ## About
 The Common.Core package provides classes and interfaces for .NET components.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Core#commoncore) for all release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Common/Core#change-log) for all release notes.
 
 ## Key Features
 It provides:
