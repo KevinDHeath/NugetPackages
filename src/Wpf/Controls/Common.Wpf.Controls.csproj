@@ -14,6 +14,7 @@
     <PackageReleaseNotes>* Minimum version of kdheath.Wpf.Resources dependency changed to 2.0.1.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
+    <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

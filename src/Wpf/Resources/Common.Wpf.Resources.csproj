@@ -16,6 +16,7 @@
     <PackageReleaseNotes>* Added attribute validations for NoFutureDate and a cEmail constant for regular expressions.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
+    <PackageTags>wpf-resource;wpf-ui;wpf;style;styles;theme;xaml;csharp;dotnet</PackageTags>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
     <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>

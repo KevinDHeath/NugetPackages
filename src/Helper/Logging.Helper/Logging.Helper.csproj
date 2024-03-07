@@ -12,6 +12,7 @@
     <PackageReleaseNotes>* Applied code refactoring based on the unit test results.</PackageReleaseNotes>
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
+    <PackageTags>logging;helper;nlog;console;csharp;netstandard;dotnet</PackageTags>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
     <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
