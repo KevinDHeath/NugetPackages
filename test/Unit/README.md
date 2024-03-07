@@ -3,6 +3,7 @@ A _unit test_ helps write simpler, readable code and provides a means of verific
 - [Test Driven Development](https://deviq.com/practices/test-driven-development)
 - [About xUnit.net](https://xunit.net/)
 - [Fluent assertions](https://fluentassertions.com/tips/)
+- [How to unit test Internal classes in .NET Core](https://anthonygiretti.com/2018/06/27/how-to-unit-test-internal-classes-in-net-core-applications/)
 
 Dependencies:\
 &nbsp;[FluentAssertions](https://www.nuget.org/packages/FluentAssertions)\

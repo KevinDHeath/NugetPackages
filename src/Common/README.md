@@ -2,15 +2,9 @@
 The package documentation can be found at [.NET Helper Packages](https://kevindheath.github.io/nuget).
 
 ## Common Core
-[![NuGet](https://img.shields.io/nuget/v/kdheath.Common.Core.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)
-[![NuGet](https://img.shields.io/nuget/dt/kdheath.Common.Core.svg)](https://www.nuget.org/packages/kdheath.Application.Helper)
-
-Framework: .NET 8.0
-
 References:
 - [Get Application Version in .NET Core](https://edi.wang/post/2018/9/27/get-app-version-net-core)
 - [Async and Await in C#](https://www.c-sharpcorner.com/article/async-and-await-in-c-sharp/)
 - [Understanding and Using ConfigureAwait](https://dev.to/this-is-learning/understanding-and-using-configureawait-in-asynchronous-programming-2da3)
 - [Null Forgiving Operator in C#](https://jeremybytes.blogspot.com/2022/07/null-forgiving-operator-in-c.html)
 - [Serialize Interface Instances With System.Text.Json](https://khalidabuhakmeh.com/serialize-interface-instances-system-text-json)
-- [How to unit test Internal classes in .NET Core](https://anthonygiretti.com/2018/06/27/how-to-unit-test-internal-classes-in-net-core-applications/)

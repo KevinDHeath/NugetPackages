@@ -1,7 +1,7 @@
 ## About
 The Logging.Helper package is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.
 
-See [Change Log](https://github.com/KevinDHeath/NuGetPackages/tree/main/src/Helper/Logging.Helper#change-log) for all release notes.
+See [Change Log](https://github.com/KevinDHeath/NuGetPackages/blob/main/src/Helper/Logging.Helper/README.md) for all release notes.
 
 ## Key Features
 - Supports .NET Framework, .NET Core, and .NET 5.0+
