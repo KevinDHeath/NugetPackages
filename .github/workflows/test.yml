@@ -53,6 +53,7 @@ jobs:
           reporttypes: 'Html;Badges;MarkdownSummaryGithub'
           historydir: ${{ env.ARTIFACT_PATH }}\TestResults\core\history
           verbosity: 'Warning'
+          title: 'Core.Tests'
           customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
           toolpath: 'reportgeneratortool'
 
@@ -64,6 +65,7 @@ jobs:
           reporttypes: 'Html;Badges;MarkdownSummaryGithub'
           historydir: ${{ env.ARTIFACT_PATH }}\TestResults\helper\history
           verbosity: 'Warning'
+          title: 'Helper.Tests'
           customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
           toolpath: 'reportgeneratortool'
 
