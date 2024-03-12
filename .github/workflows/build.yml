@@ -1,5 +1,5 @@
 # This is a reusable workflow to build a .NET project or solution
-name: .NET Build
+name: 🚧 .NET Build
 
 on:
   # Called from another workflow passing input values
@@ -38,15 +38,15 @@ on:
         default: .
 
 run-name: ${{ inputs.run-name }}
+env:
+  BUILD_CONFIGURATION: Release
+  ARTIFACT_PATH: ${{ github.workspace }}/local
 
 jobs:
 
-  dotnetbuild:
+  dotnet-build:
     name: Build .NET
     runs-on: ${{ inputs.runs-on }}
-    env:
-      BUILD_CONFIGURATION: Release
-      ARTIFACT_PATH: ${{ github.workspace }}/local
 
     # Set the default working directory
     defaults:
@@ -61,16 +61,8 @@ jobs:
       - name: Create artifacts folder
         run: mkdir ${{ env.ARTIFACT_PATH }}
 
-      - name: Restore build dependencies
-        run: dotnet restore
+      - name: Restore dependencies
+        run: dotnet restore /property:Configuration=${{ env.BUILD_CONFIGURATION }}
 
-      - name: Build
+      - name: .NET build
         run: dotnet build --no-restore -c ${{ env.BUILD_CONFIGURATION }}
-
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Build-Artifacts
-      #     path: ${{ env.ARTIFACT_PATH }}
-      #     retention-days: 5
-

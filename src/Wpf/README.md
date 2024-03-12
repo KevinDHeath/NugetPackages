@@ -1,5 +1,4 @@
 # Wpf Packages
-The Wpf packages documentation for .NET Windows Presentation Foundation applications can be found at [WPF Packages](https://kevindheath.github.io/shfb).
 
 ## Controls
 References:

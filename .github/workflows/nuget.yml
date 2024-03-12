@@ -1,16 +1,9 @@
 # This workflow is triggered when a release is published
-name: 📦 Upload to NuGet
+name: 📦 Upload Packages
 
 on:
   release:
     types: [published]
-    branches:
-      - main
-    inputs:
-      run-name:
-        description: A name for the run
-        type: string
-        default: ""
 
   workflow_dispatch:
     inputs:
@@ -18,15 +11,21 @@ on:
         description: A name for the run
         type: string
         required: true
+      nuget-push:
+        description: Push to NuGet
+        type: boolean
+        default: false
 
 run-name: ${{ inputs.run-name }}
+env:
+  BUILD_CONFIGURATION: Release
+  ARTIFACT_PATH: ${{ github.workspace }}/local
+  nuget-push: ${{ github.event.release != null || inputs.nuget-push }}
 
 jobs:
   upload:
+    name: Packages Upload
     runs-on: ubuntu-latest
-    env:
-      BUILD_CONFIGURATION: Release
-      ARTIFACT_PATH: ${{ github.workspace }}/local
 
     steps:
       - uses: actions/checkout@v4
@@ -34,8 +33,8 @@ jobs:
       - name: Create artifacts folder
         run: mkdir ${{ env.ARTIFACT_PATH }}
 
-      - name: .NET restore
-        run: dotnet restore
+      - name: Restore dependencies
+        run: dotnet restore /property:Configuration=${{ env.BUILD_CONFIGURATION }}
 
       - name: .NET build
         run: dotnet build --no-restore -c ${{ env.BUILD_CONFIGURATION }}
@@ -43,11 +42,12 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: NuGet-Local
+          name: NuGetPackages-Local
           path: ${{ env.ARTIFACT_PATH }}
           retention-days: 5
 
       - name: NuGet push
+        if: env.nuget-push == 'true'
         env:
           NUGET_URL: "https://api.nuget.org/v3/index.json"
         shell: pwsh

@@ -1,7 +1,5 @@
-# Common
-The package documentation can be found at [.NET Helper Packages](https://kevindheath.github.io/nuget).
+# Common Core
 
-## Common Core
 References:
 - [Get Application Version in .NET Core](https://edi.wang/post/2018/9/27/get-app-version-net-core)
 - [Async and Await in C#](https://www.c-sharpcorner.com/article/async-and-await-in-c-sharp/)

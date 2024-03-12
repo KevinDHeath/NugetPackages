@@ -17,10 +17,11 @@ function DotNet_Test {
 
   # Copy the oldest 3 history files
   $wrk = "$PSScriptRoot\$testProject\Testdata\history"
-  if( !(Test-Path "$history") ) { New-Item -ItemType Directory -Path "$history" | Out-Null }
-  foreach( $file in ( Get-ChildItem "$wrk" -Filter *.xml | Sort-Object -Property FullName | Select-Object -First 3 ) )
-  { Copy-Item -Path "$file" -Destination "$history" }
-
+  if( Test-Path "$wrk" ) {
+    if( !(Test-Path "$history") ) { New-Item -ItemType Directory -Path "$history" | Out-Null }
+    foreach( $file in ( Get-ChildItem "$wrk" -Filter *.xml | Sort-Object -Property FullName | Select-Object -First 3 ) )
+    { Copy-Item -Path "$file" -Destination "$history" }
+  }
   # If running locally generate reports
   if( "$PSScriptRoot" -eq "$output" ) {
     $reports = "$results\*\coverage.cobertura.xml"
