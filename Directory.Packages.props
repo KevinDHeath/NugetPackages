@@ -11,16 +11,19 @@
     <PackageVersion Include="Microsoft.NETCore.Platforms" Version="7.0.4" />
 
     <!-- Transitive, referenced by Microsoft.AspNetCore.OpenApi -->
-    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.13" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.14" />
 
     <!-- Transitive, referenced by Swashbuckle.AspNetCore -->
-    <PackageVersion Include="Microsoft.Extensions.ApiDescription.Server" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.ApiDescription.Server" Version="8.0.3" />
+
+    <!-- Transitive, referenced by Microsoft.Extensions.DependencyInjection -->
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
 
     <!-- Transitive, referenced by EWSoftware.Sandcastle.Core -->
     <PackageVersion Include="System.ComponentModel.Composition" Version="8.0.0" />
 
     <!-- Transitive, referenced by Microsoft.TestPlatform.ObjectModel -->
-    <PackageVersion Include="NuGet.Frameworks" Version="6.8.0" />
+    <PackageVersion Include="NuGet.Frameworks" Version="6.9.1" />
     <PackageVersion Include="System.Reflection.Metadata" Version="8.0.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
 
@@ -55,7 +58,7 @@
     <PackageVersion Include="kdheath.Wpf.Resources" Version="2.0.1" />
 
     <!-- Tools: AspNet -->
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 
     <!-- Tools: ResolveThirdPartyReferenceLinks -->
@@ -68,7 +71,7 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageVersion Include="xunit" Version="2.7.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.1" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.2" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
 

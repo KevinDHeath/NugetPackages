@@ -2,8 +2,6 @@ name: 🚥 Run Tests
 
 on:
   workflow_dispatch:
-    branches:
-      - main
     inputs:
       run-name:
         description: A name for the run
@@ -18,7 +16,7 @@ run-name: ${{ inputs.run-name }}
 
 jobs:
 
-  unittests:
+  unit-tests:
     name: Unit Tests
     runs-on: windows-latest
     env:
@@ -72,7 +70,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: UnitTest-Artifacts
+          name: NuGetPackages-Tests
           path: ${{ env.ARTIFACT_PATH }}
           retention-days: 5
 

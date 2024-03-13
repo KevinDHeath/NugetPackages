@@ -1,5 +1,4 @@
 # Helper Packages
-The packages documentation can be found at [.NET Helper Packages](https://kevindheath.github.io/nuget).
 
 > Note: .NET Standard 2.0 is the highest version of .NET Standard that is supported by the .NET Framework.\
 > See [.NET Standard](https://learn.microsoft.com/en-us/dotnet/standard/net-standard) and

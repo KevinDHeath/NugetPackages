@@ -10,8 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.3</Version>
-    <PackageReleaseNotes>* Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.</PackageReleaseNotes>
+    <Version>2.0.4</Version>
+    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
     <PackageId>kdheath.Configuration.Helper</PackageId>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageTags>configuration;helper;config;settings;azure;cloud;console;csharp;dotnet</PackageTags>
