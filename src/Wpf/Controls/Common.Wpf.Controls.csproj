@@ -10,8 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.4</Version>
-    <PackageReleaseNotes>* Minimum version of kdheath.Wpf.Resources dependency changed to 2.0.1.</PackageReleaseNotes>
+    <Version>2.0.5</Version>
+    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>

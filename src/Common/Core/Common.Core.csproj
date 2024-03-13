@@ -10,10 +10,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.1.3</Version>
-    <PackageReleaseNotes>* Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.
-* DataServiceBase - PostResource and PutResource methods now accepts a null obj parameter.
-* Fixed bug in the Person model when setting the BirthDate property and retrieving it in the Read method.</PackageReleaseNotes>
+    <Version>2.1.4</Version>
+    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The common core provides classes and interfaces for .NET components.</PackageDescription>
     <PackageTags>common;interface;reflection;base-class;models;json;serialization;converters;csharp;dotnet</PackageTags>

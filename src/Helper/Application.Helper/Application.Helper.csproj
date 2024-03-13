@@ -8,9 +8,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.3</Version>
-    <PackageReleaseNotes>* GenericException.FormatException for AggregateException now logs stack traces from all inner exceptions.
-* Added an optional configFile parameter to the ConsoleApp constructor. The default is appsettings.json</PackageReleaseNotes>
+    <Version>2.0.4</Version>
+    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageTags>application;helper;console;exception;csharp;netstandard;dotnet</PackageTags>
