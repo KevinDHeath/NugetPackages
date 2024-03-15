@@ -1,6 +1,6 @@
 ![GitHub commit activity](https://img.shields.io/github/last-commit/kevindheath/nugetpackages?style=flat-square&color=blue&logo=github&label=Last%20Commit&)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/kevindheath/nugetpackages?style=flat-square&color=blue&logo=github&label=Issues)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/kevindheath/nugetpackages?style=flat-square&logo=nuget&label=Dependencies&color=blue)
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/kevindheath/nugetpackages?style=flat-square&logo=nuget&label=Dependencies&color=blue)](https://www.nuget.org/packages)
 \
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KevinDHeath/NuGetPackages/build.yml?color=blue&style=flat-square&label=%F0%9F%9A%A7.NET%20Build)](https://github.com/KevinDHeath/NuGetPackages/actions/workflows/build.yml)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KevinDHeath/NuGetPackages/test.yml?color=blue&style=flat-square&label=%F0%9F%9A%A5%20Run%20Tests)](https://github.com/KevinDHeath/NuGetPackages/actions/workflows/test.yml)
