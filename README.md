@@ -7,4 +7,4 @@
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kevindheath/nugetpackages/merged.yml?style=plastic&label=%E2%99%BE%EF%B8%8F%20Pull%20Request%20Merge)](https://github.com/kevindheath/nugetpackages/actions/workflows/merged.yml)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kevindheath/nugetpackages/nuget.yml?style=plastic&label=%F0%9F%93%A6%20Upload%20Packages)](https://github.com/kevindheath/nugetpackages/actions/workflows/nuget.yml)
 
-_Documentation can be found on the [Wiki Home](https://github.com/kevindheath/nugetpackages/wiki) page._
+_Documentation can be found on the [Wiki Home](https://github.com/kevindheath/nugetpackages/wiki/NuGet-Packages) page._
