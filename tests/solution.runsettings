@@ -1,9 +1,9 @@
+<!-- https://learn.microsoft.com/en-us/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file -->
 <RunSettings>
-  <!-- https://learn.microsoft.com/en-us/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file -->
 
   <!-- Configurations that affect the Test Framework -->
   <RunConfiguration>
-    <ResultsDirectory>..\TestResults\core</ResultsDirectory>
+    <ResultsDirectory>.\Unit\TestResults</ResultsDirectory>
   </RunConfiguration>
 
   <!-- Configuration for loggers -->
@@ -14,11 +14,10 @@
           <LogFileName>details.html</LogFileName>
         </Configuration>
       </Logger>
-      <Logger friendlyName="blame" enabled="True" />
     </Loggers>
   </LoggerRunSettings>
 
-  <!-- Adapter Specific sections -->
+  <!-- https://xunit.net/docs/runsettings -->
   <xUnit>
     <MethodDisplay>method</MethodDisplay>
     <MethodDisplayOptions>replaceUnderscoreWithSpace,useOperatorMonikers</MethodDisplayOptions>

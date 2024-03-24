@@ -2,13 +2,12 @@
   <Import Project="..\Common.Build.props" />
 
   <PropertyGroup>
-    <Product>NuGet Packages - Testing</Product>
+    <Product>NuGet Packages Tests</Product>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectName.Contains('Tests'))">
-    <RunSettingsFilePath>$(MSBuildProjectDirectory)\unittest.runsettings</RunSettingsFilePath>
     <NoWarn>CA1707</NoWarn> <!-- Identifiers should not contain underscores -->
   </PropertyGroup>
 

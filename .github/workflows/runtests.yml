@@ -1,0 +1,84 @@
+name: 🚥 Run Tests
+
+on:
+  # Triggering manually prompting for input values
+  workflow_dispatch:
+    inputs:
+      run-name:
+        description: A name for the run
+        type: string
+        required: true
+      runs-on:
+        description: The runner type to use
+        type: choice
+        options: 
+        - ubuntu-latest
+        - windows-latest
+        default: windows-latest
+
+run-name: ${{ inputs.run-name }}
+
+env:
+  ARTIFACT_PATH: ${{ github.workspace }}/upload
+
+jobs:
+
+  unit-tests:
+    name: UnitTests
+    runs-on: ${{ inputs.runs-on }}
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # - name: Setup .NET version
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: 8.0.x
+
+      - name: Create artifacts folder
+        shell: pwsh
+        run: mkdir ${{ env.ARTIFACT_PATH }} > $null
+
+      - name: .NET Restore
+        run: dotnet restore /property:Configuration=Testing
+
+      - name: Run all tests
+        shell: pwsh
+        run: .\tests\Unit\RunTests.ps1 ${{ env.ARTIFACT_PATH }}
+
+      - name: Generate Core.Tests reports
+        env:
+          PROJECT_NAME: "core"
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        with:
+          title: 'Core.Tests'
+          reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
+          targetdir: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/reports
+          reporttypes: 'Html;Badges;MarkdownSummaryGithub'
+          historydir: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/history
+          verbosity: 'Warning'
+          customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
+          toolpath: 'reportgeneratortool'
+
+      - name: Generate Helper.Tests reports
+        env:
+          PROJECT_NAME: "helper"
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        with:
+          title: 'Helper.Tests'
+          reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
+          targetdir: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/reports
+          reporttypes: 'Html;Badges;MarkdownSummaryGithub'
+          historydir: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/history
+          verbosity: 'Warning'
+          customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
+          toolpath: 'reportgeneratortool'
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-UnitTests
+          path: ${{ env.ARTIFACT_PATH }}
+          retention-days: 5
