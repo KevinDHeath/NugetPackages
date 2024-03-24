@@ -6,6 +6,7 @@
     <ImplicitUsings>true</ImplicitUsings>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting Condition="'$(GITHUB_ACTIONS)' == 'true'">true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <PropertyGroup>

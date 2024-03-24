@@ -4,8 +4,9 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting Condition="'$(GITHUB_ACTIONS)' == 'true'">true</EnableWindowsTargeting>
     <AssemblyTitle>Common Wpf controls.</AssemblyTitle>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateDocumentationFile Condition="'$(Configuration)' != 'Release'">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
@@ -16,7 +17,6 @@
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>
     <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

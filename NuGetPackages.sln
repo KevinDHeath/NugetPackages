@@ -9,9 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository Items", "Reposit
 		.gitignore = .gitignore
 		Common.Build.props = Common.Build.props
 		Directory.Packages.props = Directory.Packages.props
-		icon.png = icon.png
 		LICENSE = LICENSE
-		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -57,32 +55,33 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet", "src\Tools\AspNet\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveThirdPartyReferenceLinks", "src\Tools\ResolveThirdPartyReferenceLinks\ResolveThirdPartyReferenceLinks.csproj", "{A83846BA-F612-4B1D-8EB3-49AFA60C57F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{D6A0B8BF-E3DB-436C-81D3-061C8C40F830}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D6A0B8BF-E3DB-436C-81D3-061C8C40F830}"
 	ProjectSection(SolutionItems) = preProject
-		test\Directory.Build.props = test\Directory.Build.props
-		test\README.md = test\README.md
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\README.md = tests\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}"
 	ProjectSection(SolutionItems) = preProject
-		test\Integration\README.md = test\Integration\README.md
+		tests\Integration\README.md = tests\Integration\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Controls", "test\Integration\Controls\Sample.Controls.csproj", "{DB41A9C6-4FA4-4631-B589-DB42C06ABF14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Controls", "tests\Integration\Controls\Sample.Controls.csproj", "{DB41A9C6-4FA4-4631-B589-DB42C06ABF14}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Mvvm", "test\Integration\Mvvm\Sample.Mvvm.csproj", "{4038AA34-EABA-44F7-8ABE-7F3060961FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Mvvm", "tests\Integration\Mvvm\Sample.Mvvm.csproj", "{4038AA34-EABA-44F7-8ABE-7F3060961FEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Wpf", "test\Integration\Wpf\Sample.Wpf.csproj", "{407C99BB-A2DD-4E4B-90F3-789D86D22E8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Wpf", "tests\Integration\Wpf\Sample.Wpf.csproj", "{407C99BB-A2DD-4E4B-90F3-789D86D22E8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{AF651211-B7C4-4153-B4DF-B4FF1F312B15}"
 	ProjectSection(SolutionItems) = preProject
-		test\Unit\README.md = test\Unit\README.md
-		test\Unit\RunTests.ps1 = test\Unit\RunTests.ps1
+		tests\Unit\.runsettings = tests\Unit\.runsettings
+		tests\Unit\README.md = tests\Unit\README.md
+		tests\Unit\RunTests.ps1 = tests\Unit\RunTests.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "test\Unit\Core.Tests\Core.Tests.csproj", "{C1846851-B4E5-442C-925A-8A886C07491B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Tests", "tests\Unit\Core.Tests\Core.Tests.csproj", "{C1846851-B4E5-442C-925A-8A886C07491B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Tests", "test\Unit\Helper.Tests\Helper.Tests.csproj", "{9F9A5CB8-4B55-452E-BF53-A2E549A52590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Tests", "tests\Unit\Helper.Tests\Helper.Tests.csproj", "{9F9A5CB8-4B55-452E-BF53-A2E549A52590}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

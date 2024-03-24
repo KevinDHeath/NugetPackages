@@ -19,10 +19,9 @@
     <PackageProjectUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mcneel/ResolveThirdPartyReferenceLinks.git</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-
-    <!--<Product>ResolveThirdPartyReferenceLinks</Product>
+    <Product>ResolveThirdPartyReferenceLinks</Product>
     <RootNamespace>ResolveThirdPartyReferenceLinks</RootNamespace>
-    <Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>-->
+    <Title>ResolveThirdPartyReferenceLinks SandCastle BuildAssembly Component</Title>
     <Authors>Robert McNeel and Associates, Grid Protection Alliance, Inc.</Authors>
     <Company>McNeel</Company>
     <Copyright>Copyright (c) 1997-2021 Robert McNeel and Associates\r\nCopyright (c) 2023 Grid Protection Alliance, Inc.</Copyright>

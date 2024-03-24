@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyTitle>Configuration Helper classes.</AssemblyTitle>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateDocumentationFile Condition="'$(Configuration)' != 'Release'">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
@@ -16,7 +16,6 @@
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageTags>configuration;helper;config;settings;azure;cloud;console;csharp;dotnet</PackageTags>
     <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
