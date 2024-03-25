@@ -1,10 +1,10 @@
 <Project>
   <Import Project="..\Common.Build.props" />
 
-  <!-- Local builds -->
   <PropertyGroup>
-    <GeneratePackageOnBuild Condition="'$(GITHUB_ACTIONS)' != 'true'">true</GeneratePackageOnBuild>
     <DebugType Condition="'$(Configuration)' == 'Release'">Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
+    <GeneratePackageOnBuild Condition="'$(GITHUB_ACTIONS)' != 'true'">true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
 </Project>
