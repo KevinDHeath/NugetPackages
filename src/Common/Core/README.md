@@ -2,7 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
 ## Change Log
-
+- [v2.1.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
+  - Added package tags.
 - [v2.1.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.
   - Fixed bug in the `Person` model when setting the `BirthDate` property and retrieving it in the `Read` method.

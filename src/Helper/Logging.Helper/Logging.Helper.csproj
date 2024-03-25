@@ -13,7 +13,7 @@
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageTags>logging;helper;nlog;console;csharp;netstandard;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget/html/N_Logging_Helper.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

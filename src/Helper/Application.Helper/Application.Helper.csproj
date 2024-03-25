@@ -13,7 +13,7 @@
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageTags>application;helper;console;exception;csharp;netstandard;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget/html/N_Application_Helper.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

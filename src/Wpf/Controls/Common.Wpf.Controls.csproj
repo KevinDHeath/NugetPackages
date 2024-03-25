@@ -16,7 +16,7 @@
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/shfb</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/shfb/html/N_Common_Wpf_Controls.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

@@ -7,4 +7,4 @@
 [![git-hub-actions-workflow-status](https://img.shields.io/github/actions/workflow/status/kevindheath/nugetpackages/publish.yml?style=plastic&label=%F0%9F%93%A6%20Publish%20Packages)](https://github.com/kevindheath/nugetpackages/actions/workflows/publish.yml)
 
 
-Documentation can be found on the *[Wiki.](https://github.com/kevindheath/nugetpackages/wiki/NuGet-Packages)*
+Documentation can be found on the *[Wiki.](https://github.com/KevinDHeath/NuGetPackages/wiki/Home)*
