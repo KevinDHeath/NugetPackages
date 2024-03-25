@@ -106,7 +106,7 @@ jobs:
         if: env.DOTNET_PACK == 'true'
         env:
           PACK_OPTIONS: "--no-restore --no-build --output ${{ env.ARTIFACT_PATH }}"
-        run: dotnet pack -c ${{ inputs.build-config }} $PACK_OPTIONS
+        run: dotnet pack -c ${{ inputs.build-config }} ${{ env.PACK_OPTIONS }}"
 
       - name: Upload artifacts
         if: env.DOTNET_PACK == 'true'
