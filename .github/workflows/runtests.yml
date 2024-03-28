@@ -51,7 +51,7 @@ jobs:
       - name: Generate Core.Tests reports
         env:
           PROJECT_NAME: "core"
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.4
         with:
           title: 'Core.Tests'
           reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
@@ -65,7 +65,7 @@ jobs:
       - name: Generate Helper.Tests reports
         env:
           PROJECT_NAME: "helper"
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.2
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.4
         with:
           title: 'Helper.Tests'
           reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
