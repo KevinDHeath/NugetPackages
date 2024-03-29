@@ -46,18 +46,16 @@ public class ModelBaseTests : ModelBase
 	}
 
 	[Fact]
-	public void CalculateAge_should_be_gt_0()
+	public void CalculateAge_should_be_30()
 	{
 		// Arrange
-		int year = DateTime.Now.Year - 30;
-		int month = DateTime.Now.Month;
-		DateOnly? date = new( year, month, 10 );
+		DateOnly? date = new( DateTime.Now.Year - 30, DateTime.Now.Month, DateTime.Now.Day );
 
 		// Act
 		int? result = CalculateAge( date );
 
 		// Assert
-		_ = result.Should().BeGreaterThan( 0 );
+		_ = result.Should().Be( 30 );
 	}
 
 	[Fact]
