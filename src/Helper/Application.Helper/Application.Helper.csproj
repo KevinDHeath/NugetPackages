@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="$(SolutionDir)docs\Application.Helper\README.md" Pack="true" PackagePath="" Link="Properties\README.md" />
+    <None Include="..\..\..\docs\Application.Helper\README.md" Pack="true" PackagePath="" Link="Properties\README.md" />
   </ItemGroup>
 
 </Project>
