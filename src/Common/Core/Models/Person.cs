@@ -260,7 +260,7 @@ public class Person : ModelEdit, IPerson
 			IdProvince = row.Field<string?>( nameof( IdProvince ) ),
 			IdNumber = row.Field<string?>( nameof( IdNumber ) ),
 			HomePhone = row.Field<string?>( nameof( HomePhone ) ),
-			BirthDate = row.Field<DateOnly>( nameof( BirthDate ) ),
+			BirthDate = DateOnly.FromDateTime( row.Field<DateTime>( nameof( BirthDate ) ) )
 		};
 	}
 

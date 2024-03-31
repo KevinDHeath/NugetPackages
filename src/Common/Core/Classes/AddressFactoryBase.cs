@@ -46,7 +46,7 @@ public abstract class AddressFactoryBase
 	public static IList<Province> Provinces
 	{
 		get => _provinces is null ? new List<Province>() : _provinces;
-		protected set => _provinces ??= value;
+		protected set => _provinces = value;
 	}
 
 	/// <summary>Gets a list of Postcodes.</summary>

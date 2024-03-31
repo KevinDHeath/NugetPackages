@@ -20,7 +20,7 @@ public static class StringConverter
 	/// <returns><see langword="true"/> if value was converted successfully.</returns>
 	public static bool TryParse( ref string value, out bool result )
 	{
-		value = CheckBoolStr( value.ToLower() );
+		if( !string.IsNullOrWhiteSpace( value ) ) { value = CheckBoolStr( value.ToLower().Trim() ); }
 		return bool.TryParse( value, out result );
 	}
 
