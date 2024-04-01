@@ -3,6 +3,7 @@
 public class StringConverterTests
 {
 	[Theory]
+	[InlineData( "", false )]
 	[InlineData( "0", false )]
 	[InlineData( "N", false )]
 	[InlineData( "NO", false )]

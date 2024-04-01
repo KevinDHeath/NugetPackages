@@ -2,7 +2,12 @@
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
 ## Change Log
-
+- [v2.1.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
+  - Modified `AddressFactoryBase` to always set the `Provinces` property.
+  - Reinstated the default constructor for `ResultSet` class to use for Json serialization.
+  - Fixed bug in `StringConverter.TryParse` *(bool)* method so that `CheckBoolStr` is only called if a value is present.
+  - Fixed bug in the `Person` model to convert `DateTime` to `DateOnly` when setting the `BirthDate` property in the `Read` method.
+  - Added package tags.
 - [v2.1.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.
   - Fixed bug in the `Person` model when setting the `BirthDate` property and retrieving it in the `Read` method.

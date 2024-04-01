@@ -468,7 +468,7 @@ internal class FakeData
 		table.Columns.Add( new DataColumn
 		{
 			ColumnName = nameof( Person.BirthDate ),
-			DataType = typeof( DateOnly )
+			DataType = typeof( DateTime )
 		} );
 
 		DataColumn[] keys = [table.Columns[0]];
@@ -488,7 +488,7 @@ internal class FakeData
 		rtn[nameof( Person.IdProvince )] = data.IdProvince;
 		rtn[nameof( Person.IdNumber )] = data.IdNumber;
 		rtn[nameof( Person.HomePhone )] = data.HomePhone;
-		rtn[nameof( Person.BirthDate )] = data.BirthDate;
+		rtn[nameof( Person.BirthDate )] = data.BirthDate is not null ? data.BirthDate?.ToDateTime( TimeOnly.MinValue ) : null;
 
 		return rtn;
 	}

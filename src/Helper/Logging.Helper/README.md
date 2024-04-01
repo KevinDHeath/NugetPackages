@@ -2,6 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Change Log
+- [v2.0.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
+  - Added package tags.
 - [v2.0.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.2)
   - See [Refactoring Notes](v2.0.3-Notes.md) for details of the code refactoring based on the February 12, 2024 unit test results.
 - [v2.0.2](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.1)

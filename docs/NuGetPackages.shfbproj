@@ -113,7 +113,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NLog">
-      <HintPath>..\test\Unit\Helper.Tests\bin\Debug\NLog.dll</HintPath>
+      <HintPath>..\tests\Unit\Helper.Tests\bin\Debug\NLog.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

@@ -15,13 +15,13 @@
     <PackageId>kdheath.Configuration.Helper</PackageId>
     <PackageDescription>The configuration helper is a light-weight platform for .NET to support application settings in old-style App.config files, and as of version 1.0.1 also in the newer style of JSON files.</PackageDescription>
     <PackageTags>configuration;helper;config;settings;azure;cloud;console;csharp;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget/html/N_Configuration_Helper.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="$(SolutionDir)docs\Configuration.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <None Include="..\..\..\docs\Configuration.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
   </ItemGroup>
 
 </Project>

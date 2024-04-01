@@ -75,4 +75,4 @@ ok = config.AddSetting( @"favouriteactress", "Angelina Jolie" );
 
 ## Feedback
 This is provided as open source under the MIT license.\
-Bug reports and contributions are welcome [at the GitHub repository](https://github.com/KevinDHeath/NuGetPackages).
+Bug reports and contributions are welcome in the [GitHub repository](https://github.com/KevinDHeath/NuGetPackages/issues).

@@ -59,12 +59,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D6A0B8BF
 	ProjectSection(SolutionItems) = preProject
 		tests\Directory.Build.props = tests\Directory.Build.props
 		tests\README.md = tests\README.md
+		tests\solution.runsettings = tests\solution.runsettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{10A465A0-E6C2-4F15-A6F1-C0DD6A869E65}"
-	ProjectSection(SolutionItems) = preProject
-		tests\Integration\README.md = tests\Integration\README.md
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Controls", "tests\Integration\Controls\Sample.Controls.csproj", "{DB41A9C6-4FA4-4631-B589-DB42C06ABF14}"
 EndProject
@@ -75,7 +73,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{AF651211-B7C4-4153-B4DF-B4FF1F312B15}"
 	ProjectSection(SolutionItems) = preProject
 		tests\Unit\.runsettings = tests\Unit\.runsettings
-		tests\Unit\README.md = tests\Unit\README.md
 		tests\Unit\RunTests.ps1 = tests\Unit\RunTests.ps1
 	EndProjectSection
 EndProject

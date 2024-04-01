@@ -18,8 +18,9 @@ public class ResultsSetTests
 	[Fact]
 	public void Results_list_should_be_empty()
 	{
-		// Act
+		// Act (with code coverage)
 		ResultsSet<User> result = new( 0 );
+		_ = new ResultsSet<User>();
 
 		// Assert
 		_ = result.Results.Should().BeEmpty();

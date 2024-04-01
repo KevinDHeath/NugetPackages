@@ -4,7 +4,7 @@
     <Authors>Kevin Heath</Authors>
     <Product>NuGet Packages</Product>
     <Copyright>Copyright © $([System.DateTime]::Now.Year) KevinDHeath</Copyright>
-    <RepositoryUrl>https://github.com/kevindheath/nugetpackages</RepositoryUrl>
+    <RepositoryUrl>https://github.com/KevinDHeath/NuGetPackages</RepositoryUrl>
     <IncludeSourceRevisionInInformationalVersion Condition="'$(Configuration)' != 'Release'">false</IncludeSourceRevisionInInformationalVersion>
   </PropertyGroup>
 

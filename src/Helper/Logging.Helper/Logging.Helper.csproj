@@ -13,13 +13,13 @@
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageTags>logging;helper;nlog;console;csharp;netstandard;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget/html/N_Logging_Helper.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
-    <None Include="$(SolutionDir)docs\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
+    <None Include="..\..\..\docs\Logging.Helper\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
     <Compile Remove="ImplLog4Net.cs" />
   </ItemGroup>
 

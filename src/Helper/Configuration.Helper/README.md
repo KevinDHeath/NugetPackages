@@ -2,6 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Change Log
+- [v2.0.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
+  - Added package tags.
 - [v2.0.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - Applied code refactoring to reduce the cyclomatic and changed risk anti-patterns (CRAP) scores.
 - [v2.0.2](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.2)

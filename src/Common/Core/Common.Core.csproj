@@ -11,11 +11,15 @@
   <!-- Package Information -->
   <PropertyGroup>
     <Version>2.1.4</Version>
-    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
+    <PackageReleaseNotes>* Modified AddressFactoryBase to always set the Provinces property.
+* Reinstated the default constructor for ResultSet class to use for Json serialization.
+* Fixed bug in StringConverter.TryParse (bool) method so that CheckBoolStr is only called if a value is present.
+* Fixed bug in the Person model to convert DateTime to DateOnly when setting the BirthDate property in the Read method.
+* Added package tags.</PackageReleaseNotes>
     <PackageId>kdheath.Common.Core</PackageId>
     <PackageDescription>The common core provides classes and interfaces for .NET components.</PackageDescription>
     <PackageTags>common;interface;reflection;base-class;models;json;serialization;converters;csharp;dotnet</PackageTags>
-    <PackageProjectUrl>https://kevindheath.github.io/nuget</PackageProjectUrl>
+    <PackageProjectUrl>https://kevindheath.github.io/nuget/html/N_Common_Core_Classes.htm</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
