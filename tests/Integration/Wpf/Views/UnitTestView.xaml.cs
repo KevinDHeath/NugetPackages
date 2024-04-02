@@ -30,4 +30,26 @@ public partial class UnitTestView : UserControl
 			}
 		}
 	}
+
+	#region Error handling for Validation Rules Tab
+
+	private UnitTestViewModel? _vm;
+
+	// This event occurs when a ValidationRule in a BindingGroup or a Binding fails.
+	private void ItemError( object sender, ValidationErrorEventArgs e )
+	{
+		if( _vm is null )
+		{
+			if( e.OriginalSource is TextBox tb ) { _vm = tb.DataContext as UnitTestViewModel; }
+			else if( e.OriginalSource is ComboBox cb ) { _vm = cb.DataContext as UnitTestViewModel; }
+		}
+
+		if( _vm is not null )
+		{
+			if( e.Action == ValidationErrorEventAction.Added ) _vm.UIErrors++;
+			else if( e.Action == ValidationErrorEventAction.Removed ) _vm.UIErrors--;
+		}
+	}
+
+	#endregion
 }
