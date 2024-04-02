@@ -171,12 +171,13 @@
           <!-- ComboEditRule -->
           <TextBlock Grid.Row="0" Text="ComboEdit:"
                      Style="{StaticResource appTextBlockStyle}"/>
-          <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Style="{StaticResource appLayoutStyle}"
+          <cc:ComboBox Grid.Row="0" Grid.Column="1" MinWidth="210" Validation.Error="ItemError"
+                       Style="{StaticResource appLayoutStyle}"
                        ItemsSource="{Binding TestTypes}" IsErrorShown="True" IsEditable="True">
             <ComboBox.SelectedItem>
-              <Binding Path="ComboEditRule" UpdateSourceTrigger="LostFocus">
+              <Binding Path="ComboEditRule" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
                 <Binding.ValidationRules>
-                  <cr:ComboEditRule Property="ComboEditRule" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                  <cr:ComboEditRule Property="ComboEditRule"/>
                 </Binding.ValidationRules>
               </Binding>
             </ComboBox.SelectedItem>
@@ -185,12 +186,12 @@
           <!-- DateOnlyRule -->
           <TextBlock Grid.Row="1" Text="DateOnly:"
                Style="{StaticResource appTextBlockStyle}"/>
-          <TextBox Grid.Row="1" Grid.Column="1" MinWidth="150" MaxWidth="300" Style="{StaticResource appTextBoxStyle}">
-            <Binding Path="DateOnlyVal" UpdateSourceTrigger="LostFocus"
+          <TextBox Grid.Row="1" Grid.Column="1" MinWidth="150" MaxWidth="300" Validation.Error="ItemError"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="DateOnlyVal" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True"
                      Converter="{StaticResource DateOnlyToString}">
               <Binding.ValidationRules>
-                <cr:DateOnlyRule Property="DateOnlyVal" Rqd="False"
-                                 ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                <cr:DateOnlyRule Property="DateOnlyVal" Rqd="False"/>
               </Binding.ValidationRules>
             </Binding>
           </TextBox>
@@ -198,12 +199,12 @@
           <!-- IntegerRule -->
           <TextBlock Grid.Row="2" Text="Integer:"
                Style="{StaticResource appTextBlockStyle}"/>
-          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300" Style="{StaticResource appTextBoxStyle}">
-            <Binding Path="IntegerRule" UpdateSourceTrigger="LostFocus"
+          <TextBox Grid.Row="2" Grid.Column="1" MinWidth="120" MaxWidth="300" Validation.Error="ItemError"
+                   Style="{StaticResource appTextBoxStyle}">
+            <Binding Path="IntegerRule" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True"
                      Converter="{StaticResource IntegerToString}">
               <Binding.ValidationRules>
-                <cr:IntegerRule Property="IntegerRule" Rqd="False"
-                                ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                <cr:IntegerRule Property="IntegerRule" Rqd="False"/>
               </Binding.ValidationRules>
             </Binding>
           </TextBox>
@@ -211,11 +212,11 @@
           <!-- RequiredRule -->
           <TextBlock Grid.Row="3" Text="Required:"
                      Style="{StaticResource appTextBlockStyle}"/>
-          <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch"
+          <TextBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Validation.Error="ItemError"
                    Style="{StaticResource appTextBoxStyle}">
-            <Binding Path="StringRule" UpdateSourceTrigger="LostFocus">
+            <Binding Path="StringRule" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
               <Binding.ValidationRules>
-                <cr:RequiredRule Property="StringVal" ValidationStep="RawProposedValue" ValidatesOnTargetUpdated="True"/>
+                <cr:RequiredRule Property="StringVal"/>
               </Binding.ValidationRules>
             </Binding>
           </TextBox>

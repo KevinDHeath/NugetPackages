@@ -52,7 +52,6 @@ public class UnitTestViewModel : ViewModelBase
 		get => _settings.ComboEditRule;
 		set
 		{
-			if( value.Equals( _settings.ComboEditRule ) ) { return; }
 			_settings.ComboEditRule = value;
 			OnPropertyChanged();
 		}
@@ -87,7 +86,6 @@ public class UnitTestViewModel : ViewModelBase
 		get => _settings.DateOnlyVal;
 		set
 		{
-			if( value is not null && value.Equals( _settings.DateOnlyVal ) ) { return; }
 			_settings.DateOnlyVal = value;
 			OnPropertyChanged();
 		}
@@ -132,7 +130,6 @@ public class UnitTestViewModel : ViewModelBase
 		get => _settings.IntegerRule;
 		set
 		{
-			if( value is not null && value.Equals( _settings.IntegerRule ) ) { return; }
 			_settings.IntegerRule = value;
 			OnPropertyChanged();
 		}
@@ -154,7 +151,6 @@ public class UnitTestViewModel : ViewModelBase
 		get => _settings.StringRule;
 		set
 		{
-			if( value is not null && value.Equals( _settings.StringRule ) ) { return; }
 			_settings.StringRule = value;
 			OnPropertyChanged();
 		}
@@ -170,6 +166,8 @@ public class UnitTestViewModel : ViewModelBase
 			OnPropertyChanged();
 		}
 	}
+
+	public int UIErrors { get; set; }
 
 	#endregion
 
@@ -205,7 +203,7 @@ public class UnitTestViewModel : ViewModelBase
 		}
 	}
 
-	private bool IsDirty() => _settings.HasChanges( _orgValue );
+	private bool IsDirty() => _settings.HasChanges( _orgValue ) || UIErrors > 0;
 
 	public void DoCancelEdit()
 	{
@@ -225,7 +223,7 @@ public class UnitTestViewModel : ViewModelBase
 		StringVal = _orgValue.StringVal;
 	}
 
-	private bool CanCommitEdit() => !HasErrors && IsDirty();
+	private bool CanCommitEdit() => !HasErrors && UIErrors == 0 && IsDirty();
 
 	private void DoCommitEdit()
 	{
