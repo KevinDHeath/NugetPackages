@@ -2,7 +2,7 @@
   <Import Project="..\Common.Build.props" />
 
   <PropertyGroup>
-    <DebugType Condition="'$(Configuration)' == 'Release'">Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
+    <DebugType>Embedded</DebugType> <!-- NuGet Health: Compiler Flags -->
     <GeneratePackageOnBuild Condition="'$(GITHUB_ACTIONS)' != 'true'">true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
