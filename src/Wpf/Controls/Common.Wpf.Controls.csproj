@@ -11,8 +11,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.5</Version>
-    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
+    <Version>2.0.6</Version>
+    <PackageReleaseNotes>* Breaking change - Switch from using Font Awesome true-type fonts to SVG images.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>
@@ -23,7 +23,6 @@
   <ItemGroup>
     <!-- IMPORTANT: add common resources as links -->
     <None Include="$(SolutionDir)docs\Wpf.Controls\README.md" Pack="true" PackagePath="\" Link="Properties\README.md" />
-    <Resource Include="Assets\fontawesome-webfont.ttf" CopyToOutputDirectory="Never" />
   </ItemGroup>
 
   <ItemGroup>

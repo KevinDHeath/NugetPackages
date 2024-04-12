@@ -23,8 +23,11 @@
 							       IsHitTestVisible="False" Opacity="0.5" Text="Enter search criteria"
 							       Visibility="{TemplateBinding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         </Grid>
-        <TextBlock Style="{StaticResource textBlockSearchStyle}"
-						       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        <TextBlock Style="{StaticResource textBlockSearchStyle}" VerticalAlignment="Center" HorizontalAlignment="Right">
+          <InlineUIContainer>
+            <Image Width="14" Height="14" Source="{StaticResource fa-solid-magnifying-glass}"/>
+          </InlineUIContainer>
+        </TextBlock>
       </Grid>
     </Border>
   </ControlTemplate>

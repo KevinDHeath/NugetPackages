@@ -6,12 +6,13 @@
     <ResourceDictionary Source="pack://application:,,,/Common.Wpf.Resources;component/Themes/Button.xaml"/>
   </ResourceDictionary.MergedDictionaries>
 
-  <FontFamily x:Key="FontAwesome">pack://application:,,,/Common.Wpf.Controls;component/Assets/fontawesome-webfont.ttf#FontAwesome</FontFamily>
+  <Geometry x:Key="magnifying_glassGeometry">F1 M512,512z M0,0z M416,208C416,253.9,401.1,296.3,376,330.7L502.6,457.4C515.1,469.9 515.1,490.2 502.6,502.7 490.1,515.2 469.8,515.2 457.3,502.7L330.7,376C296.3,401.2 253.9,416 208,416 93.1,416 0,322.9 0,208 0,93.1 93.1,0 208,0 322.9,0 416,93.1 416,208z M208,352A144,144,0,1,0,208,64A144,144,0,1,0,208,352z</Geometry>
+  <DrawingGroup x:Key="magnifying_glassDrawingGroup" ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+    <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource magnifying_glassGeometry}"/>
+  </DrawingGroup>
+  <DrawingImage x:Key="fa-solid-magnifying-glass" Drawing="{StaticResource magnifying_glassDrawingGroup}"/>
 
   <Style x:Key="textBlockSearchStyle" TargetType="{x:Type TextBlock}">
-    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="Text" Value="&#xf002;"/>
   </Style>
 
   <Style x:Key="toolbarFocusVisualStyle">
@@ -19,8 +20,8 @@
       <Setter.Value>
         <ControlTemplate>
           <Rectangle Margin="2" StrokeDashArray="1 2" StrokeThickness="1"
-							       Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-							       SnapsToDevicePixels="true"/>
+                     Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                     SnapsToDevicePixels="true"/>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -36,18 +37,24 @@
     <Setter Property="Template" Value="{StaticResource commonButtonTemplate}"/>
   </Style>
 
+  <Geometry x:Key="folder_openGeometry">F1 M576,512z M0,0z M384,480L432,480C443.4,480,453.9,474,459.6,464.1L571.6,272.1C577.4,262.2 577.4,250 571.7,240 566,230 555.5,224 544,224L144,224C132.6,224,122.1,230,116.4,239.9L48,357.1 48,96C48,87.2,55.2,80,64,80L181.5,80C185.7,80,189.8,81.7,192.8,84.7L219.3,111.2C240.3,132.2,268.8,144,298.5,144L416,144C424.8,144,432,151.2,432,160L432,192 480,192 480,160C480,124.7,451.3,96,416,96L298.5,96C281.5,96,265.2,89.3,253.2,77.3L226.7,50.7C214.7,38.7,198.4,32,181.4,32L64,32C28.7,32,0,60.7,0,96L0,416C0,451.3,28.7,480,64,480L87.7,480 384,480z</Geometry>
+  <DrawingGroup x:Key="folder_openDrawingGroup" ClipGeometry="M0,0 V512 H576 V0 H0 Z">
+    <GeometryDrawing Brush="#DAA520" Geometry="{StaticResource folder_openGeometry}"/>
+  </DrawingGroup>
+  <DrawingImage x:Key="fa-regular-folder-open" Drawing="{StaticResource folder_openDrawingGroup}"/>
+
   <Style x:Key="toolbarButtonOpenStyle" TargetType="{x:Type Button}"
-		     BasedOn="{StaticResource toolbarButtonBaseStyle}">
-    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="Content" Value="&#xf115;"/>
+         BasedOn="{StaticResource toolbarButtonBaseStyle}">
   </Style>
 
+  <Geometry x:Key="plusGeometry">F1 M448,512z M0,0z M256,80C256,62.3 241.7,48 224,48 206.3,48 192,62.3 192,80L192,224 48,224C30.3,224 16,238.3 16,256 16,273.7 30.3,288 48,288L192,288 192,432C192,449.7 206.3,464 224,464 241.7,464 256,449.7 256,432L256,288 400,288C417.7,288 432,273.7 432,256 432,238.3 417.7,224 400,224L256,224 256,80z</Geometry>
+  <DrawingGroup x:Key="plusDrawingGroup" ClipGeometry="M0,0 V512 H448 V0 H0 Z">
+    <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource plusGeometry}"/>
+  </DrawingGroup>
+  <DrawingImage x:Key="fa-solid-plus" Drawing="{StaticResource plusDrawingGroup}"/>
+
   <Style x:Key="toolbarButtonPlusStyle" TargetType="{x:Type Button}"
-		     BasedOn="{StaticResource toolbarButtonBaseStyle}">
-    <Setter Property="FontFamily" Value="{StaticResource FontAwesome}"/>
-    <Setter Property="FontSize" Value="14"/>
-    <Setter Property="Content" Value="&#xf067;"/>
-  </Style>
+         BasedOn="{StaticResource toolbarButtonBaseStyle}">
+ </Style>
 
 </ResourceDictionary>

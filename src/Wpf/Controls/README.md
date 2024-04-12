@@ -2,8 +2,10 @@
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log
-- [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
-  - Added package tags.
+- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.2) - **Breaking change**
+  - Switch from using Font Awesome true-type fonts to SVG images. See [Font Awesome Upgrade](v2.0.6-Notes.md) for details of the changes required.
+ - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
+   - Added package tags.
 - [v2.0.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.3.1)
   - Minimum version of `kdheath.Wpf.Resources` dependency changed to 2.0.1.
 - [v2.0.3](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2.0.3)
