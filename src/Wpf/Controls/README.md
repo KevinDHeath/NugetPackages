@@ -2,7 +2,7 @@
 Provides UI controls for .NET Windows Presentation Foundation applications.
 
 ## Change Log
-- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.2) - **Breaking change**
+- v2.0.6 - **Breaking change**
   - Switch from using Font Awesome true-type fonts to SVG images. See [Font Awesome Upgrade](v2.0.6-Notes.md) for details of the changes required.
  - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
    - Added package tags.
