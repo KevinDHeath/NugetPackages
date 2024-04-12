@@ -34,6 +34,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
@@ -96,6 +97,13 @@
           <CheckBox Grid.Row="5" Grid.Column="1" Style="{StaticResource commonCheckBoxStyle}"
                     IsThreeState="True" Margin="3,8,3,3"
                     IsChecked="{Binding BooleanVal, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <!-- Toolbar Plus Button -->
+          <TextBlock Grid.Row="6" Text="Plus button:" Style="{StaticResource appTextBlockStyle}"/>
+          <Button Grid.Row="6" Grid.Column="1" ToolTip="Add 1" HorizontalAlignment="Left" Margin="3,8,3,3"
+                  Style="{StaticResource toolbarButtonPlusStyle}" Height="20" Width="20">
+            <Image Width="14" Height="14" Source="{StaticResource fa-solid-plus}"/>
+          </Button>
         </Grid>
       </TabItem>
 

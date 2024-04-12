@@ -17,7 +17,9 @@
       <Border x:Name="Bd" Style="{StaticResource commonEditBorderStyle}"
 				Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
         <DockPanel>
-          <Button DockPanel.Dock="Right" x:Name="btnOpen" Style="{StaticResource toolbarButtonOpenStyle}"/>
+          <Button DockPanel.Dock="Right" x:Name="btnOpen" Style="{StaticResource toolbarButtonOpenStyle}">
+            <Image Width="18" Height="18" Source="{StaticResource fa-regular-folder-open}"/>
+          </Button>
           <ScrollViewer x:Name="PART_ContentHost" Focusable="false"
 								        HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
         </DockPanel>
