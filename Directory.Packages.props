@@ -42,8 +42,8 @@
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-    <PackageVersion Include="xunit" Version="2.7.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
+    <PackageVersion Include="xunit" Version="2.7.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.8" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
 
     <!-- Transitive, referenced by FluentAssertions -->
@@ -66,13 +66,14 @@
 
     <!-- Transitive, referenced by xUnit -->
     <PackageVersion Include="xunit.abstractions" Version="2.0.3" />
-    <PackageVersion Include="xunit.analyzers" Version="1.11.0" />
-    <PackageVersion Include="xunit.assert" Version="2.7.0" />
-    <PackageVersion Include="xunit.core" Version="2.7.0" />
+    <PackageVersion Include="xunit.analyzers" Version="1.12.0" />
+    <PackageVersion Include="xunit.assert" Version="2.7.1" />
+    <PackageVersion Include="xunit.core" Version="2.7.1" />
 
     <!-- Transitive, referenced by Xunit.SkippableFact -->
     <PackageVersion Include="Validation" Version="2.5.51" />
-    <PackageVersion Include="xunit.extensibility.execution" Version="2.7.0" />
+    <PackageVersion Include="xunit.extensibility.execution" Version="2.7.1" />
+
   </ItemGroup>
 
 </Project>
