@@ -8,13 +8,13 @@
     <UseWPF>true</UseWPF>
     <EnableWindowsTargeting Condition="'$(GITHUB_ACTIONS)' == 'true'">true</EnableWindowsTargeting>
     <AssemblyTitle>Common Wpf resources.</AssemblyTitle>
-    <GenerateDocumentationFile Condition="'$(Configuration)' != 'Release'">true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.5</Version>
-    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
+    <Version>2.0.6</Version>
+    <PackageReleaseNotes>* Include documentation files in release build packages.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Resources</PackageId>
     <PackageDescription>Provides UI resources for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-resource;wpf-ui;wpf;style;styles;theme;xaml;csharp;dotnet</PackageTags>
