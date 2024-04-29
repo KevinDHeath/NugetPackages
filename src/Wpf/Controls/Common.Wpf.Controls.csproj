@@ -12,7 +12,9 @@
   <!-- Package Information -->
   <PropertyGroup>
     <Version>2.0.7</Version>
-    <PackageReleaseNotes>* Include documentation files in release build packages.</PackageReleaseNotes>
+    <PackageReleaseNotes>* SortableListView.SortList method no longer throws System.InvalidOperationException.
+* SortableListView.Refresh resets the default column.
+* Include documentation files in release build packages.</PackageReleaseNotes>
     <PackageId>kdheath.Wpf.Controls</PackageId>
     <PackageDescription>Provides UI controls for .NET Windows Presentation Foundation applications.</PackageDescription>
     <PackageTags>wpf-controls;wpf-ui;wpf;control;controls;csharp;dotnet</PackageTags>

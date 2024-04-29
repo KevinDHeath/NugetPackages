@@ -121,7 +121,7 @@ public class SortableListView : ListView
 			_lastHeader = null;
 		}
 
-		SortList( _firstHeader );
+		Sort( DefaultColumn );
 	}
 
 	/// <summary>Applies the filter predicate to the collection view.</summary>
@@ -178,26 +178,30 @@ public class SortableListView : ListView
 			: _lastDirection == ListSortDirection.Ascending ?
 				ListSortDirection.Descending : ListSortDirection.Ascending;
 
-		// Clear the previous direction indicator
-		if( _lastHeader != null )
+		try
 		{
-			AdornerLayer.GetAdornerLayer( _lastHeader ).Remove( _lastAdorner );
-		}
+			// Sort the list
+			ICollectionView? data = CollectionViewSource.GetDefaultView( ItemsSource );
+			if( data is not null )
+			{
+				data.SortDescriptions.Clear();
+				data.SortDescriptions.Add( new SortDescription( propertyName, direction ) );
+				data.Refresh();
+			}
 
-		// Sort the list
-		ICollectionView? data = CollectionViewSource.GetDefaultView( ItemsSource );
-		if( data is not null )
-		{
-			data.SortDescriptions.Clear();
-			data.SortDescriptions.Add( new SortDescription( propertyName, direction ) );
-			data.Refresh();
-		}
+			// Clear the previous direction indicator
+			if( _lastHeader != null )
+			{
+				AdornerLayer.GetAdornerLayer( _lastHeader ).Remove( _lastAdorner );
+			}
 
-		// Store the previous values
-		_lastDirection = direction;
-		_lastHeader = header;
-		_lastAdorner = new SortAdorner( header, direction );
-		AdornerLayer.GetAdornerLayer( header ).Add( _lastAdorner );
+			// Store the previous values
+			_lastDirection = direction;
+			_lastHeader = header;
+			_lastAdorner = new SortAdorner( header, direction );
+			AdornerLayer.GetAdornerLayer( header ).Add( _lastAdorner );
+		}
+		catch( InvalidOperationException ) { } // At least one object must implement IComparable.
 	}
 
 	#endregion
