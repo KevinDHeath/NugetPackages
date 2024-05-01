@@ -3,13 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>Logging Helper classes.</AssemblyTitle>
-    <GenerateDocumentationFile Condition="'$(Configuration)' != 'Release'">true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.4</Version>
-    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
+    <Version>2.0.5</Version>
+    <PackageReleaseNotes>* Updated to use NLog 5.3.1
+* Include documentation files in release build packages.</PackageReleaseNotes>
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageTags>logging;helper;nlog;console;csharp;netstandard;dotnet</PackageTags>

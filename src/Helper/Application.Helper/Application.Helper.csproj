@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyTitle>Application Helper classes.</AssemblyTitle>
-    <GenerateDocumentationFile Condition="'$(Configuration)' != 'Release'">true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.4</Version>
-    <PackageReleaseNotes>* Added package tags.</PackageReleaseNotes>
+    <Version>2.0.5</Version>
+    <PackageReleaseNotes>* Include documentation files in release build packages.</PackageReleaseNotes>
     <PackageId>kdheath.Application.Helper</PackageId>
     <PackageDescription>The application helper is a light-weight platform for .NET console applications.</PackageDescription>
     <PackageTags>application;helper;console;exception;csharp;netstandard;dotnet</PackageTags>

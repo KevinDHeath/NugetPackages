@@ -2,6 +2,8 @@
 Provides UI resources for .NET Windows Presentation Foundation applications.
 
 ## Change Log
+- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)
+  - Include documentation files in release build packages.
 - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
   - Added package tags.
 - [v2.0.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.2.1)
