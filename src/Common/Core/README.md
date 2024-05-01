@@ -2,6 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
 
 ## Change Log
+- [v2.1.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)
+  - Include documentation files in release build packages.
 - [v2.1.4](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.4.1)
   - Modified `AddressFactoryBase` to always set the `Provinces` property.
   - Reinstated the default constructor for `ResultSet` class to use for Json serialization.
