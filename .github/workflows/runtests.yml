@@ -74,6 +74,7 @@ jobs:
       - name: Publish coverage summaries
         run: |
           cat upload/TestResults/core/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           cat upload/TestResults/helper/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
         shell: bash
 
