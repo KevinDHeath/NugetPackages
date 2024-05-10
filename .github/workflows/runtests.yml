@@ -32,9 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show dotnet info
-        run: dotnet --info
-
       - name: Create artifacts folder
         shell: pwsh
         run: mkdir ${{ env.ARTIFACT_PATH }} > $null
@@ -76,8 +73,8 @@ jobs:
 
       - name: Publish coverage summaries
         run: |
-          cat ${{ env.ARTIFACT_PATH }}/TestResults/core/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
-          cat ${{ env.ARTIFACT_PATH }}/TestResults/helper/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+          cat upload/TestResults/core/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+          cat upload/TestResults/helper/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
         shell: bash
 
       - name: Upload artifacts
