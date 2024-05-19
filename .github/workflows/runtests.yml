@@ -32,11 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # - name: Setup .NET version
-      #   uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: 8.0.x
-
       - name: Create artifacts folder
         shell: pwsh
         run: mkdir ${{ env.ARTIFACT_PATH }} > $null
@@ -51,7 +46,7 @@ jobs:
       - name: Generate Core.Tests reports
         env:
           PROJECT_NAME: "core"
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.4
+        uses: danielpalme/ReportGenerator-GitHub-Action@5
         with:
           title: 'Core.Tests'
           reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
@@ -65,7 +60,7 @@ jobs:
       - name: Generate Helper.Tests reports
         env:
           PROJECT_NAME: "helper"
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.2.4
+        uses: danielpalme/ReportGenerator-GitHub-Action@5
         with:
           title: 'Helper.Tests'
           reports: ${{ env.ARTIFACT_PATH }}/TestResults/${{ env.PROJECT_NAME }}/*/coverage.cobertura.xml
@@ -75,6 +70,13 @@ jobs:
           verbosity: 'Warning'
           customSettings: 'settings:createSubdirectoryForAllReportTypes=true'
           toolpath: 'reportgeneratortool'
+
+      - name: Publish coverage summaries
+        run: |
+          cat upload/TestResults/core/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat upload/TestResults/helper/reports/MarkdownSummaryGithub/SummaryGithub.md >> $GITHUB_STEP_SUMMARY
+        shell: bash
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
