@@ -2,6 +2,8 @@
 [<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
 
 ## Change Log
+- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.6.1)
+  - Updated to use NLog 5.3.2
 - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)
   - Updated to use NLog 5.3.1
   - Include documentation files in release build packages.
