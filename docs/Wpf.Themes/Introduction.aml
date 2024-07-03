@@ -3,10 +3,7 @@
   <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <introduction>
-      <para>This site contains technical information about the
-      <externalLink><linkText>kdheath</linkText><linkUri>https://kevindheath.github.io/</linkUri></externalLink>
-      Windows Presentation Foundation (WPF) packages available on
-      <externalLink><linkText>NuGet</linkText><linkUri>https://www.nuget.org/packages?q=owner:KevinDHeath</linkUri></externalLink>.</para>
+      <para>info.</para>
     </introduction>
 
     <section>
@@ -15,37 +12,36 @@
         <table>
           <row>
             <entry><para><externalLink><linkText>Attributes</linkText><linkUri>N_Common_Wpf_Attributes.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Resources</strong></small></markup></para></entry>
             <entry><para>Contains classes for custom validation attributes.</para></entry>
           </row>
           <row>
             <entry><para><externalLink><linkText>Commands</linkText><linkUri>N_Common_Wpf_Commands.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Resources</strong></small></markup></para></entry>
             <entry><para>Contains classes that implement the ICommand interface which enables a user to interact with the business logic.</para></entry>
           </row>
           <row>
             <entry><para><externalLink><linkText>Controls</linkText><linkUri>N_Common_Wpf_Controls.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Controls</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Controls</strong></small></markup></para></entry>
             <entry><para>Contains classes to create elements, known as controls, that enables a user to interact with an application.</para></entry>
           </row>
           <row>
             <entry><para><externalLink><linkText>Converters</linkText><linkUri>N_Common_Wpf_Converters.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Resources</strong></small></markup></para></entry>
             <entry><para>Contains classes to convert binding source data to target data.</para></entry>
           </row>
           <row>
             <entry><para><externalLink><linkText>Rules</linkText><linkUri>N_Common_Wpf_Rules.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Resources</strong></small></markup></para></entry>
             <entry><para>Contains classes to validate the WPF user interface elements.</para></entry>
           </row>
           <row>
             <entry><para><externalLink><linkText>Themes</linkText><linkUri>e6e60a0c-f708-479e-bc65-bcdc99253c7b.htm</linkUri><linkTarget>_self</linkTarget></externalLink>
-            <lineBreak/>Package: <ui>Wpf.Resources</ui></para></entry>
+            <lineBreak/><markup><small>Package: <strong>Wpf.Resources</strong></small></markup></para></entry>
             <entry><para>Contains Windows Desktop resources which can be includes in WPF .NET projects.</para></entry>
           </row>
         </table>
-        <para><ui>Note:</ui> The documentation for the other packages can be found at
-        <externalLink><linkText>.NET Helper Packages</linkText><linkUri>https://kevindheath.github.io/nuget</linkUri><linkTarget>_self</linkTarget></externalLink>.</para>
+        <para>nuget</para>
       </content>
     </section>
 

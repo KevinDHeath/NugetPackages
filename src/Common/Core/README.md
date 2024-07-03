@@ -1,5 +1,5 @@
 # Common.Core
-[<img src="https://kevindheath.github.io/codecoverage/core/badge_combined.svg">](https://kevindheath.github.io/codecoverage/core/html/)
+[<img src="https://kevindheath.github.io/code/core/badge_combined.svg">](https://kevindheath.github.io/code/core/html/)
 
 ## Change Log
 - [v2.1.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)

@@ -15,9 +15,15 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
-    <OutputPath>C:\Temp\Documentation\nuget\</OutputPath>
+    <OutputPath>.\bin\nuget\</OutputPath>
+    <BuildLogFile>.\bin\NuGetPackages.log</BuildLogFile>
     <HtmlHelpName>NuGetPackages</HtmlHelpName>
+    <HelpTitle>.NET Helper Packages</HelpTitle>
+    <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <Language>en-US</Language>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>Packages</RootNamespaceTitle>
+    <VisibleItems>Protected, SealedProtected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\src\Common\Core\bin\Debug\net8.0\Common.Core.dll" />
       <DocumentationSource sourceFile="..\src\Common\Core\bin\Debug\net8.0\Common.Core.xml" />
@@ -28,20 +34,6 @@
       <DocumentationSource sourceFile="..\src\Helper\Logging.Helper\bin\Debug\netstandard2.0\Logging.Helper.dll" />
       <DocumentationSource sourceFile="..\src\Helper\Logging.Helper\bin\Debug\netstandard2.0\Logging.Helper.xml" />
     </DocumentationSources>
-    <HelpFileFormat>Website</HelpFileFormat>
-    <SyntaxFilters>C#</SyntaxFilters>
-    <PresentationStyle>Default2022</PresentationStyle>
-    <CleanIntermediates>True</CleanIntermediates>
-    <KeepLogFile>True</KeepLogFile>
-    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
-    <IndentHtml>False</IndentHtml>
-    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
-    <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
-    <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
-    <BinaryTOC>True</BinaryTOC>
-    <IncludeFavorites>False</IncludeFavorites>
-    <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
-    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="(global)" isDocumented="False" />
       <NamespaceSummaryItem name="Application.Helper" isDocumented="True" xmlns="">Application Helper classes.</NamespaceSummaryItem>
@@ -52,19 +44,27 @@
       <NamespaceSummaryItem name="Configuration.Helper" isDocumented="True" xmlns="">Configuration Helper classes, interfaces, and enumerations.</NamespaceSummaryItem>
       <NamespaceSummaryItem name="Logging.Helper" isDocumented="True" xmlns="">Logging Helper classes and enumerations.</NamespaceSummaryItem>
     </NamespaceSummaries>
-    <VisibleItems>Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
-    <RootNamespaceTitle>Packages</RootNamespaceTitle>
-    <HelpTitle>.NET Helper Packages</HelpTitle>
-    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <HelpFileFormat>Website</HelpFileFormat>
+    <SyntaxFilters>C#</SyntaxFilters>
+    <PresentationStyle>Default2022</PresentationStyle>
+    <CleanIntermediates>True</CleanIntermediates>
+    <KeepLogFile>True</KeepLogFile>
+    <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
+    <IndentHtml>False</IndentHtml>
+    <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
+    <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <NamingMethod>MemberName</NamingMethod>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
-    <RootNamespaceContainer>True</RootNamespaceContainer>
     <NamespaceGrouping>False</NamespaceGrouping>
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
-    <BuildLogFile>C:\Temp\Documentation\NuGetPackages.log</BuildLogFile>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
+    <BinaryTOC>True</BinaryTOC>
+    <IncludeFavorites>False</IncludeFavorites>
+    <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
+    <AppendMarkdownFileExtensionsToUrls>True</AppendMarkdownFileExtensionsToUrls>
     <ComponentConfigurations>
       <ComponentConfig id="Resolve ThirdParty Reference Links" enabled="True">
         <component id="Resolve ThirdParty Reference Links">
