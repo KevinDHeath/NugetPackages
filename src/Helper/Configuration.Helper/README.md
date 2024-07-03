@@ -1,5 +1,5 @@
 # Configuration.Helper
-[<img src="https://kevindheath.github.io/codecoverage/helper/badge_combined.svg">](https://kevindheath.github.io/codecoverage/helper/html/)
+[<img src="https://kevindheath.github.io/code/helper/badge_combined.svg">](https://kevindheath.github.io/code/helper/html/)
 
 ## Change Log
 - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)
