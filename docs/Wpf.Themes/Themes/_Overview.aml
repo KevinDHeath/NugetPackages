@@ -61,10 +61,12 @@
       <content>
         <table>
           <title>Resource Dictionary Dependencies:</title>
-            <row>
-              <entry><para>Resource Dictionary</para></entry>
-              <entry><para>Relies on</para></entry>
-            </row>
+            <tableHeader>
+              <row>
+                <entry><para>Resource Dictionary</para></entry>
+                <entry><para>Relies on</para></entry>
+              </row>
+            </tableHeader>
           <row>
             <entry><para><phrase>[Common.Wpf.Resources]</phrase></para></entry>
             <entry><para></para></entry>
