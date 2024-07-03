@@ -2,7 +2,7 @@
 [<img src="https://kevindheath.github.io/code/helper/badge_combined.svg">](https://kevindheath.github.io/code/helper/html/)
 
 ## Change Log
-- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.6.1)
+- [v2.0.6](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.7.1)
   - Updated to use NLog 5.3.2
 - [v2.0.5](https://github.com/KevinDHeath/NuGetPackages/releases/tag/v2024.5.1)
   - Updated to use NLog 5.3.1
