@@ -8,8 +8,8 @@
 
   <!-- Package Information -->
   <PropertyGroup>
-    <Version>2.0.7</Version>
-    <PackageReleaseNotes>* Updated to use NLog 5.3.3</PackageReleaseNotes>
+    <Version>2.0.8</Version>
+    <PackageReleaseNotes>* Updated to use NLog 5.3.4</PackageReleaseNotes>
     <PackageId>kdheath.Logging.Helper</PackageId>
     <PackageDescription>The logging helper is a light-weight platform for .NET with rich log routing and management capabilities provided by NLog.</PackageDescription>
     <PackageTags>logging;helper;nlog;console;csharp;netstandard;dotnet</PackageTags>

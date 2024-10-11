@@ -15,23 +15,23 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" /> <!-- 03/2024 -->
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />             <!-- 03/2024 -->
     <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />                          <!-- 02/2024 -->
-    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.18" />                                    <!-- 08/2024 -->
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.3" />                                <!-- 08/2024 -->
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.22" />                                    <!-- 08/2024 -->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.8.1" />                                <!-- 08/2024 -->
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.1" />             <!-- 10/2024 -->
+    <PackageVersion Include="System.Diagnostics.EventLog" Version="8.0.1" />                           <!-- 10/2024 -->
     <PackageVersion Include="System.Memory" Version="4.5.5" />                                         <!-- 05/2022 -->
 
     <!-- .NET 8.0 -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
     <PackageVersion Include="System.ComponentModel.Composition" Version="8.0.0" />
-    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
-    <PackageVersion Include="System.Diagnostics.EventLog" Version="8.0.0" />
     <PackageVersion Include="System.Reflection.Metadata" Version="8.0.0" />
     <PackageVersion Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <!-- Logging.Helper -->
-    <PackageVersion Include="NLog" Version="5.3.3" />
+    <PackageVersion Include="NLog" Version="5.3.4" />
     <PackageVersion Include="kdheath.Application.Helper" Version="2.0.1" />
 
     <!-- Wpf.Controls -->
@@ -46,18 +46,18 @@
 
   <ItemGroup>
     <!-- Unit Testing -->
-    <PackageVersion Include="xunit" Version="2.9.0" />
+    <PackageVersion Include="xunit" Version="2.9.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.1" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
     <PackageVersion Include="Validation" Version="2.5.51" />
-    <PackageVersion Include="xunit.extensibility.execution" Version="2.9.0" />
+    <PackageVersion Include="xunit.extensibility.execution" Version="2.9.2" />
 
     <!-- Transitive, referenced by Microsoft.TestPlatform.ObjectModel ?? -->
-    <PackageVersion Include="NuGet.Frameworks" Version="6.11.0" />
+    <PackageVersion Include="NuGet.Frameworks" Version="6.11.1" />
   </ItemGroup>
 
 </Project>
